@@ -12,7 +12,17 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as ExamenesRouteImport } from './routes/examenes'
 import { Route as MiCuentaRouteImport } from './routes/mi-cuenta'
+import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as NoticiasIndexRouteImport } from './routes/noticias.index'
+import { Route as NoticiasSlugRouteImport } from './routes/noticias.$slug'
+import { Route as TiendaIndexRouteImport } from './routes/tienda.index'
+import { Route as TiendaOfferingIdRouteImport } from './routes/tienda.$offeringId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -29,9 +39,59 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamenesRoute = ExamenesRouteImport.update({
+  id: '/examenes',
+  path: '/examenes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MiCuentaRoute = MiCuentaRouteImport.update({
   id: '/mi-cuenta',
   path: '/mi-cuenta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NosotrosRoute = NosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiciosRoute = ServiciosRouteImport.update({
+  id: '/servicios',
+  path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasIndexRoute = NoticiasIndexRouteImport.update({
+  id: '/noticias/',
+  path: '/noticias/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
+  id: '/noticias/$slug',
+  path: '/noticias/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TiendaIndexRoute = TiendaIndexRouteImport.update({
+  id: '/tienda/',
+  path: '/tienda/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TiendaOfferingIdRoute = TiendaOfferingIdRouteImport.update({
+  id: '/tienda/$offeringId',
+  path: '/tienda/$offeringId',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -39,34 +99,117 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin': typeof AdminRoute
+  '/contacto': typeof ContactoRoute
+  '/examenes': typeof ExamenesRoute
   '/mi-cuenta': typeof MiCuentaRoute
+  '/nosotros': typeof NosotrosRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/servicios': typeof ServiciosRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
+  '/tienda/$offeringId': typeof TiendaOfferingIdRoute
+  '/noticias/': typeof NoticiasIndexRoute
+  '/tienda/': typeof TiendaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin': typeof AdminRoute
+  '/contacto': typeof ContactoRoute
+  '/examenes': typeof ExamenesRoute
   '/mi-cuenta': typeof MiCuentaRoute
+  '/nosotros': typeof NosotrosRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/servicios': typeof ServiciosRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
+  '/tienda/$offeringId': typeof TiendaOfferingIdRoute
+  '/noticias': typeof NoticiasIndexRoute
+  '/tienda': typeof TiendaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin': typeof AdminRoute
+  '/contacto': typeof ContactoRoute
+  '/examenes': typeof ExamenesRoute
   '/mi-cuenta': typeof MiCuentaRoute
+  '/nosotros': typeof NosotrosRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/servicios': typeof ServiciosRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/noticias/$slug': typeof NoticiasSlugRoute
+  '/tienda/$offeringId': typeof TiendaOfferingIdRoute
+  '/noticias/': typeof NoticiasIndexRoute
+  '/tienda/': typeof TiendaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/$' | '/admin' | '/mi-cuenta'
+  fullPaths:
+    | '/'
+    | '/$'
+    | '/admin'
+    | '/contacto'
+    | '/examenes'
+    | '/mi-cuenta'
+    | '/nosotros'
+    | '/privacy-policy'
+    | '/servicios'
+    | '/terms-of-service'
+    | '/noticias/$slug'
+    | '/tienda/$offeringId'
+    | '/noticias/'
+    | '/tienda/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$' | '/admin' | '/mi-cuenta'
-  id: '__root__' | '/' | '/$' | '/admin' | '/mi-cuenta'
+  to:
+    | '/'
+    | '/$'
+    | '/admin'
+    | '/contacto'
+    | '/examenes'
+    | '/mi-cuenta'
+    | '/nosotros'
+    | '/privacy-policy'
+    | '/servicios'
+    | '/terms-of-service'
+    | '/noticias/$slug'
+    | '/tienda/$offeringId'
+    | '/noticias'
+    | '/tienda'
+  id:
+    | '__root__'
+    | '/'
+    | '/$'
+    | '/admin'
+    | '/contacto'
+    | '/examenes'
+    | '/mi-cuenta'
+    | '/nosotros'
+    | '/privacy-policy'
+    | '/servicios'
+    | '/terms-of-service'
+    | '/noticias/$slug'
+    | '/tienda/$offeringId'
+    | '/noticias/'
+    | '/tienda/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AdminRoute: typeof AdminRoute
+  ContactoRoute: typeof ContactoRoute
+  ExamenesRoute: typeof ExamenesRoute
   MiCuentaRoute: typeof MiCuentaRoute
+  NosotrosRoute: typeof NosotrosRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ServiciosRoute: typeof ServiciosRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
+  NoticiasSlugRoute: typeof NoticiasSlugRoute
+  TiendaOfferingIdRoute: typeof TiendaOfferingIdRoute
+  NoticiasIndexRoute: typeof NoticiasIndexRoute
+  TiendaIndexRoute: typeof TiendaIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -92,11 +235,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/examenes': {
+      id: '/examenes'
+      path: '/examenes'
+      fullPath: '/examenes'
+      preLoaderRoute: typeof ExamenesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/mi-cuenta': {
       id: '/mi-cuenta'
       path: '/mi-cuenta'
       fullPath: '/mi-cuenta'
       preLoaderRoute: typeof MiCuentaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nosotros': {
+      id: '/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/servicios': {
+      id: '/servicios'
+      path: '/servicios'
+      fullPath: '/servicios'
+      preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias/': {
+      id: '/noticias/'
+      path: '/noticias'
+      fullPath: '/noticias/'
+      preLoaderRoute: typeof NoticiasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/noticias/$slug': {
+      id: '/noticias/$slug'
+      path: '/noticias/$slug'
+      fullPath: '/noticias/$slug'
+      preLoaderRoute: typeof NoticiasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tienda/': {
+      id: '/tienda/'
+      path: '/tienda'
+      fullPath: '/tienda/'
+      preLoaderRoute: typeof TiendaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tienda/$offeringId': {
+      id: '/tienda/$offeringId'
+      path: '/tienda/$offeringId'
+      fullPath: '/tienda/$offeringId'
+      preLoaderRoute: typeof TiendaOfferingIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -106,7 +319,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AdminRoute: AdminRoute,
+  ContactoRoute: ContactoRoute,
+  ExamenesRoute: ExamenesRoute,
   MiCuentaRoute: MiCuentaRoute,
+  NosotrosRoute: NosotrosRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ServiciosRoute: ServiciosRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
+  NoticiasSlugRoute: NoticiasSlugRoute,
+  TiendaOfferingIdRoute: TiendaOfferingIdRoute,
+  NoticiasIndexRoute: NoticiasIndexRoute,
+  TiendaIndexRoute: TiendaIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

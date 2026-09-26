@@ -1,0 +1,4747 @@
+[
+  {
+    "id": "Z73D_hEAAC4AgDlo",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Z73D_hEAAC4AgDlo%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T13:22:09+0000",
+    "last_publication_date": "2025-05-14T20:16:25+0000",
+    "slugs": ["eva-varas-ibanez"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Eva Varas Ibáñez",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Nutricionista",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Pontificia Universidad Católica de Chile",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "detalle": [
+        {
+          "type": "paragraph",
+          "text": "Nutricionista con enfoque integral en la salud y el bienestar. Mi formación académica y práctica en nutrición y dietética se complementa con una certificación en psicología y estudios en microbioma humano, lo que me permite comprender y abordar las necesidades de mis pacientes desde una perspectiva holística. Mi experiencia en la práctica clínica y luego como independiente, me ha permitido trabajar con una amplia gama de usuarios, muchos de ellos con múltiples patologías tanto físicas como de su salud mental.",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "darspa": false,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/de4a96aec43df4fc.png",
+        "id": "Z73Dy57c43Q3gMuN",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 4
+    }
+  },
+  {
+    "id": "Z73IPxEAAC0AgELb",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Z73IPxEAAC0AgELb%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T14:04:37+0000",
+    "last_publication_date": "2025-05-14T20:15:50+0000",
+    "slugs": ["mariela-pereda-gallardo"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Mariela Pereda Gallardo",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Auxiliar de Servicio",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "casa_de_estudios": [],
+      "detalle": [],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/08639f462ff8f9fe.png",
+        "id": "Z73N657c43Q3gM7C",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 5
+    }
+  },
+  {
+    "id": "Z73G1hEAAC4AgD_h",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Z73G1hEAAC4AgD_h%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T13:34:27+0000",
+    "last_publication_date": "2025-02-25T14:10:58+0000",
+    "slugs": ["catalina-huenchunir-pulido"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Catalina Huenchuñir Pulido",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Odontólogo, Cirujano Dentista",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Universidad Mayor de Santiago",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "detalle": [
+        {
+          "type": "paragraph",
+          "text": "Me caracterizo por una gran vocación de servicio, dando un buen trato al usuario, tanto en el área privada como pública. Capacidad para trabajar en equipo, comprometida con la calidad del trabajo y la excelencia en el servicio.",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/80ae7cc5098d97db.png",
+        "id": "Z73Gyp7c43Q3gMxr",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 3
+    }
+  },
+  {
+    "id": "X5nqfxEAACAAtCsk",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5nqfxEAACAAtCsk%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-10-28T22:02:43+0000",
+    "last_publication_date": "2025-05-14T20:22:25+0000",
+    "slugs": ["sandra-paillaleve-paillaleve"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Sandra Paillaleve Paillaleve",
+          "spans": []
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Coordinadora Administrativa - Secretaria Ejecutiva",
+          "spans": []
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Liceo PoliTécnico de Castro",
+          "spans": []
+        }
+      ],
+      "detalle": [
+        {
+          "type": "paragraph",
+          "text": "Reseña",
+          "spans": [
+            {
+              "start": 0,
+              "end": 6,
+              "type": "strong"
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cuento con experiencia de varios años en administración de recursos físicos, contables y atención de público, entre ellos, administradora de contratos de empresa multinacional de alimentación, trabajando con altos niveles de exigencia en calidad de servicios y asociado a la nutrición, lo que en la actualidad me ha permitido incorporarme a esta nueva área en el sector de salud y bienestar, donde soy responsable de la recepción de nuestros usuarios, coordinación de horas y agendas de nuestros múltiples servicios. Además de dar solución a los diversos problemas o situaciones que afecten a nuestro público y a nuestro equipo, teniendo en consideración los  mas altos estándares de calidad en la atención desde las áreas administrativas y financieras como en las normativas vigentes determinadas por las autoridades respectivas a nuestro quehacer. ",
+          "spans": [],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "text": "Objetivo: ",
+          "spans": [
+            {
+              "start": 0,
+              "end": 10,
+              "type": "strong"
+            }
+          ],
+          "direction": "ltr"
+        },
+        {
+          "type": "paragraph",
+          "text": "Contribuir en el desarrollo administrativo y logístico con compromiso pleno; atención personalizada, humana y de calidad, teniendo como objetivo en conjunto con los demás integrantes de la familia Dar Spa, un resultado final satisfactorio para nuestros usuarios.",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/826171cf896e2304.png",
+        "id": "Y30TZxAAACIAhRs7",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Web",
+        "key": "ce80c4d9-8cda-43da-9b0a-2da9a3b37033",
+        "url": "https://www.darspa.cl"
+      },
+      "ordenaparicion": 2
+    }
+  },
+  {
+    "id": "Y5OdDxAAACEA5rg_",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OdDxAAACEA5rg_%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:16:53+0000",
+    "last_publication_date": "2025-05-14T20:13:41+0000",
+    "slugs": ["masaje-descontracturante"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Masaje descontracturante",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Masaje especial para resolver todo tipo de dolor y/o molestias musculares; lumbago, tortícolis, cefalea tensional, ciática o bruxismo entre otros.",
+          "spans": []
+        }
+      ],
+      "price": 30000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/cdbda34ee9666d79.png",
+        "id": "Y5YPeBAAACIA8XsC",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OYShAAAB0A5qKH",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OYShAAAB0A5qKH%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:21:47+0000",
+    "last_publication_date": "2024-12-10T14:49:57+0000",
+    "slugs": ["vacuum-x-12"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Vacuum x 12",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "12 sesiones de tratamiento para modelar, agrandar y levantar zonas como glúteos, mamas o muslos, reduciendo celulitis, flacidez y mejorando la forma en general.",
+          "spans": []
+        }
+      ],
+      "price": 126000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/47ef252f99082a41.png",
+        "id": "Y5YPdhAAAPth8Xry",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OVzhAAAB0A5peJ",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OVzhAAAB0A5peJ%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-10T00:27:13+0000",
+    "last_publication_date": "2024-12-10T14:50:12+0000",
+    "slugs": ["lipolaser-x-12"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Lipolaser x 12",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "12 sesiones Lipolisis Laser;  reducción de grasa localizada, mejora tu cintura, apoya la reducción de peso",
+          "spans": []
+        }
+      ],
+      "price": 126000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/e543a2781b6e15d6.png",
+        "id": "Y5PU1xAAACIA5634",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y-5vFRAAACAAF9UI",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y-5vFRAAACAAF9UI%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T13:44:38+0000",
+    "last_publication_date": "2025-02-25T13:44:38+0000",
+    "slugs": ["entrenamiento"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Entrenamiento",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Entrenamiento personalizado para 1 persona - 2 sesiones por semana (plan mensual)",
+          "spans": []
+        }
+      ],
+      "price": 60000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": "Entrenamiento personalizado",
+        "copyright": null,
+        "url": "/images/content/f1b023058148d8be.png",
+        "id": "Y5YPeBAAACEA8XsE",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OX4xAAAKkY5qC6",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OX4xAAAKkY5qC6%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:24:41+0000",
+    "last_publication_date": "2024-12-10T14:48:58+0000",
+    "slugs": ["vacuum-x-8"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Vacuum x 8",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "8 sesiones de tratamiento para modelar, agrandar y levantar zonas como glúteos o muslos.",
+          "spans": []
+        }
+      ],
+      "price": 88000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/47ef252f99082a41.png",
+        "id": "Y5YPdhAAAPth8Xry",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OUtRAAAB0A5pKo",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OUtRAAAB0A5pKo%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:23:00+0000",
+    "last_publication_date": "2024-12-10T14:49:21+0000",
+    "slugs": ["hifem-x-12"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Hifem x 12",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "12 sesiones de estimulación muscular, mediante Hifem para tonificar, marcar y potenciar la musculatura y el metabolismo.",
+          "spans": []
+        }
+      ],
+      "price": 126000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/8f8e825193db60e2.png",
+        "id": "Y5YPeBAAACIA8XsF",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "X5We5xEAAB0AoNBX",
+    "uid": "sed",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5We5xEAAB0AoNBX%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T13:49:59+0000",
+    "last_publication_date": "2025-02-25T13:49:59+0000",
+    "slugs": ["entrenamiento-deportivo-monitorizado"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Entrenamiento Deportivo Monitorizado",
+          "spans": []
+        }
+      ],
+      "imagen": {},
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "El entrenamiento deportivo monitorizado es una forma de entrenar con lo mas innovador en tecnología deportiva, empleando monitoreo en tiempo real de tu rendimiento y capacidad durante todo el tiempo que ejercitas. En nuestra sala de entrenamiento deportivo, contamos con tecnología Polar, Saturometría, y supervisión directa de nuestros monitores quienes irán registrando tu avance sesión a sesión mientras entrenan junto a ti en modo \"uno a uno\". ",
+          "spans": []
+        }
+      ],
+      "contenido": []
+    }
+  },
+  {
+    "id": "Y30TBBAAAB0AhRl_",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y30TBBAAAB0AhRl_%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-11-22T18:23:48+0000",
+    "last_publication_date": "2025-02-25T12:45:03+0000",
+    "slugs": ["alexis-vargas"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Alexis Vargas",
+          "spans": []
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Rehabilitador Cardio-Metabolico",
+          "spans": []
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "test",
+          "spans": []
+        }
+      ],
+      "detalle": [
+        {
+          "type": "paragraph",
+          "text": "test",
+          "spans": []
+        }
+      ],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 996,
+          "height": 992
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/5612f7a6928c90ec.jpg",
+        "id": "ZqfOEh5LeNNTxkql",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 3
+    }
+  },
+  {
+    "id": "Y5OZvRAAAKkY5qjy",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OZvRAAAKkY5qjy%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T22:29:37+0000",
+    "last_publication_date": "2024-12-10T14:46:21+0000",
+    "slugs": ["1-hifu-corporal--1-presoterapia"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "1 Hifu corporal + 1 Presoterapia",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "1 sesión de ultrasonido focalizado de alta intensidad mas presoterapia; técnica utilizada para trata flacidez más una sesión para tratar celulitis, piernas cansadas, varices, calambres y retención de líquidos.",
+          "spans": []
+        }
+      ],
+      "price": 51000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/075d82af4322d6af.png",
+        "id": "Y5ZZhxAAACEA8sD2",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OXiRAAAKkY5p8r",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OXiRAAAKkY5p8r%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:25:08+0000",
+    "last_publication_date": "2024-12-10T14:48:22+0000",
+    "slugs": ["ondas-de-choque-x-8"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Ondas de choque x 8",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "8 sesiones de ondas de choque;  técnica que mejora la apariencia de cicatrices, flacidez o zonas caídas.",
+          "spans": []
+        }
+      ],
+      "price": 88000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/5afd1317931d82a7.png",
+        "id": "Y5YPdxAAACIA8Xr7",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "X3KUEBIAAPssvtpy",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3KUEBIAAPssvtpy%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-29T01:55:32+0000",
+    "last_publication_date": "2025-02-25T12:43:16+0000",
+    "slugs": ["esteban-garat-valenzuela"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Esteban Garat Valenzuela",
+          "spans": []
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Masajista",
+          "spans": []
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Escuela de masaje y Drenaje linfático Kineva",
+          "spans": []
+        }
+      ],
+      "detalle": [
+        {
+          "type": "heading2",
+          "text": "Otros Cursos",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Diplomado especialización en cervicodorsalgias, Kineva, 2011.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Diplomado especialización en P.E.F.E, Kineva 2011.",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Áreas de interés",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Masajes descontracturantes ",
+          "spans": [
+            {
+              "start": 0,
+              "end": 27,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Terapia dirigida a personas que sufren de dolores y molestias musculares.  Una dolencia muscular constante puede volverse muy molesta, limitar nuestra movilidad física e inhabilitar un funcionamiento normal en el día a día. Esta situación mantenida en el tiempo genera un estrés que se vuelve acumulativo; el dolor produce estrés, el estrés produce malestar, luego vuelve el dolor y aumenta el malestar y así sucesivamente, con lo que entramos en un ciclo de dolor-estrés.  ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Es por tanto necesario focalizarnos en trabajar la musculatura, y por medio de distintas técnicas, eliminar el gatillante del dolor para así liberarnos de la molestia constante y terminar con el ciclo de dolor-estrés.  Además vale la pena mencionar que los masajes favorecen la circulación de la sangre en el cuerpo lo que lo ayuda a eliminar toxinas.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Masajes de relajación",
+          "spans": [
+            {
+              "start": 0,
+              "end": 21,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Para aquellas personas que buscan  un momento de paz y tranquilidad fuera de la rutina, les ofrecemos masajes de relajación.  A diferencia del masaje descontracturante, el masaje de relajación no busca eliminar un dolor o malestar muscular especifico, si no liberar la musculatura de forma más general. Esto se logra usando técnicas más lentas y con una presión más suave, generando un efecto que descarga la tensión física y mental.",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Objetivo",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Deseamos que  nuestros servicios de masajes terapéuticos contribuyan a que logres encontrar un bienestar físico y mental. Esto lo haremos por medio de una atención personalizada, respetuosa y profesional, en la cual abordaremos cada caso de forma individual, para así lograr brindar la mejor solución a cada requerimiento personal.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Es importante que sepamos escuchar a nuestro cuerpo, nos detengamos y sepamos darle un momento de alivio y reparación.",
+          "spans": []
+        }
+      ],
+      "darspa": false,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/6f528bb9e770b340.png",
+        "id": "Y30TZhAAACEAhRs0",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 5
+    }
+  },
+  {
+    "id": "Y5OYERAAAKkY5qGJ",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OYERAAAKkY5qGJ%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:22:33+0000",
+    "last_publication_date": "2024-12-10T14:49:40+0000",
+    "slugs": ["ondas-de-choque-x-12"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Ondas de choque x 12",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "12 sesiones de ondas de choque;  técnica que mejora la apariencia de cicatrices, flacidez o zonas caídas.",
+          "spans": []
+        }
+      ],
+      "price": 126000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/5afd1317931d82a7.png",
+        "id": "Y5YPdxAAACIA8Xr7",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OcSBAAAB0A5rRB",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OcSBAAAB0A5rRB%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-10T01:35:47+0000",
+    "last_publication_date": "2024-09-12T13:37:35+0000",
+    "slugs": ["hifu-facial-x-2"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Hifu facial x 2",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "2 sesiones lifting facial no quirúrgico a través de ultrasonido focalizado de alta intensidad. Mejora Arrugas, ojeras, papada y renueva tu aspecto juvenil.",
+          "spans": []
+        }
+      ],
+      "price": 90000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/8221854f6dde84b5.png",
+        "id": "Y5nzIRAAAB0AAdW9",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OGVBAAAKkY5lLY",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OGVBAAAKkY5lLY%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-09T19:03:09+0000",
+    "last_publication_date": "2024-12-10T14:45:38+0000",
+    "slugs": ["presoterapia-x6"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Presoterapia x6",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "presoterapia , 6 sesiones para celulitis, piernas cansadas, varices y calambres, retención de líquidos y mucho mas.",
+          "spans": []
+        }
+      ],
+      "price": 66000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/228e182452de4839.png",
+        "id": "Y5PU1xAAACIA5631",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OaShAAAB0A5qtj",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OaShAAAB0A5qtj%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T23:13:43+0000",
+    "last_publication_date": "2024-12-10T14:51:17+0000",
+    "slugs": ["1-presoterapia--1-radiofrecuencia-facial"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "1 Presoterapia + 1 Radiofrecuencia facial ",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "1 sesión presoterapia para tratar celulitis, piernas cansadas, varices y calambres, retención de líquidos.  Más una sesión radiofrecuencia facial, técnica utilizada para mejorar la apariencia general de la piel.",
+          "spans": []
+        }
+      ],
+      "price": 22400,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/853707784d2b1fd4.png",
+        "id": "Y5Zj8BAAAB0A8u6J",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "X3KN1hIAAPssvr8J",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3KN1hIAAPssvr8J%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-29T01:28:59+0000",
+    "last_publication_date": "2025-02-25T12:44:25+0000",
+    "slugs": ["constanza-pizarro-baldivieso"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Constanza Pizarro Baldivieso",
+          "spans": []
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Nutricionista, Licenciada en Nutrición y Dietética",
+          "spans": []
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Universidad de Concepción",
+          "spans": []
+        }
+      ],
+      "detalle": [
+        {
+          "type": "heading2",
+          "text": "Otros Cursos",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Certificación internacional en Nutrición Deportiva, Instituto Universitario Vive Sano Brasil, 2020.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Curso de Actualización y Nutrición vegetariana, Instituto Universitario Vive Sano Brasil, 2020.",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Area de Interés",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Atención focalizada en pacientes mayores de 2 años que:",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Presenten sobrepeso u obesidad con o sin patologías crónicas (Hipertensión, Diabetes, Problemas al colesterol o Tiroides, entre otras) que quieran mejorar sus hábitos alimentarios para lograr un peso saludable y un mejor control metabólico.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Pacientes con estado nutricional normal con o sin patologías crónicas que quieran mejorar sus hábitos alimentarios y composición corporal contribuyendo así en la prevención de enfermedades crónicas o en el control metabólico de estas.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Deportistas que quieran mejorar sus hábitos alimentarios, composición corporal y/o rendimiento.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": " Vegetarianos o veganos que quieran lograr una alimentación equilibrada y adecuada a sus requerimientos, mejorar composición corporal y evitar deficiencias nutricionales.",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Objetivo",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Nuestro objetivo es que aprendas a alimentarte de forma saludable y equilibrada con planes de alimentación adecuados y ajustados a tus requerimientos nutricionales de forma individualizada y personalizada según tu metabolismo basal, preferencias alimentarias, gustos, horarios, objetivos nutricionales y sin la necesidad de dietas restrictivas. Sólo necesitamos tu esfuerzo y ganas de cambios positivos en tu vida.",
+          "spans": []
+        }
+      ],
+      "darspa": true,
+      "edami": true,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/dc44488bd3bd2d28.png",
+        "id": "Y30TZxAAACAAhRs_",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Web",
+        "key": "4af02ddc-6933-42cc-8742-5e49af202499",
+        "url": "https://www.instagram.com/nutricionista.constanzapizarro"
+      },
+      "ordenaparicion": 4
+    }
+  },
+  {
+    "id": "Y5OZOxAAAB0A5qav",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OZOxAAAB0A5qav%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-10T00:31:11+0000",
+    "last_publication_date": "2024-09-12T13:36:36+0000",
+    "slugs": ["hifu-multiplano-corporal"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "HIFU Multiplano corporal  ",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "1 sesión ultrasonido focalizado en 3 planos;  técnica utilizada para trata flacidez, celulitis, pliegues en ombligo y estrías.",
+          "spans": []
+        }
+      ],
+      "price": 40000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/17adec8fb8234967.png",
+        "id": "Y5PU1xAAACEA5630",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OZZRAAACEA5qdq",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OZZRAAACEA5qdq%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-10T00:45:12+0000",
+    "last_publication_date": "2024-09-12T13:36:11+0000",
+    "slugs": ["hifu-multiplano-x3"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "HIFU Multiplano x3",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "3 sesiones ultrasonido focalizado Multiplano, de alta intensidad;  ideal para flacidez, celulitis, grasa localizada, estrías.",
+          "spans": []
+        }
+      ],
+      "price": 120000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/17adec8fb8234967.png",
+        "id": "Y5PU1xAAACEA5630",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "X3KQzhIAAAmIvswa",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3KQzhIAAAmIvswa%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-29T01:41:37+0000",
+    "last_publication_date": "2025-02-25T12:44:03+0000",
+    "slugs": ["diego-chavez-mancilla"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Diego Chávez Mancilla",
+          "spans": []
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Kinesiólogo",
+          "spans": []
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Universidad Austral de Chile",
+          "spans": []
+        }
+      ],
+      "detalle": [
+        {
+          "type": "heading2",
+          "text": "Otros Cursos",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Entrenamiento deportivo, dictado por Comité Olímpico de Chile.\n",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Áreas de interés",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Entrenamiento Deportivo avanzado ",
+          "spans": [
+            {
+              "start": 0,
+              "end": 33,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“Atención dirigida a deportistas amateur y profesionales que busquen el reintegro deportivo o quieran mejorar su rendimiento físico”.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Considera el diseño y esquema de ejercitación enfocado en la disciplina que practica, por rango de edad.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "A través de este entrenamiento dirigido se propone potenciar la capacidad física; en los ámbitos de fuerza y resistencia muscular, resistencia cardiovascular, flexibilidad, agilidad, equilibrio y velocidad.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "El trabajo contempla el entrenamiento dirigido, para un reintegro deportivo en el caso de lesiones que se produzcan durante la práctica deportiva; permitiendo tanto la óptima recuperación de lesiones como favorecer la condición musculoesquelética del deportista y en el menor plazo posible, poder rendir al máximo.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Ejercicio físico personalizado",
+          "spans": [
+            {
+              "start": 0,
+              "end": 30,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“Atención dirigida a usuarios que quieran mejorar su composición corporal y quieran mantener un estado físico saludable”",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Considera el diseño y esquema de ejercitación flexible y adecuado al perfil de salud de cada persona, motivando cambios de hábitos en su actividad física que le permitan liberarse del sobrepeso y lograr una mejor calidad de vida. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "El trabajo también integra a aquellas personas que presenten índice de masa corporal (IMC) normal o estado físico adecuado y que deseen mantener y potenciar su fitness (estado de salud física saludable).",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "El trabajo contempla rutina de ejercicios personalizados enfocados en la disminución del porcentaje de grasa corporal y el aumento de masa muscular; generando un bienestar físico y emocional.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Rehabilitación Kinésica",
+          "spans": [
+            {
+              "start": 0,
+              "end": 23,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "“Atención dirigida a pacientes que requieran tratamiento kinésico asociados a patologías traumatológicas, neurológicas, deportivas, cardiometabólicas y aquellas asociadas a patologías del adulto mayor”",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Considera el enfoque de rehabilitación traumatológica en lesiones a nivel osteo-muscular. Se disponen sesiones guiadas en las necesidades específicas de cada paciente y plantea estrategias de tratamiento dirigido a su reintegro funcional en el más corto tiempo.  Abarca tendinitis, bursitis, lumbago, escoliosis, esguince, fracturas, contracturas y otras, asociadas a estas lesiones.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La rehabilitación neurológica se enfoca en el tratamiento, optimización funcional y seguimiento de pacientes con alguna patología neurológicas. Abarcando alteraciones post accidente cerebro vasculares (ACV), alteración de equilibrio, motricidad fina; entre otras.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La rehabilitación deportiva contempla el tratamiento de alteraciones provocadas por lesiones deportivas, buscando un óptimo reintegro del paciente a sus actividades en el menor tiempo. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La rehabilitación cardiometabólica se enfoca en modificar calidad de vida del paciente; educando y promoviendo la actividad física guiada y supervisada, en alteraciones como hipertensión, diabetes mellitus, dislipidemia y obesidad.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La rehabilitación enfocada en patologías comunes de adulto mayor, como artrosis, artritis, alteración de la marcha, enfermedad de Parkinson, etc., con el objetivo de lograr una reducción en sus molestias y aumentar su funcionalidad e independencia. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "El trabajo contempla sesiones de rehabilitación integral; combinando distintas modalidades de tratamiento, como: ejercicios terapéuticos, electroestimulación, electroanalgesia, masoterapia, reeducación motriz, facilitación neuromuscular, técnicas de relajación, entre otras. Así mismo, se acompaña de educación preventiva e informativa relacionada con su patología.",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Objetivo",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Nuestro objetivo es abordar de manera integral el trabajo kinesiológico; elaborando programas ajustados a tus necesidades individuales tanto en el campo de rehabilitación como medicina del deporte y su respectiva actividad física asociada al bienestar y salud. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Independiente de la lesión, nuestro equipo guiará la preparación y entrenamiento físico, logrando reducir las molestias para un rápido y seguro retorno a tu actividad funcional y/o deportiva.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La propuesta de un cambio de hábito en tu actividad física y estilo de vida saludable es nuestro foco, logrando mejoras que abarcan desde tus componentes físicos, autoestima hasta la prevención y tratamiento de enfermedades.",
+          "spans": []
+        }
+      ],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/4b05c5f519a9ac74.png",
+        "id": "Y30TZxAAACEAhRtA",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 4
+    }
+  },
+  {
+    "id": "ZFJ7aRAAACIAOiTG",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZFJ7aRAAACIAOiTG%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2023-05-03T15:19:10+0000",
+    "last_publication_date": "2024-12-10T14:53:07+0000",
+    "slugs": ["8-lipo--6-presoterapia---2-hifem"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "8 lipo + 6 presoterapia  + 2 hifem",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "pack de modelado corporal orientado a mejorar el aspecto del abdomen , incluye 8 sesiones de Lipólisis Laser no invasiva, 6 de presoterapia y 2 de Hifem ",
+          "spans": []
+        }
+      ],
+      "price": 168000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/d113267df92f213d.png",
+        "id": "Y5YPeRAAAB0A8XsU",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Z73FIREAACsAgDwt",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Z73FIREAACsAgDwt%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T13:27:00+0000",
+    "last_publication_date": "2025-02-25T13:27:00+0000",
+    "slugs": ["constanza-macias-vidal"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Constanza Macias Vidal",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Nutricionista",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Universidad Andrés Bello",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "detalle": [
+        {
+          "type": "paragraph",
+          "text": "En el área profesional me considero una persona paciente, amable, sociable y empática. Mi principal motivación es contribuir en la salud de usuarios o pacientes y con esto, su calidad de vida, siempre desde el respeto y comprensión.",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/056d6818ae92b841.png",
+        "id": "Z73FFp7c43Q3gMv0",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 4
+    }
+  },
+  {
+    "id": "Z73BkREAACsAgDP8",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Z73BkREAACsAgDP8%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T13:11:47+0000",
+    "last_publication_date": "2025-02-25T13:11:47+0000",
+    "slugs": ["pablo-donaire-alfaro"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Pablo Donaire Alfaro",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Kinesiólogo",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Universidad Católica de la Santísima Concepción",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "detalle": [
+        {
+          "type": "paragraph",
+          "text": "Kinesiólogo con experiencia en las áreas respiratoria y músculo esqueléticas, me destaco por ser un profesional riguroso, creativo y enfocado en el bienestar bio-psicosocial de mis usuarios, disfruto del trabajo en equipo y de relaciones con personas, buscando siempre generar un entorno agradable para la promoción prevención y rehabilitación de la salud. ",
+          "spans": [],
+          "direction": "ltr"
+        }
+      ],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": "pablo donaire",
+        "copyright": null,
+        "url": "/images/content/34f4855e3aff9b5a.png",
+        "id": "Z73BeJ7c43Q3gMp5",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 4
+    }
+  },
+  {
+    "id": "Y5Oa4xAAACEA5q4K",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5Oa4xAAACEA5q4K%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T23:13:24+0000",
+    "last_publication_date": "2024-12-10T14:52:26+0000",
+    "slugs": ["presoterapia-x-3--radiofrecuencia-facial-x-3"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Presoterapia x 3 + Radiofrecuencia facial x 3",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "3 sesiones presoterapia para tratar celulitis, piernas cansadas, varices y calambres, retención de líquidos.  Más 3 sesiones radiofrecuencia facial o corporal, técnica utilizada para mejorar la apariencia general de la piel.",
+          "spans": []
+        }
+      ],
+      "price": 67200,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/853707784d2b1fd4.png",
+        "id": "Y5Zj8BAAAB0A8u6J",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y30VQBAAACAAhSN1",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y30VQBAAACAAhSN1%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-11-22T18:30:27+0000",
+    "last_publication_date": "2025-02-25T12:45:46+0000",
+    "slugs": ["soledad-maichil"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Soledad Maichil",
+          "spans": []
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Esteticista - Asistente de Terapia",
+          "spans": []
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "test",
+          "spans": []
+        }
+      ],
+      "detalle": [
+        {
+          "type": "paragraph",
+          "text": "test",
+          "spans": []
+        }
+      ],
+      "darspa": true,
+      "edami": false,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/a7823d74ef6afe86.png",
+        "id": "Y30TZhAAAB0AhRsx",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Any"
+      },
+      "ordenaparicion": 3
+    }
+  },
+  {
+    "id": "YD5XQxIAACYAxFmc",
+    "uid": "ultrasonido-focalizado",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YD5XQxIAACYAxFmc%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2025-02-25T13:50:08+0000",
+    "last_publication_date": "2025-02-25T13:50:08+0000",
+    "slugs": [
+      "ultrasonido-focalizado-de-alta-intensidad-hifu",
+      "ultrasonido-focalizado-de-alta-intensidad"
+    ],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Ultrasonido Focalizado de alta intensidad (HIFU)",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 660,
+          "height": 400
+        },
+        "alt": "HIFU",
+        "copyright": null,
+        "url": "/images/content/047e5a26e8bcb360.jpg",
+        "id": "YD5WLBIAACcAxFS-",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "El  Ultrasonido focalizado de alta intensidad es una técnica novedosa que permite realizar lifting facial sin cirugías, corrección de flacidez y pliegues abdominales, reducción de lineas de expresión, con un mínimo de riesgo para el paciente y un costo mucho mas abordable para cualquier persona, con resultados en 15 días luego de la primera sesión los que van mejorando hasta el tercer mes post tratamiento.",
+          "spans": []
+        }
+      ],
+      "contenido": [
+        {
+          "type": "paragraph",
+          "text": "Que es HIFU",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "HIFU es una técnica de grado médico, que consiste en la aplicación de ultrasonido focalizado en ciertas zonas, lo cual eleva la temperatura a diferentes profundidades del tejido tratado, produciendo paulatinamente retraccion y estirando la piel del sector intervenido. Esta técnica no es dolorosa, ni tiene riesgos implicitos para el paciente, ya que opera en las capas mas superficiales de la piel con una profundidad de acción que no supera los dos centimetros. HIFU se puede ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Quien Puede Beneficiarse",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Tiempos y Sesiones",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Contraindicaciones",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "Y5OcphAAACEA5rXv",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OcphAAACEA5rXv%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:17:12+0000",
+    "last_publication_date": "2024-12-10T14:51:44+0000",
+    "slugs": ["dermoabrasion"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Dermoabrasión",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "1 sesión de dermoabrasión, técnica de exfoliación mecánica que permite hacer una limpieza profunda de la piel del rostro",
+          "spans": []
+        }
+      ],
+      "price": 25000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/8ad96295e805defd.png",
+        "id": "Y5nzIhAAAB0AAdXC",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OTwxAAAB0A5o5z",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OTwxAAAB0A5o5z%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:23:59+0000",
+    "last_publication_date": "2024-12-10T14:47:55+0000",
+    "slugs": ["lipolaser-x6--presoterapia-x6"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Lipolaser x6 + Presoterapia x6",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "6 sesiones Lipolaser, 6 sesiones Presoterapia.  Reduce cintura, marca tu abdomen, elimina grasa localizada.",
+          "spans": []
+        }
+      ],
+      "price": 126000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/5b0daed3ff27c19b.png",
+        "id": "Y5YPdhAAACIA8Xrz",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OGKBAAACIA5lIM",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OGKBAAACIA5lIM%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-09T19:02:04+0000",
+    "last_publication_date": "2024-12-10T14:47:17+0000",
+    "slugs": ["presoterapia-x3"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Presoterapia x3",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "presoterapia , 3 sesiones para celulitis, piernas cansadas, varices y calambres, retención de líquidos y mucho mas.",
+          "spans": []
+        }
+      ],
+      "price": 33000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/bef732e42de636ae.png",
+        "id": "Y5PU1xAAACIA5632",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OXExAAAKkY5p0i",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OXExAAAKkY5p0i%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:25:20+0000",
+    "last_publication_date": "2024-12-10T14:48:43+0000",
+    "slugs": ["radiofrecuencia-corporal-x-6"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Radiofrecuencia corporal x 6",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "6 sesiones radiofrecuencia corporal.  Tratamiento para combatir flacidez y celulitis.",
+          "spans": []
+        }
+      ],
+      "price": 66000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/c77ae02b784eeff0.png",
+        "id": "Y5YPehAAAB0A8Xsc",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5ObeRAAACIA5rCi",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5ObeRAAACIA5rCi%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T23:12:58+0000",
+    "last_publication_date": "2024-12-10T14:50:50+0000",
+    "slugs": ["1-dermoabrasion--1-radiofrecuencia-facial"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "1 Dermoabrasión + 1 Radiofrecuencia facial",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "1 sesión de dermoabrasión, técnica de exfoliación mecánica que permite hacer una limpieza profunda de la piel del rostro, más 1 sesión radiofrecuencia facial;  técnica utilizada para mejorar la apariencia general de la piel.",
+          "spans": []
+        }
+      ],
+      "price": 36400,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/6812774b418d7d9a.png",
+        "id": "Y5Zj8BAAAB0A8u6K",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "ZBSSdhEAACIAFo7A",
+    "uid": null,
+    "url": null,
+    "type": "edami_plan",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZBSSdhEAACIAFo7A%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2023-03-17T16:16:58+0000",
+    "last_publication_date": "2023-07-04T20:29:06+0000",
+    "slugs": ["plan-intensivo-3-meses", "plan-intensivo"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Plan Intensivo (3 meses)",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Pacientes delicados, inestables en su condición, que requieren medicamentos o sueros y un cuidado frecuente por todo el equipo",
+          "spans": []
+        }
+      ],
+      "highlightone": [
+        {
+          "type": "paragraph",
+          "text": "3 visitas médicas durante el período",
+          "spans": []
+        }
+      ],
+      "highlighttwo": [
+        {
+          "type": "paragraph",
+          "text": "21 visitas totales por el equipo, durante el período",
+          "spans": []
+        }
+      ],
+      "highlightthree": [],
+      "highlightfour": [],
+      "price": 232500,
+      "is_active": true
+    }
+  },
+  {
+    "id": "ZBSTTxEAAB4AFpAP",
+    "uid": null,
+    "url": null,
+    "type": "edami_plan",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZBSTTxEAAB4AFpAP%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2023-03-17T16:20:34+0000",
+    "last_publication_date": "2023-07-04T20:28:47+0000",
+    "slugs": ["plan-libre-3-meses", "plan-libre"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Plan Libre (3 meses)",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Hasta un máximo de 1 consulta médicas, 3 de otros profesionales y  4 visitas por paramédico durante el trimestre",
+          "spans": []
+        }
+      ],
+      "highlightone": [
+        {
+          "type": "paragraph",
+          "text": "1 visita médica durante el período",
+          "spans": []
+        }
+      ],
+      "highlighttwo": [
+        {
+          "type": "paragraph",
+          "text": "7 visitas totales por el equipo, durante el período",
+          "spans": []
+        }
+      ],
+      "highlightthree": [],
+      "highlightfour": [],
+      "price": 94500,
+      "is_active": true
+    }
+  },
+  {
+    "id": "ZBSMuBEAACIAFoY2",
+    "uid": null,
+    "url": null,
+    "type": "edami_plan",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZBSMuBEAACIAFoY2%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2023-03-17T15:54:51+0000",
+    "last_publication_date": "2023-07-04T20:27:29+0000",
+    "slugs": ["plan-basico-3-meses", "plan-basico"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Plan Básico (3 meses)",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Para pacientes sin patologías serias, compensados, y que quieren control domiciliario para mantener su estado de salud.   Ciclo de 12 semanas.",
+          "spans": []
+        }
+      ],
+      "highlightone": [
+        {
+          "type": "paragraph",
+          "text": "1 visita por médico",
+          "spans": []
+        }
+      ],
+      "highlighttwo": [
+        {
+          "type": "paragraph",
+          "text": "6 visitas totales por el equipo",
+          "spans": []
+        }
+      ],
+      "highlightthree": [],
+      "highlightfour": [],
+      "price": 83500,
+      "is_active": true
+    }
+  },
+  {
+    "id": "Y5OcAhAAACEA5rMK",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OcAhAAACEA5rMK%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:19:43+0000",
+    "last_publication_date": "2023-11-23T18:32:04+0000",
+    "slugs": ["microneedling-facial"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Microneedling facial",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "1 sesión de microneedling facial, tratamiento eficaz e indoloro para reducir líneas de expresión, arrugas finas, cicatrices y manchas.",
+          "spans": []
+        }
+      ],
+      "price": 46200,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/b7d6e7de2a8e952e.png",
+        "id": "Y5YPeRAAAB0A8XsT",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OcahAAAB0A5rTZ",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OcahAAAB0A5rTZ%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:18:04+0000",
+    "last_publication_date": "2023-07-20T20:24:20+0000",
+    "slugs": ["radiofrecuencia-facial-x-3"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Radiofrecuencia facial x 3",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "3 sesiones radiofrecuencia facial;  técnica utilizada para mejorar la apariencia general de la piel, reducir áreas con flacidez, y disminuir grasa localizada.",
+          "spans": []
+        }
+      ],
+      "price": 34200,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/56e2e8d96d5824dd.png",
+        "id": "Y5YPeRAAACIA8XsQ",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "ZBSTuxEAACAAFpCx",
+    "uid": null,
+    "url": null,
+    "type": "edami_plan",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZBSTuxEAACAAFpCx%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2023-03-17T16:22:22+0000",
+    "last_publication_date": "2023-07-04T20:28:21+0000",
+    "slugs": ["plan-rehabilitacion-3-meses", "plan-rehabilitacion"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Plan Rehabilitación (3 meses)",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Pacientes que requieren apoyo domiciliario avanzado kinesiológico o de enfermería.",
+          "spans": []
+        }
+      ],
+      "highlightone": [
+        {
+          "type": "paragraph",
+          "text": "2 visitas médicas durante el período",
+          "spans": []
+        }
+      ],
+      "highlighttwo": [
+        {
+          "type": "paragraph",
+          "text": "12 visitas totales por el equipo, durante el período",
+          "spans": []
+        }
+      ],
+      "highlightthree": [],
+      "highlightfour": [],
+      "price": 187500,
+      "is_active": true
+    }
+  },
+  {
+    "id": "ZBSUJREAACIAFpFP",
+    "uid": null,
+    "url": null,
+    "type": "edami_plan",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZBSUJREAACIAFpFP%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2023-03-17T16:24:09+0000",
+    "last_publication_date": "2023-07-04T20:27:49+0000",
+    "slugs": ["plan-enf.-avanzada-3-meses", "plan-enf.-avanzada"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Plan Enf. Avanzada (3 meses)",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Pacientes terminales, estables, que requieren apoyo para mantenerse lo mejor posible en su contexto.",
+          "spans": []
+        }
+      ],
+      "highlightone": [
+        {
+          "type": "paragraph",
+          "text": "3 visitas médicas durante el período",
+          "spans": []
+        }
+      ],
+      "highlighttwo": [
+        {
+          "type": "paragraph",
+          "text": "12 visitas totales por el equipo, durante el período",
+          "spans": []
+        }
+      ],
+      "highlightthree": [],
+      "highlightfour": [],
+      "price": 153500,
+      "is_active": true
+    }
+  },
+  {
+    "id": "ZBSOLBEAACQAFohk",
+    "uid": null,
+    "url": null,
+    "type": "edami_plan",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22ZBSOLBEAACQAFohk%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2023-03-17T15:58:44+0000",
+    "last_publication_date": "2023-07-04T20:29:22+0000",
+    "slugs": ["plan-de-cuidado-frecuente-3-meses", "plan-de-cuidado-frecuente"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "title": [
+        {
+          "type": "heading1",
+          "text": "Plan de cuidado frecuente (3 meses)",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Pacientes con enfermedad crónica o descompensación crónica leve, que requiere una mirada mas continua.",
+          "spans": []
+        }
+      ],
+      "highlightone": [
+        {
+          "type": "paragraph",
+          "text": "2 visitas médicas durante el período",
+          "spans": []
+        }
+      ],
+      "highlighttwo": [
+        {
+          "type": "paragraph",
+          "text": "11 visitas totales por el equipo, durante el período",
+          "spans": []
+        }
+      ],
+      "highlightthree": [],
+      "highlightfour": [],
+      "price": 129500,
+      "is_active": true
+    }
+  },
+  {
+    "id": "Y5ZnYBAAAB0A8v2_",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5ZnYBAAAB0A8v2_%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T23:27:33+0000",
+    "last_publication_date": "2022-12-11T23:27:33+0000",
+    "slugs": ["nuevas-giftcard-navidenas"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Nuevas GiftCard Navideñas!!",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": "gift card navideñas",
+        "copyright": null,
+        "url": "/images/content/e13b627680b793d3.png",
+        "id": "Y5Zm6RAAAPth8vu0",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Aprovecha estas nuevas ofertas para todos los bolsillos en esta navidad, con descuentos increibles!, no puedes perderte en esta navidad un regalo de primer nivel, revisa nuestras ofertas y tarjetas de regalo.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "Y6BY_BAAAB0AEm0A",
+    "uid": null,
+    "url": null,
+    "type": "giftcard_template",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y6BY_BAAAB0AEm0A%22%29+%5D%5D",
+    "tags": ["dia de la madre"],
+    "first_publication_date": "2022-12-19T12:28:48+0000",
+    "last_publication_date": "2022-12-19T12:28:48+0000",
+    "slugs": ["untitled-document"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "active": true,
+      "background": {
+        "dimensions": {
+          "width": 1240,
+          "height": 874
+        },
+        "alt": "molde 2",
+        "copyright": null,
+        "url": "/images/content/0913fc7d1b098977.png",
+        "id": "Y6BYxhAAAKrhEmye",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "X5gYNREAAB8Aq-1B",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5gYNREAAB8Aq-1B%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-10-27T12:53:13+0000",
+    "last_publication_date": "2020-10-27T12:57:35+0000",
+    "slugs": [
+      "horario-de-atencion-en-semana-26-30-de-octubre",
+      "horario-de-atencion-matutino-en-semana-26-30-de-octubre",
+      "horario-de-atencion-semana-26-30-de-oct"
+    ],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Horario de atención en semana 26-30 de octubre",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 644,
+          "height": 362
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/064a716de8abd0d8.jpg",
+        "id": "X5gX0BEAAB0Aq-t4",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Estimados usuarios, por periodo de vacaciones de algunos de nuestros integrantes, del 26 al 30 de octubre atenderemos solamente durante la jornada de la mañana, es decir hasta las 14:00. Ya la semana siguiente desde el 2 de noviembre retomaremos nuestros horarios de atención normales. Consultas como siempre al +56972275330 y al +56972275490.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "Y50YuhAAAB0ADdaE",
+    "uid": null,
+    "url": null,
+    "type": "giftcard_template",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y50YuhAAAB0ADdaE%22%29+%5D%5D",
+    "tags": ["molde1", "navidad"],
+    "first_publication_date": "2022-12-17T01:18:07+0000",
+    "last_publication_date": "2022-12-17T01:19:32+0000",
+    "slugs": ["untitled-document"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "active": true,
+      "background": {
+        "dimensions": {
+          "width": 1240,
+          "height": 874
+        },
+        "alt": "molde1",
+        "copyright": null,
+        "url": "/images/content/429779b596db9a8d.png",
+        "id": "Y50YqBAAAB0ADdZm",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y50Y2hAAAB0ADda2",
+    "uid": null,
+    "url": null,
+    "type": "giftcard_template",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y50Y2hAAAB0ADda2%22%29+%5D%5D",
+    "tags": ["navidad", "molde2"],
+    "first_publication_date": "2022-12-17T01:18:57+0000",
+    "last_publication_date": "2022-12-17T01:19:10+0000",
+    "slugs": ["untitled-document"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "active": true,
+      "background": {
+        "dimensions": {
+          "width": 1240,
+          "height": 874
+        },
+        "alt": "molde2",
+        "copyright": null,
+        "url": "/images/content/1bb306d0c2c239ef.png",
+        "id": "Y50YqRAAACIADdZr",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y6BY2RAAAPthEmy6",
+    "uid": null,
+    "url": null,
+    "type": "giftcard_template",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y6BY2RAAAPthEmy6%22%29+%5D%5D",
+    "tags": ["dia de la madre"],
+    "first_publication_date": "2022-12-19T12:28:13+0000",
+    "last_publication_date": "2022-12-19T12:28:13+0000",
+    "slugs": ["untitled-document"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "active": true,
+      "background": {
+        "dimensions": {
+          "width": 1240,
+          "height": 874
+        },
+        "alt": "moode1",
+        "copyright": null,
+        "url": "/images/content/e86232050216cbc3.png",
+        "id": "Y6BYxBAAAB0AEmyb",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y50Y4xAAACIADdbG",
+    "uid": null,
+    "url": null,
+    "type": "giftcard_template",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y50Y4xAAACIADdbG%22%29+%5D%5D",
+    "tags": ["navidad", "molde3"],
+    "first_publication_date": "2022-12-17T01:20:22+0000",
+    "last_publication_date": "2022-12-17T01:20:22+0000",
+    "slugs": ["untitled-document"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "active": true,
+      "background": {
+        "dimensions": {
+          "width": 1240,
+          "height": 874
+        },
+        "alt": "molde3",
+        "copyright": null,
+        "url": "/images/content/4132cf4410adb6c3.png",
+        "id": "Y50YqRAAAPthDdZo",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "YoramhAAACEA4Z9_",
+    "uid": "catalogo-mayo",
+    "url": null,
+    "type": "catalogo",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YoramhAAACEA4Z9_%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-05-23T00:51:53+0000",
+    "last_publication_date": "2022-12-12T21:57:31+0000",
+    "slugs": ["catalogo"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "catalogo_documento": {
+        "link_type": "Media",
+        "key": "11e8f76f-54fc-4ce3-8f50-bbf74655669a",
+        "kind": "file",
+        "id": "Y5ejuxAAACIA-Fds",
+        "url": "/images/content/99ff8fc32ed4d56a.pdf",
+        "name": "Catálogo precios dic2022 (320 × 500 px).pdf",
+        "size": "7729825"
+      }
+    }
+  },
+  {
+    "id": "Y5On0RAAACIA5ufj",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5On0RAAACIA5ufj%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T23:08:28+0000",
+    "last_publication_date": "2022-12-11T23:08:28+0000",
+    "slugs": ["sesion-de-recovery"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Sesión de Recovery",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "una sesión de kinesioterápia enfocada en la recuperación muscular post-entrenamiento con diversas terapias como electroterapia, termoterapia, masaje manual,  presoterapia entre otras.",
+          "spans": []
+        }
+      ],
+      "price": 20000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/2cd631638caa2cbf.png",
+        "id": "Y5Zi3hAAAPth8unD",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "Y5OkzBAAACIA5tqF",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OkzBAAACIA5tqF%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:12:50+0000",
+    "last_publication_date": "2023-02-16T18:51:36+0000",
+    "slugs": ["consejeria-en-actividad-fisica"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Consejería en actividad física",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Consejería en actividad física personalizada, con entrenador 1 a 1, sesión de 1 hora",
+          "spans": []
+        }
+      ],
+      "price": 20000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/f1b023058148d8be.png",
+        "id": "Y5YPeBAAACEA8XsE",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "X3KL4xIAAAmIvrZu",
+    "uid": null,
+    "url": null,
+    "type": "resumen_profesional",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3KL4xIAAAmIvrZu%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-29T01:20:41+0000",
+    "last_publication_date": "2023-03-16T23:27:12+0000",
+    "slugs": ["daniel-moretti-castillo"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "profesional": [
+        {
+          "type": "heading1",
+          "text": "Daniel Moretti Castillo",
+          "spans": []
+        }
+      ],
+      "titulo": [
+        {
+          "type": "heading2",
+          "text": "Director Médico",
+          "spans": []
+        }
+      ],
+      "casa_de_estudios": [
+        {
+          "type": "heading1",
+          "text": "Universidad de Chile",
+          "spans": []
+        }
+      ],
+      "detalle": [
+        {
+          "type": "heading2",
+          "text": "Formación",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Medico cirujano, Universidad de Chile, 2000",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Diplomado en control y formación de equipos de trabajo en alta dirección pública.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Diplomado en Salud Familiar",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Endoscopista, Hospital Dipreca, 2013",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Cirujano General, Universidad de Santiago de Chile, 2012",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Focalización en Obesidad, trastornos alimentarios y Wellnes.",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Áreas de interés",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Atención orientada a pacientes desde los 10 años en adelante, con alteraciones del peso corporal, ansiedad alimentaria y mixta, trastornos del animo, seguimiento y control de enfermedades metabólicas como resistencia a insulina e hipotiroidismo, modelado corporal mínimamente invasivo, reparación de cicatrices inestéticas, alteración de la sexualidad en la pareja. ",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Objetivos",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Nuestro objetivo es contribuir a lograr el completo bienestar de nuestros usuarios, brindando un trabajo en equipo coherente, con personal atento y humano, aportando a mejorar el autocuidado, implementar estilos de vida mas saludables que nos hagan querer y cuidar nuestros cuerpos y nuestras mentes, evitando la sobre medicación tan común en nuestros tiempos y las intervenciones carentes de sentido.",
+          "spans": []
+        }
+      ],
+      "darspa": true,
+      "edami": true,
+      "fotopersonal": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/a5f83e6796ee26e2.png",
+        "id": "Y30TZxAAACEAhRtB",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "redes_sociales": {
+        "link_type": "Web",
+        "key": "403983be-4122-417d-81ed-a9f386fad371",
+        "url": "https://www.facebook.com/consultadanielmoretti"
+      },
+      "ordenaparicion": 0
+    }
+  },
+  {
+    "id": "X2g30xEAACMAnzhT",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X2g30xEAACMAnzhT%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-21T05:19:20+0000",
+    "last_publication_date": "2020-09-21T18:05:08+0000",
+    "slugs": ["nuevo-equipamento"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Nuevo Equipamento",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 3024,
+          "height": 4032
+        },
+        "alt": "Lipolaser y presoterapia",
+        "copyright": null,
+        "url": "/images/content/900ecf1eb37c3839.jpg",
+        "id": "X2g3zhEAACMAnzg5",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "El centro nutricional avanzado Dar Spa cuenta con nuevo equipamento para facilitar el progreso de su tratamiento y brindar la mejor atencion posible.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X2g1-REAACEAnzJD",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X2g1-REAACEAnzJD%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-21T05:14:26+0000",
+    "last_publication_date": "2020-09-21T05:14:26+0000",
+    "slugs": ["nueva-ubicacion"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Nueva Ubicación",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 3840,
+          "height": 2880
+        },
+        "alt": "foto exterior del centro nutricional",
+        "copyright": null,
+        "url": "/images/content/f7a16cb9fe47c9fb.jpg",
+        "id": "X2g2XREAACEAnzMH",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Desde el dia lunes 21 de Septiembre, toda la atencion de Dar Spa se traslada al nuevo centro ubicado en E. Sotomayor 576, Castro. Los estaremos esperando!!",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X2g_QBEAACMAn1lM",
+    "uid": "lipolisis-laser",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X2g_QBEAACMAn1lM%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-21T05:51:15+0000",
+    "last_publication_date": "2020-09-29T00:51:48+0000",
+    "slugs": ["lipolisis-laser-no-invasiva", "lipolisis-laser"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Lipolisis Laser no invasiva",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 597,
+          "height": 297
+        },
+        "alt": "abdomen esvelto",
+        "copyright": null,
+        "url": "/images/content/2705905c543a33f7.jpg",
+        "id": "X2g7vBEAACAAn0nG",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "Técnica que reduce grasa localizada sin cirugía y te permite modelar tu cuerpo potenciando otras terapias.",
+          "spans": []
+        }
+      ],
+      "contenido": [
+        {
+          "type": "heading2",
+          "text": "Que es la Lipolaser no invasiva?",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La lipolaser es una técnica muy interesante que permite el modelado corporal en el contexto de un tratamiento para reducción de peso, concentrando los kilos perdidos en el sector tratado y no en todo el cuerpo, de modo de alterar favorablemente la figura corporal. Este efecto se logra aplicando un conjunto de lasers penetrantes de alta intensidad y de forma absolutamente indolora en la zona deseada, luego de lo cual se activa la musculatura local mediante ejercicios dirigidos consumiendo la grasa perdida y tonificando la piel en el proceso.  ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Quien Puede Beneficiarse de la Lipolaser?",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Personas con Celulitis, Varices, Retención de líquidos, Obesidad, y Sobrepeso.",
+          "spans": [
+            {
+              "start": 13,
+              "end": 77,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Pacientes con Grasa Localizada Persistente.",
+          "spans": [
+            {
+              "start": 14,
+              "end": 42,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Aquellos que deseen mejorar su aspecto general y que no deseen un abdomen prominente.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Personas que serán sometidas a cirugía o que ya estén en su post-operatorio.",
+          "spans": [
+            {
+              "start": 31,
+              "end": 38,
+              "type": "strong"
+            },
+            {
+              "start": 60,
+              "end": 75,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Aquellos que presenten Estrías o Cicatrices no deseables.",
+          "spans": [
+            {
+              "start": 23,
+              "end": 30,
+              "type": "strong"
+            },
+            {
+              "start": 33,
+              "end": 43,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Personas que estén pensando someterse a una liposucción pero que aun estén buscando un método alternativo no tan agresivo con su cuerpo",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "heading2",
+          "text": "Lipolaser y Otras Tecnicas",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La lipolaser no invasiva se puede combinar efectivamente con otras terapias obteniendo lo mejor de diferentes estrategias.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La Asociación mas frecuente es con presoterápia, que permite generar un drenaje linfático y de la grasa remanente en estado líquido, obteniendo un abdomen más compacto y con una reducción mucho más notoria. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Otra combinación es la asociación con ondas de Choque, obteniendo la disminución de grasa por la lipolisis láser y la mejora en la elasticidad de los tejidos mediante ondas de choque. En esta asociación es donde se logra la mayor reducción de centímetros en los sectores intervenidos.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": " Finalmente siempre es importante recordar que las técnicas de modelado corporal son estrategias que conviene insertarlas en un plan de intervención para normalizar el peso corporal y no como estrategias aisladas. ",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X2gbXxEAACAAnr5q",
+    "uid": "presoterapia",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X2gbXxEAACAAnr5q%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-21T03:18:02+0000",
+    "last_publication_date": "2020-09-21T05:28:19+0000",
+    "slugs": [
+      "presoterapia",
+      "es-un-sistema-de-compresion-por-aire-controlada-por-un-computador-central-que-funciona-con-bombas-de-insuflacion.-el-dispositivo-cuenta-con-cuatro-camaras-separadas-por-cada-segmento-que-se-colocan-alrededor-de-los-miembros-y-torax.-estos-se-centran-en-mover-el-flujo-venoso-y-linfatico-a-partir-de-los-pies-tobillos-muslos-y-abdomen."
+    ],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Presoterapia",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 473,
+          "height": 248
+        },
+        "alt": "Linfodrenaje Médico Avanzado",
+        "copyright": null,
+        "url": "/images/content/4916290a6bb6f19d.png",
+        "id": "X2gYTxEAACIAnrDT",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "Es un sistema de compresión por aire controlada por un computador central, que funciona con bombas de insuflación. El dispositivo cuenta con cuatro cámaras separadas, por cada segmento, que se colocan alrededor de los miembros, y torax. Éstos se centran en mover el flujo venoso y linfático, a partir de los pies, tobillos, muslos y abdomen. ",
+          "spans": []
+        }
+      ],
+      "contenido": [
+        {
+          "type": "paragraph",
+          "text": "La Presoterapia es una técnica muy efectiva en asistir al manejo de varias patologías comunes, desde microvarices de extremidades inferiores hasta grandes retenciones de líquido crónicas como el linfedema, o incluso en potenciar el desarrollo de musculatura en deportistas. Su aplicación agradable y apropiada permite mejorar la circulación y tonificar la piel con beneficios muy evidentes. ",
+          "spans": []
+        },
+        {
+          "type": "heading3",
+          "text": "Quienes se benefician de esta técnica?",
+          "spans": [
+            {
+              "start": 0,
+              "end": 38,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Personas con Celulitis, Varices, Retención de líquidos, Obesidad, que presenten Edema o Linfedemas.",
+          "spans": [
+            {
+              "start": 13,
+              "end": 22,
+              "type": "strong"
+            },
+            {
+              "start": 24,
+              "end": 31,
+              "type": "strong"
+            },
+            {
+              "start": 33,
+              "end": 54,
+              "type": "strong"
+            },
+            {
+              "start": 56,
+              "end": 64,
+              "type": "strong"
+            },
+            {
+              "start": 80,
+              "end": 85,
+              "type": "strong"
+            },
+            {
+              "start": 88,
+              "end": 98,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Pacientes  con Insuficiencia Renal, Reumatismo y Diabetes.",
+          "spans": [
+            {
+              "start": 15,
+              "end": 34,
+              "type": "strong"
+            },
+            {
+              "start": 36,
+              "end": 57,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Mujeres en proceso de menopausia, o aquellas que sufren de Periodos menstruales con dolor",
+          "spans": [
+            {
+              "start": 22,
+              "end": 34,
+              "type": "strong"
+            },
+            {
+              "start": 59,
+              "end": 89,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": " Personas que vayan a ser sometidos a Cirugía o que ya estén en su post-operatorio.",
+          "spans": [
+            {
+              "start": 38,
+              "end": 45,
+              "type": "strong"
+            },
+            {
+              "start": 67,
+              "end": 82,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": " Aquellos que sufran de Alteraciones en el sistema circulatorio",
+          "spans": [
+            {
+              "start": 24,
+              "end": 63,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": " Personas que estén pensando someterse a una liposucción pero que  aun estén buscando un método alternativo “sin cirugía”.",
+          "spans": [
+            {
+              "start": 109,
+              "end": 122,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "heading3",
+          "text": "Beneficios:",
+          "spans": [
+            {
+              "start": 0,
+              "end": 11,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "La presoterapia mejora la oxigenación en todo el cuerpo, siendo este efecto un gran beneficio en sí para todo el organismo.",
+          "spans": [
+            {
+              "start": 0,
+              "end": 1,
+              "type": "strong"
+            },
+            {
+              "start": 16,
+              "end": 37,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Donde mejor se puede comprobar es en la piel, cuyo aspecto se verá mejorado en cuanto a tono y firmeza debido a que el aumento de oxígeno en sangre.",
+          "spans": [
+            {
+              "start": 88,
+              "end": 102,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Estimula  el  sistema  inmunológico,  ayuda a bajar la tensión arterial, mejora la circulación sanguínea y linfática, y es de gran ayuda en la eliminación de los residuos metabólicos. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Aquellas personas que estén pensando en bajar de peso deberían tener muy presente este tipo de tratamiento, puesto que se sabe que combinando presoterapia, dieta y ejercicio, se consiguen mejores resultados en más cortos períodos de tiempo. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Cuando existe un problema de Celulitis, en cualquiera de sus grados, o solamente queremos prevenir su aparición, es una de las soluciones más recurridas. ",
+          "spans": [
+            {
+              "start": 0,
+              "end": 1,
+              "type": "strong"
+            },
+            {
+              "start": 29,
+              "end": 38,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Como bien sabemos, la celulitis son pequeñas acumulaciones de grasa que aparecen normalmente en regiones como las caderas, muslos y glúteos. bien,  Es por esto, que con la presoterapia se logra paliar muchos de los efectos de los diferentes tipos de celulitis y en el mejor de los casos, incluso puede conseguirse su eliminación.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": " Aunque mucha gente no lo sabe, otro de los beneficios que nos regala la presoterapia es el de favorecer el tránsito intestinal (cuando se aplica en la zona abdominal). Así que nunca está de más saberlo si se tiende a sufrir de problemas de estreñimiento. ",
+          "spans": [
+            {
+              "start": 95,
+              "end": 127,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "El drenaje linfático realizado por la presoterapia posee una serie de beneficios, quizá el mas notorio en relación a los masajes es que es absolutamente placentero, y no depende de la habilidad de quien lo realiza por lo que el resultado es garantizado.",
+          "spans": [
+            {
+              "start": 0,
+              "end": 1,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Otro aspecto benéfico es el de acelerar el proceso de eliminación de toxinas del organismo (podríamos eliminar la grasa no deseada del cuerpo en menos tiempo).",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Además está comprobado que favorece la firmeza y tonificación de los tejidos cuando hay grandes pérdidas de peso, con lo que el tema de la flacidez queda prácticamente controlado.",
+          "spans": [
+            {
+              "start": 27,
+              "end": 76,
+              "type": "strong"
+            },
+            {
+              "start": 88,
+              "end": 112,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "heading3",
+          "text": "Riesgos:",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Pese a todo lo bueno de esta metodología no esta exenta de riesgos, si no es indicada apropiadamente por un Médico con experiencia puede generar serios problemas a la salud. Es por ello que jamas debe ser aplicada ni mucho menos indicada por profesionales de colaboración como kinesiologos o esteticistas sin una previa evaluación médica de las condiciones de salud particulares de cada persona. Pese a ello y dado que es una técnica que despierta el interés por sus buenos resultados se suele emplear con fines económicos sin la apropiada supervisión, con consecuencias en algunos casos, nefasta. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Los errores mas comunes suelen relacionarse con los antecedentes de cada persona, la presoterapia no puede se aplicada en embarazadas por el riesgo para la unidad materno infantil, tampoco debiera aplicarse en hipertensos sin autorización médica, ni en personas con hipotiroidismo, venas varicosas, o en heridas, ni tampoco en personas con alteración de la coagulación de la sangre o con problemas respiratorios. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Junto a lo anterior se pueden encontrar también errores en la forma de aplicar la presoterapia, por ejemplo cuando se aplica a cuerpo completo y no en las zonas que efectivamente lo requieren, para vender \"un paquete mas llamativo\", lo cual aumenta el retorno venoso y eleva la presión en el sistema pulmonar pudiendo generar riesgos serios en algunos pacientes, incluso en gente joven, por sobrecarga pulmonar o dificultad respiratoria severa por congestión. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Otro ejemplo también bastante común es la aplicación con intensidades de compresión elevadas, en ocasiones sobre los 100mmhg, sin una aplicación indicada por médico, o por tiempos que superen los 20 a 30 minutos lo cual eleva el riesgo de una de las complicaciones mas graves y temidas por el enlentecimiento venoso, que es la trombosis venosa profunda o TVP, frecuente en viajes, en postrados y en pacientes operados sin el debido cuidado. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Por último, la frecuencia de aplicación en quienes buscan resultados rápidos y esperan hacer rendir sus equipos aplicándolos varias veces al día sin respetar un descanso de 48 horas entre cada aplicación, regla que solo debería exceptuarse en casos especiales y supervisados.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "En suma, como toda técnica debe ser indicada por un Médico que te cuide, que no busque el lucro si no tu bienestar y por supuesto que pueda manejar las complicaciones y riesgos para tu salud. ",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X2g5EREAACMAnz3p",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X2g5EREAACMAnz3p%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-21T05:24:39+0000",
+    "last_publication_date": "2020-09-21T05:25:24+0000",
+    "slugs": ["migracion-de-correos"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Migración de Correos",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 3333,
+          "height": 3333
+        },
+        "alt": "imagen de correo electronico",
+        "copyright": null,
+        "url": "/images/content/95b222a0547456ad.jpg",
+        "id": "X2g4jxEAACIAnzuh",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Desde hoy cualquier duda o preocupacion sobre su tratamiento puede ser respondida mediante el nuevo correo electronico del centro: \"contacto@darspa.cl\". Estaremos esperando sus mensajes, y trataremos de responder a la brevedad",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X3KBWRIAAAmIvofn",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X3KBWRIAAAmIvofn%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-29T00:35:45+0000",
+    "last_publication_date": "2020-09-29T00:36:40+0000",
+    "slugs": [
+      "nueva-sala-de-entrenamiento-avanzado",
+      "proxima-inauguracion-de-nuestra-sala-de-entrenamiento-avanzado"
+    ],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Nueva Sala de Entrenamiento Avanzado",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 526,
+          "height": 526
+        },
+        "alt": "no te gusta entrenar en soledad?  ven a conocer nuestros programas de entrenamiento \"uno a uno\"",
+        "copyright": null,
+        "url": "/images/content/31cbc6f6c1518c79.jpg",
+        "id": "X3J_jhIAAB5-vn-a",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Ya no puedes ir al Gym?, no te preocupes, pronto podrás venir a DarSpa a nuestra sala de entrenamiento avanzado, donde nuestro kinesiologo te evaluará y preparará un plan deportivo ajustado a tu cuerpo y condición física, luego seras acompañado por nuestra profesora de entrenamiento avanzado quien realizara los ejercicios junto a ti sesión a sesión, estableciendo metas y controlando tu rendimiento con la mejor tecnología disponible en el mercado para monitoreo de función cardíaca en el deporte. Todo lo anterior cumpliendo las normas de seguridad propias de nuestro contexto actual, con atención personalizada uno a uno, no esperes más y reserva tu sesión al +56972275490 vía WhatsApp.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X2gz0hEAACEAnyqA",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X2gz0hEAACEAnyqA%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-09-21T05:02:17+0000",
+    "last_publication_date": "2020-09-21T05:02:17+0000",
+    "slugs": ["apertura-de-dar-spa"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Apertura de Dar Spa",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 387,
+          "height": 342
+        },
+        "alt": "logo de dar spa",
+        "copyright": null,
+        "url": "/images/content/cba29cd6a653f698.png",
+        "id": "X2gzKhEAACMAnyeb",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "El centro nutricional avanzado Dar Spa comenzara a operar a partir de este lunes 21 de Septiembre, y nos da gusto poder darle la bienvenida a todos. Los estaremos esperando!",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "Y5OdPBAAAB0A5rkI",
+    "uid": null,
+    "url": null,
+    "type": "producto",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22Y5OdPBAAAB0A5rkI%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-12-11T17:16:28+0000",
+    "last_publication_date": "2023-02-16T18:47:30+0000",
+    "slugs": ["masaje-relajacion"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "name": [
+        {
+          "type": "heading1",
+          "text": "Masaje relajación",
+          "spans": []
+        }
+      ],
+      "description": [
+        {
+          "type": "paragraph",
+          "text": "Este masaje libera la musculatura de forma lenta y suave, con el fin de brindar un momento de desconexión, tranquilidad y relajo.",
+          "spans": []
+        }
+      ],
+      "price": 25000,
+      "active": true,
+      "picture": {
+        "dimensions": {
+          "width": 320,
+          "height": 320
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/5187e6387ae4b851.png",
+        "id": "Y5YPdxAAACIA8Xr6",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      }
+    }
+  },
+  {
+    "id": "X5WiPhEAAB0AoN9E",
+    "uid": "calorimetria-indirecta",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5WiPhEAAB0AoN9E%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-10-25T22:49:53+0000",
+    "last_publication_date": "2020-10-25T22:49:53+0000",
+    "slugs": ["calorimetria-indirecta"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Calorimetría Indirecta",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 2514,
+          "height": 1713
+        },
+        "alt": "Calorimetria Indirecta - Estudio Metabólico no invasivo",
+        "copyright": null,
+        "url": "/images/content/b756eb51d8467da3.jpeg",
+        "id": "X5X99hEAAB0AonXF",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "Examen respiratorio no invasivo que permite medir el metabolismo basal, es decir, el gasto calórico de una persona en reposo, siendo una herramienta imprescindible para tener exactitud en la indicación de actividad física y alimentación, ya sea para mantener o para reducir tu peso.",
+          "spans": []
+        }
+      ],
+      "contenido": [
+        {
+          "type": "paragraph",
+          "text": "¿Cómo funciona la calorimetría indirecta?",
+          "spans": [
+            {
+              "start": 0,
+              "end": 41,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Este examen es rápido y preciso, dura aproximadamente 15 minutos y tiene la función de calcular, a través de la respiración, las calorías consumidas por el cuerpo en un estado de reposo absoluto, e idealmente en ayunas de al menos 6 horas, conocido como metabolismo basal. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "En este estado el cuerpo realiza funciones básicas como generar energía para mantener el corazón latiendo, respirar, movilizar la sangre y mantener una temperatura corporal compatible con la vida, es por esto que el examen debe realizarse en ayuno (de 6 a 8 horas), en una posición cómoda, tranquila y sin distracciones. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "El metabolismo basal varía mucho entre una persona y otra, depende de su edad, peso, talla, sexo, composición corporal, entre otras.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "La actividad física (actividades cotidianas y ejercicio físico) sumado con el metabolismo basal y la energía utilizada en digerir alimentos dan como resultado el gasto de calorías total diario de una persona, con este dato se puede crear una intervención dietética individual y precisa para lograr los objetivos nutricionales personales de cada paciente, como, por ejemplo, bajar de peso.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "¿Que diferencia tiene con las tablas promedio o con la estimación estándar?",
+          "spans": [
+            {
+              "start": 0,
+              "end": 75,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Al ser un examen que mide exactamente cuanto oxigeno es consumido por la persona por minuto, y dado que el oxigeno se usa fundamentalmente para generar calorías, este examen es el mas certero y exacto para obtener un valor con precisión individual, a diferencia de tablas que consideran promedios habitualmente realizados en poblaciones que no son Chilenas, estando muchas veces erradas para nuestra población y por tanto sobre o subestimando las necesidades de alimentación y de gasto energético lo cual frecuentemente conduce a fracasos de tratamiento. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "¿Para quienes es recomendable este examen?",
+          "spans": [
+            {
+              "start": 0,
+              "end": 42,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "La información que entrega el examen es muy valiosa, ya que trabaja con datos exactos y precisos con márgenes de error casi inexistentes y con profesionales capacitados para su uso e interpretación, gracias a esto es posible identificar a aquellas personas que tienen un metabolismo lento o bien un metabolismo rápido, solución ideal para quienes luchan con su peso durante años, ya sea tratando de bajarlo como de subirlo, pudiendo además ajustar no solo la alimentación si no también el gasto energético extra que se puede requerir en el ejercicio. En suma, es un examen de costo bajo, tremendamente útil en deportistas, en personas con problemas para control de su peso corporal y en cualquiera que tenga interés en conocer certeramente su metabolismo.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "YlRGqBQAACIArSmu",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YlRGqBQAACIArSmu%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2022-04-11T15:18:13+0000",
+    "last_publication_date": "2022-04-11T15:19:02+0000",
+    "slugs": ["ofertas-de-abril-y-mayo"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Ofertas de Abril y Mayo",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 512,
+          "height": 800
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/975e218cad93eb90.jpeg",
+        "id": "YlRF3BQAACQArSYe",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Solicita nuestro catalogo de ofertas de precios ULTRA BAJOS, para estos meses de abril y mayo, prepara un lindo regalo para ti o prepárate para el día de la madre y solicita una gif card con alguno de los packs de modelado corporal o facial!! Solicita el catalogo via WhatsApp al +56972275330 o al +56972275490",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X9jFYhIAACIAsT2L",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X9jFYhIAACIAsT2L%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-12-15T14:17:15+0000",
+    "last_publication_date": "2020-12-15T14:17:15+0000",
+    "slugs": ["felices-fiestas"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Felices fiestas!!",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 750,
+          "height": 937
+        },
+        "alt": "santa se ve diferente desde que aprendio a comer sano!!",
+        "copyright": null,
+        "url": "/images/content/ca51042b863f05de.jpg",
+        "id": "X9jE0xIAACQAsTra",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Ven a conocer nuestros descuentos navideños, tenemos hasta un 30% de descuento en planes de terapias y sesiones de modelado corporal, masajes para ti o tarjetas de regalo para tus seres queridos, consultas via WhatsApp.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X5WiAREAACAAoN4u",
+    "uid": "masajes-descontracturantes",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5WiAREAACAAoN4u%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-10-28T21:48:52+0000",
+    "last_publication_date": "2020-10-28T21:48:52+0000",
+    "slugs": ["masajes-descontracturantes"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Masajes Descontracturantes ",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 2303,
+          "height": 1507
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/69aa23ff23b75350.png",
+        "id": "X5nidREAACAAtAVn",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "El masaje descontracturante es un conjunto de técnicas empleadas de forma manual destinadas a producir alivio del dolor y relajación frente a contracturas musculares, sobrecarga osteo-tendíneas, inflamación localizada entre otras muchas causas de dolor agudo. ",
+          "spans": []
+        }
+      ],
+      "contenido": [
+        {
+          "type": "paragraph",
+          "text": "Masajes Descontracturantes",
+          "spans": [
+            {
+              "start": 0,
+              "end": 26,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "El masaje descontracturante  se puede definir como una serie de técnicas  que tienen como función movilizar, estirar y distorsionar las fibras musculares, con el fin de liberar “nudos” y contracturas musculares, los cuales suelen ser los causantes del dolor, molestia y restricción de movimiento.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Todos aquellos que hemos tenido una contractura muscular sabemos lo molesto, doloroso y en algunos casos incapacitante que puede llegar a ser. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Los masajes descontracturantes actúan dirigidamente sobre la musculatura, generando un efecto local en el lugar en que se aplica y uno psicosomático/mental derivado del masaje mismo. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "El dolor o molestia generada por una contractura puede variar, desde malestares leves al realizar ciertos movimientos que implican de forma directa o indirecta al musculo relacionado con la zona afectada, hasta situaciones en  los que la molestia o dolor se vuelven constantes. En este ultimo caso, para cuando nos damos cuenta que el dolor lleva ahí unos días y que es constante, estaremos en presencia de una contractura que se estableció en nuestro cuerpo y que además, está generando un dolor lo suficientemente intenso para que lo notemos de forma constante.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "En casos extremos, se puede gatillar una cadena de estres en nuestro organismo que culmina en un circulo vicioso: el dolor constante genera estres el cual a su vez nos pone fisicamente tensos, esto agravando nuestro malestar previo y generando más dolor.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "El masaje es entonces una herramienta muy útil a la hora de deshacer los tan conocidos \"nudos\" (que corresponden al músculo contraído de forma sostenida), eliminando el dolor y cualquier efecto derivado del mismo. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Beneficios del masaje sobre el organismo",
+          "spans": [
+            {
+              "start": 0,
+              "end": 40,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Los efectos del masaje en nuestro organismo pueden ser divididos en 2 grandes áreas: los efectos a  nivel físico y los sobre el sistema nervioso.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Los físicos tienen relación con el como nuestro cuerpo responde a los masajes, por ejemplo la sensación de liberación o de reducción de la tensión muscular. Los efectos mentales se relacionan con la forma en la que nuestro sistema nervioso reacciona a las sensaciones provocadas por el masaje, relajándonos y dándonos esa sensación de descanso y relajación. Como resultado de estas sensaciones, durante el masaje el cuerpo libera endorfinas, unas sustancias que generan placer  y que poseen potentes efectos  que contribuyen al alivio del dolor.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Los masajes tienen un efecto directo sobre la circulación sanguínea, pues la presión que se genera con las técnicas de masaje genera “hiperemia” (aumento de la circulación de la sangre en un órgano o tejido) llevando sangre a lugares que pueden estar congestionados o con poco flujo de sangre oxigenada, ayudando a que entre sangre nueva y salga la estancada.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Debido al elevado flujo sanguíneo que se genera con el masaje, los músculos reciben oxigeno , el cual es muy importante para que un músculo tenso o adolorido sane mas rápido y mejor, permitiendo también que la sangre remueva las sustancias y desechos producto de la misma contractura.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "En cuanto a los efectos emocionales, el masaje genera una sensación de relajo que permite a nuestra mente calmarse. Esto es quizás una de las partes más importantes de los masajes, pues permiten que el paciente pueda descansar y liberarse del estres mental. De esta misma forma también contribuye a reducir la ansiedad y facilita el descanso y la recuperación posterior al masaje.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Riesgos",
+          "spans": [
+            {
+              "start": 0,
+              "end": 7,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Existen ciertas condiciones dadas en algunas personas que limitarán o incluso serán incompatibles con la aplicación de un masaje; esguinces, fracturas, hernias, etc..",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Así también, un dolor muy fuerte en la zona por la que el paciente consulta, inflamación, una infección,  una quemadura son contraindicación inmediata de masaje.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "En caso de embarazo, ya que la diada materno-fetal se considera de alto riesgo y la presión externa y cambios de flujo de líquidos producto del masaje pueden ser perjudiciales.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Conclusión",
+          "spans": [
+            {
+              "start": 0,
+              "end": 10,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Los masajes son una forma segura, bastante eficiente y muy placentera de resolver o contribuir a recuperar nuestro estado de equilibrio, calmar el dolor y recuperar nuestro bienestar. Es por ello que en manos expertas los beneficios son indiscutibles. Sin embargo es muy importante que el paciente se sienta atendido y escuchado a la hora de explicar lo que le ocurre, que se tomen su tiempo y haga las preguntas que estime necesarias para no sentirse inseguros durante el procedimiento. Todas las dudas o información que crean puede aportar al masaje es bienvenida ya que de ese modo se podrá obtener la mejor experiencia y el máximo beneficio con esta ancestral técnica.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X5WidhEAAB4AoOBA",
+    "uid": "bioimpedanciometria",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5WidhEAAB4AoOBA%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-10-29T21:36:47+0000",
+    "last_publication_date": "2020-10-29T21:36:47+0000",
+    "slugs": ["bioimpedanciometria-de-8-canales"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Bioimpedanciometria de 8 Canales",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 360,
+          "height": 470
+        },
+        "alt": "Bioimpedanciómetro 8 canales",
+        "copyright": null,
+        "url": "/images/content/b563f25f084fa0a4.png",
+        "id": "X5s1xxEAAB4AugO_",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "El cuerpo humano está compuesto de diferentes proporciones de músculo, grasa, agua, y diversos tejidos. Cada individuo es diferente y por tanto esas proporciones varían de persona a persona incluso teniendo la misma altura y peso. La Bioimpedanciometría es uno de los métodos más rápidos, confiables y efectivos para medir la composición de cada persona,  siendo estos datos imprescindibles para mejorar y mantener una adecuada composición corporal, con un cuerpo tonificado, muscular, curvilíneo y más sano y no simplemente más delgado.",
+          "spans": []
+        }
+      ],
+      "contenido": [
+        {
+          "type": "paragraph",
+          "text": "Que es la Bioimpedanciometría? ",
+          "spans": [
+            {
+              "start": 0,
+              "end": 31,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "La Bioimpedanciometría es un examen que emplea la resistencia de los tejidos al paso de pequeñas corrientes eléctricas, en diversas direcciones entre al menos 8 puntos de contacto. Con esta información se  logra determinar la cantidad de los diversos componentes del cuerpo humano, músculo, grasa, líquidos, minerales , etc.. , superando con creces a las mediciones clásicas de pliegues y la simple balanza para determinar nivel de grasa o musculatura, esto porque al ser una corriente eléctrica atraviesa todo el cuerpo y no sólo la superficie del mismo, pudiendo incluso dar una estimación de la peligrosa grasa visceral, la más relacionada con infartos y mortalidad cardiovascular. \n",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Por qué no solo pesarme?",
+          "spans": [
+            {
+              "start": 0,
+              "end": 24,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Las mediciones clásicas (que incluyen el peso y usualmente la talla), fueron las mediciones más usadas , e incluso siguen siéndolo en muchos lugares que no cuentan con otras tecnologías. El problema de ello es que se basan en un análisis total , sin separar si lo que estoy pesando es músculo o grasa, por lo cual un físico culturista de 90 kilos de músculo puede aparecer con tanto sobrepeso como una persona que pese 90 kilos fundamentalmente de grasa. \n",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Por otro lado, en un plan de entrenamiento deportivo o incluso en un plan de reducción de peso tradicional, no es posible determinar si lo que se incrementa/reduce es musculatura, grasa , o simplemente agua, en contraposición, la Bioimpedanciometría permite el seguimiento de cada aspecto en cambio, y adicionalmente permite un control fino por extremidades, abdomen y por supuesto en el cuerpo de forma global. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Que requiero para el examen?",
+          "spans": [
+            {
+              "start": 0,
+              "end": 28,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "La Bioimpedanciometría es un examen muy simple, rápido , indoloro y confiable, por lo cual prácticamente no se requiere casi nada. Sin embargo hay condiciones que afectan el resultado, por lo cual se recomienda lo siguiente: ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "- Estar en Ayuno relativo (4 horas sin ingesta de líquidos o alimentos)",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "- No estar en el período menstrual",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "- No tener deseos de orinar en el momento del examen, o idealmente haber orinado antes del mismo.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "- Informar en caso de tener alguna prótesis o elemento metálico ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "- El examen debe realizarse sin ningún elemento metálico, por lo cual debe remover aros, anillos, collares, pendientes o similares.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "- Siempre se debe realizar sin ninguna interferencia de elementos que sean distintos al cuerpo por lo cual se debe realizar sin prendas de vestir para lo cual se cuidara el adecuado pudor del paciente. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Conclusión",
+          "spans": [
+            {
+              "start": 0,
+              "end": 10,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "La Bioimpedanciometría es un examen de bajo costo, seguro,  confiable y sumamente útil para realizar el diagnostico inicial de toda persona que quiera conocer y cuidar su cuerpo e imprescindible para un adecuado control o seguimiento en terapias de normalización de peso corporal, así como también es un excelente elemento para supervisar el desarrollo muscular en deportistas y personas que desean tonificar su cuerpo.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X_Mb0RAAAIBCqtqu",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X_Mb0RAAAIBCqtqu%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2021-01-04T13:44:54+0000",
+    "last_publication_date": "2021-01-04T13:44:54+0000",
+    "slugs": ["congestion-por-ptu"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Congestion por PTU",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 840,
+          "height": 500
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/ef6eb2dbd880d6cb.jpg",
+        "id": "X_MbzBAAACUAqtqX",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Se recuerda a todos nuestros usuarios que los próximos días habrá una alta congestión en el centro De Castro por el proceso de Prueba de Transición Universitaria (EX PSU), durante toda la primera semana de enero 2021. Por lo anterior se solicita tomar los resguardos pertinentes con el fin de evitar perdida de horas y retrasos en la atención en los respectivos controles. ",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X5tT5BEAAB0AuotJ",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5tT5BEAAB0AuotJ%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-10-30T00:16:04+0000",
+    "last_publication_date": "2020-10-30T00:39:02+0000",
+    "slugs": [
+      "ajuste-de-horarios-de-atencion---covid-fase-ii",
+      "ajuste-de-horarios-de-atencion----coronavirus-fase-ii",
+      "ajuste-de-horarios-de-atencion-por-coronavirus"
+    ],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Ajuste de horarios de atención - Covid Fase II",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 496,
+          "height": 330
+        },
+        "alt": "cuarentena y Coronavirus",
+        "copyright": null,
+        "url": "/images/content/31c7c0b03aa3a801.jpeg",
+        "id": "X5tRqBEAAB4AuoFg",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "En concordancia con la instrucción de retroceso a FASE II en Castro los fines de semana y festivos, en relación a la expansión de la infección por coronavirus en nuestra región, se ha decidido suspender las atenciones PRESENCIALES en nuestra Clínica los días SABADO hasta que se levante la normativa vigente.  Lamentamos esta situación y con el fin de resolver (dentro de lo posible) las atenciones pendientes de esos días, se ha ampliado la agenda médica de nuestro centro agregando mas horarios de atención. También se ofrecerá CONSULTA ONLINE DIAS SABADO de todo el equipo e incluso con entrega de recetas Cheque y recetas normales mediante sistema digital, por lo cual solo se requerirá realizar una video llamada para concretar la consulta y obtener la prestación. Para mayor información no dude en escribirnos vía whatsapp  (solo mensajería de texto, no llamadas), al numero +56972275330.",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X5TwlxEAAB0Anc9b",
+    "uid": "ondas-de-choque",
+    "url": null,
+    "type": "tecnicas",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X5TwlxEAAB0Anc9b%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2020-10-25T03:31:13+0000",
+    "last_publication_date": "2020-10-25T15:27:02+0000",
+    "slugs": ["ondas-de-choque-extracorporeo"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "tecnica": [
+        {
+          "type": "heading1",
+          "text": "Ondas De Choque Extracorporeo",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 870,
+          "height": 375
+        },
+        "alt": "Onda de Choque por generador Electromagnético",
+        "copyright": null,
+        "url": "/images/content/1a494399d3eb0bef.png",
+        "id": "X5TpXBEAACAAna-G",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "transparent"
+        }
+      },
+      "resumen": [
+        {
+          "type": "paragraph",
+          "text": "Las Ondas de Choque por Generación electromagnética son una tecnología Médica innovadora y sofisticada que permite manejar la elasticidad de los que tejidos ya sea devolviendo elasticidad perdida o bien liberando adherencias que limitan el movimiento natural de nuestra piel. Es por esto que sus usos son variados, desde mejorar significativamente cicatrices y áreas con flacidez o zonas caídas es simplemente sorprendente, sin olvidar su gran efecto en dolor localizado e incluso en problemas de disfunción erectil en varones.",
+          "spans": []
+        }
+      ],
+      "contenido": [
+        {
+          "type": "paragraph",
+          "text": "¿Qué son las Ondas de Choque?",
+          "spans": [
+            {
+              "start": 0,
+              "end": 29,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "list-item",
+          "text": "Son ondas mecánicas generadas por el desplazamiento y colisión de un proyectil contra una superficie transmisora, dando origen a ondas de presión o choque que transitan por la superficie externa donde son aplicadas, generando diversos efectos fisiológicos.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Poseen un solo impulso de presión positiva indolora seguida por un descenso exponencial y una amplitud de tensión por debajo de la presión local involucrada.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Las ondas son amplias, se propagan de forma radial, sin la existencia de un punto focal.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Utilizada para afecciones más superficiales (heridas, fibrosis, celulitis, grasa localizada, linfedema, algunas patologías ortopédicas superficiales).",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Se alcanza hasta 5 cms de profundidad, pues pierde energía a medida que alcanza profundidades mayores.",
+          "spans": []
+        },
+        {
+          "type": "list-item",
+          "text": "Se produce generalmente con dispositivos neumáticos o electromagnéticos.",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Usos Frecuentes ",
+          "spans": [
+            {
+              "start": 0,
+              "end": 16,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Las ondas radiales se utilizan en terapias estéticas. Por medio de la ondas se activan las células encargadas de la regeneración cutánea. mejorando problemas como celulitis, flacidez corporal por ejemplo los tan molestos bat-wings (alas de murciélago) que suelen presentarse luego de cirugía bariátrica o en reducciones bruscas de peso y también con el paso de los años. Otra área de interés estético es en el refuerzo de áreas caídas como glúteos y pechos donde al mejorar la elasticidad natural de los tejidos se obtiene de modo natural y sin dolor la corrección entre un 5-20% de la inclinación natural de los tejidos. ",
+          "spans": [
+            {
+              "start": 34,
+              "end": 52,
+              "type": "strong"
+            },
+            {
+              "start": 162,
+              "end": 183,
+              "type": "strong"
+            },
+            {
+              "start": 221,
+              "end": 230,
+              "type": "em"
+            },
+            {
+              "start": 410,
+              "end": 434,
+              "type": "strong"
+            },
+            {
+              "start": 439,
+              "end": 456,
+              "type": "em"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Un campo cada vez mas solicitado es en la eliminación de grasa localizada de difícil acceso como la zona abdominal y monte de Venus, así como su uso en la reducción de estrías y cicatrices en diversas partes del cuerpo, logrando un mejor aspecto general del las zonas tratadas.",
+          "spans": [
+            {
+              "start": 42,
+              "end": 73,
+              "type": "strong"
+            },
+            {
+              "start": 155,
+              "end": 188,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Su uso es conocido en el campo de manejo del dolor por ejemplo en fasceitis plantar, bursitis, y otros procesos que impliquen inflamación o adherencia entre tejidos, y también para tratamientos de regeneración. Por ejemplo, son muy utilizadas para estimular la recuperación muscular. Es un tratamiento muy recurrente en fisioterapia y en medicina deportiva. También se utilizan con frecuencia para acelerar el proceso de regeneración tras una lesión. En muchas ocasiones, la recuperación de las articulaciones, de la piel o de órganos internos es lenta. Gracias a la aplicación de ondas de choque, esta recuperación se acelera. ",
+          "spans": [
+            {
+              "start": 34,
+              "end": 50,
+              "type": "strong"
+            },
+            {
+              "start": 66,
+              "end": 93,
+              "type": "strong"
+            },
+            {
+              "start": 261,
+              "end": 282,
+              "type": "strong"
+            },
+            {
+              "start": 398,
+              "end": 449,
+              "type": "em"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Otra de las aplicaciones más innovadoras es  en La disfunción eréctil es uno de los campos en los que las terapias de choque radiales tienen mayor éxito. La mala circulación sanguínea es una de las razones por las que no se produce o no se puede mantener una erección. Las ondas de choque reactivan la circulación e incluso ayudan a la creación de nuevos vasos sanguíneos. Gracias a este tratamiento, los cuerpos cavernosos del pene recibirán y mantendrán suficiente sangre como para que se produzca una erección duradera. En el caso de la enfermedad de Peyronie, también se emplea la terapia por ondas de choque radiales. La curvatura exagerada del pene es producida por la formación de una placa en un los cuerpos cavernosos. Se pierde la elasticidad en la zona y durante la erección se produce la molesta curvatura. Si esta es superior al 30%, mantener relaciones sexuales con normalidad será imposible. Las ondas de choque activan la regeneración de los tejidos, haciendo desaparecer la placa y que se recupere la elasticidad en la zona. ",
+          "spans": [
+            {
+              "start": 51,
+              "end": 69,
+              "type": "strong"
+            },
+            {
+              "start": 539,
+              "end": 562,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Las terapias por ondas de choque, bien sean focales o radiales, no son tan agresivas como la cirugía y no tienen efectos secundarios. Gracias a ellas es posible combatir la disfunción eréctil o la enfermedad del Peyronie. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "Compatibilidad con otras terapias y Técnicas",
+          "spans": [
+            {
+              "start": 0,
+              "end": 44,
+              "type": "strong"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Las ondas de choque son sumamente seguras y no producen riesgos significativos a las usuarios, por lo cual también son muy compatibles con otras técnicas como presoterapia, drenaje linfatico localizado, Lipolisis laser no invasiva, TENS, ondas rusas u otras aplicaciones con fines cosméticos, siendo el médico que las indica el responsable de emplear la mejor combinación para un resultado óptimo. ",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        },
+        {
+          "type": "paragraph",
+          "text": "",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "X_-avxAAAIBC4e95",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22X_-avxAAAIBC4e95%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2021-01-14T01:14:05+0000",
+    "last_publication_date": "2021-01-14T12:36:23+0000",
+    "slugs": ["atencion-en-cuarentena---castro"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Atención en Cuarentena - Castro",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 640,
+          "height": 360
+        },
+        "alt": "INFORMACIÓN DE UTILIDAD PÚBLICA",
+        "copyright": null,
+        "url": "/images/content/1f30212cc200c21f.jpg",
+        "id": "X_-aeBAAAIBC4e4-",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "Informamos  a todos nuestros usuarios que nuestra Clínica DarSpa ATENDERÁ CON NORMALIDAD y en caso de control o terapias en curso, se emitirá un certificado de asistencia para facilitar su desplazamiento durante la cuarentena, el cual puede ser solicitado visa WhatsApp al +56972275490 o al encargado de su terapia respectiva. Junto a lo anterior se recuerda que siempre debe solicitar adicionalmente el \"Salvoconducto individual - Tratamientos médicos\" (https://comisariavirtual.cl/index.html)",
+          "spans": []
+        }
+      ]
+    }
+  },
+  {
+    "id": "YDwoyBUAACUA62Sv",
+    "uid": null,
+    "url": null,
+    "type": "noticia",
+    "href": "https://darspa.cdn.prismic.io/api/v2/documents/search?ref=aCT7gRIAAC4Attbd&q=%5B%5B%3Ad+%3D+at%28document.id%2C+%22YDwoyBUAACUA62Sv%22%29+%5D%5D",
+    "tags": [],
+    "first_publication_date": "2021-02-28T23:35:41+0000",
+    "last_publication_date": "2021-02-28T23:36:32+0000",
+    "slugs": ["nuevas-tecnicas-en-modelado-corporal"],
+    "linked_documents": [],
+    "lang": "es-cl",
+    "alternate_languages": [],
+    "data": {
+      "titulo": [
+        {
+          "type": "heading1",
+          "text": "Nuevas técnicas en Modelado Corporal",
+          "spans": []
+        }
+      ],
+      "imagen": {
+        "dimensions": {
+          "width": 260,
+          "height": 370
+        },
+        "alt": null,
+        "copyright": null,
+        "url": "/images/content/24d08e9e8793ce76.jpg",
+        "id": "YDwo9xUAACgA62WD",
+        "edit": {
+          "x": 0,
+          "y": 0,
+          "zoom": 1,
+          "background": "#fff"
+        }
+      },
+      "cuerpo": [
+        {
+          "type": "paragraph",
+          "text": "La experiencia DarSpa sigue creciendo, ven a conocernos y consulta por las nuevas prestaciones en modelado corporal, con técnicas que permiten aumentar tonicidad y volumen de pechos y glúteos, reducir estriás y lineas de expresión, disminuir el contraste de manchas de sol y mucho mas. consulta tus dudas vía Whatsapp al +56972275330 y al +56972275490, recuerda que no atendemos llamadas.",
+          "spans": []
+        }
+      ]
+    }
+  }
+]

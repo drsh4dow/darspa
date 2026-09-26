@@ -1,0 +1,38 @@
+[
+  {
+    "question": "¿Cómo puedo saber los precios de las diferentes terapias?",
+    "answer": "Los precios se determinan directamente en nuestra clínica después de una evaluación que determina la mejor terapia y el número de sesiones requeridos para cada situación en particular. Esta evaluación tiene un valor de $5000 CLP."
+  },
+  {
+    "question": "¿Cómo se saca hora?",
+    "answer": "La toma de hora se puede realizar por vía presencial, directamente en calle Sotomayor 576, con la secretaria en horario hábil; vía WhatsApp al número +56 9 7227 5330, también en horario hábil y solo vía mensaje; directamente en nuestra página web www.darspa.cl lo cual puede ser en cualquier momento o día."
+  },
+  {
+    "question": "¿Qué medios de pago se aceptan?",
+    "answer": "Se aceptan efectivo, débito, transferencia, cheques, y tarjetas de crédito, ya sea en pago único o en cuotas."
+  },
+  {
+    "question": "¿Se utilizan medicamentos para el control del peso?",
+    "answer": "El uso de medicamentos se considera un apoyo al cambio de estilos de vida, y su uso depende de cada persona y sus propias características."
+  },
+  {
+    "question": "¿Estos tratamientos son solo para personas con obesidad o incluyen a personas con sobrepeso y peso normal?",
+    "answer": "Los tratamientos están orientados a cualquier persona que desee mejorar algún aspecto de su estilo de vida o su autopercepción corporal, o incluso si solamente se busca sentirse mejor."
+  },
+  {
+    "question": "¿Hay planes especiales para deportistas o personas con dietas vegetarianas u otras?",
+    "answer": "Sí, contamos con nutrición avanzada y con un amplio número de test para determinar la alimentación ideal para cada persona, ya sea para obtener un rendimiento deportivo óptimo y mejorar su composición corporal o para lograr algún requerimiento específico, ya sea por elección como dieta, o por algún problema de salud como hipertensión, diabetes, enfermedad celiaca, y otros."
+  },
+  {
+    "question": "¿Atienden con fonasa o isapres?",
+    "answer": "Algunas de nuestras prestaciones como kinesiología y nutrición permiten el uso de fonasa e isapre colmena. Adicionalmente, otras de las prestaciones como la consulta médica son solamente particular, bonos de isapre colmena, o reembolso para otras isapres. Las terapias de modelado corporal y otras por considerarse \"cosméticas\" solo se pueden cancelar de forma particular por los medios de pago descritos anteriormente."
+  },
+  {
+    "question": "¿Hay algún límite de edad?",
+    "answer": "No, si bien hay que considerar que toda terapia de cambios de estilo de vida son efectivos en personas con criterio formado, y con la disciplina suficiente para realizar este cambio, por lo tanto, el resultado en caso de menores de 18 años es sumamente variable, por esta causa, en este grupo, la presencia de cuidadores o padres es imprescindible."
+  },
+  {
+    "question": "¿Cuáles son las vías de contacto?",
+    "answer": "Puedes contactar vía correo electrónico, vía WhatsApp, o consultando directamente en nuestras instalaciones."
+  }
+]

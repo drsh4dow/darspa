@@ -11,6 +11,7 @@
 import type * as accounts from "../accounts.js";
 import type * as administrators from "../administrators.js";
 import type * as auth from "../auth.js";
+import type * as catalog from "../catalog.js";
 import type * as crons from "../crons.js";
 import type * as development from "../development.js";
 import type * as http from "../http.js";
@@ -32,6 +33,7 @@ declare const fullApi: ApiFromModules<{
   accounts: typeof accounts;
   administrators: typeof administrators;
   auth: typeof auth;
+  catalog: typeof catalog;
   crons: typeof crons;
   development: typeof development;
   http: typeof http;

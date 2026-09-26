@@ -6,14 +6,15 @@ import "../styles.css";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
+    links: [{ rel: "icon", href: "/favicon.png", type: "image/png" }],
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1.0" },
       { name: "robots", content: "noindex, nofollow" },
-      { title: "Desarrollo · Dar Spa" },
+      { title: "Dar Spa" },
       {
         name: "description",
-        content: "Entorno de desarrollo del nuevo sitio de Dar Spa, Castro, Chiloé.",
+        content: "Centro Nutricional Avanzado en Castro, Chiloé.",
       },
     ],
   }),

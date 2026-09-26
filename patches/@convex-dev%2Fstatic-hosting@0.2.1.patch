@@ -1,0 +1,128 @@
+diff --git a/node_modules/@convex-dev/static-hosting/dist/cli/storageUpload.d.ts b/dist/cli/storageUpload.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..ef0591a8415aac376b5fb8221c47e1af9231120c
+--- /dev/null
++++ b/dist/cli/storageUpload.d.ts
+@@ -0,0 +1,2 @@
++/** Retry gateway failures without restarting the entire staged deployment. */
++export declare function uploadToStorage(url: string, content: Uint8Array<ArrayBuffer>, contentType: string): Promise<Response>;
+diff --git a/node_modules/@convex-dev/static-hosting/dist/cli/storageUpload.js b/dist/cli/storageUpload.js
+new file mode 100644
+index 0000000000000000000000000000000000000000..d4b0001a650cedec9bf34106297f6be76e5754fd
+--- /dev/null
++++ b/dist/cli/storageUpload.js
+@@ -0,0 +1,22 @@
++import { setTimeout as delay } from "node:timers/promises";
++/** Retry gateway failures without restarting the entire staged deployment. */
++export async function uploadToStorage(url, content, contentType) {
++    const maxAttempts = 3;
++    for (let attempt = 1;; attempt++) {
++        const response = await fetch(url, {
++            method: "POST",
++            headers: { "Content-Type": contentType },
++            body: content,
++        });
++        if (response.status < 500 ||
++            response.status >= 600 ||
++            attempt === maxAttempts) {
++            return response;
++        }
++        // Release the failed response before reusing the upload URL and body.
++        // Never log the URL: its query string contains upload authorization.
++        await response.body?.cancel();
++        console.warn(`Retrying storage upload after HTTP ${response.status} (attempt ${attempt + 1}/${maxAttempts}).`);
++        await delay(500 * 2 ** (attempt - 1));
++    }
++}
+diff --git a/dist/cli/upload.js b/dist/cli/upload.js
+index c56bea2295e25496a1f89abcc6c48e94754a8fb3..18557a92417a7f91bf9b1bb8dc63faf2bc884ab4 100644
+--- a/dist/cli/upload.js
++++ b/dist/cli/upload.js
+@@ -23,6 +23,7 @@ import { randomUUID } from "crypto";
+ import { runConvexAsync, spawnShell } from "./commands.js";
+ import { chunkBySerializedArgument, MAX_CONVEX_ARGUMENT_BYTES, } from "./argumentChunks.js";
+ import { parseUploadArgs } from "./args.js";
++import { uploadToStorage } from "./storageUpload.js";
+ import { componentNameCandidates, isLegacyAutoDetected, legacyComponentNameWarning, } from "./componentName.js";
+ // MIME type mapping
+ const MIME_TYPES = {
+@@ -390,11 +391,7 @@ async function uploadWithConcurrency(files, componentName, deploymentId, useCdn,
+             const storageIds = new Array(storageFiles.length);
+             await forEachWithConcurrency(storageFiles, concurrency, async (file, idx) => {
+                 const content = readFileSync(file.localPath);
+-                const response = await fetch(uploadUrls[idx], {
+-                    method: "POST",
+-                    headers: { "Content-Type": file.contentType },
+-                    body: content,
+-                });
++                const response = await uploadToStorage(uploadUrls[idx], content, file.contentType);
+                 if (!response.ok) {
+                     throw new Error("Storage upload failed for " +
+                         file.path +
+diff --git a/node_modules/@convex-dev/static-hosting/src/cli/storageUpload.ts b/src/cli/storageUpload.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..fab6c6285c4599f9108bf0276471543ab067625f
+--- /dev/null
++++ b/src/cli/storageUpload.ts
+@@ -0,0 +1,32 @@
++import { setTimeout as delay } from "node:timers/promises";
++
++/** Retry gateway failures without restarting the entire staged deployment. */
++export async function uploadToStorage(
++  url: string,
++  content: Uint8Array<ArrayBuffer>,
++  contentType: string,
++): Promise<Response> {
++  const maxAttempts = 3;
++  for (let attempt = 1; ; attempt++) {
++    const response = await fetch(url, {
++      method: "POST",
++      headers: { "Content-Type": contentType },
++      body: content,
++    });
++    if (
++      response.status < 500 ||
++      response.status >= 600 ||
++      attempt === maxAttempts
++    ) {
++      return response;
++    }
++
++    // Release the failed response before reusing the upload URL and body.
++    // Never log the URL: its query string contains upload authorization.
++    await response.body?.cancel();
++    console.warn(
++      `Retrying storage upload after HTTP ${response.status} (attempt ${attempt + 1}/${maxAttempts}).`,
++    );
++    await delay(500 * 2 ** (attempt - 1));
++  }
++}
+diff --git a/src/cli/upload.ts b/src/cli/upload.ts
+index 9c2f9c1fccedb954b845c7599a2e8d5d132c0087..dc4054b59382fef68e66f91ceddb894185747bd1 100644
+--- a/src/cli/upload.ts
++++ b/src/cli/upload.ts
+@@ -27,6 +27,7 @@ import {
+   MAX_CONVEX_ARGUMENT_BYTES,
+ } from "./argumentChunks.js";
+ import { parseUploadArgs } from "./args.js";
++import { uploadToStorage } from "./storageUpload.js";
+ import {
+   componentNameCandidates,
+   isLegacyAutoDetected,
+@@ -589,11 +590,11 @@ async function uploadWithConcurrency(
+         concurrency,
+         async (file, idx) => {
+           const content = readFileSync(file.localPath);
+-          const response = await fetch(uploadUrls[idx], {
+-            method: "POST",
+-            headers: { "Content-Type": file.contentType },
+-            body: content,
+-          });
++          const response = await uploadToStorage(
++            uploadUrls[idx],
++            content,
++            file.contentType,
++          );
+           if (!response.ok) {
+             throw new Error(
+               "Storage upload failed for " +

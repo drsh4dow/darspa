@@ -9,6 +9,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        brand:
+          "brand-button rounded-lg bg-brand-action px-4 py-4 text-base font-black text-white shadow-md shadow-heading/25 hover:bg-brand-action-hover lg:text-lg",
         outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
       },
     },

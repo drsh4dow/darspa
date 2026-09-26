@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { defineConfig } from "vite-plus";
+import publicPaths from "./content/generated/paths.json";
 
 const managedFiles = [
   ".agent/**",
@@ -30,7 +31,10 @@ export default defineConfig({
       // Convex hosting uses index.html for all unmatched client-side routes.
       spa: { enabled: true, maskPath: "/mi-cuenta", prerender: { outputPath: "/index" } },
       prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
-      pages: [{ path: "/", prerender: { outputPath: "/home.html" } }],
+      pages: publicPaths.map((path) => ({
+        path,
+        prerender: { outputPath: path === "/" ? "/pages/home.html" : `/pages${path}.html` },
+      })),
     }),
     react(),
     tailwindcss(),
@@ -90,7 +94,7 @@ export default defineConfig({
     },
   },
   test: {
-    include: ["convex/**/*.test.ts"],
+    include: ["convex/**/*.test.ts", "content/**/*.test.ts", "scripts/**/*.test.ts"],
     env: {
       DARSPA_DEVELOPMENT_LABEL: "Configuración de prueba",
       CONVEX_CLOUD_URL: "https://industrious-retriever-886.convex.cloud",
