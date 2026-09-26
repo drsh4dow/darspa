@@ -34,11 +34,11 @@ test("email reports provider acceptance, preserves retry identity, and blocks un
 });
 
 test("sign-in delivery preserves the link in HTML and plain text and uses a hosted logo", async () => {
-  const link = new URL("https://app.example.com/cuenta?code=single-use&method=email");
+  const link = new URL("https://app.example.com/mi-cuenta?code=single-use&metodo=email");
   const content = signInEmail(link, new URL("https://assets.example.com"));
 
   expect(content.html).toContain(
-    'href="https://app.example.com/cuenta?code=single-use&amp;method=email"',
+    'href="https://app.example.com/mi-cuenta?code=single-use&amp;metodo=email"',
   );
   expect(content.html).toContain('src="https://assets.example.com/images/darspa-logo.png"');
   expect(content.text).toContain(link.href);

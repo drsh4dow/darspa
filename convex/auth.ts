@@ -53,10 +53,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
         allowed.push("http://localhost:5173");
       }
 
-      if (
-        !allowed.includes(destination.origin) ||
-        !["/cuenta", "/admin"].includes(destination.pathname)
-      ) {
+      if (!allowed.includes(destination.origin) || destination.pathname !== "/mi-cuenta") {
         throw new Error("Destino de autenticación no permitido.");
       }
 

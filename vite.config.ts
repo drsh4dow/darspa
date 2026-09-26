@@ -1,6 +1,7 @@
 import { fileURLToPath } from "node:url";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { defineConfig } from "vite-plus";
 
 const managedFiles = [
@@ -18,12 +19,22 @@ const managedFiles = [
   "agent/**",
   "tools/oxlint/anti-slop/**",
   "convex/_generated/**",
+  "src/routeTree.gen.ts",
   "skills-lock.json",
   ".infisical.json",
 ];
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    tanstackStart({
+      // Convex hosting uses index.html for all unmatched client-side routes.
+      spa: { enabled: true, maskPath: "/mi-cuenta", prerender: { outputPath: "/index" } },
+      prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
+      pages: [{ path: "/", prerender: { outputPath: "/home.html" } }],
+    }),
+    react(),
+    tailwindcss(),
+  ],
   // The auth redirect allowlist deliberately accepts only this local origin.
   server: { port: 5173, strictPort: true },
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
