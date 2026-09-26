@@ -1,16 +1,22 @@
 import { expect, test } from "vite-plus/test";
-import { developmentTarget, syncDevelopmentLabel } from "./developmentSync";
+import { developmentTarget, ownedVariables, syncDevelopmentSecrets } from "./developmentSync";
 
 const developmentKey = "dev:industrious-retriever-886|test-only";
 
+const publicKey = { kty: "RSA", use: "sig", n: "test-modulus", e: "AQAB" };
+
+const publicJwks = JSON.stringify({ keys: [publicKey] });
+
+const ownedSecrets = ownedVariables.map((name) => ({
+  secretKey: name,
+  secretValue: name === "JWKS" ? publicJwks : `test-${name}`,
+  secretValueHidden: false,
+  environment: "dev",
+  secretPath: "/convex",
+}));
+
 const sourceSecrets = [
-  {
-    secretKey: "DARSPA_DEVELOPMENT_LABEL",
-    secretValue: "Prueba de sincronización",
-    secretValueHidden: false,
-    environment: "dev",
-    secretPath: "/convex",
-  },
+  ...ownedSecrets,
   {
     secretKey: "UNRELATED_SECRET",
     secretValue: "Must not be copied",
@@ -20,7 +26,7 @@ const sourceSecrets = [
   },
 ];
 
-test("reconciliation updates only the owned development variable and skips unchanged values", async () => {
+test("reconciliation updates only owned development variables and skips unchanged values", async () => {
   const writes: Request[] = [];
 
   const request: typeof fetch = async (input, init) => {
@@ -41,7 +47,7 @@ test("reconciliation updates only the owned development variable and skips uncha
     return new Response(null, { status: 200 });
   };
 
-  expect(await syncDevelopmentLabel("test-token", developmentKey, "Previous", request)).toEqual({
+  expect(await syncDevelopmentSecrets("test-token", developmentKey, {}, request)).toEqual({
     changed: true,
   });
   expect(writes).toHaveLength(1);
@@ -49,17 +55,29 @@ test("reconciliation updates only the owned development variable and skips uncha
     `${developmentTarget.deploymentUrl}/api/update_environment_variables`,
   );
   expect(await writes[0]?.json()).toEqual({
-    changes: [{ name: "DARSPA_DEVELOPMENT_LABEL", value: "Prueba de sincronización" }],
+    changes: ownedSecrets.map(({ secretKey, secretValue }) => ({
+      name: secretKey,
+      value: secretValue,
+    })),
   });
 
   expect(
-    await syncDevelopmentLabel("test-token", developmentKey, "Prueba de sincronización", request),
+    await syncDevelopmentSecrets(
+      "test-token",
+      developmentKey,
+      Object.fromEntries(
+        ownedSecrets.map(({ secretKey, secretValue }) => [secretKey, secretValue]),
+      ),
+      request,
+    ),
   ).toEqual({ changed: false });
   expect(writes).toHaveLength(1);
 });
 
 test.each([
   { secrets: [] },
+  { secrets: sourceSecrets.slice(1) },
+  { secrets: [...sourceSecrets, sourceSecrets[0]] },
   { secrets: sourceSecrets.map((secret) => ({ ...secret, environment: "prod" })) },
   { secrets: sourceSecrets.map((secret) => ({ ...secret, secretValueHidden: true })) },
 ])(
@@ -74,11 +92,35 @@ test.each([
     };
 
     await expect(
-      syncDevelopmentLabel("test-token", developmentKey, "Previous", request),
+      syncDevelopmentSecrets("test-token", developmentKey, {}, request),
     ).rejects.toThrow();
     expect(methods).toEqual(["GET"]);
   },
 );
+
+test.each([
+  publicJwks.replaceAll('"', '\\"'),
+  JSON.stringify({ keys: [{ ...publicKey, d: "private-key-material" }] }),
+])("invalid or private JWKS cannot replace working deployment configuration", async (jwks) => {
+  const methods: string[] = [];
+
+  const request: typeof fetch = async (input, init) => {
+    methods.push(new Request(input, init).method);
+
+    return Response.json({
+      secrets: sourceSecrets.map((secret) => {
+        if (secret.secretKey === "JWKS") return { ...secret, secretValue: jwks };
+
+        return secret;
+      }),
+    });
+  };
+
+  await expect(syncDevelopmentSecrets("test-token", developmentKey, {}, request)).rejects.toThrow(
+    "JWKS",
+  );
+  expect(methods).toEqual(["GET"]);
+});
 
 test("a production key is rejected before any network access", async () => {
   const requested: Request[] = [];
@@ -90,7 +132,7 @@ test("a production key is rejected before any network access", async () => {
   };
 
   await expect(
-    syncDevelopmentLabel("test-token", "prod:other-deployment|test-only", undefined, request),
+    syncDevelopmentSecrets("test-token", "prod:other-deployment|test-only", {}, request),
   ).rejects.toThrow("designated development");
   expect(requested).toHaveLength(0);
 });

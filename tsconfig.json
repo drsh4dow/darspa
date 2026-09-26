@@ -22,6 +22,6 @@
     "skipLibCheck": true,
     "paths": { "@/*": ["./src/*"] }
   },
-  "include": ["src", "convex", "vite.config.ts"],
+  "include": ["src", "convex", "scripts", "vite.config.ts"],
   "exclude": ["node_modules", "dist", "tools"]
 }

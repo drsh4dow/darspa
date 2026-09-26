@@ -24,6 +24,8 @@ const managedFiles = [
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  // The auth redirect allowlist deliberately accepts only this local origin.
+  server: { port: 5173, strictPort: true },
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   fmt: { ignorePatterns: managedFiles },
   lint: {
@@ -37,6 +39,8 @@ export default defineConfig({
     ],
     rules: {
       "vite-plus/prefer-vite-plus-imports": "error",
+      // Convex's document metadata is part of its public API.
+      "no-underscore-dangle": ["error", { allow: ["_id", "_creationTime"] }],
       "typescript/no-explicit-any": "error",
       "typescript/no-non-null-assertion": "error",
       "typescript/no-floating-promises": "error",
@@ -76,7 +80,13 @@ export default defineConfig({
   },
   test: {
     include: ["convex/**/*.test.ts"],
-    env: { DARSPA_DEVELOPMENT_LABEL: "Configuración de prueba" },
+    env: {
+      DARSPA_DEVELOPMENT_LABEL: "Configuración de prueba",
+      CONVEX_CLOUD_URL: "https://industrious-retriever-886.convex.cloud",
+      DEVELOPMENT_EMAIL_RECIPIENT: "recipient@example.com",
+      RESEND_API_KEY: "test-only",
+      AUTH_EMAIL_FROM: "Dar Spa <acceso@example.com>",
+    },
     server: { deps: { inline: ["convex-test"] } },
   },
 });

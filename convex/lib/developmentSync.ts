@@ -21,13 +21,39 @@ const responseSchema = z.object({
     .max(100),
 });
 
-// One deliberately public marker is the entire allowlist for this slice.
-const ownedVariable = "DARSPA_DEVELOPMENT_LABEL";
+const publicJwksSchema = z.strictObject({
+  keys: z
+    .array(
+      z.strictObject({
+        kty: z.literal("RSA"),
+        use: z.literal("sig"),
+        n: z.string().min(1),
+        e: z.string().min(1),
+        alg: z.optional(z.literal("RS256")),
+        kid: z.optional(z.string()),
+      }),
+    )
+    .min(1),
+});
 
-export async function syncDevelopmentLabel(
+export const ownedVariables = [
+  "DARSPA_DEVELOPMENT_LABEL",
+  "AUTH_GOOGLE_ID",
+  "AUTH_GOOGLE_SECRET",
+  "RESEND_API_KEY",
+  "AUTH_EMAIL_FROM",
+  "JWT_PRIVATE_KEY",
+  "JWKS",
+  "SITE_URL",
+  "DEVELOPMENT_EMAIL_RECIPIENT",
+] as const;
+
+type OwnedVariable = (typeof ownedVariables)[number];
+
+export async function syncDevelopmentSecrets(
   infisicalToken: string,
   convexKey: string,
-  currentLabel: string | undefined,
+  current: Partial<Record<OwnedVariable, string>>,
   request: typeof fetch,
 ) {
   if (!convexKey.startsWith("dev:industrious-retriever-886|")) {
@@ -56,21 +82,36 @@ export async function syncDevelopmentLabel(
 
   if (!parsed.success) throw new Error("Infisical returned an invalid development secret set");
 
-  const matches = parsed.data.secrets.filter((secret) => secret.secretKey === ownedVariable);
-  const secret = matches[0];
+  const changes: { name: OwnedVariable; value: string }[] = [];
 
-  if (matches.length !== 1 || secret === undefined || secret.secretValue.trim().length === 0) {
-    throw new Error("The owned development marker must exist exactly once and be nonempty");
+  for (const name of ownedVariables) {
+    const matches = parsed.data.secrets.filter((secret) => secret.secretKey === name);
+    const secret = matches[0];
+
+    if (matches.length !== 1 || secret === undefined || secret.secretValue.trim().length === 0) {
+      throw new Error("Every owned development variable must exist exactly once and be nonempty");
+    }
+
+    if (name === "JWKS") {
+      // This value is served publicly. Reject escaped JSON and private key fields before syncing.
+      try {
+        publicJwksSchema.parse(JSON.parse(secret.secretValue));
+      } catch {
+        throw new Error("JWKS must be JSON containing only public RSA signing keys");
+      }
+    }
+
+    if (secret.secretValue !== current[name]) changes.push({ name, value: secret.secretValue });
   }
 
-  if (secret.secretValue === currentLabel) return { changed: false };
+  if (changes.length === 0) return { changed: false };
 
   const update = await request(
     `${developmentTarget.deploymentUrl}/api/update_environment_variables`,
     {
       method: "POST",
       headers: { Authorization: `Convex ${convexKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ changes: [{ name: ownedVariable, value: secret.secretValue }] }),
+      body: JSON.stringify({ changes }),
       signal: AbortSignal.timeout(10_000),
     },
   );

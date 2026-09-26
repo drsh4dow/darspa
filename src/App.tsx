@@ -82,9 +82,14 @@ export function App({ children }: { children?: ReactNode }) {
           >
             Dar Spa
           </a>
-          <span className="rounded-full bg-secondary px-3 py-1 text-sm text-secondary-foreground">
-            Desarrollo
-          </span>
+          <nav aria-label="Navegación principal" className="flex items-center gap-4">
+            <a href="/cuenta" className="underline underline-offset-4">
+              Mi cuenta
+            </a>
+            <span className="rounded-full bg-secondary px-3 py-1 text-sm text-secondary-foreground">
+              Desarrollo
+            </span>
+          </nav>
         </div>
       </header>
       <main
@@ -92,17 +97,25 @@ export function App({ children }: { children?: ReactNode }) {
         tabIndex={-1}
         className="mx-auto max-w-3xl px-6 py-14 outline-none sm:py-20"
       >
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Entorno de desarrollo</h1>
-        <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
-          Base técnica del nuevo sitio de Dar Spa. Este entorno usa datos de prueba y no permite
-          realizar compras ni reservas.
-        </p>
-        <section
-          aria-label="Estado del entorno"
-          className="mt-10 rounded-lg border border-border bg-card p-6 text-card-foreground sm:p-8"
-        >
-          <ConnectionBoundary>{children ?? <DevelopmentStatus />}</ConnectionBoundary>
-        </section>
+        <ConnectionBoundary>
+          {children ?? (
+            <>
+              <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+                Entorno de desarrollo
+              </h1>
+              <p className="mt-4 max-w-xl leading-relaxed text-muted-foreground">
+                Base técnica del nuevo sitio de Dar Spa. Este entorno usa datos de prueba y no
+                permite realizar compras ni reservas.
+              </p>
+              <section
+                aria-label="Estado del entorno"
+                className="mt-10 rounded-lg border border-border bg-card p-6 text-card-foreground sm:p-8"
+              >
+                <DevelopmentStatus />
+              </section>
+            </>
+          )}
+        </ConnectionBoundary>
       </main>
       <footer className="mx-auto max-w-3xl px-6 pb-8 text-sm text-muted-foreground">
         Dar Spa · Castro, Chiloé

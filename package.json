@@ -7,6 +7,8 @@
     "dev": "infisical run --env dev --path /frontend -- vp exec convex dev --typecheck enable --start 'vp dev'",
     "dev:prepare": "infisical run --env dev --path /frontend -- vp exec convex dev --once --typecheck enable --run development:seed",
     "deploy:dev": "vp run dev:prepare && infisical run --env dev --path /frontend -- vp exec static-hosting upload --build-command 'vp run build'",
+    "admin:grant": "vp exec node scripts/administrator.ts grant",
+    "admin:revoke": "vp exec node scripts/administrator.ts revoke",
     "check": "vp check",
     "lint": "vp lint --max-warnings 0",
     "format": "vp fmt",
@@ -17,6 +19,8 @@
     "verify": "vp run check && vp run typecheck && vp run test && vp run build"
   },
   "dependencies": {
+    "@auth/core": "0.41.3",
+    "@convex-dev/auth": "0.0.95",
     "@convex-dev/static-hosting": "0.2.1",
     "@radix-ui/react-slot": "1.3.3",
     "class-variance-authority": "0.7.1",

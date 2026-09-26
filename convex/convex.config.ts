@@ -1,8 +1,9 @@
 import staticHosting from "@convex-dev/static-hosting/convex.config";
 import { defineApp } from "convex/server";
 
-const app = defineApp({ httpPrefix: "/api" });
+// Auth owns root discovery URLs; static hosting supplies the documented catch-all.
+const app = defineApp();
 
-app.use(staticHosting, { httpPrefix: "/" });
+app.use(staticHosting);
 
 export default app;
