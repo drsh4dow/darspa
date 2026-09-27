@@ -63,6 +63,7 @@ export default defineConfig({
     jsPlugins: [
       { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
       { name: "anti-slop", specifier: "./tools/oxlint/anti-slop/index.ts" },
+      { name: "anti-slop-effect", specifier: "./tools/oxlint/anti-slop/effect/index.ts" },
     ],
     rules: {
       ...effectNative.rules,
@@ -119,6 +120,11 @@ export default defineConfig({
       "anti-slop/no-widen-then-assert": "error",
       "anti-slop/require-readable-spacing": "error",
       "anti-slop/require-safety-comment-for-type-assertion": "error",
+      "anti-slop-effect/no-manual-effect-error-tag": "error",
+      "anti-slop-effect/no-manual-tag-comparison": "error",
+      "anti-slop-effect/no-manual-tagged-construction": "error",
+      "anti-slop-effect/no-service-constructor-imports": "error",
+      "anti-slop-effect/prefer-effect-match": "error",
     },
   },
   test: {
