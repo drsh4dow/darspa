@@ -1,23 +1,23 @@
 import Google from "@auth/core/providers/google";
 import Resend from "@auth/core/providers/resend";
 import { convexAuth } from "@convex-dev/auth/server";
-import { z } from "zod";
 import { Clock, Config, Effect, Schema } from "effect";
 import { FetchHttpClient } from "effect/unstable/http";
 import type { MutationCtx } from "./_generated/server";
 import { developmentTarget } from "./lib/developmentSync";
 import { checkDevelopmentRecipient, sendEmail } from "./lib/email";
-import { emailAddress, resolveCustomerIdentity } from "./lib/identity";
+import { normalizedEmailAddress } from "../shared/email";
+import { resolveCustomerIdentity } from "./lib/identity";
 import { signInEmail, signInLinkLifetimeMinutes } from "./lib/signInEmail";
 
 class AuthenticationError extends Schema.TaggedError<AuthenticationError>()("AuthenticationError", {
   message: Schema.String,
 }) {}
 
-const googleIdentity = z.object({
-  sub: z.string().min(1),
-  email: emailAddress,
-  email_verified: z.literal(true),
+const googleIdentity = Schema.Struct({
+  sub: Schema.NonEmptyString,
+  email: normalizedEmailAddress,
+  email_verified: Schema.Literal(true),
 });
 
 export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
@@ -25,9 +25,15 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
     Google({
       // Google's email_verified claim must be true, not merely a claimed address.
       profile(rawProfile) {
-        const profile = googleIdentity.parse(rawProfile);
-
-        return { id: profile.sub, email: profile.email, emailVerified: true };
+        return Effect.runPromise(
+          Schema.decodeUnknownEffect(googleIdentity)(rawProfile).pipe(
+            Effect.map((profile) => ({
+              id: profile.sub,
+              email: profile.email,
+              emailVerified: true,
+            })),
+          ),
+        );
       },
     }),
     Resend({
@@ -85,7 +91,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
     createOrUpdateUser(ctx: MutationCtx, { existingUserId, profile, type }) {
       return Effect.runPromise(
         Effect.gen(function* () {
-          const email = yield* Effect.try(() => emailAddress.parse(profile.email));
+          const email = yield* Schema.decodeUnknownEffect(normalizedEmailAddress)(profile.email);
           yield* checkDevelopmentRecipient(email);
 
           const userId = yield* resolveCustomerIdentity(ctx, {

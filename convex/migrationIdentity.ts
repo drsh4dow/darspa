@@ -1,7 +1,7 @@
 import { ConvexError, v } from "convex/values";
-import { Effect } from "effect";
+import { Effect, Schema } from "effect";
 import { internalMutation } from "./_generated/server";
-import { emailAddress } from "./lib/identity";
+import { normalizedEmailAddress } from "../shared/email";
 
 /** Launch's importer supplies verifiedEmail only when historical evidence establishes it.
  * A claimed email alone is deliberately insufficient. This imports identity mappings, not users,
@@ -20,7 +20,7 @@ export const register = internalMutation({
         const email =
           verifiedEmail === undefined
             ? undefined
-            : yield* Effect.try(() => emailAddress.parse(verifiedEmail));
+            : yield* Schema.decodeEffect(normalizedEmailAddress)(verifiedEmail);
 
         const existing = yield* Effect.promise(() =>
           ctx.db

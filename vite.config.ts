@@ -122,7 +122,13 @@ export default defineConfig({
     },
   },
   test: {
-    include: ["convex/**/*.test.ts", "content/**/*.test.ts", "scripts/**/*.test.ts"],
+    include: [
+      "convex/**/*.test.ts",
+      "content/**/*.test.ts",
+      "scripts/**/*.test.ts",
+      "shared/**/*.test.ts",
+      "src/**/*.test.ts",
+    ],
     env: {
       DARSPA_DEVELOPMENT_LABEL: "Configuración de prueba",
       CONVEX_SITE_URL: "https://synthetic.convex.site",

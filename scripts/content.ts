@@ -2,7 +2,7 @@ import { NodeFileSystem, NodeRuntime } from "@effect/platform-node";
 import { DateTime, Effect, FileSystem, Schema } from "effect";
 import MarkdownIt from "markdown-it";
 import { parse } from "yaml";
-import { offeringMetadata, newsMetadata } from "../content/schema.ts";
+import { decodeOfferingMetadata, decodeNewsMetadata } from "../content/schema.ts";
 
 // Raw HTML and executable Markdown are deliberately unsupported.
 const markdown = new MarkdownIt({ html: false, linkify: false });
@@ -43,7 +43,8 @@ const generateContent = Effect.gen(function* () {
   const legacyIds = new Set<string>();
 
   for (const document of yield* readMarkdown("content/offerings")) {
-    const metadata = yield* Effect.try(() => offeringMetadata.parse(parse(document.metadata)));
+    const frontmatter = yield* Effect.try<unknown>(() => parse(document.metadata));
+    const metadata = yield* decodeOfferingMetadata(frontmatter);
 
     if (document.file !== `${metadata.id}.md` || offeringIds.has(metadata.id)) {
       return yield* new ContentError({
@@ -73,7 +74,8 @@ const generateContent = Effect.gen(function* () {
   const newsSlugs = new Set<string>();
 
   for (const document of yield* readMarkdown("content/news")) {
-    const metadata = yield* Effect.try(() => newsMetadata.parse(parse(document.metadata)));
+    const frontmatter = yield* Effect.try<unknown>(() => parse(document.metadata));
+    const metadata = yield* decodeNewsMetadata(frontmatter);
 
     if (document.file !== `${metadata.slug}.md` || newsSlugs.has(metadata.slug)) {
       return yield* new ContentError({ message: `News filename/slug conflict: ${document.file}` });

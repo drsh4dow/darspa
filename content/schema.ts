@@ -1,27 +1,50 @@
-import { z } from "zod";
+import { Effect, Schema } from "effect";
 
-const identity = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+const identity = Schema.String.check(Schema.isPattern(/^[a-z0-9]+(?:-[a-z0-9]+)*$/));
 
-const localImage = z
-  .string()
-  .regex(/^\/images\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.(?:png|jpe?g|webp|gif|svg)$/);
+const nonEmptyText = Schema.Trim.check(Schema.isNonEmpty());
 
-export const offeringMetadata = z.strictObject({
+const localImage = Schema.String.check(
+  Schema.isPattern(/^\/images\/(?:[a-zA-Z0-9_-]+\/)*[a-zA-Z0-9_-]+\.(?:png|jpe?g|webp|gif|svg)$/),
+);
+
+// Preserve calendar validation (including leap years) and require an explicit timezone.
+// DateTime's string decoder alone also accepts non-ISO and normalized invalid dates.
+const isoDate =
+  /(?:(?:\d\d[2468][048]|\d\d[13579][26]|\d\d0[48]|[02468][048]00|[13579][26]00)-02-29|\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\d|30)|02-(?:0[1-9]|1\d|2[0-8])))/;
+
+const isoTime = /(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)/;
+
+const publishedAt = Schema.String.check(
+  Schema.isPattern(new RegExp(`^${isoDate.source}T${isoTime.source}$`), {
+    expected: "an ISO timestamp with a timezone",
+  }),
+);
+
+const offeringMetadata = Schema.Struct({
   id: identity,
-  legacyId: z.string().min(1).optional(),
-  name: z.string().trim().min(1),
-  priceClp: z.number().int().positive().max(Number.MAX_SAFE_INTEGER),
-  available: z.boolean(),
-  displayOrder: z.number().int().nonnegative().default(0),
+  legacyId: Schema.optional(Schema.NonEmptyString),
+  name: nonEmptyText,
+  priceClp: Schema.Int.check(Schema.isGreaterThan(0)),
+  available: Schema.Boolean,
+  displayOrder: Schema.Natural.pipe(Schema.withDecodingDefault(Effect.succeed(0))),
   image: localImage,
-  imageAlt: z.string().trim().min(1),
+  imageAlt: nonEmptyText,
 });
 
-export const newsMetadata = z.strictObject({
+const newsMetadata = Schema.Struct({
   slug: identity,
-  legacyId: z.string().min(1).optional(),
-  title: z.string().trim().min(1),
-  publishedAt: z.iso.datetime({ offset: true }),
-  image: localImage.nullable(),
-  imageAlt: z.string().trim().min(1),
+  legacyId: Schema.optional(Schema.NonEmptyString),
+  title: nonEmptyText,
+  publishedAt,
+  image: Schema.NullOr(localImage),
+  imageAlt: nonEmptyText,
+});
+
+export const decodeOfferingMetadata = Schema.decodeUnknownEffect(offeringMetadata, {
+  onExcessProperty: "error",
+});
+
+export const decodeNewsMetadata = Schema.decodeUnknownEffect(newsMetadata, {
+  onExcessProperty: "error",
 });

@@ -1,17 +1,14 @@
 import { ConvexError } from "convex/values";
-import { Clock, Effect } from "effect";
-import { z } from "zod";
+import { Clock, Effect, Schema } from "effect";
+import { normalizedEmailAddress } from "../../shared/email";
 import type { Id } from "../_generated/dataModel";
 import type { MutationCtx } from "../_generated/server";
-
-// Do not remove dots or +suffixes: those rules are not universal email semantics.
-export const emailAddress = z.string().trim().toLowerCase().pipe(z.email());
 
 export const resolveCustomerIdentity = Effect.fnUntraced(function* (
   ctx: MutationCtx,
   identity: { email: string; verified: boolean; existingUserId: Id<"users"> | null },
 ) {
-  const email = yield* Effect.try(() => emailAddress.parse(identity.email));
+  const email = yield* Schema.decodeEffect(normalizedEmailAddress)(identity.email);
   const existingId = identity.existingUserId;
   const existing = existingId === null ? null : yield* Effect.promise(() => ctx.db.get(existingId));
 

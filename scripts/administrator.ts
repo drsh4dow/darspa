@@ -2,7 +2,18 @@ import { NodeRuntime, NodeServices } from "@effect/platform-node";
 import { Console, Effect, Schema } from "effect";
 import { ChildProcess, ChildProcessSpawner } from "effect/unstable/process";
 import { parseArgs } from "node:util";
-import { z } from "zod";
+import { emailAddress } from "../shared/email.ts";
+
+const administratorOptions = Schema.Struct({
+  deployment: Schema.String.check(
+    Schema.isPattern(/^[a-z]+(?:-[a-z]+)+-\d+$/, {
+      expected: "the exact deployment name, not dev/prod aliases",
+    }),
+  ),
+  email: emailAddress,
+  operator: emailAddress,
+  reason: Schema.Trim.check(Schema.isNonEmpty()),
+});
 
 const main = Effect.gen(function* () {
   const { values, positionals } = yield* Effect.try(() =>
@@ -31,20 +42,11 @@ Repeating an applied change is a no-op; retry against the same deployment if a r
     return 0;
   }
 
-  const options = yield* Effect.try(() =>
-    z
-      .object({
-        deployment: z
-          .string()
-          .regex(/^[a-z]+(?:-[a-z]+)+-\d+$/, "Use the exact deployment name, not dev/prod aliases"),
-        email: z.email(),
-        operator: z.email(),
-        reason: z.string().trim().min(1),
-      })
-      .parse(values),
-  );
+  const options = yield* Schema.decodeUnknownEffect(administratorOptions)(values);
 
-  const operation = yield* Effect.try(() => z.enum(["grant", "revoke"]).parse(positionals[0]));
+  const operation = yield* Schema.decodeUnknownEffect(Schema.Literals(["grant", "revoke"]))(
+    positionals[0],
+  );
 
   const role = operation === "grant" ? "administrator" : "customer";
 

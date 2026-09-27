@@ -1,17 +1,12 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
-import { z } from "zod";
+import { accountSearch } from "../lib/account-search";
 import { SignIn } from "../components/sign-in";
 import { SignOut } from "../components/sign-out";
 import { useCustomer } from "../lib/session";
 
 export const Route = createFileRoute("/mi-cuenta")({
   ssr: false,
-  validateSearch: z.object({
-    code: z.string().optional(),
-    metodo: z.enum(["email", "google"]).optional().catch(undefined),
-    // Only the existing protected destination is accepted, never an arbitrary URL.
-    redirect: z.literal("/admin").optional().catch(undefined),
-  }),
+  validateSearch: accountSearch,
   head: () => ({ meta: [{ title: "Mi cuenta · Dar Spa" }] }),
   component: AccountPage,
 });

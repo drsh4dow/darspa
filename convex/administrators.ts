@@ -1,7 +1,7 @@
 import { ConvexError, v } from "convex/values";
-import { Config, Effect } from "effect";
+import { Config, Effect, Schema } from "effect";
 import { internalMutation } from "./_generated/server";
-import { emailAddress } from "./lib/identity";
+import { normalizedEmailAddress } from "../shared/email";
 
 // Internal functions require deployment credentials, not an application user's token.
 // Operator is the deployment operator's declared audit identity, not an end-user claim.
@@ -25,8 +25,8 @@ export const setRole = internalMutation({
           );
         }
 
-        const email = yield* Effect.try(() => emailAddress.parse(args.email));
-        const operator = yield* Effect.try(() => emailAddress.parse(args.operator));
+        const email = yield* Schema.decodeEffect(normalizedEmailAddress)(args.email);
+        const operator = yield* Schema.decodeEffect(normalizedEmailAddress)(args.operator);
         const reason = args.reason.trim();
 
         if (!reason) return yield* Effect.fail(new ConvexError("A reason is required."));

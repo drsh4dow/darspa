@@ -1,7 +1,7 @@
 import { Config, Effect, Option, Redacted, Schema } from "effect";
 import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http";
 import { developmentTarget } from "./developmentSync";
-import { emailAddress } from "./identity";
+import { normalizedEmailAddress } from "../../shared/email";
 
 const acceptedEmail = Schema.Struct({ id: Schema.NonEmptyString });
 
@@ -16,9 +16,9 @@ export const checkDevelopmentRecipient = Effect.fnUntraced(function* (email: str
     return yield* Effect.void;
 
   const allowed = yield* Config.String("DEVELOPMENT_EMAIL_RECIPIENT").pipe(Config.option);
-  const parsed = emailAddress.safeParse(Option.getOrUndefined(allowed));
+  const parsed = Schema.decodeUnknownOption(normalizedEmailAddress)(Option.getOrUndefined(allowed));
 
-  if (!parsed.success || email !== parsed.data) {
+  if (Option.isNone(parsed) || email !== parsed.value) {
     return yield* new EmailError({
       message: "El envío de correos está limitado en este entorno de prueba.",
     });
@@ -38,7 +38,7 @@ export const sendEmail = Effect.fnUntraced(function* (message: {
   html?: string;
   idempotencyKey: string;
 }) {
-  const to = yield* Effect.try(() => emailAddress.parse(message.to));
+  const to = yield* Schema.decodeEffect(normalizedEmailAddress)(message.to);
   yield* checkDevelopmentRecipient(to);
 
   const { key, from } = yield* Config.all({
