@@ -11,4 +11,8 @@ crons.interval(
   internal.secretSync.reconcileDevelopment,
 );
 
+crons.interval("reconcile Webpay payments", { minutes: 1 }, internal.purchasing.transactions.sweep);
+
+crons.interval("retry voucher delivery", { minutes: 1 }, internal.vouchers.deliveries.sweep);
+
 export default crons;

@@ -2,6 +2,7 @@ import { v } from "convex/values";
 import { Config, Effect, Option, Schema, type Redacted } from "effect";
 import { FetchHttpClient } from "effect/unstable/http";
 import { internalAction } from "./_generated/server";
+import { runConvex } from "./lib/runtime";
 import {
   developmentTarget,
   ownedVariables,
@@ -14,7 +15,7 @@ export const reconcileDevelopment = internalAction({
   args: {},
   returns: v.object({ changed: v.boolean() }),
   handler: () =>
-    Effect.runPromise(
+    runConvex(
       Effect.gen(function* () {
         const deployment = yield* Config.String("CONVEX_CLOUD_URL");
 

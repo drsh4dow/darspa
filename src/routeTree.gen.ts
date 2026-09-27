@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SplatRouteImport } from './routes/$'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CarroRouteImport } from './routes/carro'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as ExamenesRouteImport } from './routes/examenes'
 import { Route as MiCuentaRouteImport } from './routes/mi-cuenta'
@@ -21,6 +22,7 @@ import { Route as ServiciosRouteImport } from './routes/servicios'
 import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
 import { Route as NoticiasIndexRouteImport } from './routes/noticias.index'
 import { Route as NoticiasSlugRouteImport } from './routes/noticias.$slug'
+import { Route as PagosConfirmacionRouteImport } from './routes/pagos.confirmacion'
 import { Route as TiendaIndexRouteImport } from './routes/tienda.index'
 import { Route as TiendaOfferingIdRouteImport } from './routes/tienda.$offeringId'
 
@@ -37,6 +39,11 @@ const SplatRoute = SplatRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CarroRoute = CarroRouteImport.update({
+  id: '/carro',
+  path: '/carro',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -84,6 +91,11 @@ const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
   path: '/noticias/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PagosConfirmacionRoute = PagosConfirmacionRouteImport.update({
+  id: '/pagos/confirmacion',
+  path: '/pagos/confirmacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TiendaIndexRoute = TiendaIndexRouteImport.update({
   id: '/tienda/',
   path: '/tienda/',
@@ -99,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin': typeof AdminRoute
+  '/carro': typeof CarroRoute
   '/contacto': typeof ContactoRoute
   '/examenes': typeof ExamenesRoute
   '/mi-cuenta': typeof MiCuentaRoute
@@ -107,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/servicios': typeof ServiciosRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
+  '/pagos/confirmacion': typeof PagosConfirmacionRoute
   '/tienda/$offeringId': typeof TiendaOfferingIdRoute
   '/noticias/': typeof NoticiasIndexRoute
   '/tienda/': typeof TiendaIndexRoute
@@ -115,6 +129,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin': typeof AdminRoute
+  '/carro': typeof CarroRoute
   '/contacto': typeof ContactoRoute
   '/examenes': typeof ExamenesRoute
   '/mi-cuenta': typeof MiCuentaRoute
@@ -123,6 +138,7 @@ export interface FileRoutesByTo {
   '/servicios': typeof ServiciosRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
+  '/pagos/confirmacion': typeof PagosConfirmacionRoute
   '/tienda/$offeringId': typeof TiendaOfferingIdRoute
   '/noticias': typeof NoticiasIndexRoute
   '/tienda': typeof TiendaIndexRoute
@@ -132,6 +148,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/$': typeof SplatRoute
   '/admin': typeof AdminRoute
+  '/carro': typeof CarroRoute
   '/contacto': typeof ContactoRoute
   '/examenes': typeof ExamenesRoute
   '/mi-cuenta': typeof MiCuentaRoute
@@ -140,6 +157,7 @@ export interface FileRoutesById {
   '/servicios': typeof ServiciosRoute
   '/terms-of-service': typeof TermsOfServiceRoute
   '/noticias/$slug': typeof NoticiasSlugRoute
+  '/pagos/confirmacion': typeof PagosConfirmacionRoute
   '/tienda/$offeringId': typeof TiendaOfferingIdRoute
   '/noticias/': typeof NoticiasIndexRoute
   '/tienda/': typeof TiendaIndexRoute
@@ -150,6 +168,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/admin'
+    | '/carro'
     | '/contacto'
     | '/examenes'
     | '/mi-cuenta'
@@ -158,6 +177,7 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/terms-of-service'
     | '/noticias/$slug'
+    | '/pagos/confirmacion'
     | '/tienda/$offeringId'
     | '/noticias/'
     | '/tienda/'
@@ -166,6 +186,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/admin'
+    | '/carro'
     | '/contacto'
     | '/examenes'
     | '/mi-cuenta'
@@ -174,6 +195,7 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/terms-of-service'
     | '/noticias/$slug'
+    | '/pagos/confirmacion'
     | '/tienda/$offeringId'
     | '/noticias'
     | '/tienda'
@@ -182,6 +204,7 @@ export interface FileRouteTypes {
     | '/'
     | '/$'
     | '/admin'
+    | '/carro'
     | '/contacto'
     | '/examenes'
     | '/mi-cuenta'
@@ -190,6 +213,7 @@ export interface FileRouteTypes {
     | '/servicios'
     | '/terms-of-service'
     | '/noticias/$slug'
+    | '/pagos/confirmacion'
     | '/tienda/$offeringId'
     | '/noticias/'
     | '/tienda/'
@@ -199,6 +223,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SplatRoute: typeof SplatRoute
   AdminRoute: typeof AdminRoute
+  CarroRoute: typeof CarroRoute
   ContactoRoute: typeof ContactoRoute
   ExamenesRoute: typeof ExamenesRoute
   MiCuentaRoute: typeof MiCuentaRoute
@@ -207,6 +232,7 @@ export interface RootRouteChildren {
   ServiciosRoute: typeof ServiciosRoute
   TermsOfServiceRoute: typeof TermsOfServiceRoute
   NoticiasSlugRoute: typeof NoticiasSlugRoute
+  PagosConfirmacionRoute: typeof PagosConfirmacionRoute
   TiendaOfferingIdRoute: typeof TiendaOfferingIdRoute
   NoticiasIndexRoute: typeof NoticiasIndexRoute
   TiendaIndexRoute: typeof TiendaIndexRoute
@@ -233,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/carro': {
+      id: '/carro'
+      path: '/carro'
+      fullPath: '/carro'
+      preLoaderRoute: typeof CarroRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contacto': {
@@ -298,6 +331,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NoticiasSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pagos/confirmacion': {
+      id: '/pagos/confirmacion'
+      path: '/pagos/confirmacion'
+      fullPath: '/pagos/confirmacion'
+      preLoaderRoute: typeof PagosConfirmacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tienda/': {
       id: '/tienda/'
       path: '/tienda'
@@ -319,6 +359,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SplatRoute: SplatRoute,
   AdminRoute: AdminRoute,
+  CarroRoute: CarroRoute,
   ContactoRoute: ContactoRoute,
   ExamenesRoute: ExamenesRoute,
   MiCuentaRoute: MiCuentaRoute,
@@ -327,6 +368,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiciosRoute: ServiciosRoute,
   TermsOfServiceRoute: TermsOfServiceRoute,
   NoticiasSlugRoute: NoticiasSlugRoute,
+  PagosConfirmacionRoute: PagosConfirmacionRoute,
   TiendaOfferingIdRoute: TiendaOfferingIdRoute,
   NoticiasIndexRoute: NoticiasIndexRoute,
   TiendaIndexRoute: TiendaIndexRoute,

@@ -1,14 +1,13 @@
 import type { AuthConfig } from "convex/server";
 import { Config, Effect, Schema } from "effect";
+import { convexConfig } from "./lib/runtime";
 
+// Auth evaluation exposes known environment keys but not the default import.meta
+// probe. Keep the issuer string unchanged: URL.href would add a trailing slash.
 const domain = Effect.runSync(
-  Effect.gen(function* () {
-    const value = yield* Config.String("CONVEX_SITE_URL");
-    yield* Schema.decodeEffect(Schema.URLFromString)(value);
-
-    // JWT issuer matching is exact: URL.href would add a trailing slash.
-    return value;
-  }),
+  Config.String("CONVEX_SITE_URL")
+    .parse(convexConfig)
+    .pipe(Effect.tap(Schema.decodeEffect(Schema.URLFromString))),
 );
 
 export default {

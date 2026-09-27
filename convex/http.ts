@@ -6,10 +6,15 @@ import { components } from "./_generated/api";
 import { auth } from "./auth";
 import { httpAction } from "./_generated/server";
 import publicPaths from "../content/generated/paths.json";
+import { webpayReturn } from "./purchasing/returns";
 
 const http = httpRouter();
 
 auth.addHttpRoutes(http);
+
+http.route({ path: "/api/webpay/return", method: "GET", handler: webpayReturn });
+
+http.route({ path: "/api/webpay/return", method: "POST", handler: webpayReturn });
 
 // static-hosting 0.2.1 resolves exact assets but not directory indexes. Keep the
 // exception limited to prerendered documents; the component owns all asset serving.
@@ -82,7 +87,7 @@ for (const path of publicPaths) {
   }
 }
 
-for (const path of ["/mi-cuenta", "/admin"]) {
+for (const path of ["/mi-cuenta", "/admin", "/carro", "/pagos/confirmacion"]) {
   http.route({ path, method: "GET", handler: serveDocument("/index.html", true) });
 }
 

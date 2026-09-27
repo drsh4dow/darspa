@@ -9,6 +9,7 @@ import { checkDevelopmentRecipient, sendEmail } from "./lib/email";
 import { normalizedEmailAddress } from "../shared/email";
 import { resolveCustomerIdentity } from "./lib/identity";
 import { signInEmail, signInLinkLifetimeMinutes } from "./lib/signInEmail";
+import { runConvex } from "./lib/runtime";
 
 class AuthenticationError extends Schema.TaggedError<AuthenticationError>()("AuthenticationError", {
   message: Schema.String,
@@ -25,7 +26,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
     Google({
       // Google's email_verified claim must be true, not merely a claimed address.
       profile(rawProfile) {
-        return Effect.runPromise(
+        return runConvex(
           Schema.decodeUnknownEffect(googleIdentity)(rawProfile).pipe(
             Effect.map((profile) => ({
               id: profile.sub,
@@ -39,7 +40,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
     Resend({
       maxAge: signInLinkLifetimeMinutes * 60,
       sendVerificationRequest({ identifier, url, token }) {
-        return Effect.runPromise(
+        return runConvex(
           Effect.gen(function* () {
             const digest = yield* Effect.promise(() =>
               crypto.subtle.digest("SHA-256", new TextEncoder().encode(token)),
@@ -67,7 +68,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
   ],
   callbacks: {
     redirect({ redirectTo }) {
-      return Effect.runPromise(
+      return runConvex(
         Effect.gen(function* () {
           const site = yield* Config.schema(Schema.URL, "SITE_URL");
           const destination = yield* Effect.try(() => new URL(redirectTo, site));
@@ -89,7 +90,7 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
       );
     },
     createOrUpdateUser(ctx: MutationCtx, { existingUserId, profile, type }) {
-      return Effect.runPromise(
+      return runConvex(
         Effect.gen(function* () {
           const email = yield* Schema.decodeUnknownEffect(normalizedEmailAddress)(profile.email);
           yield* checkDevelopmentRecipient(email);

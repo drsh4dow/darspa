@@ -10,6 +10,12 @@ Bootstrap and rotation require authority outside the running sync. Use an authen
 4. Bootstrap the corresponding backend variables through stdin to `vp exec convex env set NAME --deployment <explicit-target>`. The sync cannot manage its own access credentials.
 5. Confirm a source change propagates through the scheduled sync before revoking old credentials. Remove the temporary files. Repeat an interrupted rotation with the same replacement credentials; keep the old ones until verification succeeds.
 
+## Payment and development email settings
+
+Set `WEBPAY_ENVIRONMENT`, `WEBPAY_COMMERCE_CODE` and `WEBPAY_API_KEY` in Infisical `dev:/convex` for the existing development deployment. Use Transbank's integration credentials there. The existing secret-sync job owns these keys; do not set browser-public copies. The callback is `<CONVEX_SITE_URL>/api/webpay/return` and accepts both GET and POST. Production merchant activation and live charges require separate authorization.
+
+`DEVELOPMENT_EMAIL_RECIPIENTS` contains the comma-separated owner-approved test inboxes. It replaces the singular `DEVELOPMENT_EMAIL_RECIPIENT` setting. The allowlist applies to sign-in and voucher delivery on the isolated development deployment. Missing or malformed configuration fails closed.
+
 ## Authentication on a new origin
 
 1. Generate a deployment-specific RS256 signing key pair using the [Convex Auth setup procedure](https://labs.convex.dev/auth/setup/manual). Store `JWT_PRIVATE_KEY` and the public `JWKS` in the deployment's Infisical source folder, not directly in Convex. Use raw value files with `NAME=@<file>` for structured values.

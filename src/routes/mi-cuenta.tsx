@@ -3,6 +3,7 @@ import { accountSearch } from "../lib/account-search";
 import { SignIn } from "../components/sign-in";
 import { SignOut } from "../components/sign-out";
 import { useCustomer } from "../lib/session";
+import { PurchaseHistory } from "../features/purchasing/purchase-history";
 
 export const Route = createFileRoute("/mi-cuenta")({
   ssr: false,
@@ -24,17 +25,16 @@ function AccountPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Mi cuenta</h1>
-        <p className="mt-3 text-muted-foreground">{customer.email}</p>
+        <h1 className="text-3xl font-extrabold tracking-tight text-heading sm:text-4xl">
+          Mi cuenta
+        </h1>
+        <p className="mt-2 text-sm text-muted-foreground">{customer.email}</p>
       </div>
       <section className="border-t border-border pt-6" aria-labelledby="compras">
-        <h2 id="compras" className="text-xl font-semibold">
+        <h2 id="compras" className="text-xl font-bold text-heading">
           Mis compras
         </h2>
-        <p className="mt-3 text-muted-foreground">
-          Las compras todavía no están habilitadas en este entorno. Tu historial estará disponible
-          aquí.
-        </p>
+        <PurchaseHistory />
       </section>
       {customer.role === "administrator" && (
         <Link to="/admin" className="inline-block underline underline-offset-4">

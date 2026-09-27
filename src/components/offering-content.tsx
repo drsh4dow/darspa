@@ -1,9 +1,8 @@
 import type catalog from "../../content/generated/catalog.json";
-import { site } from "../content/site";
+import { AddToCart } from "../features/purchasing/add-to-cart";
 import { formatPrice } from "../lib/metadata";
 import { MarkdownContent } from "./public-content";
 import { DialogTitle } from "./ui/dialog";
-import { Button } from "./ui/button";
 
 export function OfferingContent({
   offering,
@@ -28,13 +27,7 @@ export function OfferingContent({
         <p className="mt-2 text-2xl">{formatPrice(offering.priceClp)}</p>
         <MarkdownContent className="mt-10" html={offering.html} variant="offering" />
         {offering.available ? (
-          <Button
-            asChild
-            variant="accent"
-            className="mt-6 flex border border-transparent px-8 py-3 text-base"
-          >
-            <a href={site.whatsapp}>Consultar por este servicio</a>
-          </Button>
+          <AddToCart offeringId={offering.id} priceClp={offering.priceClp} inDialog={inDialog} />
         ) : (
           <p className="mt-6 font-bold">No disponible para nuevas compras.</p>
         )}

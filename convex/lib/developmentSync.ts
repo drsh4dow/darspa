@@ -44,7 +44,10 @@ export const ownedVariables = [
   "JWT_PRIVATE_KEY",
   "JWKS",
   "SITE_URL",
-  "DEVELOPMENT_EMAIL_RECIPIENT",
+  "DEVELOPMENT_EMAIL_RECIPIENTS",
+  "WEBPAY_ENVIRONMENT",
+  "WEBPAY_COMMERCE_CODE",
+  "WEBPAY_API_KEY",
 ] as const;
 
 type OwnedVariable = (typeof ownedVariables)[number];

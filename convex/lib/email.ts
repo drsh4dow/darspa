@@ -15,10 +15,13 @@ export const checkDevelopmentRecipient = Effect.fnUntraced(function* (email: str
   if (Option.getOrUndefined(deployment) !== developmentTarget.deploymentUrl)
     return yield* Effect.void;
 
-  const allowed = yield* Config.String("DEVELOPMENT_EMAIL_RECIPIENT").pipe(Config.option);
-  const parsed = Schema.decodeUnknownOption(normalizedEmailAddress)(Option.getOrUndefined(allowed));
+  const allowed = yield* Config.String("DEVELOPMENT_EMAIL_RECIPIENTS").pipe(Config.withDefault(""));
 
-  if (Option.isNone(parsed) || email !== parsed.value) {
+  const parsed = Schema.decodeOption(Schema.Array(normalizedEmailAddress))(
+    allowed.split(",").map((recipient) => recipient.trim()),
+  );
+
+  if (Option.isNone(parsed) || !parsed.value.includes(email)) {
     return yield* new EmailError({
       message: "El envío de correos está limitado en este entorno de prueba.",
     });

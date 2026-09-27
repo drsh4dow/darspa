@@ -18,10 +18,28 @@ import type * as http from "../http.js";
 import type * as lib_access from "../lib/access.js";
 import type * as lib_developmentSync from "../lib/developmentSync.js";
 import type * as lib_email from "../lib/email.js";
+import type * as lib_emailLayout from "../lib/emailLayout.js";
+import type * as lib_html from "../lib/html.js";
 import type * as lib_identity from "../lib/identity.js";
+import type * as lib_runtime from "../lib/runtime.js";
 import type * as lib_signInEmail from "../lib/signInEmail.js";
 import type * as migrationIdentity from "../migrationIdentity.js";
+import type * as purchasing_model from "../purchasing/model.js";
+import type * as purchasing_payments from "../purchasing/payments.js";
+import type * as purchasing_processor from "../purchasing/processor.js";
+import type * as purchasing_purchases from "../purchasing/purchases.js";
+import type * as purchasing_returns from "../purchasing/returns.js";
+import type * as purchasing_transactions from "../purchasing/transactions.js";
+import type * as purchasing_webpay from "../purchasing/webpay.js";
 import type * as secretSync from "../secretSync.js";
+import type * as vouchers_deliveries from "../vouchers/deliveries.js";
+import type * as vouchers_documents from "../vouchers/documents.js";
+import type * as vouchers_email from "../vouchers/email.js";
+import type * as vouchers_mail from "../vouchers/mail.js";
+import type * as vouchers_model from "../vouchers/model.js";
+import type * as vouchers_pdf from "../vouchers/pdf.js";
+import type * as vouchers_validity from "../vouchers/validity.js";
+import type * as vouchers_vouchers from "../vouchers/vouchers.js";
 
 import type {
   ApiFromModules,
@@ -40,10 +58,28 @@ declare const fullApi: ApiFromModules<{
   "lib/access": typeof lib_access;
   "lib/developmentSync": typeof lib_developmentSync;
   "lib/email": typeof lib_email;
+  "lib/emailLayout": typeof lib_emailLayout;
+  "lib/html": typeof lib_html;
   "lib/identity": typeof lib_identity;
+  "lib/runtime": typeof lib_runtime;
   "lib/signInEmail": typeof lib_signInEmail;
   migrationIdentity: typeof migrationIdentity;
+  "purchasing/model": typeof purchasing_model;
+  "purchasing/payments": typeof purchasing_payments;
+  "purchasing/processor": typeof purchasing_processor;
+  "purchasing/purchases": typeof purchasing_purchases;
+  "purchasing/returns": typeof purchasing_returns;
+  "purchasing/transactions": typeof purchasing_transactions;
+  "purchasing/webpay": typeof purchasing_webpay;
   secretSync: typeof secretSync;
+  "vouchers/deliveries": typeof vouchers_deliveries;
+  "vouchers/documents": typeof vouchers_documents;
+  "vouchers/email": typeof vouchers_email;
+  "vouchers/mail": typeof vouchers_mail;
+  "vouchers/model": typeof vouchers_model;
+  "vouchers/pdf": typeof vouchers_pdf;
+  "vouchers/validity": typeof vouchers_validity;
+  "vouchers/vouchers": typeof vouchers_vouchers;
 }>;
 
 /**

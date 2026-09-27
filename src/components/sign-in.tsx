@@ -4,8 +4,7 @@ import { useAuthActions } from "@convex-dev/auth/react";
 import { useSearch } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
-const invalidAttempt =
-  "No pudimos completar el ingreso. El enlace puede haber vencido o ya fue utilizado. Solicita uno nuevo o ingresa con Google.";
+const invalidAttempt = "Este enlace venció o ya fue utilizado. Solicita uno nuevo.";
 
 export function SignIn() {
   const { signIn } = useAuthActions();
@@ -38,9 +37,7 @@ export function SignIn() {
         Effect.match({
           onSuccess: () => setState("sent"),
           onFailure: () => {
-            setError(
-              "No pudimos enviar el enlace. Revisa tu correo e inténtalo en un minuto. En desarrollo solo se permite el correo de prueba autorizado.",
-            );
+            setError("No pudimos enviar el enlace. Revisa el correo e inténtalo en un minuto.");
             setState("ready");
           },
         }),
@@ -64,22 +61,48 @@ export function SignIn() {
     );
   }
 
+  if (state === "sent")
+    return (
+      <div className="mx-auto max-w-sm space-y-6 py-6">
+        <h1 className="text-3xl font-extrabold text-heading">Revisa tu correo</h1>
+        <output className="block space-y-2">
+          <span className="block font-bold">{email}</span>
+          <span className="block text-sm text-muted-foreground">
+            Solicitud enviada. Revisa también spam. El enlace dura 15 minutos.
+          </span>
+        </output>
+        <button
+          type="button"
+          onClick={() => setState("ready")}
+          className="min-h-11 text-sm text-primary underline"
+        >
+          Usar otro correo o reenviar
+        </button>
+      </div>
+    );
+
   return (
-    <div className="mx-auto max-w-sm space-y-7">
+    <div className="mx-auto max-w-sm space-y-6 py-6">
       <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Ingresa a tu cuenta</h1>
-        <p className="mt-3 text-muted-foreground">
-          Usa el mismo correo con Google o con un enlace, sin contraseña.
-        </p>
+        <h1 className="text-3xl font-extrabold tracking-tight text-heading">Ingresa a tu cuenta</h1>
       </div>
       {error !== null && (
         <p role="alert" className="text-destructive">
           {error}
         </p>
       )}
-      <Button className="w-full" variant="outline" disabled={state === "sending"} onClick={google}>
+      <Button
+        className="w-full py-3"
+        variant="outline"
+        disabled={state === "sending"}
+        onClick={google}
+      >
         Continuar con Google
       </Button>
+      <div className="flex items-center gap-4 text-xs text-muted-foreground">
+        <span className="h-px flex-1 bg-border" />o con tu correo
+        <span className="h-px flex-1 bg-border" />
+      </div>
       <form className="space-y-4" onSubmit={requestEmail}>
         <div className="space-y-2">
           <label htmlFor="email" className="block font-medium">
@@ -96,16 +119,10 @@ export function SignIn() {
             className="w-full rounded-md border border-input bg-card px-3 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           />
         </div>
-        <Button type="submit" className="w-full" disabled={state === "sending"}>
+        <Button type="submit" className="w-full py-3" disabled={state === "sending"}>
           {state === "sending" ? "Conectando…" : "Enviar enlace de ingreso"}
         </Button>
       </form>
-      {state === "sent" && (
-        <output className="block">
-          Solicitud enviada. Revisa tu correo y la carpeta de spam. El enlace vence en 15 minutos.
-          Si no llega, espera un minuto antes de solicitar otro.
-        </output>
-      )}
     </div>
   );
 }

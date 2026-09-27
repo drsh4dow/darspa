@@ -1,5 +1,6 @@
 import { v } from "convex/values";
-import { Config, ConfigProvider, Effect } from "effect";
+import { Config, Effect } from "effect";
+import { convexConfig } from "./lib/runtime";
 import { internalMutation, query } from "./_generated/server";
 
 export const status = query({
@@ -20,7 +21,7 @@ export const status = query({
         // Only this explicitly public, synthetic marker may be returned to the browser.
         const configuration = yield* Config.String("DARSPA_DEVELOPMENT_LABEL")
           .pipe(Config.withDefault("Sin sincronizar"))
-          .parse(ConfigProvider.fromEnv({ preserveEmptyStrings: true }));
+          .parse(convexConfig);
 
         return { message: record.message, configuration };
       }),

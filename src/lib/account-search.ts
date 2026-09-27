@@ -6,8 +6,8 @@ export const accountSearch = Schema.toStandardSchemaV1(
     metodo: Schema.optional(Schema.Literals(["email", "google"])).pipe(
       Schema.catchDecoding(() => Effect.succeedSome(undefined)),
     ),
-    // Only the existing protected destination is accepted, never an arbitrary URL.
-    redirect: Schema.optional(Schema.Literal("/admin")).pipe(
+    // Explicit application destinations only, never an arbitrary URL.
+    redirect: Schema.optional(Schema.Literals(["/admin", "/carro"])).pipe(
       Schema.catchDecoding(() => Effect.succeedSome(undefined)),
     ),
   }),

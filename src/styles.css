@@ -58,7 +58,7 @@
 
 @layer base {
   body {
-    @apply min-w-80 bg-background text-foreground;
+    @apply relative min-w-80 bg-background text-foreground;
   }
   :focus-visible {
     @apply outline-3 outline-offset-4 outline-ring;

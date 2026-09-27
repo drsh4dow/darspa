@@ -15,7 +15,7 @@ export const Route = createFileRoute("/tienda/")({
   component: CatalogPage,
 });
 
-function CatalogPage() {
+export function CatalogPage() {
   const available = catalog.filter((offering) => offering.available);
 
   return (

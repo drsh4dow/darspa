@@ -4,24 +4,19 @@ import { Link, useLocation } from "@tanstack/react-router";
 import { navigation, site } from "./content/site";
 import { cn } from "./lib/utils";
 import { Button } from "./components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  DialogTrigger,
-} from "./components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "./components/ui/dialog";
 import { BookingActions } from "./components/booking-actions";
 import { SiteIcon, SocialIcon } from "./components/site-icon";
 import { PromotionBanner } from "./components/promotion-banner";
+import { CartDrawer, CartTrigger } from "./features/purchasing/cart-drawer";
 
 export function App({ children }: { children: ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = useLocation({ select: (location) => location.pathname });
-  const privatePage = pathname === "/mi-cuenta" || pathname === "/admin";
+  const privatePage = ["/mi-cuenta", "/admin", "/pagos/confirmacion"].includes(pathname);
 
   return (
-    <>
+    <CartDrawer>
       <a
         href="#contenido"
         className="fixed -top-30 left-4 z-100 border-2 border-primary bg-background p-4 text-heading focus:top-4"
@@ -94,28 +89,7 @@ export function App({ children }: { children: ReactNode }) {
             >
               <SiteIcon name="shop" />
             </Link>
-            <Dialog>
-              <DialogTrigger asChild>
-                <button
-                  className="flex min-h-8 min-w-6 items-center justify-center text-primary"
-                  aria-label="Carrito de compras"
-                  title="Carrito de compras"
-                >
-                  <SiteIcon name="cart" />
-                </button>
-              </DialogTrigger>
-              <DialogContent>
-                <DialogTitle className="text-2xl font-bold text-heading">
-                  Carrito de compras
-                </DialogTitle>
-                <DialogDescription className="my-6">
-                  La compra en línea aún no está habilitada.
-                </DialogDescription>
-                <Button asChild>
-                  <a href={site.whatsapp}>Consultar por WhatsApp</a>
-                </Button>
-              </DialogContent>
-            </Dialog>
+            <CartTrigger />
             <Link
               to="/mi-cuenta"
               className="flex min-h-8 min-w-6 items-center justify-center text-primary"
@@ -141,23 +115,25 @@ export function App({ children }: { children: ReactNode }) {
         tabIndex={-1}
         className={cn(
           "pt-14 focus:outline-none",
-          privatePage && "mx-auto max-w-3xl px-6 pt-30 pb-16",
+          privatePage && "mx-auto min-h-dvh max-w-3xl px-6 pt-30 pb-16",
         )}
       >
         {children}
       </main>
-      <section className="bg-secondary" aria-labelledby="booking-title">
-        <div className="mx-auto w-full max-w-384 px-4 py-12 sm:px-6 lg:flex lg:items-center lg:justify-between lg:px-8 lg:py-16">
-          <h2
-            id="booking-title"
-            className="font-display text-3xl font-bold tracking-tight text-heading sm:text-4xl"
-          >
-            Listo para iniciar tu cambio?
-            <span className="block text-2xl text-primary sm:text-3xl">Agenda tu hora.</span>
-          </h2>
-          <BookingActions className="mt-8 lg:mt-0 lg:shrink-0" />
-        </div>
-      </section>
+      {!privatePage && (
+        <section className="bg-secondary" aria-labelledby="booking-title">
+          <div className="mx-auto w-full max-w-384 px-4 py-12 sm:px-6 lg:flex lg:items-center lg:justify-between lg:px-8 lg:py-16">
+            <h2
+              id="booking-title"
+              className="font-display text-3xl font-bold tracking-tight text-heading sm:text-4xl"
+            >
+              Listo para iniciar tu cambio?
+              <span className="block text-2xl text-primary sm:text-3xl">Agenda tu hora.</span>
+            </h2>
+            <BookingActions className="mt-8 lg:mt-0 lg:shrink-0" />
+          </div>
+        </section>
+      )}
       <footer className="bg-secondary">
         <div className="relative mx-auto w-full max-w-384 px-2 py-10 sm:px-4">
           <div className="grid grid-cols-2 items-center gap-4 sm:grid-cols-3">
@@ -227,6 +203,6 @@ export function App({ children }: { children: ReactNode }) {
         </div>
       </footer>
       {!privatePage && <PromotionBanner />}
-    </>
+    </CartDrawer>
   );
 }
