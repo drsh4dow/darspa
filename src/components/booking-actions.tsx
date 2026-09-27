@@ -3,23 +3,21 @@ import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { SiteIcon } from "./site-icon";
+import { ExamOrderForm } from "../features/exam-orders/form";
 
 export function BookingActions({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-wrap gap-4", className)}>
       <Dialog>
         <DialogTrigger asChild>
-          <Button size="cta">Ordenes De Examen</Button>
+          <Button size="cta">Órdenes de examen</Button>
         </DialogTrigger>
-        <DialogContent>
+        <DialogContent className="max-w-xl">
           <DialogTitle className="text-2xl font-bold text-heading">Órdenes de examen</DialogTitle>
-          <DialogDescription className="my-6">
-            La generación de órdenes aún no está habilitada. Consulta con nuestro equipo por
-            WhatsApp.
+          <DialogDescription className="mt-3 mb-5">
+            Completa tus datos para descargar las órdenes que presentarás en tu primera consulta.
           </DialogDescription>
-          <Button asChild>
-            <a href={site.whatsapp}>Consultar por WhatsApp</a>
-          </Button>
+          <ExamOrderForm />
         </DialogContent>
       </Dialog>
       <Button asChild size="cta">

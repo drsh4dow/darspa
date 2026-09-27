@@ -14,7 +14,7 @@ Bootstrap and rotation require authority outside the running sync. Use an authen
 
 Set `WEBPAY_ENVIRONMENT`, `WEBPAY_COMMERCE_CODE` and `WEBPAY_API_KEY` in Infisical `dev:/convex` for the existing development deployment. Use Transbank's integration credentials there. The existing secret-sync job owns these keys; do not set browser-public copies. The callback is `<CONVEX_SITE_URL>/api/webpay/return` and accepts both GET and POST. Production merchant activation and live charges require separate authorization.
 
-`DEVELOPMENT_EMAIL_RECIPIENTS` contains the comma-separated owner-approved test inboxes. It replaces the singular `DEVELOPMENT_EMAIL_RECIPIENT` setting. The allowlist applies to sign-in and voucher delivery on the isolated development deployment. Missing or malformed configuration fails closed.
+`DEVELOPMENT_EMAIL_RECIPIENTS` contains the comma-separated owner-approved test inboxes. It replaces the singular `DEVELOPMENT_EMAIL_RECIPIENT` setting. The allowlist applies to sign-in, voucher delivery, and exam-order email on the isolated development deployment. Missing or malformed configuration fails closed.
 
 ## Authentication on a new origin
 

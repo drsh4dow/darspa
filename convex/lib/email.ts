@@ -39,6 +39,7 @@ export const sendEmail = Effect.fnUntraced(function* (message: {
   subject: string;
   text: string;
   html?: string;
+  attachments?: ReadonlyArray<{ filename: string; content: string; content_type: string }>;
   idempotencyKey: string;
 }) {
   const to = yield* Schema.decodeEffect(normalizedEmailAddress)(message.to);
@@ -62,6 +63,7 @@ export const sendEmail = Effect.fnUntraced(function* (message: {
       subject: message.subject,
       text: message.text,
       html: message.html,
+      attachments: message.attachments,
     }),
     Effect.flatMap(client.execute),
     Effect.flatMap(HttpClientResponse.filterStatusOk),

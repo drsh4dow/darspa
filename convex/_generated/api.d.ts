@@ -14,6 +14,13 @@ import type * as auth from "../auth.js";
 import type * as catalog from "../catalog.js";
 import type * as crons from "../crons.js";
 import type * as development from "../development.js";
+import type * as examOrders_email from "../examOrders/email.js";
+import type * as examOrders_generate from "../examOrders/generate.js";
+import type * as examOrders_http from "../examOrders/http.js";
+import type * as examOrders_limits from "../examOrders/limits.js";
+import type * as examOrders_model from "../examOrders/model.js";
+import type * as examOrders_pdf from "../examOrders/pdf.js";
+import type * as examOrders_workflow from "../examOrders/workflow.js";
 import type * as http from "../http.js";
 import type * as lib_access from "../lib/access.js";
 import type * as lib_developmentSync from "../lib/developmentSync.js";
@@ -60,6 +67,13 @@ declare const fullApi: ApiFromModules<{
   catalog: typeof catalog;
   crons: typeof crons;
   development: typeof development;
+  "examOrders/email": typeof examOrders_email;
+  "examOrders/generate": typeof examOrders_generate;
+  "examOrders/http": typeof examOrders_http;
+  "examOrders/limits": typeof examOrders_limits;
+  "examOrders/model": typeof examOrders_model;
+  "examOrders/pdf": typeof examOrders_pdf;
+  "examOrders/workflow": typeof examOrders_workflow;
   http: typeof http;
   "lib/access": typeof lib_access;
   "lib/developmentSync": typeof lib_developmentSync;
@@ -122,4 +136,5 @@ export declare const internal: FilterApi<
 
 export declare const components: {
   staticHosting: import("@convex-dev/static-hosting/_generated/component.js").ComponentApi<"staticHosting">;
+  rateLimiter: import("@convex-dev/rate-limiter/_generated/component.js").ComponentApi<"rateLimiter">;
 };

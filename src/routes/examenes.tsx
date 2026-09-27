@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import exams from "../content/exams.json";
 import { PageHeading, ServiceRows } from "../components/public-content";
 import { publicMetadata } from "../lib/metadata";
+import { BookingActions } from "../components/booking-actions";
 
 export const Route = createFileRoute("/examenes")({
   head: () =>
@@ -21,6 +22,7 @@ function ExamsPage() {
         <br />
         Ven, te contamos un poco sobre ellos.
       </PageHeading>
+      <BookingActions className="mb-16 justify-center" />
       <h2 className="sr-only">Exámenes disponibles en el centro</h2>
       <ServiceRows items={exams} />
     </div>

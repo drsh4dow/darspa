@@ -7,10 +7,15 @@ import { auth } from "./auth";
 import { httpAction } from "./_generated/server";
 import publicPaths from "../content/generated/paths.json";
 import { webpayReturn } from "./purchasing/returns";
+import { examOrders } from "./examOrders/http";
 
 const http = httpRouter();
 
 auth.addHttpRoutes(http);
+
+http.route({ path: "/api/exam-orders", method: "POST", handler: examOrders });
+
+http.route({ path: "/api/exam-orders", method: "OPTIONS", handler: examOrders });
 
 http.route({ path: "/api/webpay/return", method: "GET", handler: webpayReturn });
 

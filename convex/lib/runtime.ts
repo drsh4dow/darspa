@@ -1,4 +1,5 @@
-import { ConfigProvider, Effect } from "effect";
+import { ConfigProvider, Effect, Layer, ManagedRuntime } from "effect";
+import { FetchHttpClient } from "effect/unstable/http";
 
 /** Convex exposes process.env through a lazy proxy: keys are readable but are not
  * own properties. Effect's fromEnvRecord uses Object.hasOwn; its default provider
@@ -13,6 +14,10 @@ export const convexConfig = ConfigProvider.make((path) =>
 
     return value === undefined ? undefined : ConfigProvider.makeValue(value);
   }),
+);
+
+export const convexHttpRuntime = ManagedRuntime.make(
+  Layer.mergeAll(FetchHttpClient.layer, Layer.succeed(ConfigProvider.ConfigProvider, convexConfig)),
 );
 
 export function runConvex<A, E>(program: Effect.Effect<A, E>) {
