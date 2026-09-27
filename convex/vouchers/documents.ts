@@ -43,7 +43,7 @@ export const download = action({
     runConvex(
       Effect.gen(function* () {
         const voucher = yield* Effect.promise(() =>
-          ctx.runQuery(api.vouchers.vouchers.owned, args),
+          ctx.runQuery(api.vouchers.vouchers.accessible, args),
         );
 
         return yield* documentUrl(ctx, voucher);

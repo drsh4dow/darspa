@@ -76,7 +76,10 @@ export const renderVoucher = Effect.fn("renderVoucher")(
       maximumFractionDigits: 0,
     }).format(voucher.terms.priceClp);
 
-    const text = `${voucher.terms.name}\n\nCódigo: ${voucher.code}\nValor comprado: ${price} CLP\nVence: ${expiry} (hora de Chile continental).\n\nVálido durante 60 días desde su emisión.\nTransferible: quien presenta este código puede usarlo.\nUn paquete se canjea una sola vez al iniciar el tratamiento.\nReserva tu hora con Dar Spa. No requiere cuenta para canjearlo.\n\nDescripción al comprar:\n${voucher.terms.description}\n\nEste voucher no es un documento tributario.`;
+    const priceLabel =
+      voucher.source === "webpay" ? "Valor comprado" : "Valor de referencia del servicio";
+
+    const text = `${voucher.terms.name}\n\nCódigo: ${voucher.code}\n${priceLabel}: ${price} CLP\nVence: ${expiry} (hora de Chile continental).\n\nVálido durante 60 días desde su emisión.\nTransferible: quien presenta este código puede usarlo.\nUn paquete se canjea una sola vez al iniciar el tratamiento.\nReserva tu hora con Dar Spa. No requiere cuenta para canjearlo.\n\nDescripción del servicio:\n${voucher.terms.description}\n\nEste voucher no es un documento tributario.`;
     // Wrap explicitly and paginate long purchased descriptions rather than clipping them.
     let current = terms;
     let y = 750;

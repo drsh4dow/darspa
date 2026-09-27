@@ -214,9 +214,9 @@ test("checkout requires ownership, rejects changed/unavailable carts, and snapsh
 
       if (voucher === undefined) throw new Error("Voucher missing");
       yield* Effect.promise(() =>
-        expect(other.query(api.vouchers.vouchers.owned, { voucherId: voucher.id })).rejects.toThrow(
-          "No puedes consultar este voucher",
-        ),
+        expect(
+          other.query(api.vouchers.vouchers.accessible, { voucherId: voucher.id }),
+        ).rejects.toThrow("No puedes consultar este voucher"),
       );
       yield* Effect.promise(() =>
         expect(

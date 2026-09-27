@@ -5,7 +5,7 @@ import { internal } from "../_generated/api";
 import type { Id } from "../_generated/dataModel";
 import { runConvex } from "../lib/runtime";
 import { internalMutation, mutation, query } from "../_generated/server";
-import { requireCustomer } from "../lib/access";
+import { requireVoucherAccess } from "./access";
 import { checkDevelopmentRecipient } from "../lib/email";
 
 export const request = mutation({
@@ -14,12 +14,11 @@ export const request = mutation({
   handler: (ctx, args): Promise<Id<"voucherDeliveries">> =>
     runConvex(
       Effect.gen(function* () {
-        const customer = yield* requireCustomer(ctx);
-        const voucher = yield* Effect.promise(() => ctx.db.get(args.voucherId));
-
-        if (voucher === null || voucher.userId !== customer.id) {
-          return yield* Effect.fail(new ConvexError("No puedes enviar este voucher."));
-        }
+        const { customer, voucher } = yield* requireVoucherAccess(
+          ctx,
+          args.voucherId,
+          "No puedes enviar este voucher.",
+        );
 
         const recipient = yield* Schema.decodeEffect(normalizedEmailAddress)(args.recipient);
         yield* Schema.decodeEffect(Schema.String.check(Schema.isUUID(4)))(args.requestId);
@@ -34,7 +33,13 @@ export const request = mutation({
             .unique(),
         );
 
-        if (previous !== null) return previous._id;
+        if (previous !== null) {
+          if (previous.voucherId !== voucher._id || previous.recipient !== recipient) {
+            return yield* Effect.fail(new ConvexError("La solicitud corresponde a otro envío."));
+          }
+
+          return previous._id;
+        }
 
         const last = yield* Effect.promise(() =>
           ctx.db
@@ -86,12 +91,7 @@ export const latest = query({
   handler: (ctx, { voucherId }) =>
     Effect.runPromise(
       Effect.gen(function* () {
-        const customer = yield* requireCustomer(ctx);
-        const voucher = yield* Effect.promise(() => ctx.db.get(voucherId));
-
-        if (voucher === null || voucher.userId !== customer.id) {
-          return yield* Effect.fail(new ConvexError("No puedes consultar este envío."));
-        }
+        yield* requireVoucherAccess(ctx, voucherId, "No puedes consultar este envío.");
 
         const delivery = yield* Effect.promise(() =>
           ctx.db

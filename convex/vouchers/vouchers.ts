@@ -5,11 +5,13 @@ import { internalMutation, internalQuery, query } from "../_generated/server";
 import { requireCustomer } from "../lib/access";
 import { voucherDetails } from "./model";
 import { isExpired } from "./validity";
+import { requireVoucherAccess } from "./access";
 
 export function details(voucher: Doc<"vouchers">, now: number) {
   return {
     id: voucher._id,
-    purchaseId: voucher.purchaseId,
+    source: voucher.source,
+    purchaseId: voucher.source === "webpay" ? voucher.purchaseId : null,
     code: voucher.code,
     terms: voucher.terms,
     issuedAt: voucher.issuedAt,
@@ -47,18 +49,17 @@ export const forPurchase = query({
     ),
 });
 
-export const owned = query({
+export const accessible = query({
   args: { voucherId: v.id("vouchers") },
   returns: voucherDetails,
   handler: (ctx, { voucherId }) =>
     Effect.runPromise(
       Effect.gen(function* () {
-        const customer = yield* requireCustomer(ctx);
-        const voucher = yield* Effect.promise(() => ctx.db.get(voucherId));
-
-        if (voucher === null || voucher.userId !== customer.id) {
-          return yield* Effect.fail(new ConvexError("No puedes consultar este voucher."));
-        }
+        const { voucher } = yield* requireVoucherAccess(
+          ctx,
+          voucherId,
+          "No puedes consultar este voucher.",
+        );
 
         return details(voucher, yield* Clock.currentTimeMillis);
       }),

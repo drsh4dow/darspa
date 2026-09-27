@@ -34,6 +34,7 @@
     "effect": "^4.0.0-rc.117",
     "markdown-it": "15.0.2",
     "pdf-lib": "1.17.1",
+    "qr-scanner": "1.4.2",
     "qrcode": "1.5.4",
     "react": "19.3.0",
     "react-dom": "19.3.0",

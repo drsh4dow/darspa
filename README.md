@@ -22,6 +22,14 @@ The public site preserves the legacy home, team, services, exams, news, shop and
 
 Instagram integration is pending fresh Meta authorization and backend implementation. The homepage currently links to Instagram without loading placeholders. Signed-in checkout, Webpay integration payments and transferable vouchers are available. Exam-order generation remains a separate ticket.
 
+## Staff operations
+
+`/admin` supports customer/email lookup, purchases and Webpay orders, purchased/manual vouchers, PDF/email delivery, and QR/manual-code inspection. Manual vouchers have no customer owner or online payment; issuance requires a published offering, external-payment/courtesy classification, and a reason.
+
+`convex/operations/` owns administrator-only record lookup. `convex/vouchers/lifecycle.ts` owns issuance and redemption rules; Convex mutations commit state and audit history together. `convex/vouchers/access.ts` authorizes shared delivery for purchasers and administrators. `src/features/operations/` contains the staff workspace.
+
+Issuance retries reuse a request ID. Redemption confirmations include the inspected revision, so an old confirmation cannot consume a voucher after reversal. Corrections retain history and original expiry. Missing historical attribution stays absent. The Instagram indicator is deferred until #9 supplies its protected status contract.
+
 ## Routing and authentication
 
 TanStack Start generates `src/routeTree.gen.ts` from `src/routes`. Commit it so type checking works before the first build; Start updates it during development and builds. Internal navigation uses TanStack Router links.

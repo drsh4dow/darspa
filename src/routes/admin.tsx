@@ -3,6 +3,7 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { SignOut } from "../components/sign-out";
 import { useCustomer } from "../lib/session";
+import { OperationsWorkspace } from "../features/operations/workspace";
 
 export const Route = createFileRoute("/admin")({
   ssr: false,
@@ -46,10 +47,8 @@ function Administration() {
       <div>
         <h1 className="text-3xl font-semibold">Administración</h1>
         <p className="mt-4">Acceso autorizado para {access.email}.</p>
-        <p className="mt-3 text-muted-foreground">
-          Las herramientas de atención y gestión estarán disponibles en las próximas etapas.
-        </p>
       </div>
+      <OperationsWorkspace />
       <SignOut />
     </div>
   );

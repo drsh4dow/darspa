@@ -2,13 +2,14 @@ import { authTables } from "@convex-dev/auth/server";
 import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 import {
-  offeringTerms,
   paymentStatus,
   providerResult,
   providerSession,
   purchaseLine,
   returnKind,
 } from "./purchasing/model";
+
+import { voucherRecord } from "./vouchers/model";
 
 export default defineSchema({
   ...authTables,
@@ -62,20 +63,19 @@ export default defineSchema({
     .index("by_order", ["buyOrder"])
     .index("by_token", ["session.token"])
     .index("by_due", ["nextCheckAt"]),
-  vouchers: defineTable({
-    userId: v.id("users"),
-    purchaseId: v.id("purchases"),
-    code: v.string(),
-    terms: offeringTerms,
-    source: v.literal("webpay"),
-    issuedAt: v.number(),
-    expiresAt: v.number(),
-    redeemed: v.boolean(),
-    pdfId: v.optional(v.id("_storage")),
-  })
+  vouchers: defineTable(voucherRecord)
     .index("by_purchase", ["purchaseId"])
     .index("by_customer", ["userId"])
-    .index("by_code", ["code"]),
+    .index("by_code", ["code"])
+    .index("by_source", ["source"])
+    .index("by_issuance_request", ["issuedBy", "requestId"]),
+  voucherEvents: defineTable({
+    voucherId: v.id("vouchers"),
+    kind: v.union(v.literal("redeemed"), v.literal("reversed")),
+    actorId: v.id("users"),
+    at: v.number(),
+    reason: v.optional(v.string()),
+  }).index("by_voucher", ["voucherId"]),
   voucherDeliveries: defineTable({
     userId: v.id("users"),
     voucherId: v.id("vouchers"),

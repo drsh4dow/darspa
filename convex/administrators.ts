@@ -2,6 +2,7 @@ import { ConvexError, v } from "convex/values";
 import { Config, Effect, Schema } from "effect";
 import { internalMutation } from "./_generated/server";
 import { normalizedEmailAddress } from "../shared/email";
+import { runConvex } from "./lib/runtime";
 
 // Internal functions require deployment credentials, not an application user's token.
 // Operator is the deployment operator's declared audit identity, not an end-user claim.
@@ -15,7 +16,7 @@ export const setRole = internalMutation({
   },
   returns: v.object({ changed: v.boolean() }),
   handler: (ctx, args) =>
-    Effect.runPromise(
+    runConvex(
       Effect.gen(function* () {
         const deploymentUrl = yield* Config.String("CONVEX_CLOUD_URL");
 
