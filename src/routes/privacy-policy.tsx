@@ -19,8 +19,8 @@ function PrivacyPage() {
   if (!document) throw new Error("Falta la política de privacidad publicada");
 
   return (
-    <article className="legal-page privacy-document">
-      <MarkdownContent html={document.html} />
+    <article className="mx-auto max-w-5xl px-2">
+      <MarkdownContent html={document.html} variant="privacy" />
     </article>
   );
 }

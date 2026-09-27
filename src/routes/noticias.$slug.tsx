@@ -27,8 +27,8 @@ function NewsArticle() {
   const article = Route.useLoaderData();
 
   return (
-    <article className="page-width section-space max-w-3xl">
-      <Link to="/noticias" className="text-link mb-8 inline-block">
+    <article className="mx-auto w-full max-w-3xl px-2 py-20 sm:px-4">
+      <Link to="/noticias" className="mb-8 inline-block font-extrabold text-primary underline">
         ← Todas las noticias
       </Link>
       <PageHeading title={article.title} />

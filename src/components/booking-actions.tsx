@@ -1,14 +1,15 @@
 import { site } from "../content/site";
+import { cn } from "../lib/utils";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { SiteIcon } from "./site-icon";
 
-export function BookingActions() {
+export function BookingActions({ className }: { className?: string }) {
   return (
-    <div className="booking-actions">
+    <div className={cn("flex flex-wrap gap-4", className)}>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="brand">Ordenes De Examen</Button>
+          <Button size="cta">Ordenes De Examen</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogTitle className="text-2xl font-bold text-heading">Órdenes de examen</DialogTitle>
@@ -21,9 +22,9 @@ export function BookingActions() {
           </Button>
         </DialogContent>
       </Dialog>
-      <Button asChild variant="brand">
+      <Button asChild size="cta">
         <a href={site.booking} target="_blank" rel="noreferrer">
-          Agendar Hora <SiteIcon name="link" />
+          Agendar Hora <SiteIcon name="link" className="size-4 stroke-3" />
         </a>
       </Button>
     </div>

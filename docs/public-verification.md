@@ -6,6 +6,18 @@ The fidelity pass is now published to development. Initial uploads failed on iso
 
 Visual acceptance is pending owner review. The initial port passed technical checks but did not match the legacy design; those checks did not establish visual parity. Issue #4 remains incomplete, chiefly because Instagram is not implemented.
 
+## Local Tailwind refactor
+
+The checks below used the local development server. Production cutover and owner acceptance of the fidelity pass remain separate.
+
+- `src/styles.css` now defines semantic colors through Tailwind palette variables. Components use shadcn tokens; the existing `heading` extension remains. No new color tokens or dependencies were added. Palette consolidation intentionally changes some shades, including the footer, actions, and portrait backgrounds. Imported artwork is unchanged.
+- Layout, responsive rules, fonts, and interaction states use utilities in their owning components. The remaining component CSS covers generated Markdown typography, the hero badge polygon, and the promotion banner's coordinated transition.
+- Before/after screenshots covered home, team, services, exams, catalog, news, privacy, contact, account, mobile navigation, and offering dialogs at 390px and 1440px. Direct article/offering pages and terms were also rendered. Review caught and corrected testimonial-column visibility and inherited line-height differences. Final home, privacy, and contact page heights match their baselines at both widths.
+- Overflow checks passed across the nine main views at 320px, 768px, and 1024px. Navigation and testimonial-column checks cover the 768px, 864px, and 1024px breakpoints.
+- Keyboard checks covered the skip link, dialog focus trapping, Escape/focus restoration, and mobile navigation. Banner transition events confirm a 500ms slide, space reservation on entry, delayed collapse on exit, and immediate inertness on exit. Reduced motion disables the banner transition; testimonials retain the documented continuous scrolling behavior.
+- Focused axe checks reported no violations on home, team, catalog, contact, privacy, account, offering dialog, or mobile menu. Image/gradient contrast and modal focus-guard checks remain incomplete. The headless browser did not expose a hover-capable pointer, so hover-specific rendering remains unverified. Separate color sampling caught insufficient contrast at 90% primary opacity; primary button hover now uses 95%.
+- `scripts/styles.test.ts` checks application source for literal colors, raw palette utilities, and palette references outside the central theme. It runs with the existing test suite and excludes imported artwork.
+
 ## Visual fidelity pass
 
 Reference: an isolated copy of `darspa-next` on port 5180 with fake provider credentials and an unreachable local database. Replacement preview: port 5174. The legacy checkout, production deployment and DNS were not changed.

@@ -15,8 +15,8 @@ export const Route = createFileRoute("/examenes")({
 
 function ExamsPage() {
   return (
-    <div className="page-width section-space services-page">
-      <PageHeading title="Nuestros Examenes & Procedimientos">
+    <div className="mx-auto w-full max-w-384 px-2 py-20 sm:px-4">
+      <PageHeading className="text-center lg:mb-24" title="Nuestros Examenes & Procedimientos">
         Conoce los examenes con los que nuestro centro cuenta!
         <br />
         Ven, te contamos un poco sobre ellos.

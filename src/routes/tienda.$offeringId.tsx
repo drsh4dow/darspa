@@ -27,12 +27,12 @@ function OfferingPage() {
   const offering = Route.useLoaderData();
 
   return (
-    <div className="page-width section-space">
-      <Link to="/tienda" className="text-link mb-8 inline-block">
+    <div className="mx-auto w-full max-w-384 px-2 py-20 sm:px-4">
+      <Link to="/tienda" className="mb-8 inline-block font-extrabold text-primary underline">
         ← Volver a la tienda
       </Link>
-      <div className="offering-detail">
-        <OfferingContent offering={offering} title={<h1>{offering.name}</h1>} />
+      <div className="mx-auto max-w-216">
+        <OfferingContent offering={offering} />
       </div>
     </div>
   );

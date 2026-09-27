@@ -19,8 +19,8 @@ function TermsPage() {
   if (!document) throw new Error("Faltan los términos de uso publicados");
 
   return (
-    <article className="legal-page">
-      <MarkdownContent html={document.html} />
+    <article className="mx-auto max-w-5xl px-2">
+      <MarkdownContent html={document.html} variant="legal" />
     </article>
   );
 }

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { navigation, site } from "./content/site";
+import { cn } from "./lib/utils";
 import { Button } from "./components/ui/button";
 import {
   Dialog,
@@ -21,32 +22,34 @@ export function App({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <a href="#contenido" className="skip-link">
+      <a
+        href="#contenido"
+        className="fixed -top-30 left-4 z-100 border-2 border-primary bg-background p-4 text-heading focus:top-4"
+      >
         Saltar al contenido
       </a>
-      <header className="site-header">
-        <div className="header-inner">
+      <header className="fixed inset-x-0 top-0 z-40 h-14 bg-muted shadow-xs shadow-muted-foreground/40">
+        <div className="mx-auto flex h-full max-w-384 items-center justify-between px-2 sm:px-4">
           <Dialog open={menuOpen} onOpenChange={setMenuOpen}>
             <DialogTrigger asChild>
-              <button className="menu-trigger">
+              <button className="flex items-center gap-1 rounded-3xl border border-primary px-3 py-1 text-sm font-bold text-primary md:hidden">
                 <SiteIcon name="menu" />
                 Menú
               </button>
             </DialogTrigger>
-            <DialogContent
-              className="navigation-drawer"
-              overlayClassName="navigation-overlay"
-              aria-describedby={undefined}
-            >
+            <DialogContent layout="drawer" aria-describedby={undefined}>
               <div>
-                <DialogTitle>Menú</DialogTitle>
-                <nav aria-label="Navegación móvil" className="mobile-navigation">
+                <DialogTitle className="mb-6 text-3xl font-bold text-heading">Menú</DialogTitle>
+                <nav
+                  aria-label="Navegación móvil"
+                  className="grid gap-4 text-center text-2xl font-bold text-primary"
+                >
                   {navigation.map((item) => (
                     <Link
                       key={item.to}
                       to={item.to}
                       activeOptions={{ exact: item.to === "/" }}
-                      activeProps={{ className: "active" }}
+                      activeProps={{ className: "text-accent" }}
                       onClick={() => setMenuOpen(false)}
                     >
                       {item.label}
@@ -54,33 +57,47 @@ export function App({ children }: { children: ReactNode }) {
                   ))}
                 </nav>
               </div>
-              <Button asChild variant="brand" className="sign-in-button rounded-xl px-10 py-3">
+              <Button
+                asChild
+                variant="accent"
+                size="cta"
+                className="mt-10 self-center rounded-xl px-10 py-3"
+              >
                 <Link to="/mi-cuenta" onClick={() => setMenuOpen(false)}>
                   Iniciar Sesión
                 </Link>
               </Button>
             </DialogContent>
           </Dialog>
-          <nav aria-label="Navegación principal" className="desktop-navigation">
+          <nav
+            aria-label="Navegación principal"
+            className="hidden items-center gap-4 text-2xl font-bold text-primary md:flex"
+          >
             {navigation.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
+                className="hover:text-heading md:last:hidden min-[54rem]:last:block"
                 activeOptions={{ exact: item.to === "/" }}
-                activeProps={{ className: "active" }}
+                activeProps={{ className: "text-accent" }}
               >
                 {item.label}
               </Link>
             ))}
           </nav>
-          <div className="header-actions">
-            <Link to="/tienda" className="icon-link" aria-label="Tienda" title="Tienda">
+          <div className="flex items-center gap-4">
+            <Link
+              to="/tienda"
+              className="flex min-h-8 min-w-6 items-center justify-center text-primary"
+              aria-label="Tienda"
+              title="Tienda"
+            >
               <SiteIcon name="shop" />
             </Link>
             <Dialog>
               <DialogTrigger asChild>
                 <button
-                  className="icon-link"
+                  className="flex min-h-8 min-w-6 items-center justify-center text-primary"
                   aria-label="Carrito de compras"
                   title="Carrito de compras"
                 >
@@ -99,30 +116,56 @@ export function App({ children }: { children: ReactNode }) {
                 </Button>
               </DialogContent>
             </Dialog>
-            <Link to="/mi-cuenta" className="icon-link" aria-label="Mi cuenta" title="Mi cuenta">
+            <Link
+              to="/mi-cuenta"
+              className="flex min-h-8 min-w-6 items-center justify-center text-primary"
+              aria-label="Mi cuenta"
+              title="Mi cuenta"
+            >
               <SiteIcon name="account" />
             </Link>
-            <Link to="/" aria-label="Dar Spa, inicio" className="brand">
-              <img src="/images/darspa-logo.svg" alt="Dar Spa" width="54" height="40" />
+            <Link to="/" aria-label="Dar Spa, inicio" className="shrink-0">
+              <img
+                className="h-10 w-13.5"
+                src="/images/darspa-logo.svg"
+                alt="Dar Spa"
+                width="54"
+                height="40"
+              />
             </Link>
           </div>
         </div>
       </header>
-      <main id="contenido" tabIndex={-1} className={privatePage ? "private-page" : undefined}>
+      <main
+        id="contenido"
+        tabIndex={-1}
+        className={cn(
+          "pt-14 focus:outline-none",
+          privatePage && "mx-auto max-w-3xl px-6 pt-30 pb-16",
+        )}
+      >
         {children}
       </main>
-      <section className="booking-banner" aria-labelledby="booking-title">
-        <div className="page-width booking-inner">
-          <h2 id="booking-title">
-            Listo para iniciar tu cambio?<span>Agenda tu hora.</span>
+      <section className="bg-secondary" aria-labelledby="booking-title">
+        <div className="mx-auto w-full max-w-384 px-4 py-12 sm:px-6 lg:flex lg:items-center lg:justify-between lg:px-8 lg:py-16">
+          <h2
+            id="booking-title"
+            className="font-display text-3xl font-bold tracking-tight text-heading sm:text-4xl"
+          >
+            Listo para iniciar tu cambio?
+            <span className="block text-2xl text-primary sm:text-3xl">Agenda tu hora.</span>
           </h2>
-          <BookingActions />
+          <BookingActions className="mt-8 lg:mt-0 lg:shrink-0" />
         </div>
       </section>
-      <footer className="site-footer">
-        <div className="page-width footer-inner">
-          <div className="footer-grid">
-            <Link to="/" aria-label="Dar Spa, inicio" className="footer-brand">
+      <footer className="bg-secondary">
+        <div className="relative mx-auto w-full max-w-384 px-2 py-10 sm:px-4">
+          <div className="grid grid-cols-2 items-center gap-4 sm:grid-cols-3">
+            <Link
+              to="/"
+              aria-label="Dar Spa, inicio"
+              className="col-start-1 row-start-3 mx-4 w-24 justify-self-end sm:row-span-2 sm:row-start-1 sm:justify-self-start"
+            >
               <img
                 src="/images/darspa-logo.svg"
                 width="96"
@@ -130,32 +173,40 @@ export function App({ children }: { children: ReactNode }) {
                 alt="Dar Spa"
                 loading="lazy"
               />
-              <span>
+              <span className="mt-1 block border-t border-primary pt-0.5 text-center font-[Arial,sans-serif] text-[3.5px] leading-[1.1] font-bold text-accent">
                 ANSIEDAD ALIMENTARIA, OBESIDAD
                 <br />Y MODELADO CORPORAL NO INVASIVO
               </span>
             </Link>
-            <div className="footer-contact">
+            <div className="col-span-2 mx-auto grid max-w-105 grid-cols-2 items-center gap-4 font-bold text-primary sm:col-span-1 sm:col-start-2 sm:w-full sm:min-w-0 sm:max-w-none sm:grid-cols-3 sm:gap-2 md:gap-6 lg:gap-8">
               <div>
-                <h2>WhatsApp</h2>
-                <a href={site.whatsapp}>{site.phone}</a>
+                <h2 className="text-base text-accent">WhatsApp</h2>
+                <a className="text-sm hover:underline" href={site.whatsapp}>
+                  {site.phone}
+                </a>
               </div>
               <div>
-                <h2>Dias de Atención</h2>
-                <p>{site.days}</p>
+                <h2 className="text-base text-accent">Dias de Atención</h2>
+                <p className="text-sm">{site.days}</p>
               </div>
               <div>
-                <h2>Ubicación</h2>
-                <Link to="/contacto">{site.address}</Link>
+                <h2 className="text-base text-accent">Ubicación</h2>
+                <Link className="text-sm hover:underline" to="/contacto">
+                  {site.address}
+                </Link>
               </div>
               <div>
-                <h2>Horario de Atención</h2>
-                <p>8:00hrs - 20:00hrs</p>
+                <h2 className="text-base text-accent">Horario de Atención</h2>
+                <p className="text-sm">8:00hrs - 20:00hrs</p>
               </div>
-              <Link to="/privacy-policy">Politica de Privacidad</Link>
-              <Link to="/terms-of-service">Terminos &amp; Condiciones</Link>
+              <Link className="text-base text-accent hover:underline" to="/privacy-policy">
+                Politica de Privacidad
+              </Link>
+              <Link className="text-base text-accent hover:underline" to="/terms-of-service">
+                Terminos &amp; Condiciones
+              </Link>
             </div>
-            <div className="footer-social">
+            <div className="col-start-2 row-start-3 flex gap-2 text-primary sm:col-start-3 sm:row-start-1 sm:justify-end">
               <a href={site.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">
                 <SocialIcon name="instagram" />
               </a>
@@ -167,9 +218,11 @@ export function App({ children }: { children: ReactNode }) {
               </a>
             </div>
           </div>
-          <p className="footer-credit">
-            Designed &amp; Developed with <span>♥</span> by{" "}
-            <a href="https://danielmoretti.com">Daniel Moretti V.</a>
+          <p className="absolute bottom-0 left-0 w-full text-center text-xs font-black text-muted-foreground">
+            Designed &amp; Developed with <span className="text-destructive">♥</span> by{" "}
+            <a className="underline" href="https://danielmoretti.com">
+              Daniel Moretti V.
+            </a>
           </p>
         </div>
       </footer>

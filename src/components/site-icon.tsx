@@ -1,4 +1,5 @@
 import { facebookPath, instagramPath, whatsappPath } from "../content/social-icons";
+import { cn } from "../lib/utils";
 
 const paths = {
   menu: "M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5",
@@ -10,10 +11,10 @@ const paths = {
   link: "M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244",
 };
 
-export function SiteIcon({ name }: { name: keyof typeof paths }) {
+export function SiteIcon({ name, className }: { name: keyof typeof paths; className?: string }) {
   return (
     <svg
-      className="site-icon"
+      className={cn("size-6 shrink-0", className)}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -29,7 +30,7 @@ const socialPaths = { instagram: instagramPath, facebook: facebookPath, whatsapp
 
 export function SocialIcon({ name }: { name: keyof typeof socialPaths }) {
   return (
-    <svg className="social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg className="size-8 shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       <path d={socialPaths[name]} />
     </svg>
   );

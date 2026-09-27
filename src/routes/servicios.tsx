@@ -16,16 +16,20 @@ export const Route = createFileRoute("/servicios")({
 
 function ServicesPage() {
   return (
-    <div className="page-width section-space services-page">
-      <PageHeading title="Servicios, Terapias, & Prestaciones">
+    <div className="mx-auto w-full max-w-384 px-2 py-20 sm:px-4">
+      <PageHeading className="text-center lg:mb-24" title="Servicios, Terapias, & Prestaciones">
         Contamos con múltiples servicios y terapias que te ayudaran a conseguir la mejor versión de
         ti!
         <br />
         Ven, te contamos un poco sobre ellas.
       </PageHeading>
       {serviceCategories.map((category) => (
-        <section key={category.id} id={category.id} className="service-category">
-          <h2>{category.name}</h2>
+        <section
+          key={category.id}
+          id={category.id}
+          className="mx-auto max-w-4xl not-first-of-type:mt-18 lg:not-first-of-type:mt-28"
+        >
+          <h2 className="mb-10 text-2xl font-black text-primary lg:text-4xl">{category.name}</h2>
           <ServiceRows items={services.filter((service) => service.tipo === category.id)} />
         </section>
       ))}

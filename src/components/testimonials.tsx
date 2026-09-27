@@ -1,30 +1,55 @@
 import testimonials from "../content/testimonials.json";
+import { cn } from "../lib/utils";
 
 // Preserve the three editorial groups used by the legacy scrolling columns.
 const columns = [testimonials.slice(0, 14), testimonials.slice(14, 26), testimonials.slice(26)];
 
 export function Testimonials() {
   return (
-    <section className="testimonials-section">
-      <div className="page-width">
-        <h2 className="section-title">Cambia Tu Vida Con DarSpa</h2>
-        <p className="section-caption">Cientos de personas han conseguido cambios reales</p>
-        <div className="testimonial-window">
+    <section className="bg-secondary py-10">
+      <div className="mx-auto w-full max-w-384 px-2 sm:px-4">
+        <h2 className="mb-2 text-center text-3xl font-black text-heading lg:text-5xl">
+          Cambia Tu Vida Con DarSpa
+        </h2>
+        <p className="text-center text-sm font-bold text-muted-foreground">
+          Cientos de personas han conseguido cambios reales
+        </p>
+        <div className="relative grid h-196 max-h-[60vh] grid-cols-1 items-start gap-8 overflow-hidden px-4 sm:mt-20 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="pointer-events-none absolute inset-x-0 top-0 z-1 h-32 bg-linear-to-b from-secondary to-transparent"
+            aria-hidden="true"
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-32 bg-linear-to-b from-transparent to-secondary"
+            aria-hidden="true"
+          />
           {columns.map((reviews, index) => (
-            <div className="testimonial-column" key={index}>
+            // Continuous scrolling, including reduced motion, is an explicit owner decision.
+            <div
+              className={cn(
+                "animate-reviews-scroll",
+                index === 1 && "hidden md:block",
+                index === 2 && "hidden lg:block [animation-duration:50s]",
+              )}
+              key={index}
+            >
               {[false, true].map((duplicate) => (
                 <div
-                  className="testimonial-cycle"
+                  className="grid gap-8 py-4"
                   key={String(duplicate)}
                   aria-hidden={duplicate || undefined}
                 >
                   {reviews.map((review) => (
-                    <figure key={review.name}>
+                    <figure
+                      className="rounded-3xl bg-card p-6 text-card-foreground shadow-md shadow-foreground/5"
+                      key={review.name}
+                    >
                       <span className="sr-only">5 de 5 estrellas</span>
-                      <div className="review-stars" aria-hidden="true">
+                      <div className="flex text-primary" aria-hidden="true">
                         {[0, 1, 2, 3, 4].map((star) => (
                           <svg
                             key={star}
+                            className="size-5"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                             aria-hidden="true"
@@ -34,9 +59,11 @@ export function Testimonials() {
                         ))}
                       </div>
                       <blockquote>
-                        <p>{review.comment}</p>
+                        <p className="mt-3 text-base leading-7">{review.comment}</p>
                       </blockquote>
-                      <figcaption>– {review.name}</figcaption>
+                      <figcaption className="mt-3 text-sm text-muted-foreground">
+                        – {review.name}
+                      </figcaption>
                     </figure>
                   ))}
                 </div>

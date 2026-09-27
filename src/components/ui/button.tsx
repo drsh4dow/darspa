@@ -4,23 +4,29 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        brand:
-          "brand-button rounded-lg bg-brand-action px-4 py-4 text-base font-black text-white shadow-md shadow-heading/25 hover:bg-brand-action-hover lg:text-lg",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        // A 90% teal fill falls below AA for small labels on light surfaces.
+        default: "bg-primary text-primary-foreground hover:bg-primary/95",
+        accent: "bg-accent text-accent-foreground hover:bg-accent/90",
+        outline:
+          "border border-input bg-background hover:bg-secondary hover:text-secondary-foreground",
+      },
+      size: {
+        default: "px-4 py-2 text-sm font-medium",
+        cta: "rounded-lg px-4 py-4 text-base font-black shadow-md shadow-heading/25 lg:text-lg",
       },
     },
-    defaultVariants: { variant: "default" },
+    defaultVariants: { variant: "default", size: "default" },
   },
 );
 
 export function Button({
   className,
   variant,
+  size,
   asChild = false,
   ...props
 }: ComponentProps<"button"> & VariantProps<typeof buttonVariants> & { asChild?: boolean }) {
@@ -29,7 +35,7 @@ export function Button({
   return (
     <Component
       data-slot="button"
-      className={cn(buttonVariants({ variant, className }))}
+      className={cn(buttonVariants({ variant, size, className }))}
       {...props}
     />
   );
