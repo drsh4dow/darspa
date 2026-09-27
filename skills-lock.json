@@ -1,6 +1,18 @@
 {
   "version": 1,
   "skills": {
+    "cloudflare": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare/SKILL.md",
+      "computedHash": "163d684e39202f0073a15b84181d6bc1c825092d66947193daefd153102e2839"
+    },
+    "cloudflare-email-service": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare-email-service/SKILL.md",
+      "computedHash": "d2905141e0883fd3dfd4318e582de04f5a49d6e1b8971b2c7dcf708baf79cb0e"
+    },
     "convex": {
       "source": "get-convex/agent-skills",
       "sourceType": "github",
@@ -199,6 +211,12 @@
       "skillPath": "skills/convex-verify/SKILL.md",
       "computedHash": "dbe65a37ca2e9a5afa55669b8928ce1dc3ac765151452008f9105bde049228f7"
     },
+    "durable-objects": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/durable-objects/SKILL.md",
+      "computedHash": "f4ce39a555f70e78c394cad5451a7d26c81874afb2fc2d16e20c909c5c3794ec"
+    },
     "tanstack-integration-best-practices": {
       "source": "DeckardGer/tanstack-agent-skills",
       "sourceType": "github",
@@ -222,6 +240,30 @@
       "sourceType": "github",
       "skillPath": "skills/tanstack-start/SKILL.md",
       "computedHash": "8799a83f34c3c0631915f8ddcdccc470d91e8bff05409564679bcd76b5eb0be8"
+    },
+    "turnstile-spin": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/turnstile-spin/SKILL.md",
+      "computedHash": "62a5165f9a3a8c92561351529c3c4fd0d0777ad2f2c873494aed6113e024dba1"
+    },
+    "web-perf": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-perf/SKILL.md",
+      "computedHash": "72d0dd9706147e19bf3c1a36fdc02570f77685541d89d901a3a2f570824ba3cb"
+    },
+    "workers-best-practices": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/workers-best-practices/SKILL.md",
+      "computedHash": "61834fa098e16280aae54e584f5a16e047391790b1e1e4995c0e9a111d6d75c3"
+    },
+    "wrangler": {
+      "source": "cloudflare/skills",
+      "sourceType": "github",
+      "skillPath": "skills/wrangler/SKILL.md",
+      "computedHash": "f0147a3ee20d56a89c735d6c9efd45d61a21e2fc5f2ebb53ca1250006b79c8ad"
     }
   }
 }
