@@ -1,6 +1,8 @@
 import { fileURLToPath } from "node:url";
+import { effectNative, strict as effectStrict } from "@effect/tsgo/oxlint-presets";
+import babel from "@rolldown/plugin-babel";
 import tailwindcss from "@tailwindcss/vite";
-import react from "@vitejs/plugin-react";
+import react, { reactCompilerPreset } from "@vitejs/plugin-react";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import { defineConfig } from "vite-plus";
 import publicPaths from "./content/generated/paths.json";
@@ -37,6 +39,7 @@ export default defineConfig({
       })),
     }),
     react(),
+    babel({ presets: [reactCompilerPreset()] }),
     tailwindcss(),
   ],
   // The auth redirect allowlist deliberately accepts only this local origin.
@@ -45,15 +48,33 @@ export default defineConfig({
   fmt: { ignorePatterns: managedFiles },
   lint: {
     ignorePatterns: managedFiles,
-    plugins: ["typescript", "react", "react-perf", "jsx-a11y", "import", "unicorn", "oxc"],
-    categories: { correctness: "error", suspicious: "error" },
+    plugins: [
+      "typescript",
+      "react",
+      "react-perf",
+      "jsx-a11y",
+      "import",
+      "unicorn",
+      "oxc",
+      "effecttsgo",
+    ],
+    categories: { correctness: "error", suspicious: "error", perf: "error" },
     options: { typeAware: true, typeCheck: true, denyWarnings: true },
     jsPlugins: [
       { name: "vite-plus", specifier: "vite-plus/oxlint-plugin" },
       { name: "anti-slop", specifier: "./tools/oxlint/anti-slop/index.ts" },
     ],
     rules: {
+      ...effectNative.rules,
+      ...effectStrict.rules,
       "vite-plus/prefer-vite-plus-imports": "error",
+      // Prefer explicit control flow and bindings without imposing cosmetic ordering.
+      "prefer-const": "error",
+      "no-nested-ternary": "error",
+      "no-multi-assign": "error",
+      "no-return-assign": ["error", "always"],
+      "unicorn/error-message": "error",
+      "unicorn/no-unreadable-array-destructuring": "error",
       // Convex's document metadata is part of its public API.
       "no-underscore-dangle": ["error", { allow: ["_id", "_creationTime"] }],
       "typescript/no-explicit-any": "error",
@@ -66,12 +87,18 @@ export default defineConfig({
       "typescript/no-unsafe-member-access": "error",
       "typescript/no-unsafe-return": "error",
       "typescript/consistent-type-imports": "error",
+      "typescript/consistent-type-exports": "error",
       "typescript/switch-exhaustiveness-check": "error",
       // React's automatic JSX runtime does not require a React import.
       "react/react-in-jsx-scope": "off",
+      "import/no-duplicates": "error",
       "import/no-unassigned-import": ["error", { allow: ["**/*.css"] }],
       "react/rules-of-hooks": "error",
       "react/exhaustive-deps": "error",
+      // React Compiler handles memoization; inline props do not warrant blanket bans.
+      "react-perf/jsx-no-new-object-as-prop": "off",
+      "react-perf/jsx-no-new-array-as-prop": "off",
+      "react-perf/jsx-no-new-function-as-prop": "off",
       "oxc/no-accumulating-spread": "error",
       "anti-slop/no-array-filter-map": "error",
       "anti-slop/no-reduce-accumulator-copy": "error",

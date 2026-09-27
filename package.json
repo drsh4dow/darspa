@@ -10,14 +10,9 @@
     "deploy:dev": "vp run dev:prepare && infisical run --env dev --path /frontend -- vp exec static-hosting upload --dist dist/client --build-command 'vp run build'",
     "admin:grant": "vp exec node scripts/administrator.ts grant",
     "admin:revoke": "vp exec node scripts/administrator.ts revoke",
-    "check": "vp check",
-    "lint": "vp lint --max-warnings 0",
-    "format": "vp fmt",
-    "format:check": "vp fmt --check",
-    "typecheck": "tsc --noEmit",
-    "test": "vp test run",
     "build": "vp run content && vp build",
-    "verify": "vp run content && vp run check && vp run typecheck && vp run test && vp run build"
+    "prepare": "effect-tsgo patch --oxlint",
+    "verify": "vp run content && vp run check && vp test run && vp run build"
   },
   "dependencies": {
     "@auth/core": "0.41.3",
@@ -35,6 +30,7 @@
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "convex": "1.46.0",
+    "effect": "^4.0.0-rc.117",
     "markdown-it": "15.0.2",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -42,19 +38,23 @@
     "zod": "4.6.5"
   },
   "devDependencies": {
-    "@oxlint/plugins": "1.81.0",
+    "@babel/core": "8.0.6",
+    "@effect/tsgo": "^0.46.1",
+    "@oxlint/plugins": "1.85.0",
+    "@rolldown/plugin-babel": "0.2.4",
     "@tailwindcss/vite": "4.3.3",
     "@types/markdown-it": "14.2.0",
-    "@types/node": "24.19.0",
+    "@types/node": "26.6.3",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.1",
+    "babel-plugin-react-compiler": "1.0.0",
     "convex-test": "0.0.60",
-    "oxlint": "1.81.0",
+    "oxlint": "1.85.0",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.3.1",
-    "vite-plus": "0.3.1",
+    "vite": "npm:@voidzero-dev/vite-plus-core@1.0.0-rc.1",
+    "vite-plus": "1.0.0-rc.1",
     "yaml": "2.9.1"
   },
   "overrides": {
