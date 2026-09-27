@@ -1,4 +1,5 @@
-import { mkdir, readFile, readdir, access, writeFile } from "node:fs/promises";
+import { NodeFileSystem, NodeRuntime } from "@effect/platform-node";
+import { DateTime, Effect, FileSystem, Schema } from "effect";
 import MarkdownIt from "markdown-it";
 import { parse } from "yaml";
 import { offeringMetadata, newsMetadata } from "../content/schema.ts";
@@ -6,110 +7,143 @@ import { offeringMetadata, newsMetadata } from "../content/schema.ts";
 // Raw HTML and executable Markdown are deliberately unsupported.
 const markdown = new MarkdownIt({ html: false, linkify: false });
 
-async function readMarkdown(directory: string) {
-  const documents = [];
+class ContentError extends Schema.TaggedError<ContentError>()("ContentError", {
+  message: Schema.String,
+}) {}
 
-  const files = await readdir(directory);
-
+const readMarkdown = Effect.fnUntraced(function* (directory: string) {
+  const fs = yield* FileSystem.FileSystem;
+  const files = yield* fs.readDirectory(directory);
   files.sort();
 
-  for (const file of files) {
-    if (!file.endsWith(".md")) continue;
+  return yield* Effect.forEach(
+    files.filter((file) => file.endsWith(".md")),
+    Effect.fnUntraced(function* (file) {
+      const source = yield* fs.readFileString(`${directory}/${file}`);
+      const match = /^---\n([\s\S]+?)\n---\n([\s\S]*)$/.exec(source);
+      const metadata = match?.[1];
+      const body = match?.[2]?.trim();
 
-    const source = await readFile(`${directory}/${file}`, "utf8");
-    const match = /^---\n([\s\S]+?)\n---\n([\s\S]*)$/.exec(source);
-    const metadata = match?.[1];
-    const body = match?.[2]?.trim();
+      if (!metadata || !body) {
+        return yield* new ContentError({
+          message: `Missing metadata or content: ${directory}/${file}`,
+        });
+      }
 
-    if (!metadata || !body) throw new Error(`Missing metadata or content: ${directory}/${file}`);
+      return { file, metadata, description: body, html: markdown.render(body) };
+    }),
+    { concurrency: 8 },
+  );
+});
 
-    documents.push({ file, metadata, description: body, html: markdown.render(body) });
+const generateContent = Effect.gen(function* () {
+  const fs = yield* FileSystem.FileSystem;
+  const offerings = [];
+  const offeringIds = new Set<string>();
+  const legacyIds = new Set<string>();
+
+  for (const document of yield* readMarkdown("content/offerings")) {
+    const metadata = yield* Effect.try(() => offeringMetadata.parse(parse(document.metadata)));
+
+    if (document.file !== `${metadata.id}.md` || offeringIds.has(metadata.id)) {
+      return yield* new ContentError({
+        message: `Offering filename/identity conflict: ${document.file}`,
+      });
+    }
+
+    if (metadata.legacyId && legacyIds.has(metadata.legacyId)) {
+      return yield* new ContentError({
+        message: `Duplicate legacy offering identity: ${metadata.legacyId}`,
+      });
+    }
+
+    offeringIds.add(metadata.id);
+
+    if (metadata.legacyId) legacyIds.add(metadata.legacyId);
+
+    offerings.push({ ...metadata, description: document.description, html: document.html });
   }
 
-  return documents;
-}
+  offerings.sort(
+    (a, b) =>
+      a.priceClp - b.priceClp || a.displayOrder - b.displayOrder || a.id.localeCompare(b.id),
+  );
 
-const offerings = [];
+  const articles = [];
+  const newsSlugs = new Set<string>();
 
-const offeringIds = new Set<string>();
+  for (const document of yield* readMarkdown("content/news")) {
+    const metadata = yield* Effect.try(() => newsMetadata.parse(parse(document.metadata)));
 
-const legacyIds = new Set<string>();
+    if (document.file !== `${metadata.slug}.md` || newsSlugs.has(metadata.slug)) {
+      return yield* new ContentError({ message: `News filename/slug conflict: ${document.file}` });
+    }
 
-for (const document of await readMarkdown("content/offerings")) {
-  const metadata = offeringMetadata.parse(parse(document.metadata));
+    newsSlugs.add(metadata.slug);
 
-  if (document.file !== `${metadata.id}.md` || offeringIds.has(metadata.id)) {
-    throw new Error(`Offering filename/identity conflict: ${document.file}`);
+    const date = yield* Schema.decodeEffect(Schema.DateTimeUtcFromString)(metadata.publishedAt);
+    articles.push({ date, article: { ...metadata, html: document.html } });
   }
 
-  if (metadata.legacyId && legacyIds.has(metadata.legacyId)) {
-    throw new Error(`Duplicate legacy offering identity: ${metadata.legacyId}`);
+  articles.sort((a, b) => DateTime.toEpochMillis(b.date) - DateTime.toEpochMillis(a.date));
+
+  const news = articles.map(({ article }) => article);
+
+  const images = new Set(offerings.map((offering) => offering.image));
+
+  for (const article of news) {
+    if (article.image !== null) images.add(article.image);
   }
 
-  offeringIds.add(metadata.id);
+  yield* Effect.forEach(images, (image) => fs.access(`public${image}`), {
+    concurrency: 8,
+    discard: true,
+  });
 
-  if (metadata.legacyId) legacyIds.add(metadata.legacyId);
+  const legal = yield* Effect.forEach(
+    ["privacy-policy", "terms-of-service"],
+    Effect.fnUntraced(function* (slug) {
+      const source = yield* fs.readFileString(`content/legal/${slug}.md`);
 
-  await access(`public${metadata.image}`);
-  offerings.push({ ...metadata, description: document.description, html: document.html });
-}
+      return { slug, html: markdown.render(source) };
+    }),
+    { concurrency: 2 },
+  );
 
-offerings.sort(
-  (a, b) => a.priceClp - b.priceClp || a.displayOrder - b.displayOrder || a.id.localeCompare(b.id),
-);
+  const publicPaths = [
+    "/",
+    "/nosotros",
+    "/servicios",
+    "/examenes",
+    "/noticias",
+    "/tienda",
+    "/contacto",
+    "/privacy-policy",
+    "/terms-of-service",
+    ...news.map((article) => `/noticias/${article.slug}`),
+    ...offerings.map((offering) => `/tienda/${offering.id}`),
+  ];
 
-const news = [];
+  // Validate everything before publishing. A failed write stops the build; rerunning
+  // replaces all four owned outputs rather than attempting partial recovery.
+  yield* fs.makeDirectory("content/generated", { recursive: true });
+  yield* Effect.forEach(
+    Object.entries({ catalog: offerings, news, legal, paths: publicPaths }),
+    Effect.fnUntraced(function* ([name, data]) {
+      const json = yield* Schema.encodeEffect(Schema.fromJsonString(Schema.Unknown, { space: 2 }))(
+        data,
+      );
 
-const newsSlugs = new Set<string>();
+      yield* fs.writeFileString(`content/generated/${name}.json`, `${json}\n`);
+    }),
+    { concurrency: 4, discard: true },
+  );
 
-for (const document of await readMarkdown("content/news")) {
-  const metadata = newsMetadata.parse(parse(document.metadata));
+  return yield* Effect.logInfo(
+    `Validated ${offerings.length} offerings, ${news.length} articles and ${publicPaths.length} public pages.`,
+  );
+});
 
-  if (document.file !== `${metadata.slug}.md` || newsSlugs.has(metadata.slug)) {
-    throw new Error(`News filename/slug conflict: ${document.file}`);
-  }
-
-  newsSlugs.add(metadata.slug);
-
-  if (metadata.image) await access(`public${metadata.image}`);
-
-  news.push({ ...metadata, html: document.html });
-}
-
-news.sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
-
-const legal = [];
-
-for (const slug of ["privacy-policy", "terms-of-service"]) {
-  const source = await readFile(`content/legal/${slug}.md`, "utf8");
-  legal.push({ slug, html: markdown.render(source) });
-}
-
-const publicPaths = [
-  "/",
-  "/nosotros",
-  "/servicios",
-  "/examenes",
-  "/noticias",
-  "/tienda",
-  "/contacto",
-  "/privacy-policy",
-  "/terms-of-service",
-  ...news.map((article) => `/noticias/${article.slug}`),
-  ...offerings.map((offering) => `/tienda/${offering.id}`),
-];
-
-await mkdir("content/generated", { recursive: true });
-
-for (const [name, data] of Object.entries({
-  catalog: offerings,
-  news,
-  legal,
-  paths: publicPaths,
-})) {
-  await writeFile(`content/generated/${name}.json`, `${JSON.stringify(data, null, 2)}\n`);
-}
-
-console.log(
-  `Validated ${offerings.length} offerings, ${news.length} articles and ${publicPaths.length} public pages.`,
-);
+// This CLI entry point owns the filesystem layer.
+// oxlint-disable-next-line effecttsgo/strict-effect-provide
+NodeRuntime.runMain(generateContent.pipe(Effect.provide(NodeFileSystem.layer)));

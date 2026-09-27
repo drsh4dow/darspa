@@ -1,6 +1,6 @@
-import { once } from "node:events";
-import { createServer } from "node:http";
-import { buffer } from "node:stream/consumers";
+import { NodeHttpServer } from "@effect/platform-node";
+import { Effect } from "effect";
+import { HttpServer, HttpServerRequest, HttpServerResponse } from "effect/unstable/http";
 import { expect, test } from "vite-plus/test";
 
 // Exercise the patched CLI's transport, not a separate application uploader.
@@ -25,54 +25,56 @@ test.for([
     expectedStatus: 403,
     expectedAttempts: 1,
   },
-])("$name", async ({ statuses, expectedStatus, expectedAttempts }, { onTestFinished }) => {
-  const uploads: { method: string | undefined; contentType: string | undefined; body: Buffer }[] =
-    [];
+])("$name", ({ statuses, expectedStatus, expectedAttempts }) =>
+  Effect.runPromise(
+    Effect.gen(function* () {
+      const uploads: { method: string; contentType: string | undefined; body: Buffer }[] = [];
+      const content = Buffer.from([0, 255, 127, 13, 10]);
+      const server = yield* HttpServer.HttpServer;
 
-  const content = Buffer.from([0, 255, 127, 13, 10]);
+      yield* server.serve(
+        Effect.gen(function* () {
+          const request = yield* HttpServerRequest.HttpServerRequest;
+          const body = yield* request.arrayBuffer;
+          uploads.push({
+            method: request.method,
+            contentType: request.headers["content-type"],
+            body: Buffer.from(body),
+          });
 
-  const server = createServer((request, response) => {
-    void buffer(request).then(
-      (body) => {
-        uploads.push({
-          method: request.method,
-          contentType: request.headers["content-type"],
-          body,
-        });
-        response.writeHead(statuses[uploads.length - 1] ?? 200, {
-          "Content-Type": "application/json",
-        });
-        response.end(JSON.stringify({ storageId: "uploaded-file" }));
-      },
-      () => response.destroy(),
-    );
-  });
+          return yield* HttpServerResponse.json(
+            { storageId: "uploaded-file" },
+            {
+              status: statuses[uploads.length - 1] ?? 200,
+            },
+          );
+        }),
+      );
 
-  onTestFinished(() => server[Symbol.asyncDispose]());
-  server.listen(0, "127.0.0.1");
-  await once(server, "listening");
+      const response = yield* Effect.promise(() =>
+        uploadToStorage(
+          `${HttpServer.formatAddress(server.address)}/upload`,
+          content,
+          "application/octet-stream",
+        ),
+      );
 
-  const address = server.address();
+      const body: unknown = yield* Effect.promise(() => response.json());
 
-  // Validate Node's TCP-or-Unix-socket address at the fixture boundary.
-  // oxlint-disable-next-line anti-slop/no-runtime-typeof
-  if (!address || typeof address === "string") {
-    throw new Error("Expected a TCP address for the upload fixture");
-  }
-
-  const response = await uploadToStorage(
-    `http://127.0.0.1:${address.port}/upload`,
-    content,
-    "application/octet-stream",
-  );
-
-  expect(response.status).toBe(expectedStatus);
-  expect(await response.json()).toEqual({ storageId: "uploaded-file" });
-  expect(uploads).toEqual(
-    Array.from({ length: expectedAttempts }, () => ({
-      method: "POST",
-      contentType: "application/octet-stream",
-      body: content,
-    })),
-  );
-});
+      expect(response.status).toBe(expectedStatus);
+      expect(body).toEqual({ storageId: "uploaded-file" });
+      expect(uploads).toEqual(
+        Array.from({ length: expectedAttempts }, () => ({
+          method: "POST",
+          contentType: "application/octet-stream",
+          body: content,
+        })),
+      );
+    }).pipe(
+      Effect.scoped,
+      // The test boundary owns the server; its scope closes after all assertions.
+      // oxlint-disable-next-line effecttsgo/strict-effect-provide
+      Effect.provide(NodeHttpServer.layerTest),
+    ),
+  ),
+);

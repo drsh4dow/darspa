@@ -1,38 +1,41 @@
 import { getAuthSessionId, getAuthUserId } from "@convex-dev/auth/server";
 import { ConvexError } from "convex/values";
+import { Clock, Effect } from "effect";
 import type { QueryCtx } from "../_generated/server";
 
-export async function currentCustomer(ctx: QueryCtx) {
-  const userId = await getAuthUserId(ctx);
-  const sessionId = await getAuthSessionId(ctx);
+export const currentCustomer = Effect.fnUntraced(function* (ctx: QueryCtx) {
+  const userId = yield* Effect.promise(() => getAuthUserId(ctx));
+  const sessionId = yield* Effect.promise(() => getAuthSessionId(ctx));
 
   if (userId === null || sessionId === null) return null;
 
-  const session = await ctx.db.get(sessionId);
+  const session = yield* Effect.promise(() => ctx.db.get(sessionId));
+  const now = yield* Clock.currentTimeMillis;
 
-  if (session === null || session.userId !== userId || session.expirationTime <= Date.now())
-    return null;
+  if (session === null || session.userId !== userId || session.expirationTime <= now) return null;
 
-  const user = await ctx.db.get(userId);
+  const user = yield* Effect.promise(() => ctx.db.get(userId));
 
   if (user?.emailVerificationTime === undefined) return null;
 
   return { id: user._id, email: user.email, role: user.role ?? "customer" };
-}
+});
 
-export async function requireCustomer(ctx: QueryCtx) {
-  const customer = await currentCustomer(ctx);
+export const requireCustomer = Effect.fnUntraced(function* (ctx: QueryCtx) {
+  const customer = yield* currentCustomer(ctx);
 
-  if (customer === null) throw new ConvexError("Debes iniciar sesión para continuar.");
-
-  return customer;
-}
-
-export async function requireAdministrator(ctx: QueryCtx) {
-  const customer = await requireCustomer(ctx);
-
-  if (customer.role !== "administrator")
-    throw new ConvexError("No tienes permiso para realizar esta acción.");
+  if (customer === null)
+    return yield* Effect.fail(new ConvexError("Debes iniciar sesión para continuar."));
 
   return customer;
-}
+});
+
+export const requireAdministrator = Effect.fnUntraced(function* (ctx: QueryCtx) {
+  const customer = yield* requireCustomer(ctx);
+
+  if (customer.role !== "administrator") {
+    return yield* Effect.fail(new ConvexError("No tienes permiso para realizar esta acción."));
+  }
+
+  return customer;
+});

@@ -1,3 +1,4 @@
+import { DateTime } from "effect";
 import { site } from "../content/site";
 
 export function publicMetadata(
@@ -40,9 +41,11 @@ export function formatPrice(priceClp: number) {
 const monthFormatter = new Intl.DateTimeFormat("es-CL", { month: "long", timeZone: "UTC" });
 
 export function formatPublicationDate(value: string) {
-  const date = new Date(value);
-  const month = monthFormatter.format(date);
-  const day = String(date.getUTCDate()).padStart(2, "0");
+  // Content generation validates publishedAt; invalid input still throws at this render boundary.
+  const date = DateTime.makeUnsafe(value);
+  const month = DateTime.formatIntl(date, monthFormatter);
+  const parts = DateTime.toPartsUtc(date);
+  const day = String(parts.day).padStart(2, "0");
 
-  return `${day} de ${month.slice(0, 1).toUpperCase()}${month.slice(1)}, ${date.getUTCFullYear()}`;
+  return `${day} de ${month.slice(0, 1).toUpperCase()}${month.slice(1)}, ${parts.year}`;
 }

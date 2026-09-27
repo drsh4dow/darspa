@@ -1,5 +1,7 @@
 import { registerStaticRoutes } from "@convex-dev/static-hosting";
 import { httpRouter } from "convex/server";
+import { Effect, Stream } from "effect";
+import { FetchHttpClient, HttpClient } from "effect/unstable/http";
 import { components } from "./_generated/api";
 import { auth } from "./auth";
 import { httpAction } from "./_generated/server";
@@ -12,41 +14,54 @@ auth.addHttpRoutes(http);
 // static-hosting 0.2.1 resolves exact assets but not directory indexes. Keep the
 // exception limited to prerendered documents; the component owns all asset serving.
 function serveDocument(assetPath: string, privatePage = false) {
-  return httpAction(async (ctx, request) => {
-    const page = await ctx.runQuery(components.staticHosting.lib.resolveAssetForHttp, {
-      path: assetPath,
-      spaFallback: false,
-    });
+  return httpAction((ctx, request) =>
+    Effect.runPromise(
+      Effect.gen(function* () {
+        const page = yield* Effect.promise(() =>
+          ctx.runQuery(components.staticHosting.lib.resolveAssetForHttp, {
+            path: assetPath,
+            spaFallback: false,
+          }),
+        );
 
-    if (!page?.storageUrl) {
-      return new Response("El sitio todavía no está disponible.", {
-        status: 503,
-        headers: { "Cache-Control": "no-store", "Retry-After": "5" },
-      });
-    }
+        if (!page?.storageUrl) {
+          return new Response("El sitio todavía no está disponible.", {
+            status: 503,
+            headers: { "Cache-Control": "no-store", "Retry-After": "5" },
+          });
+        }
 
-    const response = await fetch(page.storageUrl);
+        const client = yield* HttpClient.HttpClient;
+        const response = yield* client.get(page.storageUrl);
 
-    if (!response.ok) {
-      return new Response("No pudimos cargar la página.", {
-        status: 502,
-        headers: { "Cache-Control": "no-store" },
-      });
-    }
+        if (response.status < 200 || response.status >= 300) {
+          return new Response("No pudimos cargar la página.", {
+            status: 502,
+            headers: { "Cache-Control": "no-store" },
+          });
+        }
 
-    const headers = new Headers({
-      "Content-Type": "text/html; charset=utf-8",
-      "Cache-Control": "no-cache",
-      "X-Content-Type-Options": "nosniff",
-    });
+        const headers = new Headers({
+          "Content-Type": "text/html; charset=utf-8",
+          "Cache-Control": "no-cache",
+          "X-Content-Type-Options": "nosniff",
+        });
 
-    // Development stays unindexed even though the production documents have SEO metadata.
-    if (privatePage || new URL(request.url).hostname !== "darspa.cl") {
-      headers.set("X-Robots-Tag", "noindex, nofollow");
-    }
+        // Development stays unindexed even though the production documents have SEO metadata.
+        if (privatePage || new URL(request.url).hostname !== "darspa.cl") {
+          headers.set("X-Robots-Tag", "noindex, nofollow");
+        }
 
-    return new Response(response.body, { headers });
-  });
+        const body = yield* Stream.toReadableStreamEffect(response.stream);
+
+        return new Response(body, { headers });
+      }).pipe(
+        // Each HTTP action is an entry point. Fetch has no scoped resources to retain.
+        // oxlint-disable-next-line effecttsgo/strict-effect-provide
+        Effect.provide(FetchHttpClient.layer),
+      ),
+    ),
+  );
 }
 
 for (const path of publicPaths) {

@@ -125,6 +125,7 @@ export default defineConfig({
     include: ["convex/**/*.test.ts", "content/**/*.test.ts", "scripts/**/*.test.ts"],
     env: {
       DARSPA_DEVELOPMENT_LABEL: "Configuración de prueba",
+      CONVEX_SITE_URL: "https://synthetic.convex.site",
       CONVEX_CLOUD_URL: "https://industrious-retriever-886.convex.cloud",
       DEVELOPMENT_EMAIL_RECIPIENT: "recipient@example.com",
       RESEND_API_KEY: "test-only",

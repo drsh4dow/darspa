@@ -2,7 +2,15 @@ import testimonials from "../content/testimonials.json";
 import { cn } from "../lib/utils";
 
 // Preserve the three editorial groups used by the legacy scrolling columns.
-const columns = [testimonials.slice(0, 14), testimonials.slice(14, 26), testimonials.slice(26)];
+const columns = [
+  { id: "primary", reviews: testimonials.slice(0, 14), className: "" },
+  { id: "secondary", reviews: testimonials.slice(14, 26), className: "hidden md:block" },
+  {
+    id: "tertiary",
+    reviews: testimonials.slice(26),
+    className: "hidden lg:block [animation-duration:50s]",
+  },
+];
 
 export function Testimonials() {
   return (
@@ -23,23 +31,16 @@ export function Testimonials() {
             className="pointer-events-none absolute inset-x-0 bottom-0 z-1 h-32 bg-linear-to-b from-transparent to-secondary"
             aria-hidden="true"
           />
-          {columns.map((reviews, index) => (
+          {columns.map((column) => (
             // Continuous scrolling, including reduced motion, is an explicit owner decision.
-            <div
-              className={cn(
-                "animate-reviews-scroll",
-                index === 1 && "hidden md:block",
-                index === 2 && "hidden lg:block [animation-duration:50s]",
-              )}
-              key={index}
-            >
+            <div className={cn("animate-reviews-scroll", column.className)} key={column.id}>
               {[false, true].map((duplicate) => (
                 <div
                   className="grid gap-8 py-4"
                   key={String(duplicate)}
                   aria-hidden={duplicate || undefined}
                 >
-                  {reviews.map((review) => (
+                  {column.reviews.map((review) => (
                     <figure
                       className="rounded-3xl bg-card p-6 text-card-foreground shadow-md shadow-foreground/5"
                       key={review.name}

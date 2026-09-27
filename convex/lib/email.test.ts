@@ -1,3 +1,5 @@
+import { Effect } from "effect";
+import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http";
 import { expect, test } from "vite-plus/test";
 import { sendEmail } from "./email";
 import { signInEmail } from "./signInEmail";
@@ -9,31 +11,37 @@ const message = {
   idempotencyKey: "synthetic-delivery-1",
 };
 
-test("email reports provider acceptance, preserves retry identity, and blocks uncontrolled recipients", async () => {
+test("email reports provider acceptance, preserves retry identity, and blocks uncontrolled recipients", () => {
   const requests: Request[] = [];
 
-  const request: typeof fetch = async (input, init) => {
-    requests.push(new Request(input, init));
+  const client = HttpClient.make(
+    Effect.fnUntraced(function* (request) {
+      const outgoing = yield* HttpClientRequest.toWeb(request).pipe(Effect.orDie);
+      requests.push(outgoing);
 
-    return Response.json({ id: "provider-message-id" });
-  };
-
-  expect(await sendEmail(message, request)).toEqual({
-    status: "accepted",
-    id: "provider-message-id",
-  });
-  await sendEmail(message, request);
-  expect(requests.map((entry) => entry.headers.get("Idempotency-Key"))).toEqual([
-    message.idempotencyKey,
-    message.idempotencyKey,
-  ]);
-  await expect(sendEmail({ ...message, to: "uncontrolled@example.com" }, request)).rejects.toThrow(
-    "limitado",
+      return HttpClientResponse.fromWeb(request, Response.json({ id: "provider-message-id" }));
+    }),
   );
-  expect(requests).toHaveLength(2);
+
+  return Effect.runPromise(
+    Effect.gen(function* () {
+      const accepted = yield* sendEmail(message);
+      expect(accepted).toEqual({ status: "accepted", id: "provider-message-id" });
+
+      yield* sendEmail(message);
+      expect(requests.map((entry) => entry.headers.get("Idempotency-Key"))).toEqual([
+        message.idempotencyKey,
+        message.idempotencyKey,
+      ]);
+
+      const error = yield* Effect.flip(sendEmail({ ...message, to: "uncontrolled@example.com" }));
+      expect(error.message).toContain("limitado");
+      expect(requests).toHaveLength(2);
+    }).pipe(Effect.provideService(HttpClient.HttpClient, client)),
+  );
 });
 
-test("sign-in delivery preserves the link in HTML and plain text and uses a hosted logo", async () => {
+test("sign-in delivery preserves the link in HTML and plain text and uses a hosted logo", () => {
   const link = new URL("https://app.example.com/mi-cuenta?code=single-use&metodo=email");
   const content = signInEmail(link, new URL("https://assets.example.com"));
 
@@ -43,29 +51,47 @@ test("sign-in delivery preserves the link in HTML and plain text and uses a host
   expect(content.html).toContain('src="https://assets.example.com/images/darspa-logo.png"');
   expect(content.text).toContain(link.href);
 
-  const request: typeof fetch = async (input, init) => {
-    const outgoing = new Request(input, init);
+  const client = HttpClient.make(
+    Effect.fnUntraced(function* (request) {
+      const outgoing = yield* HttpClientRequest.toWeb(request).pipe(Effect.orDie);
+      const body: unknown = yield* Effect.promise(() => outgoing.json());
 
-    expect(await outgoing.json()).toEqual({
-      from: "Dar Spa <acceso@example.com>",
-      to: [message.to],
-      subject: content.subject,
-      text: content.text,
-      html: content.html,
-    });
+      expect(body).toEqual({
+        from: "Dar Spa <acceso@example.com>",
+        to: [message.to],
+        subject: content.subject,
+        text: content.text,
+        html: content.html,
+      });
 
-    return Response.json({ id: "sign-in-message-id" });
-  };
+      return HttpClientResponse.fromWeb(request, Response.json({ id: "sign-in-message-id" }));
+    }),
+  );
 
-  await sendEmail({ ...message, ...content }, request);
+  return Effect.runPromise(
+    sendEmail({ ...message, ...content }).pipe(
+      Effect.provideService(HttpClient.HttpClient, client),
+    ),
+  );
 });
 
 test.each([429, 500, 200])(
   "provider rejection or a malformed success is never reported as delivery (HTTP %i)",
-  async (status) => {
-    const request: typeof fetch = async () =>
-      Response.json({ error: "Sensitive provider details" }, { status });
+  (status) => {
+    const client = HttpClient.make((request) =>
+      Effect.succeed(
+        HttpClientResponse.fromWeb(
+          request,
+          Response.json({ error: "Sensitive provider details" }, { status }),
+        ),
+      ),
+    );
 
-    await expect(sendEmail(message, request)).rejects.toThrow("No pudimos confirmar el envío");
+    return Effect.runPromise(
+      Effect.gen(function* () {
+        const error = yield* Effect.flip(sendEmail(message));
+        expect(error.message).toContain("No pudimos confirmar el envío");
+      }).pipe(Effect.provideService(HttpClient.HttpClient, client)),
+    );
   },
 );

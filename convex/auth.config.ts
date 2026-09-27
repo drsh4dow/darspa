@@ -1,6 +1,16 @@
 import type { AuthConfig } from "convex/server";
-import { z } from "zod";
+import { Config, Effect, Schema } from "effect";
+
+const domain = Effect.runSync(
+  Effect.gen(function* () {
+    const value = yield* Config.String("CONVEX_SITE_URL");
+    yield* Schema.decodeEffect(Schema.URLFromString)(value);
+
+    // JWT issuer matching is exact: URL.href would add a trailing slash.
+    return value;
+  }),
+);
 
 export default {
-  providers: [{ domain: z.url().parse(process.env["CONVEX_SITE_URL"]), applicationID: "convex" }],
+  providers: [{ domain, applicationID: "convex" }],
 } satisfies AuthConfig;

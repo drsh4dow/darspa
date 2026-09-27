@@ -1,4 +1,5 @@
-import { globSync, readFileSync } from "node:fs";
+import { NodeFileSystem } from "@effect/platform-node";
+import { Effect, FileSystem } from "effect";
 import { expect, test } from "vite-plus/test";
 
 // Guard the application's color boundary without inspecting imported artwork or
@@ -18,26 +19,34 @@ const forbiddenColors = [
   /\b(?:color|background(?:-color)?|fill|stroke)\s*:\s*(?!var\(|inherit\b|initial\b|unset\b|revert\b|currentColor\b|transparent\b|none\b)[a-z]+\b/i,
 ];
 
-test("application colors use semantic tokens backed by the Tailwind palette", () => {
-  const violations: string[] = [];
+test("application colors use semantic tokens backed by the Tailwind palette", () =>
+  Effect.runPromise(
+    Effect.gen(function* () {
+      const fs = yield* FileSystem.FileSystem;
+      const violations: string[] = [];
 
-  for (const path of globSync("src/**/*.{css,ts,tsx}")) {
-    const source = readFileSync(path, "utf8");
+      for (const path of yield* fs.glob("src/**/*.{css,ts,tsx}")) {
+        const source = yield* fs.readFileString(path);
 
-    for (const [index, line] of source.split("\n").entries()) {
-      if (forbiddenColors.some((pattern) => pattern.test(line))) {
-        violations.push(`${path}:${index + 1}: ${line.trim()}`);
+        for (const [index, line] of source.split("\n").entries()) {
+          if (forbiddenColors.some((pattern) => pattern.test(line))) {
+            violations.push(`${path}:${index + 1}: ${line.trim()}`);
+          }
+        }
+
+        // Palette references belong only in the central semantic token definitions.
+        const componentStyles =
+          path === "src/styles.css" ? source.replace(/:root\s*\{[^}]*\}/, "") : source;
+
+        if (new RegExp(`--color-${paletteColor}\\b`).test(componentStyles)) {
+          violations.push(`${path}: palette variables outside the semantic theme`);
+        }
       }
-    }
 
-    // Palette references belong only in the central semantic token definitions.
-    const componentStyles =
-      path === "src/styles.css" ? source.replace(/:root\s*\{[^}]*\}/, "") : source;
-
-    if (new RegExp(`--color-${paletteColor}\\b`).test(componentStyles)) {
-      violations.push(`${path}: palette variables outside the semantic theme`);
-    }
-  }
-
-  expect(violations).toEqual([]);
-});
+      expect(violations).toEqual([]);
+    }).pipe(
+      // The test boundary owns and releases its filesystem layer.
+      // oxlint-disable-next-line effecttsgo/strict-effect-provide
+      Effect.provide(NodeFileSystem.layer),
+    ),
+  ));

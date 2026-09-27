@@ -1,4 +1,5 @@
-import { z } from "zod";
+import { Effect, Redacted, Schema } from "effect";
+import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http";
 
 export const developmentTarget = {
   deploymentUrl: "https://industrious-retriever-886.convex.cloud",
@@ -7,34 +8,32 @@ export const developmentTarget = {
   secretPath: "/convex",
 } as const;
 
-const responseSchema = z.object({
-  secrets: z
-    .array(
-      z.object({
-        secretKey: z.string(),
-        secretValue: z.string(),
-        secretValueHidden: z.literal(false),
-        environment: z.literal(developmentTarget.environment),
-        secretPath: z.literal(developmentTarget.secretPath),
-      }),
-    )
-    .max(100),
+const responseSchema = Schema.Struct({
+  secrets: Schema.Array(
+    Schema.Struct({
+      secretKey: Schema.String,
+      secretValue: Schema.String,
+      secretValueHidden: Schema.Literal(false),
+      environment: Schema.Literal(developmentTarget.environment),
+      secretPath: Schema.Literal(developmentTarget.secretPath),
+    }),
+  ).check(Schema.isMaxLength(100)),
 });
 
-const publicJwksSchema = z.strictObject({
-  keys: z
-    .array(
-      z.strictObject({
-        kty: z.literal("RSA"),
-        use: z.literal("sig"),
-        n: z.string().min(1),
-        e: z.string().min(1),
-        alg: z.optional(z.literal("RS256")),
-        kid: z.optional(z.string()),
+const publicJwksSchema = Schema.fromJsonString(
+  Schema.Struct({
+    keys: Schema.Array(
+      Schema.Struct({
+        kty: Schema.Literal("RSA"),
+        use: Schema.Literal("sig"),
+        n: Schema.NonEmptyString,
+        e: Schema.NonEmptyString,
+        alg: Schema.optionalKey(Schema.Literal("RS256")),
+        kid: Schema.optionalKey(Schema.String),
       }),
-    )
-    .min(1),
-});
+    ).check(Schema.isMinLength(1)),
+  }),
+);
 
 export const ownedVariables = [
   "DARSPA_DEVELOPMENT_LABEL",
@@ -50,73 +49,93 @@ export const ownedVariables = [
 
 type OwnedVariable = (typeof ownedVariables)[number];
 
-export async function syncDevelopmentSecrets(
-  infisicalToken: string,
-  convexKey: string,
-  current: Partial<Record<OwnedVariable, string>>,
-  request: typeof fetch,
+export class SecretSyncError extends Schema.TaggedError<SecretSyncError>()("SecretSyncError", {
+  message: Schema.String,
+}) {}
+
+export const syncDevelopmentSecrets = Effect.fnUntraced(function* (
+  infisicalToken: Redacted.Redacted,
+  convexKey: Redacted.Redacted,
+  current: ReadonlyMap<OwnedVariable, Redacted.Redacted>,
 ) {
-  if (!convexKey.startsWith("dev:industrious-retriever-886|")) {
-    throw new Error("Secret sync requires the designated development deployment key");
+  if (!Redacted.value(convexKey).startsWith("dev:industrious-retriever-886|")) {
+    return yield* new SecretSyncError({
+      message: "Secret sync requires the designated development deployment key",
+    });
   }
 
-  const source = new URL("https://app.infisical.com/api/v4/secrets");
-  source.search = new URLSearchParams({
-    projectId: developmentTarget.projectId,
-    environment: developmentTarget.environment,
-    secretPath: developmentTarget.secretPath,
-    expandSecretReferences: "false",
-    includeImports: "false",
-    includePersonalOverrides: "false",
-    recursive: "false",
-  }).toString();
+  const client = yield* HttpClient.HttpClient;
 
-  const response = await request(source, {
-    headers: { Authorization: `Bearer ${infisicalToken}` },
-    signal: AbortSignal.timeout(10_000),
-  });
-
-  if (!response.ok) throw new Error(`Infisical read failed (HTTP ${response.status})`);
-
-  const parsed = responseSchema.safeParse(await response.json());
-
-  if (!parsed.success) throw new Error("Infisical returned an invalid development secret set");
+  const parsed = yield* client
+    .get("https://app.infisical.com/api/v4/secrets", {
+      headers: { Authorization: `Bearer ${Redacted.value(infisicalToken)}` },
+      urlParams: {
+        projectId: developmentTarget.projectId,
+        environment: developmentTarget.environment,
+        secretPath: developmentTarget.secretPath,
+        expandSecretReferences: "false",
+        includeImports: "false",
+        includePersonalOverrides: "false",
+        recursive: "false",
+      },
+    })
+    .pipe(
+      Effect.flatMap(HttpClientResponse.filterStatusOk),
+      Effect.flatMap(HttpClientResponse.schemaBodyJson(responseSchema)),
+      Effect.timeout("10 seconds"),
+      Effect.mapError(
+        () =>
+          new SecretSyncError({
+            message: "Infisical returned an invalid development secret set or could not be read",
+          }),
+      ),
+    );
 
   const changes: { name: OwnedVariable; value: string }[] = [];
 
   for (const name of ownedVariables) {
-    const matches = parsed.data.secrets.filter((secret) => secret.secretKey === name);
+    const matches = parsed.secrets.filter((secret) => secret.secretKey === name);
     const secret = matches[0];
 
     if (matches.length !== 1 || secret === undefined || secret.secretValue.trim().length === 0) {
-      throw new Error("Every owned development variable must exist exactly once and be nonempty");
+      return yield* new SecretSyncError({
+        message: "Every owned development variable must exist exactly once and be nonempty",
+      });
     }
 
     if (name === "JWKS") {
       // This value is served publicly. Reject escaped JSON and private key fields before syncing.
-      try {
-        publicJwksSchema.parse(JSON.parse(secret.secretValue));
-      } catch {
-        throw new Error("JWKS must be JSON containing only public RSA signing keys");
-      }
+      yield* Schema.decodeEffect(publicJwksSchema, { onExcessProperty: "error" })(
+        secret.secretValue,
+      ).pipe(
+        Effect.mapError(
+          () =>
+            new SecretSyncError({
+              message: "JWKS must be JSON containing only public RSA signing keys",
+            }),
+        ),
+      );
     }
 
-    if (secret.secretValue !== current[name]) changes.push({ name, value: secret.secretValue });
+    const previous = current.get(name);
+
+    if (previous === undefined || secret.secretValue !== Redacted.value(previous)) {
+      changes.push({ name, value: secret.secretValue });
+    }
   }
 
   if (changes.length === 0) return { changed: false };
 
-  const update = await request(
+  yield* HttpClientRequest.post(
     `${developmentTarget.deploymentUrl}/api/update_environment_variables`,
-    {
-      method: "POST",
-      headers: { Authorization: `Convex ${convexKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ changes }),
-      signal: AbortSignal.timeout(10_000),
-    },
+  ).pipe(
+    HttpClientRequest.setHeader("Authorization", `Convex ${Redacted.value(convexKey)}`),
+    HttpClientRequest.bodyJson({ changes }),
+    Effect.flatMap(client.execute),
+    Effect.flatMap(HttpClientResponse.filterStatusOk),
+    Effect.timeout("10 seconds"),
+    Effect.mapError(() => new SecretSyncError({ message: "Convex environment update failed" })),
   );
 
-  if (!update.ok) throw new Error(`Convex environment update failed (HTTP ${update.status})`);
-
   return { changed: true };
-}
+});

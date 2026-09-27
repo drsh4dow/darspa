@@ -172,9 +172,13 @@ function HomePage() {
             .
           </p>
           <div className="grid max-w-2xl gap-8 lg:max-w-none lg:grid-cols-3">
-            {[faq.slice(0, 3), faq.slice(3, 6), faq.slice(6)].map((items, index) => (
-              <div className="grid content-start gap-10" key={index}>
-                {items.map((item) => (
+            {[
+              { id: "first", items: faq.slice(0, 3) },
+              { id: "second", items: faq.slice(3, 6) },
+              { id: "third", items: faq.slice(6) },
+            ].map((column) => (
+              <div className="grid content-start gap-10" key={column.id}>
+                {column.items.map((item) => (
                   <article key={item.question}>
                     <h3 className="text-lg leading-6 font-bold text-heading">{item.question}</h3>
                     <p className="mt-4 text-sm text-muted-foreground">{item.answer}</p>

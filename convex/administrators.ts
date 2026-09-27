@@ -1,4 +1,5 @@
 import { ConvexError, v } from "convex/values";
+import { Config, Effect } from "effect";
 import { internalMutation } from "./_generated/server";
 import { emailAddress } from "./lib/identity";
 
@@ -12,40 +13,54 @@ export const setRole = internalMutation({
     reason: v.string(),
     deploymentUrl: v.string(),
   },
-  handler: async (ctx, args) => {
-    if (args.deploymentUrl !== process.env["CONVEX_CLOUD_URL"]) {
-      throw new ConvexError("The selected deployment does not match the requested target.");
-    }
+  returns: v.object({ changed: v.boolean() }),
+  handler: (ctx, args) =>
+    Effect.runPromise(
+      Effect.gen(function* () {
+        const deploymentUrl = yield* Config.String("CONVEX_CLOUD_URL");
 
-    const email = emailAddress.parse(args.email);
-    const operator = emailAddress.parse(args.operator);
-    const reason = args.reason.trim();
+        if (args.deploymentUrl !== deploymentUrl) {
+          return yield* Effect.fail(
+            new ConvexError("The selected deployment does not match the requested target."),
+          );
+        }
 
-    if (!reason) throw new ConvexError("A reason is required.");
+        const email = yield* Effect.try(() => emailAddress.parse(args.email));
+        const operator = yield* Effect.try(() => emailAddress.parse(args.operator));
+        const reason = args.reason.trim();
 
-    const user = await ctx.db
-      .query("users")
-      .withIndex("email", (q) => q.eq("email", email))
-      .filter((q) => q.neq(q.field("emailVerificationTime"), undefined))
-      .unique();
+        if (!reason) return yield* Effect.fail(new ConvexError("A reason is required."));
 
-    if (user === null)
-      throw new ConvexError("The customer must sign in and verify their email first.");
+        const user = yield* Effect.promise(() =>
+          ctx.db
+            .query("users")
+            .withIndex("email", (q) => q.eq("email", email))
+            .filter((q) => q.neq(q.field("emailVerificationTime"), undefined))
+            .unique(),
+        );
 
-    const from = user.role ?? "customer";
+        if (user === null)
+          return yield* Effect.fail(
+            new ConvexError("The customer must sign in and verify their email first."),
+          );
 
-    if (from === args.role) return { changed: false };
+        const from = user.role ?? "customer";
 
-    await ctx.db.patch(user._id, { role: args.role });
-    await ctx.db.insert("roleChanges", {
-      userId: user._id,
-      from,
-      to: args.role,
-      operator,
-      reason,
-      deploymentUrl: args.deploymentUrl,
-    });
+        if (from === args.role) return { changed: false };
 
-    return { changed: true };
-  },
+        yield* Effect.promise(() => ctx.db.patch(user._id, { role: args.role }));
+        yield* Effect.promise(() =>
+          ctx.db.insert("roleChanges", {
+            userId: user._id,
+            from,
+            to: args.role,
+            operator,
+            reason,
+            deploymentUrl: args.deploymentUrl,
+          }),
+        );
+
+        return { changed: true };
+      }),
+    ),
 });

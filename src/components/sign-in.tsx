@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { Effect } from "effect";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useSearch } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -22,35 +23,45 @@ export function SignIn() {
     return url.href;
   }
 
-  async function requestEmail(event: FormEvent<HTMLFormElement>) {
+  function requestEmail(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setState("sending");
     setError(null);
 
-    try {
-      await signIn("resend", {
-        email: email.trim().toLowerCase(),
-        redirectTo: returnUrl("email"),
-      });
-      setState("sent");
-    } catch {
-      setError(
-        "No pudimos enviar el enlace. Revisa tu correo e inténtalo en un minuto. En desarrollo solo se permite el correo de prueba autorizado.",
-      );
-      setState("ready");
-    }
+    Effect.runFork(
+      Effect.tryPromise(() =>
+        signIn("resend", {
+          email: email.trim().toLowerCase(),
+          redirectTo: returnUrl("email"),
+        }),
+      ).pipe(
+        Effect.match({
+          onSuccess: () => setState("sent"),
+          onFailure: () => {
+            setError(
+              "No pudimos enviar el enlace. Revisa tu correo e inténtalo en un minuto. En desarrollo solo se permite el correo de prueba autorizado.",
+            );
+            setState("ready");
+          },
+        }),
+      ),
+    );
   }
 
-  async function google() {
+  function google() {
     setState("sending");
     setError(null);
 
-    try {
-      await signIn("google", { redirectTo: returnUrl("google") });
-    } catch {
-      setError("No pudimos conectar con Google. Inténtalo nuevamente.");
-      setState("ready");
-    }
+    Effect.runFork(
+      Effect.tryPromise(() => signIn("google", { redirectTo: returnUrl("google") })).pipe(
+        Effect.catch(() =>
+          Effect.sync(() => {
+            setError("No pudimos conectar con Google. Inténtalo nuevamente.");
+            setState("ready");
+          }),
+        ),
+      ),
+    );
   }
 
   return (
@@ -66,22 +77,10 @@ export function SignIn() {
           {error}
         </p>
       )}
-      <Button
-        className="w-full"
-        variant="outline"
-        disabled={state === "sending"}
-        onClick={() => {
-          void google();
-        }}
-      >
+      <Button className="w-full" variant="outline" disabled={state === "sending"} onClick={google}>
         Continuar con Google
       </Button>
-      <form
-        className="space-y-4"
-        onSubmit={(event) => {
-          void requestEmail(event);
-        }}
-      >
+      <form className="space-y-4" onSubmit={requestEmail}>
         <div className="space-y-2">
           <label htmlFor="email" className="block font-medium">
             Correo electrónico

@@ -1,60 +1,77 @@
-import { z } from "zod";
+import { Config, Effect, Option, Redacted, Schema } from "effect";
+import { HttpClient, HttpClientRequest, HttpClientResponse } from "effect/unstable/http";
 import { developmentTarget } from "./developmentSync";
 import { emailAddress } from "./identity";
 
-const acceptedEmail = z.object({ id: z.string().min(1) });
+const acceptedEmail = Schema.Struct({ id: Schema.NonEmptyString });
 
-export function checkDevelopmentRecipient(email: string) {
-  if (process.env["CONVEX_CLOUD_URL"] !== developmentTarget.deploymentUrl) return;
+class EmailError extends Schema.TaggedError<EmailError>()("EmailError", {
+  message: Schema.String,
+}) {}
 
-  const allowed = process.env["DEVELOPMENT_EMAIL_RECIPIENT"];
+export const checkDevelopmentRecipient = Effect.fnUntraced(function* (email: string) {
+  const deployment = yield* Config.String("CONVEX_CLOUD_URL").pipe(Config.option);
 
-  if (!allowed || email !== emailAddress.parse(allowed)) {
-    throw new Error("El envío de correos está limitado en este entorno de prueba.");
+  if (Option.getOrUndefined(deployment) !== developmentTarget.deploymentUrl)
+    return yield* Effect.void;
+
+  const allowed = yield* Config.String("DEVELOPMENT_EMAIL_RECIPIENT").pipe(Config.option);
+  const parsed = emailAddress.safeParse(Option.getOrUndefined(allowed));
+
+  if (!parsed.success || email !== parsed.data) {
+    return yield* new EmailError({
+      message: "El envío de correos está limitado en este entorno de prueba.",
+    });
   }
-}
+
+  return yield* Effect.void;
+});
 
 /** Acceptance by Resend is not proof of delivery. Callers retain their business record on failure.
  * Reuse the key for retries of the same message (Resend retains keys for 24 hours).
  * This boundary does not retry ambiguous network failures or schedule background work.
  */
-export async function sendEmail(
-  message: { to: string; subject: string; text: string; html?: string; idempotencyKey: string },
-  request: typeof fetch = fetch,
-) {
-  const to = emailAddress.parse(message.to);
-  checkDevelopmentRecipient(to);
+export const sendEmail = Effect.fnUntraced(function* (message: {
+  to: string;
+  subject: string;
+  text: string;
+  html?: string;
+  idempotencyKey: string;
+}) {
+  const to = yield* Effect.try(() => emailAddress.parse(message.to));
+  yield* checkDevelopmentRecipient(to);
 
-  const key = process.env["RESEND_API_KEY"];
-  const from = process.env["AUTH_EMAIL_FROM"];
+  const { key, from } = yield* Config.all({
+    key: Config.schema(Schema.Redacted(Schema.NonEmptyString), "RESEND_API_KEY"),
+    from: Config.schema(Schema.NonEmptyString, "AUTH_EMAIL_FROM"),
+  }).pipe(Effect.mapError(() => new EmailError({ message: "El correo no está configurado." })));
 
-  if (!key || !from) throw new Error("El correo no está configurado.");
+  const client = yield* HttpClient.HttpClient;
 
-  try {
-    const response = await request("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${key}`,
-        "Content-Type": "application/json",
-        "Idempotency-Key": message.idempotencyKey,
-      },
-      body: JSON.stringify({
-        from,
-        to: [to],
-        subject: message.subject,
-        text: message.text,
-        html: message.html,
-      }),
-      signal: AbortSignal.timeout(10_000),
-    });
+  const accepted = yield* HttpClientRequest.post("https://api.resend.com/emails").pipe(
+    HttpClientRequest.setHeaders({
+      Authorization: `Bearer ${Redacted.value(key)}`,
+      "Idempotency-Key": message.idempotencyKey,
+    }),
+    HttpClientRequest.bodyJson({
+      from,
+      to: [to],
+      subject: message.subject,
+      text: message.text,
+      html: message.html,
+    }),
+    Effect.flatMap(client.execute),
+    Effect.flatMap(HttpClientResponse.filterStatusOk),
+    Effect.flatMap(HttpClientResponse.schemaBodyJson(acceptedEmail)),
+    Effect.timeout("10 seconds"),
+    // Provider errors can contain recipient details, credentials, or authentication links.
+    Effect.mapError(
+      () =>
+        new EmailError({
+          message: "No pudimos confirmar el envío del correo. Inténtalo nuevamente.",
+        }),
+    ),
+  );
 
-    if (!response.ok) throw new Error("Provider rejected email");
-
-    const accepted = acceptedEmail.parse(await response.json());
-
-    return { status: "accepted" as const, id: accepted.id };
-  } catch {
-    // Never expose provider responses, recipient details, or authentication links in errors.
-    throw new Error("No pudimos confirmar el envío del correo. Inténtalo nuevamente.");
-  }
-}
+  return { status: "accepted" as const, id: accepted.id };
+});

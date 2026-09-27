@@ -12,7 +12,7 @@
     "admin:revoke": "vp exec node scripts/administrator.ts revoke",
     "build": "vp run content && vp build",
     "prepare": "effect-tsgo patch --oxlint",
-    "verify": "vp run content && vp run check && vp test run && vp run build"
+    "verify": "vp run content && vp check && vp test run && vp run build"
   },
   "dependencies": {
     "@auth/core": "0.41.3",
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "@babel/core": "8.0.6",
+    "@effect/platform-node": "4.0.0-rc.117",
     "@effect/tsgo": "^0.46.1",
     "@oxlint/plugins": "1.85.0",
     "@rolldown/plugin-babel": "0.2.4",

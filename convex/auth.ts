@@ -2,11 +2,17 @@ import Google from "@auth/core/providers/google";
 import Resend from "@auth/core/providers/resend";
 import { convexAuth } from "@convex-dev/auth/server";
 import { z } from "zod";
+import { Clock, Config, Effect, Schema } from "effect";
+import { FetchHttpClient } from "effect/unstable/http";
 import type { MutationCtx } from "./_generated/server";
 import { developmentTarget } from "./lib/developmentSync";
 import { checkDevelopmentRecipient, sendEmail } from "./lib/email";
 import { emailAddress, resolveCustomerIdentity } from "./lib/identity";
 import { signInEmail, signInLinkLifetimeMinutes } from "./lib/signInEmail";
+
+class AuthenticationError extends Schema.TaggedError<AuthenticationError>()("AuthenticationError", {
+  message: Schema.String,
+}) {}
 
 const googleIdentity = z.object({
   sub: z.string().min(1),
@@ -26,60 +32,84 @@ export const { auth, signIn, signOut, store, isAuthenticated } = convexAuth({
     }),
     Resend({
       maxAge: signInLinkLifetimeMinutes * 60,
-      async sendVerificationRequest({ identifier, url, token }) {
-        const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(token));
+      sendVerificationRequest({ identifier, url, token }) {
+        return Effect.runPromise(
+          Effect.gen(function* () {
+            const digest = yield* Effect.promise(() =>
+              crypto.subtle.digest("SHA-256", new TextEncoder().encode(token)),
+            );
 
-        const fingerprint = Array.from(new Uint8Array(digest), (byte) =>
-          byte.toString(16).padStart(2, "0"),
-        ).join("");
+            const fingerprint = Array.from(new Uint8Array(digest), (byte) =>
+              byte.toString(16).padStart(2, "0"),
+            ).join("");
 
-        const assetOrigin = new URL(z.url().parse(process.env["CONVEX_SITE_URL"]));
+            const assetOrigin = yield* Config.schema(Schema.URL, "CONVEX_SITE_URL");
 
-        await sendEmail({
-          ...signInEmail(new URL(url), assetOrigin),
-          to: identifier,
-          idempotencyKey: `sign-in/${fingerprint}`,
-        });
+            yield* sendEmail({
+              ...signInEmail(new URL(url), assetOrigin),
+              to: identifier,
+              idempotencyKey: `sign-in/${fingerprint}`,
+            });
+          }).pipe(
+            // Auth owns this callback's lifetime; provide transport only at this boundary.
+            // oxlint-disable-next-line effecttsgo/strict-effect-provide
+            Effect.provide(FetchHttpClient.layer),
+          ),
+        );
       },
     }),
   ],
   callbacks: {
-    async redirect({ redirectTo }) {
-      const site = z.url().parse(process.env["SITE_URL"]);
-      const destination = new URL(redirectTo, site);
-      const allowed = [new URL(site).origin];
+    redirect({ redirectTo }) {
+      return Effect.runPromise(
+        Effect.gen(function* () {
+          const site = yield* Config.schema(Schema.URL, "SITE_URL");
+          const destination = yield* Effect.try(() => new URL(redirectTo, site));
+          const allowed = [site.origin];
+          const deployment = yield* Config.String("CONVEX_CLOUD_URL").pipe(Config.withDefault(""));
 
-      if (process.env["CONVEX_CLOUD_URL"] === developmentTarget.deploymentUrl) {
-        allowed.push("http://localhost:5173");
-      }
+          if (deployment === developmentTarget.deploymentUrl) {
+            allowed.push("http://localhost:5173");
+          }
 
-      if (!allowed.includes(destination.origin) || destination.pathname !== "/mi-cuenta") {
-        throw new Error("Destino de autenticación no permitido.");
-      }
+          if (!allowed.includes(destination.origin) || destination.pathname !== "/mi-cuenta") {
+            return yield* new AuthenticationError({
+              message: "Destino de autenticación no permitido.",
+            });
+          }
 
-      return destination.href;
+          return destination.href;
+        }),
+      );
     },
-    async createOrUpdateUser(ctx: MutationCtx, { existingUserId, profile, type }) {
-      const email = emailAddress.parse(profile.email);
-      checkDevelopmentRecipient(email);
+    createOrUpdateUser(ctx: MutationCtx, { existingUserId, profile, type }) {
+      return Effect.runPromise(
+        Effect.gen(function* () {
+          const email = yield* Effect.try(() => emailAddress.parse(profile.email));
+          yield* checkDevelopmentRecipient(email);
 
-      const userId = await resolveCustomerIdentity(ctx, {
-        email,
-        verified: profile.emailVerified === true,
-        existingUserId,
-      });
+          const userId = yield* resolveCustomerIdentity(ctx, {
+            email,
+            verified: profile.emailVerified === true,
+            existingUserId,
+          });
 
-      if (type === "email") {
-        const user = await ctx.db.get(userId);
+          if (type === "email") {
+            const user = yield* Effect.promise(() => ctx.db.get(userId));
+            const now = yield* Clock.currentTimeMillis;
 
-        if (user?.lastSignInEmailAt !== undefined && Date.now() - user.lastSignInEmailAt < 60_000) {
-          throw new Error("Espera un minuto antes de pedir otro enlace.");
-        }
+            if (user?.lastSignInEmailAt !== undefined && now - user.lastSignInEmailAt < 60_000) {
+              return yield* new AuthenticationError({
+                message: "Espera un minuto antes de pedir otro enlace.",
+              });
+            }
 
-        await ctx.db.patch(userId, { lastSignInEmailAt: Date.now() });
-      }
+            yield* Effect.promise(() => ctx.db.patch(userId, { lastSignInEmailAt: now }));
+          }
 
-      return userId;
+          return userId;
+        }),
+      );
     },
   },
 });
