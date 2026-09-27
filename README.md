@@ -10,7 +10,6 @@ vp run verify
 ```
 
 - [Publishing content and the catalog](docs/content.md)
-- [Public content and asset migration inventory](docs/migration/public-content.md)
 - [Credential bootstrap and rotation](docs/environments.md)
 
 ## Public website

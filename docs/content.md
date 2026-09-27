@@ -57,8 +57,8 @@ The installed `@convex-dev/static-hosting` 0.2.1 component only resolves exact a
 
 `/mi-cuenta` and `/admin` receive the generic client-only shell and remain `noindex`. Public canonical URLs point to `https://darspa.cl`. On development hosts, HTTP `X-Robots-Tag` headers and `/robots.txt` prevent indexing. `/sitemap.xml` lists public URLs only. Custom-domain configuration, DNS and final-domain verification are not part of this development publication.
 
-## Remaining work in issue #4
+## Instagram follow-up
 
-Instagram authorization and implementation are deferred until after the public pages, at the owner's request. The homepage currently has an honest Instagram-link fallback, not an automatic feed or a completed provider integration. Scheduled refresh, cache retention, token renewal with Infisical coordination, and the protected administrator status contract still need implementation and verification.
+Instagram authorization and implementation are tracked in [issue #9](https://github.com/drsh4dow/darspa/issues/9), pending the clinic owner's Meta access and fresh authorization. The homepage currently has an honest Instagram-link fallback, not an automatic feed or a completed provider integration. Scheduled refresh, cache retention, token renewal with Infisical coordination, and the protected administrator status contract still need implementation and verification.
 
 Checkout and anonymous exam-order generation belong to separate tickets. This site explains that they are not enabled yet and offers contact/booking links instead of nonfunctional purchase or generation buttons.
