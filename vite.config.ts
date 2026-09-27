@@ -68,6 +68,7 @@ export default defineConfig({
       ...effectNative.rules,
       ...effectStrict.rules,
       "vite-plus/prefer-vite-plus-imports": "error",
+      "max-lines": ["error", { max: 600 }],
       // Prefer explicit control flow and bindings without imposing cosmetic ordering.
       "prefer-const": "error",
       "no-nested-ternary": "error",
