@@ -15,3 +15,5 @@ guide doesn't cover, search through the source code in `node_modules/effect/src`
 # Extra Rules
 
 - Don't add docs unless needed to keep them in sync with reality or unless explicitly asked to.
+- Avoid suppressing or removing linting rules.
+- address warnings and errors before considering the work done.
