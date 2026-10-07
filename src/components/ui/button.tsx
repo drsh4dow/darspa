@@ -15,6 +15,10 @@ export const buttonVariants = cva(
         accent: "bg-accent text-accent-foreground hover:bg-accent/90",
         outline:
           "border border-input bg-background hover:bg-secondary hover:text-secondary-foreground",
+        "outline-primary":
+          "border border-primary/30 bg-background text-primary hover:bg-secondary hover:text-secondary-foreground",
+        // Icon buttons sit beside icon links, so they keep the site-wide focus outline, not the ring.
+        icon: "rounded-full text-primary hover:bg-secondary focus-visible:outline-solid focus-visible:ring-0 focus-visible:ring-offset-0",
       },
       size: {
         default: "px-4 py-2 text-sm font-medium",
@@ -22,6 +26,7 @@ export const buttonVariants = cva(
         cta: `rounded-lg px-4 py-4 ${ctaAppearance}`,
         "cta-sm": `rounded-lg px-3 py-2 ${ctaAppearance}`,
         "cta-wide": `rounded-xl px-10 py-3 ${ctaAppearance}`,
+        icon: "size-11",
       },
     },
     defaultVariants: { variant: "default", size: "default" },
