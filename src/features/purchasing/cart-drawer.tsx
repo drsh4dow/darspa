@@ -8,6 +8,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "../../components/ui/drawer";
+import { Button } from "../../components/ui/button";
 import { SiteIcon } from "../../components/site-icon";
 import { useCart } from "./cart";
 import { CartContents } from "./cart-contents";
@@ -34,9 +35,11 @@ export function CartDrawer({ children }: { children: ReactNode }) {
           <DrawerTitle className="text-2xl font-extrabold">Tu carro</DrawerTitle>
           <DrawerClose
             aria-label="Cerrar carro"
-            className="grid size-11 place-items-center rounded-full text-2xl text-primary hover:bg-secondary"
+            render={(props) => <Button {...props} variant="icon" size="icon" />}
           >
-            <span aria-hidden="true">×</span>
+            <span aria-hidden="true" className="text-2xl">
+              ×
+            </span>
           </DrawerClose>
         </header>
         <CartContents onNavigate={() => setOpen(false)} />
@@ -52,7 +55,8 @@ export function CartTrigger() {
   return (
     <DrawerTrigger
       aria-label={`Carro de compras${count > 0 ? `, ${count} productos` : ""}`}
-      className="relative flex size-10 items-center justify-center rounded-full text-primary hover:bg-secondary"
+      render={(props) => <Button {...props} variant="icon" size="icon" />}
+      className="relative size-10 min-h-10"
     >
       <SiteIcon name="cart" />
       {count > 0 && (

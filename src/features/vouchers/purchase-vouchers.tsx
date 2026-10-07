@@ -62,7 +62,7 @@ function VoucherCard({
       </p>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="w-full border-primary/30 bg-background text-primary">
+          <Button variant="outline-primary" className="w-full">
             Ver voucher<span className="sr-only"> {index + 1}</span>
           </Button>
         </DialogTrigger>

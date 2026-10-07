@@ -3,7 +3,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Effect } from "effect";
 import { request } from "../../lib/api";
-import { Button, buttonVariants } from "../../components/ui/button";
+import { Button } from "../../components/ui/button";
 import { DrawerClose, DrawerDescription } from "../../components/ui/drawer";
 import { formatPrice } from "../../lib/metadata";
 import { useCustomer } from "../../lib/session";
@@ -67,7 +67,7 @@ export function CartContents({ onNavigate }: { onNavigate: () => void }) {
     return (
       <div className="flex flex-1 flex-col items-center justify-center gap-5 px-8 pb-20 text-center">
         <DrawerDescription>Tu carro está vacío</DrawerDescription>
-        <DrawerClose className={buttonVariants({ variant: "outline" })}>
+        <DrawerClose render={(props) => <Button {...props} variant="outline" />}>
           Seguir explorando
         </DrawerClose>
       </div>
