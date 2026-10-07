@@ -132,6 +132,7 @@ export default defineConfig({
       "anti-slop-effect/no-service-constructor-imports": "error",
       "anti-slop-effect/prefer-effect-match": "error",
       "shadcn/no-inline-styles": "error",
+      "shadcn/no-raw-colors": "error",
       "shadcn/no-unknown-classes": "error",
     },
   },
