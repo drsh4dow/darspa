@@ -1,4 +1,4 @@
-import { buttonVariants } from "../../components/ui/button";
+import { Button } from "../../components/ui/button";
 import { DialogClose } from "../../components/ui/dialog";
 import { DrawerTrigger } from "../../components/ui/drawer";
 import { useCart } from "./cart";
@@ -17,7 +17,7 @@ export function AddToCart({
 
   const action = (
     <DrawerTrigger
-      className={buttonVariants({ className: "px-8 py-3" })}
+      render={(props) => <Button {...props} size="lg" />}
       onClick={() => {
         if (!full) cart.add(offeringId, priceClp);
       }}

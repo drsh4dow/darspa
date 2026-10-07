@@ -52,12 +52,7 @@ export function App({ children }: { children: ReactNode }) {
                   ))}
                 </nav>
               </div>
-              <Button
-                asChild
-                variant="accent"
-                size="cta"
-                className="mt-10 self-center rounded-xl px-10 py-3"
-              >
+              <Button asChild variant="accent" size="cta-wide" className="mt-10 self-center">
                 <Link to="/mi-cuenta" onClick={() => setMenuOpen(false)}>
                   Iniciar Sesión
                 </Link>

@@ -44,10 +44,10 @@ export function PromotionBanner() {
               Prueba visitar la nueva tienda online
             </p>
             <div className="flex gap-4">
-              <Button asChild size="cta" className="px-3 py-2">
+              <Button asChild size="cta-sm">
                 <Link to="/tienda">Visitar Tienda</Link>
               </Button>
-              <Button asChild variant="accent" size="cta" className="px-3 py-2">
+              <Button asChild variant="accent" size="cta-sm">
                 <Link to="/mi-cuenta">Iniciar Sesión</Link>
               </Button>
             </div>

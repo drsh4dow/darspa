@@ -104,8 +104,9 @@ export function SignIn() {
         </p>
       )}
       <Button
-        className="w-full py-3"
+        className="w-full"
         variant="outline"
+        size="lg"
         disabled={state === "sending"}
         onClick={google}
       >
@@ -131,7 +132,7 @@ export function SignIn() {
             className="w-full rounded-md border border-input bg-card px-3 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           />
         </div>
-        <Button type="submit" className="w-full py-3" disabled={state === "sending"}>
+        <Button type="submit" size="lg" className="w-full" disabled={state === "sending"}>
           {state === "sending" ? "Conectando…" : "Enviar enlace de ingreso"}
         </Button>
       </form>

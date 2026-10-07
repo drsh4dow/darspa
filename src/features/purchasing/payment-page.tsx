@@ -146,7 +146,7 @@ function PaymentDetails({ purchaseId, email }: { purchaseId: string; email: stri
       {purchase.checkout !== null && (
         <form action={purchase.checkout.url} method="POST">
           <input type="hidden" name="token_ws" value={purchase.checkout.token} />
-          <Button type="submit" className="w-full py-3">
+          <Button type="submit" size="lg" className="w-full">
             Pagar {formatPrice(purchase.totalClp)} en Webpay
           </Button>
         </form>

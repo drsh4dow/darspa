@@ -3,6 +3,8 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+const ctaAppearance = "text-base font-black shadow-md shadow-heading/25 lg:text-lg";
+
 export const buttonVariants = cva(
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
   {
@@ -16,7 +18,10 @@ export const buttonVariants = cva(
       },
       size: {
         default: "px-4 py-2 text-sm font-medium",
-        cta: "rounded-lg px-4 py-4 text-base font-black shadow-md shadow-heading/25 lg:text-lg",
+        lg: "px-8 py-3 text-sm font-medium",
+        cta: `rounded-lg px-4 py-4 ${ctaAppearance}`,
+        "cta-sm": `rounded-lg px-3 py-2 ${ctaAppearance}`,
+        "cta-wide": `rounded-xl px-10 py-3 ${ctaAppearance}`,
       },
     },
     defaultVariants: { variant: "default", size: "default" },
