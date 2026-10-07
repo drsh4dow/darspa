@@ -20,8 +20,8 @@ export function VoucherQr({ code }: { code: string }) {
       className="h-40 w-40"
       shapeRendering="crispEdges"
     >
-      <rect width="100%" height="100%" fill="white" />
-      <path d={squares.join("")} fill="black" />
+      <rect width="100%" height="100%" className="fill-background" />
+      <path d={squares.join("")} className="fill-foreground" />
     </svg>
   );
 }
