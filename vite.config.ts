@@ -134,13 +134,27 @@ export default defineConfig({
       "shadcn/no-arbitrary-values": ["error", { allow: ["layout"] }],
       "shadcn/no-inline-styles": "error",
       "shadcn/no-raw-colors": "error",
+      "shadcn/no-restyle": [
+        "error",
+        {
+          allow: ["layout"],
+          // Dialogs and drawers keep their own title size and weight.
+          contracts: [{ pattern: "^(DialogTitle|DrawerTitle)$", allow: ["layout", "typography"] }],
+        },
+      ],
       "shadcn/no-unknown-classes": "error",
+      "shadcn/require-static-classes": "error",
     },
     overrides: [
       {
-        // Design-system components own their appearance, including their arbitrary values.
+        // Design-system components own their appearance: they style the parts they wrap,
+        // use arbitrary values, and compose classes with cn() and variants.
         files: ["src/components/ui/**"],
-        rules: { "shadcn/no-arbitrary-values": "off" },
+        rules: {
+          "shadcn/no-arbitrary-values": "off",
+          "shadcn/no-restyle": "off",
+          "shadcn/require-static-classes": "off",
+        },
       },
     ],
   },
