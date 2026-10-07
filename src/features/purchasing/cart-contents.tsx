@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useAction, useQuery } from "convex/react";
+import { useQuery } from "@tanstack/react-query";
 import { Effect } from "effect";
-import { api } from "../../../convex/_generated/api";
+import { request } from "../../lib/api";
 import { Button, buttonVariants } from "../../components/ui/button";
 import { DrawerClose, DrawerDescription } from "../../components/ui/drawer";
 import { formatPrice } from "../../lib/metadata";
@@ -12,8 +12,12 @@ import { useCart } from "./cart";
 export function CartContents({ onNavigate }: { onNavigate: () => void }) {
   const cart = useCart();
   const customer = useCustomer();
-  const catalog = useQuery(api.catalog.list);
-  const start = useAction(api.purchasing.payments.start);
+
+  const { data: catalog } = useQuery({
+    queryKey: ["catalog"],
+    queryFn: ({ signal }) => request((api) => api.public.catalog(), signal),
+  });
+
   const navigate = useNavigate();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +41,11 @@ export function CartContents({ onNavigate }: { onNavigate: () => void }) {
     setBusy(true);
     setError(null);
     Effect.runFork(
-      Effect.tryPromise(() => start({ items: [...cart.items], requestId: cart.requestId })).pipe(
+      Effect.tryPromise(() =>
+        request((api) =>
+          api.purchases.start({ payload: { items: cart.items, requestId: cart.requestId } }),
+        ),
+      ).pipe(
         Effect.flatMap((purchaseId) =>
           Effect.tryPromise(() => {
             onNavigate();

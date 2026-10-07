@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { usePaginatedQuery, useQuery } from "convex/react";
-import type { FunctionArgs } from "convex/server";
-import type { Id } from "../../../convex/_generated/dataModel";
-import { api } from "../../../convex/_generated/api";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import type { VoucherScope } from "../../../shared/contracts";
+import { request } from "../../lib/api";
+import { useAccountId } from "../../lib/session";
 import { Button } from "../../components/ui/button";
 import { formatPrice } from "../../lib/metadata";
 import { formatDate, formatShortDate, paymentLabels } from "../purchasing/format";
@@ -12,19 +12,25 @@ export function VoucherList({
   scope,
   onVoucher,
 }: {
-  scope: FunctionArgs<typeof api.operations.records.vouchers>["scope"];
+  scope: VoucherScope;
   onVoucher: (code: string) => void;
 }) {
-  const vouchers = usePaginatedQuery(
-    api.operations.records.vouchers,
-    { scope },
-    { initialNumItems: 20 },
-  );
+  const accountId = useAccountId();
+
+  const vouchers = useInfiniteQuery({
+    queryKey: ["account", accountId, "operations", "vouchers", scope],
+    initialPageParam: null,
+    queryFn: ({ pageParam, signal }: { pageParam: string | null; signal: AbortSignal }) =>
+      request((api) => api.operations.vouchers({ payload: { scope, cursor: pageParam } }), signal),
+    getNextPageParam: (page) => page.nextCursor,
+  });
+
+  const results = vouchers.data?.pages.flatMap((page) => page.items) ?? [];
 
   return (
     <div className="space-y-4">
       <ul className="divide-y divide-border">
-        {vouchers.results.map((voucher) => (
+        {results.map((voucher) => (
           <li key={voucher.id}>
             <button
               onClick={() => onVoucher(voucher.code)}
@@ -46,10 +52,14 @@ export function VoucherList({
           </li>
         ))}
       </ul>
-      {vouchers.results.length === 0 && vouchers.status === "Exhausted" && (
-        <p>No hay vouchers para esta consulta.</p>
-      )}
-      <More status={vouchers.status} loadMore={() => vouchers.loadMore(20)} />
+      {results.length === 0 && !vouchers.isPending && <p>No hay vouchers para esta consulta.</p>}
+      <More
+        loading={vouchers.isPending || vouchers.isFetching}
+        hasMore={vouchers.hasNextPage}
+        loadMore={() => {
+          void vouchers.fetchNextPage();
+        }}
+      />
     </div>
   );
 }
@@ -57,16 +67,25 @@ export function VoucherList({
 export function CustomerList({
   onCustomer,
 }: {
-  onCustomer: (customer: { id: Id<"users">; email: string }) => void;
+  onCustomer: (customer: { id: string; email: string }) => void;
 }) {
   const [email, setEmail] = useState("");
   const [search, setSearch] = useState("");
 
-  const customers = usePaginatedQuery(
-    api.operations.records.customers,
-    { email: search },
-    { initialNumItems: 20 },
-  );
+  const accountId = useAccountId();
+
+  const customers = useInfiniteQuery({
+    queryKey: ["account", accountId, "operations", "customers", search],
+    initialPageParam: null,
+    queryFn: ({ pageParam, signal }: { pageParam: string | null; signal: AbortSignal }) =>
+      request(
+        (api) => api.operations.customers({ payload: { email: search, cursor: pageParam } }),
+        signal,
+      ),
+    getNextPageParam: (page) => page.nextCursor,
+  });
+
+  const results = customers.data?.pages.flatMap((page) => page.items) ?? [];
 
   return (
     <section className="space-y-5">
@@ -92,7 +111,7 @@ export function CustomerList({
         <Button type="submit">Buscar</Button>
       </form>
       <ul className="divide-y divide-border">
-        {customers.results.map((customer) => (
+        {results.map((customer) => (
           <li key={customer.id}>
             <button
               onClick={() => onCustomer(customer)}
@@ -104,10 +123,16 @@ export function CustomerList({
           </li>
         ))}
       </ul>
-      {customers.results.length === 0 && customers.status === "Exhausted" && (
+      {results.length === 0 && !customers.isPending && (
         <p>No encontramos clientes con ese correo.</p>
       )}
-      <More status={customers.status} loadMore={() => customers.loadMore(20)} />
+      <More
+        loading={customers.isPending || customers.isFetching}
+        hasMore={customers.hasNextPage}
+        loadMore={() => {
+          void customers.fetchNextPage();
+        }}
+      />
     </section>
   );
 }
@@ -116,19 +141,29 @@ export function PurchaseList({
   customerId,
   onPurchase,
 }: {
-  customerId?: Id<"users">;
-  onPurchase: (id: Id<"purchases">) => void;
+  customerId?: string;
+  onPurchase: (id: string) => void;
 }) {
-  const purchases = usePaginatedQuery(
-    api.operations.records.purchases,
-    customerId === undefined ? {} : { customerId },
-    { initialNumItems: 20 },
-  );
+  const accountId = useAccountId();
+  const filter = customerId === undefined ? {} : { customerId };
+
+  const purchases = useInfiniteQuery({
+    queryKey: ["account", accountId, "operations", "purchases", filter],
+    initialPageParam: null,
+    queryFn: ({ pageParam, signal }: { pageParam: string | null; signal: AbortSignal }) =>
+      request(
+        (api) => api.operations.purchases({ payload: { ...filter, cursor: pageParam } }),
+        signal,
+      ),
+    getNextPageParam: (page) => page.nextCursor,
+  });
+
+  const results = purchases.data?.pages.flatMap((page) => page.items) ?? [];
 
   return (
     <div className="space-y-4">
       <ul className="divide-y divide-border">
-        {purchases.results.map((purchase) => (
+        {results.map((purchase) => (
           <li key={purchase.id}>
             <button
               onClick={() => onPurchase(purchase.id)}
@@ -149,22 +184,30 @@ export function PurchaseList({
           </li>
         ))}
       </ul>
-      {purchases.results.length === 0 && purchases.status === "Exhausted" && (
-        <p>No hay compras registradas.</p>
-      )}
-      <More status={purchases.status} loadMore={() => purchases.loadMore(20)} />
+      {results.length === 0 && !purchases.isPending && <p>No hay compras registradas.</p>}
+      <More
+        loading={purchases.isPending || purchases.isFetching}
+        hasMore={purchases.hasNextPage}
+        loadMore={() => {
+          void purchases.fetchNextPage();
+        }}
+      />
     </div>
   );
 }
 
-export function PurchaseSearch({ onPurchase }: { onPurchase: (id: Id<"purchases">) => void }) {
+export function PurchaseSearch({ onPurchase }: { onPurchase: (id: string) => void }) {
   const [input, setInput] = useState("");
   const [order, setOrder] = useState("");
 
-  const purchaseId = useQuery(
-    api.operations.records.findPurchase,
-    order ? { buyOrder: order } : "skip",
-  );
+  const accountId = useAccountId();
+
+  const { data: purchaseId } = useQuery({
+    queryKey: ["account", accountId, "operations", "order", order],
+    queryFn: ({ signal }) =>
+      request((api) => api.operations.findPurchase({ params: { buyOrder: order } }), signal),
+    enabled: order.length > 0,
+  });
 
   return (
     <section className="space-y-5">
@@ -205,10 +248,16 @@ export function PurchaseDetail({
   purchaseId,
   onVoucher,
 }: {
-  purchaseId: Id<"purchases">;
+  purchaseId: string;
   onVoucher: (code: string) => void;
 }) {
-  const purchase = useQuery(api.operations.records.purchase, { purchaseId });
+  const accountId = useAccountId();
+
+  const { data: purchase } = useQuery({
+    queryKey: ["account", accountId, "operations", "purchase", purchaseId],
+    queryFn: ({ signal }) =>
+      request((api) => api.operations.purchase({ params: { purchaseId } }), signal),
+  });
 
   if (purchase === undefined) return <output>Cargando compra…</output>;
 
@@ -263,16 +312,17 @@ export function PurchaseDetail({
 }
 
 function More({
-  status,
+  loading,
+  hasMore,
   loadMore,
 }: {
-  status: "LoadingFirstPage" | "CanLoadMore" | "LoadingMore" | "Exhausted";
+  loading: boolean;
+  hasMore: boolean;
   loadMore: () => void;
 }) {
-  if (status === "LoadingFirstPage" || status === "LoadingMore")
-    return <output>Cargando registros…</output>;
+  if (loading) return <output>Cargando registros…</output>;
 
-  if (status === "CanLoadMore")
+  if (hasMore)
     return (
       <Button variant="outline" onClick={loadMore}>
         Cargar más

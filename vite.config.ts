@@ -21,7 +21,6 @@ const managedFiles = [
   ".windsurf/**",
   "agent/**",
   "tools/oxlint/anti-slop/**",
-  "convex/_generated/**",
   "src/routeTree.gen.ts",
   "skills-lock.json",
   ".infisical.json",
@@ -30,7 +29,7 @@ const managedFiles = [
 export default defineConfig({
   plugins: [
     tanstackStart({
-      // Convex hosting uses index.html for all unmatched client-side routes.
+      // Workers serves index.html for unmatched client-side routes.
       spa: { enabled: true, maskPath: "/mi-cuenta", prerender: { outputPath: "/index" } },
       prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
       pages: publicPaths.map((path) => ({
@@ -43,7 +42,14 @@ export default defineConfig({
     tailwindcss(),
   ],
   // The auth redirect allowlist deliberately accepts only this local origin.
-  server: { port: 5173, strictPort: true },
+  server: {
+    port: 5173,
+    strictPort: true,
+    proxy: {
+      "/api": "http://localhost:8787",
+      "/documents/vouchers": "http://localhost:8787",
+    },
+  },
   resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
   fmt: { ignorePatterns: managedFiles },
   lint: {
@@ -77,8 +83,7 @@ export default defineConfig({
       "no-return-assign": ["error", "always"],
       "unicorn/error-message": "error",
       "unicorn/no-unreadable-array-destructuring": "error",
-      // Convex's document metadata is part of its public API.
-      "no-underscore-dangle": ["error", { allow: ["_id", "_creationTime"] }],
+      "no-underscore-dangle": "error",
       "typescript/no-explicit-any": "error",
       "typescript/no-non-null-assertion": "error",
       "typescript/no-floating-promises": "error",
@@ -129,21 +134,18 @@ export default defineConfig({
   },
   test: {
     include: [
-      "convex/**/*.test.ts",
+      "server/**/*.test.ts",
       "content/**/*.test.ts",
       "scripts/**/*.test.ts",
       "shared/**/*.test.ts",
       "src/**/*.test.ts",
     ],
     env: {
-      DARSPA_DEVELOPMENT_LABEL: "Configuración de prueba",
-      CONVEX_SITE_URL: "https://synthetic.convex.site",
-      CONVEX_CLOUD_URL: "https://industrious-retriever-886.convex.cloud",
+      APP_ENVIRONMENT: "development",
       DEVELOPMENT_EMAIL_RECIPIENTS: "recipient@example.com,gift@example.com",
       WEBPAY_ENVIRONMENT: "integration",
       RESEND_API_KEY: "test-only",
       AUTH_EMAIL_FROM: "Dar Spa <acceso@example.com>",
     },
-    server: { deps: { inline: ["convex-test"] } },
   },
 });

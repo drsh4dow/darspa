@@ -38,27 +38,25 @@ Run `vp run content` after editing Markdown during a local frontend session. The
 
 ## Catalog authority
 
-`content/generated/catalog.json` is derived output, not an editor. Both the site and `convex/catalog.ts` consume it. There is no separately editable catalog table or public catalog mutation.
+`content/generated/catalog.json` is derived output, not an editor. Both the site and `server/catalog.ts` consume it. There is no separately editable catalog table or public catalog mutation.
 
-- `api.catalog.list` returns offerings currently available for sale.
-- `api.catalog.get({ id })` also resolves withdrawn offerings; an unknown identity returns `null`.
-- Future checkout must call `requirePublishedOffering(id)` in its backend mutation and snapshot the returned name, description, price and identity. It must reject client prices and recheck availability, regardless of cached browser content.
-- The `legacyId` mapping supports the later purchase/voucher migration. Historical purchases must store their original terms, not consult today's catalog to reconstruct them.
+- `GET /api/catalog` returns offerings currently available for sale.
+- Withdrawn offerings retain their prerendered detail page, but checkout rejects them.
+- Checkout calls `requirePublishedOffering(id)` and snapshots the returned name, description, price and identity. It rejects a changed client price and rechecks availability, regardless of cached browser content.
+- Historical purchases and vouchers retain their original terms rather than consulting today's catalog.
 
-Backend and static assets deploy sequentially, not atomically. If the upload fails, the backend may already have the new catalog. Retry the same `vp run deploy:dev` command. The static-hosting component stages files before publishing its manifest. The backend remains authoritative during this interval; a future checkout must handle unavailable or changed offerings explicitly.
-
-The `@convex-dev/static-hosting` 0.2.1 uploader has a Bun patch in `patches/`: each file gets up to three attempts on HTTP 5xx responses, with 500 ms and 1 s delays. The unpatched CLI abandoned entire uploads after isolated 502/520 gateway errors. Other failures still fail immediately; retry exhaustion uses the component's existing cleanup and leaves the previous manifest published. Only the upload transport is patched, not publication or serving. Upload URLs and payload bytes are reused, and authorization URLs are never logged. A lost success response can leave an unreferenced storage file; the component's existing age-gated maintenance handles those on later uploads. `scripts/storage-upload.test.ts` exercises recovery, exhaustion and authorization rejection against a local HTTP server. Remove the patch and its transport test when an upstream release provides equivalent retry handling.
+Alchemy uploads assets before publishing the Worker with its asset manifest. Retry an interrupted deployment with the same command and preserved `.alchemy/` state. D1 migrations run separately and are not rolled back with the Worker; review schema compatibility before deployment.
 
 ## Hosting and discovery
 
 TanStack Start prerenders all public paths listed in `content/generated/paths.json`. Public HTML is served directly without a JavaScript requirement. News and offering detail pages have individual URLs, titles, canonical URLs and social metadata. Assets and fonts are local.
 
-The installed `@convex-dev/static-hosting` 0.2.1 component only resolves exact asset paths. `convex/http.ts` maps the finite set of public URLs to `/pages/*.html`; it does not implement a general file server. The component still owns asset serving and upload. Trailing slashes on public pages redirect to the canonical path with HTTP 308. Unknown paths return HTTP 404 rather than the homepage.
+`infra/application.ts` configures Cloudflare's native asset rewrites for public pages and the four private client routes. Add new private routes to that list. Trailing slashes redirect to the canonical path with HTTP 308. Unknown paths return HTTP 404 rather than the account shell. The Worker handles the API, transferable voucher PDFs, `/robots.txt` and `/sitemap.xml`.
 
-`/mi-cuenta` and `/admin` receive the generic client-only shell and remain `noindex`. Public canonical URLs point to `https://darspa.cl`. On development hosts, HTTP `X-Robots-Tag` headers and `/robots.txt` prevent indexing. `/sitemap.xml` lists public URLs only. Custom-domain configuration, DNS and final-domain verification are not part of this development publication.
+Private routes receive the client-only shell and remain `noindex`. Public canonical URLs point to `https://darspa.cl`. On development hosts, HTTP `X-Robots-Tag` headers and `/robots.txt` prevent indexing. `/sitemap.xml` lists public URLs only. Production uses the same routing at `https://darspa.cl`; deployment stages have separate databases and document buckets.
 
 ## Instagram follow-up
 
 Instagram authorization and implementation are tracked in [issue #9](https://github.com/drsh4dow/darspa/issues/9), pending the clinic owner's Meta access and fresh authorization. The homepage currently has an honest Instagram-link fallback, not an automatic feed or a completed provider integration. Scheduled refresh, cache retention, token renewal with Infisical coordination, and the protected administrator status contract still need implementation and verification.
 
-Checkout and anonymous exam-order generation belong to separate tickets. This site explains that they are not enabled yet and offers contact/booking links instead of nonfunctional purchase or generation buttons.
+Checkout and anonymous exam-order generation use the same-origin Worker API. Exam-order email failure leaves the generated PDF available to download.

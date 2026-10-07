@@ -1,6 +1,4 @@
 import { createFileRoute, Link, Navigate } from "@tanstack/react-router";
-import { useQuery } from "convex/react";
-import { api } from "../../convex/_generated/api";
 import { SignOut } from "../components/sign-out";
 import { useCustomer } from "../lib/session";
 import { OperationsWorkspace } from "../features/operations/workspace";
@@ -33,20 +31,16 @@ function AdminPage() {
   }
 
   // Mount private queries only after reactive session and role checks settle.
-  // Convex still authorizes every backend request independently.
-  return <Administration />;
+  // The API authorizes every backend request independently.
+  return <Administration email={customer.email} />;
 }
 
-function Administration() {
-  const access = useQuery(api.accounts.administration);
-
-  if (access === undefined) return <output>Verificando permisos…</output>;
-
+function Administration({ email }: { email: string }) {
   return (
     <div className="space-y-8">
       <div>
         <h1 className="text-3xl font-semibold">Administración</h1>
-        <p className="mt-4">Acceso autorizado para {access.email}.</p>
+        <p className="mt-4">Acceso autorizado para {email}.</p>
       </div>
       <OperationsWorkspace />
       <SignOut />

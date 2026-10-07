@@ -1,8 +1,10 @@
 node_modules/
 dist/
+/public/documents/templates/
 .vite/
 .vite-plus/
 .tanstack/
+.alchemy/
 .env*
 !.env.example
 coverage/

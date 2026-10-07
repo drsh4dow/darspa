@@ -1,20 +1,21 @@
 import { useRef } from "react";
-import { useQuery } from "convex/react";
-import type { Id } from "../../../convex/_generated/dataModel";
-import { api } from "../../../convex/_generated/api";
+import { useQuery } from "@tanstack/react-query";
+import type { Voucher } from "../../../shared/contracts";
+import { request } from "../../lib/api";
+import { useAccountId } from "../../lib/session";
 import { Button } from "../../components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "../../components/ui/dialog";
 import { formatPrice } from "../../lib/metadata";
-import { VoucherContent, type Voucher } from "./voucher-content";
+import { VoucherContent } from "./voucher-content";
 
-export function PurchaseVouchers({
-  purchaseId,
-  email,
-}: {
-  purchaseId: Id<"purchases">;
-  email: string;
-}) {
-  const vouchers = useQuery(api.vouchers.vouchers.forPurchase, { purchaseId });
+export function PurchaseVouchers({ purchaseId, email }: { purchaseId: string; email: string }) {
+  const accountId = useAccountId();
+
+  const { data: vouchers } = useQuery({
+    queryKey: ["account", accountId, "purchase-vouchers", purchaseId],
+    queryFn: ({ signal }) =>
+      request((api) => api.purchases.vouchers({ params: { purchaseId } }), signal),
+  });
 
   if (vouchers === undefined) return <output>Cargando vouchers…</output>;
 

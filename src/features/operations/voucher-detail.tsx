@@ -1,16 +1,13 @@
 import { useRef, useState, type FormEvent } from "react";
-import { useMutation, usePaginatedQuery, useQuery } from "convex/react";
-import type { FunctionReturnType } from "convex/server";
+import { useInfiniteQuery, useQuery, useQueryClient } from "@tanstack/react-query";
+import type { OperationalVoucher } from "../../../shared/contracts";
 import { Effect } from "effect";
-import { api } from "../../../convex/_generated/api";
+import { request } from "../../lib/api";
+import { useAccountId } from "../../lib/session";
 import { Button } from "../../components/ui/button";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "../../components/ui/dialog";
 import { VoucherContent } from "../vouchers/voucher-content";
 import { formatDate } from "../purchasing/format";
-
-export type OperationalVoucher = NonNullable<
-  FunctionReturnType<typeof api.operations.records.voucher>
->;
 
 export function voucherSource(voucher: OperationalVoucher) {
   if (voucher.source === "webpay") return "Webpay";
@@ -32,7 +29,12 @@ const outcomes = {
 };
 
 export function VoucherDetail({ code }: { code: string }) {
-  const voucher = useQuery(api.operations.records.voucher, { code });
+  const accountId = useAccountId();
+
+  const { data: voucher } = useQuery({
+    queryKey: ["account", accountId, "operations", "voucher", code],
+    queryFn: ({ signal }) => request((api) => api.operations.voucher({ params: { code } }), signal),
+  });
 
   if (voucher === undefined) return <output>Cargando voucher…</output>;
 
@@ -75,8 +77,8 @@ export function VoucherDetail({ code }: { code: string }) {
 }
 
 function Redemption({ voucher }: { voucher: OperationalVoucher }) {
-  const redeem = useMutation(api.vouchers.operations.redeem);
-  const reverse = useMutation(api.vouchers.operations.reverse);
+  const accountId = useAccountId();
+  const queryClient = useQueryClient();
   const actionButton = useRef<HTMLButtonElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
 
@@ -99,8 +101,17 @@ function Redemption({ voucher }: { voucher: OperationalVoucher }) {
     setError("");
     Effect.runFork(
       Effect.tryPromise(() =>
-        confirmation.kind === "redeem" ? redeem(input) : reverse({ ...input, reason }),
+        request((api) =>
+          confirmation.kind === "redeem"
+            ? api.operations.redeem({ payload: input })
+            : api.operations.reverse({ payload: { ...input, reason } }),
+        ),
       ).pipe(
+        Effect.tap(() =>
+          Effect.tryPromise(() =>
+            queryClient.invalidateQueries({ queryKey: ["account", accountId] }),
+          ),
+        ),
         Effect.match({
           onSuccess: (outcome) => {
             setMessage(outcomes[outcome]);
@@ -231,22 +242,35 @@ function Redemption({ voucher }: { voucher: OperationalVoucher }) {
 }
 
 function VoucherHistory({ voucher }: { voucher: OperationalVoucher }) {
-  const history = usePaginatedQuery(
-    api.operations.records.history,
-    { voucherId: voucher.id },
-    { initialNumItems: 10 },
-  );
+  const accountId = useAccountId();
+
+  const history = useInfiniteQuery({
+    queryKey: ["account", accountId, "operations", "voucher-history", voucher.id],
+    initialPageParam: null,
+    queryFn: ({ pageParam, signal }: { pageParam: string | null; signal: AbortSignal }) =>
+      request(
+        (api) =>
+          api.operations.history({
+            params: { voucherId: voucher.id },
+            payload: { cursor: pageParam },
+          }),
+        signal,
+      ),
+    getNextPageParam: (page) => page.nextCursor,
+  });
+
+  const results = history.data?.pages.flatMap((page) => page.items) ?? [];
 
   return (
     <>
-      {history.results.length === 0 && history.status !== "LoadingFirstPage" && (
+      {results.length === 0 && !history.isPending && (
         <p className="text-sm text-muted-foreground">
           Sin acciones de canje registradas. Los registros históricos pueden no indicar autor, fecha
           o motivo.
         </p>
       )}
       <ol className="space-y-4">
-        {history.results.map((event) => (
+        {results.map((event) => (
           <li key={event.id} className="border-l-2 border-primary/30 pl-4 text-sm">
             <p className="font-bold">
               {event.kind === "redeemed" ? "Canje" : "Reversión"} · {formatDate(event.at)}
@@ -256,8 +280,14 @@ function VoucherHistory({ voucher }: { voucher: OperationalVoucher }) {
           </li>
         ))}
       </ol>
-      {history.status === "CanLoadMore" && (
-        <Button variant="outline" onClick={() => history.loadMore(10)}>
+      {history.hasNextPage && (
+        <Button
+          variant="outline"
+          disabled={history.isFetching}
+          onClick={() => {
+            void history.fetchNextPage();
+          }}
+        >
           Más historial
         </Button>
       )}

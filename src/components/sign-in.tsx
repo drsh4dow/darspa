@@ -1,13 +1,12 @@
 import { useState, type FormEvent } from "react";
 import { Effect } from "effect";
-import { useAuthActions } from "@convex-dev/auth/react";
+import { auth } from "../lib/auth";
 import { useSearch } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 
 const invalidAttempt = "Este enlace venció o ya fue utilizado. Solicita uno nuevo.";
 
 export function SignIn() {
-  const { signIn } = useAuthActions();
   const { metodo, redirect } = useSearch({ from: "/mi-cuenta" });
   const [email, setEmail] = useState("");
   const [state, setState] = useState<"ready" | "sending" | "sent">("ready");
@@ -29,10 +28,14 @@ export function SignIn() {
 
     Effect.runFork(
       Effect.tryPromise(() =>
-        signIn("resend", {
-          email: email.trim().toLowerCase(),
-          redirectTo: returnUrl("email"),
-        }),
+        auth.signIn.magicLink(
+          {
+            email: email.trim().toLowerCase(),
+            callbackURL: returnUrl("email"),
+            errorCallbackURL: returnUrl("email"),
+          },
+          { throw: true },
+        ),
       ).pipe(
         Effect.match({
           onSuccess: () => setState("sent"),
@@ -50,7 +53,16 @@ export function SignIn() {
     setError(null);
 
     Effect.runFork(
-      Effect.tryPromise(() => signIn("google", { redirectTo: returnUrl("google") })).pipe(
+      Effect.tryPromise(() =>
+        auth.signIn.social(
+          {
+            provider: "google",
+            callbackURL: returnUrl("google"),
+            errorCallbackURL: returnUrl("google"),
+          },
+          { throw: true },
+        ),
+      ).pipe(
         Effect.catch(() =>
           Effect.sync(() => {
             setError("No pudimos conectar con Google. Inténtalo nuevamente.");

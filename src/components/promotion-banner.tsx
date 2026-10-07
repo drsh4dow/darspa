@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { useConvexAuth } from "convex/react";
+import { auth } from "../lib/auth";
 import { Link } from "@tanstack/react-router";
 import { Button } from "./ui/button";
 
 export function PromotionBanner() {
-  const { isAuthenticated } = useConvexAuth();
+  const session = auth.useSession();
   const sentinel = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -30,7 +30,7 @@ export function PromotionBanner() {
         className="pointer-events-none absolute top-0 left-0 h-[80vh] w-px"
         aria-hidden="true"
       />
-      {!isAuthenticated && (
+      {session.data === null && (
         <aside
           className="promotion-banner invisible sticky bottom-0 z-20 h-0 translate-y-full bg-card text-card-foreground shadow-2xl shadow-foreground/25 data-[visible=true]:visible data-[visible=true]:h-16 data-[visible=true]:translate-y-0 data-[visible=true]:delay-0 motion-reduce:transition-none"
           data-visible={visible}

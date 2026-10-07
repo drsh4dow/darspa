@@ -1,18 +1,25 @@
 import { Link } from "@tanstack/react-router";
-import { usePaginatedQuery } from "convex/react";
-import { api } from "../../../convex/_generated/api";
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { request } from "../../lib/api";
+import { useAccountId } from "../../lib/session";
 import { Button } from "../../components/ui/button";
 import { formatPrice } from "../../lib/metadata";
 import { formatShortDate, paymentLabels } from "./format";
 
 export function PurchaseHistory() {
-  const { results, status, loadMore } = usePaginatedQuery(
-    api.purchasing.purchases.history,
-    {},
-    { initialNumItems: 10 },
-  );
+  const accountId = useAccountId();
 
-  if (status === "LoadingFirstPage") return <output>Cargando tus compras…</output>;
+  const history = useInfiniteQuery({
+    queryKey: ["account", accountId, "purchases"],
+    initialPageParam: null,
+    queryFn: ({ pageParam, signal }: { pageParam: string | null; signal: AbortSignal }) =>
+      request((api) => api.purchases.history({ payload: { cursor: pageParam } }), signal),
+    getNextPageParam: (page) => page.nextCursor,
+  });
+
+  const results = history.data?.pages.flatMap((page) => page.items) ?? [];
+
+  if (history.isPending) return <output>Cargando tus compras…</output>;
 
   if (results.length === 0)
     return (
@@ -68,9 +75,15 @@ export function PurchaseHistory() {
           </li>
         ))}
       </ul>
-      {status !== "Exhausted" && (
-        <Button variant="outline" disabled={status === "LoadingMore"} onClick={() => loadMore(10)}>
-          {status === "LoadingMore" ? "Cargando…" : "Ver más compras"}
+      {history.hasNextPage && (
+        <Button
+          variant="outline"
+          disabled={history.isFetching}
+          onClick={() => {
+            void history.fetchNextPage();
+          }}
+        >
+          {history.isFetchingNextPage ? "Cargando…" : "Ver más compras"}
         </Button>
       )}
     </div>

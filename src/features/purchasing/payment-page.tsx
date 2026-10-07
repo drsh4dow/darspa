@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Link, useSearch } from "@tanstack/react-router";
-import { useMutation, useQuery } from "convex/react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Effect } from "effect";
-import { api } from "../../../convex/_generated/api";
+import { request } from "../../lib/api";
 import { Button } from "../../components/ui/button";
 import { paymentLabels } from "./format";
 import { PurchaseVouchers } from "../vouchers/purchase-vouchers";
 import { useCart } from "./cart";
 import { formatPrice } from "../../lib/metadata";
-import { useCustomer } from "../../lib/session";
+import { useAccountId, useCustomer } from "../../lib/session";
 
 export function PaymentPage() {
   const { compra } = useSearch({ from: "/pagos/confirmacion" });
@@ -42,8 +42,26 @@ export function PaymentPage() {
 }
 
 function PaymentDetails({ purchaseId, email }: { purchaseId: string; email: string }) {
-  const purchase = useQuery(api.purchasing.purchases.get, { purchaseId });
-  const reconcile = useMutation(api.purchasing.purchases.reconcile);
+  const accountId = useAccountId();
+  const queryClient = useQueryClient();
+  const queryKey = ["account", accountId, "purchase", purchaseId];
+
+  const { data: purchase } = useQuery({
+    queryKey,
+    queryFn: ({ signal }) =>
+      request((api) => api.purchases.get({ params: { purchaseId } }), signal),
+    refetchInterval: (query) => {
+      const status = query.state.data?.status;
+
+      return status === undefined ||
+        status === "creating" ||
+        status === "pending" ||
+        status === "unknown"
+        ? 3_000
+        : false;
+    },
+  });
+
   const cart = useCart();
   const [checking, setChecking] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
@@ -60,7 +78,10 @@ function PaymentDetails({ purchaseId, email }: { purchaseId: string; email: stri
     setChecking(true);
     setFeedback(null);
     Effect.runFork(
-      Effect.tryPromise(() => reconcile({ purchaseId: purchase.id })).pipe(
+      Effect.tryPromise(() =>
+        request((api) => api.purchases.reconcile({ params: { purchaseId: purchase.id } })),
+      ).pipe(
+        Effect.tap(() => Effect.tryPromise(() => queryClient.invalidateQueries({ queryKey }))),
         Effect.match({
           onSuccess: () => {
             setChecking(false);

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import type { Id } from "../../../convex/_generated/dataModel";
 import { Button } from "../../components/ui/button";
 import { ManualIssuance } from "./manual-issuance";
 import { QrReader } from "./qr-reader";
@@ -18,8 +17,8 @@ type View =
   | { kind: "customers" }
   | { kind: "purchases" }
   | { kind: "voucher"; code: string }
-  | { kind: "purchase"; id: Id<"purchases"> }
-  | { kind: "customer"; id: Id<"users">; email: string };
+  | { kind: "purchase"; id: string }
+  | { kind: "customer"; id: string; email: string };
 
 export function OperationsWorkspace() {
   const [view, setView] = useState<View>({ kind: "vouchers" });
@@ -34,7 +33,7 @@ export function OperationsWorkspace() {
     setView({ kind: "voucher", code: trimmed });
   }
 
-  function openPurchase(id: Id<"purchases">) {
+  function openPurchase(id: string) {
     setView({ kind: "purchase", id });
   }
 

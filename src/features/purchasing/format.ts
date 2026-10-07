@@ -1,4 +1,4 @@
-import type { PaymentStatus } from "../../../convex/purchasing/model";
+import type { PaymentStatus } from "../../../shared/contracts";
 
 export const paymentLabels = {
   creating: "Preparando Webpay",

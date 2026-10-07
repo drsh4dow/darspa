@@ -1,18 +1,25 @@
 import { useState, type FormEvent } from "react";
-import { useAction, useMutation, useQuery } from "convex/react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Effect } from "effect";
-import type { FunctionReturnType } from "convex/server";
-import { api } from "../../../convex/_generated/api";
+import type { Voucher } from "../../../shared/contracts";
+import { request } from "../../lib/api";
+import { useAccountId } from "../../lib/session";
 import { Button } from "../../components/ui/button";
 import { formatDate } from "../purchasing/format";
 import { VoucherQr } from "./qr";
 
-export type Voucher = FunctionReturnType<typeof api.vouchers.vouchers.accessible>;
-
 export function VoucherContent({ voucher, email }: { voucher: Voucher; email: string }) {
-  const download = useAction(api.vouchers.documents.download);
-  const send = useMutation(api.vouchers.deliveries.request);
-  const delivery = useQuery(api.vouchers.deliveries.latest, { voucherId: voucher.id });
+  const accountId = useAccountId();
+  const queryClient = useQueryClient();
+  const deliveryKey = ["account", accountId, "delivery", voucher.id];
+
+  const { data: delivery } = useQuery({
+    queryKey: deliveryKey,
+    queryFn: ({ signal }) =>
+      request((api) => api.vouchers.delivery({ params: { voucherId: voucher.id } }), signal),
+    refetchInterval: (query) => (query.state.data?.status === "queued" ? 3_000 : 30_000),
+  });
+
   const [recipient, setRecipient] = useState(email);
   const [requestId, setRequestId] = useState<string | null>(null);
   const [busy, setBusy] = useState<"pdf" | "email" | null>(null);
@@ -28,7 +35,9 @@ export function VoucherContent({ voucher, email }: { voucher: Voucher; email: st
     setBusy("pdf");
     setError(null);
     Effect.runFork(
-      Effect.tryPromise(() => download({ voucherId: voucher.id })).pipe(
+      Effect.tryPromise(() =>
+        request((api) => api.vouchers.document({ params: { voucherId: voucher.id } })),
+      ).pipe(
         Effect.match({
           onSuccess: (url) => {
             window.location.assign(url);
@@ -52,7 +61,17 @@ export function VoucherContent({ voucher, email }: { voucher: Voucher; email: st
     setBusy("email");
     setError(null);
     Effect.runFork(
-      Effect.tryPromise(() => send({ voucherId: voucher.id, recipient, requestId: id })).pipe(
+      Effect.tryPromise(() =>
+        request((api) =>
+          api.vouchers.send({
+            params: { voucherId: voucher.id },
+            payload: { recipient, requestId: id },
+          }),
+        ),
+      ).pipe(
+        Effect.tap(() =>
+          Effect.tryPromise(() => queryClient.invalidateQueries({ queryKey: deliveryKey })),
+        ),
         Effect.match({
           onSuccess: () => {
             setBusy(null);

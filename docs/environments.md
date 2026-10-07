@@ -1,24 +1,59 @@
-# Credential bootstrap and rotation
+# Environments, credentials and administration
 
-## Secret-sync credentials
+## Alchemy and state
 
-Bootstrap and rotation require authority outside the running sync. Use an authenticated operator's Infisical and Convex CLI sessions.
+`alchemy.run.ts` accepts only `local`, `dev` and `prod` in the Darspa Cloudflare account. Each stage has a separate Worker, D1 database and R2 bucket. Production also owns the retained DNS records in `infra/dns.ts`.
 
-1. Create a read-only Infisical service token with `infisical service-token create --scope dev:/convex --access-level read --expiry-seconds 31536000 --token-only`. Redirect stdout to a restricted temporary file; remove the trailing newline before importing it.
-2. Create a deployment-specific Convex key with `vp exec convex deployment token create <name> --deployment <explicit-target> --save-env <restricted-env-file>`. Extract its value privately.
-3. Store the values as `INFISICAL_SYNC_TOKEN` and `INFISICAL_SYNC_CONVEX_KEY` in Infisical `dev:/automation`, using `infisical secrets set NAME=@<value-file> --env dev --path /automation`.
-4. Bootstrap the corresponding backend variables through stdin to `vp exec convex env set NAME --deployment <explicit-target>`. The sync cannot manage its own access credentials.
-5. Confirm a source change propagates through the scheduled sync before revoking old credentials. Remove the temporary files. Repeat an interrupted rotation with the same replacement credentials; keep the old ones until verification succeeds.
+Commands select the isolated `darspa` OAuth profile. Configure it with `vp exec alchemy profile edit --profile darspa --add Cloudflare` if needed. The grant needs D1, R2, Workers, DNS/zone and dynamic-redirect permissions, plus account and membership discovery. Do not substitute an unrelated profile or an API token. Credentials remain in Alchemy's user-level credential store, outside the repository.
 
-## Payment and development email settings
+State is local in `.alchemy/`; preserve it and do not deploy simultaneously from separate checkouts. A fresh checkout must explicitly adopt existing resources rather than recreate them. Configure shared state before enabling CI deployment. D1, R2 and DNS resources are retained on stack destruction; destroying a stack does not erase their data.
 
-Set `WEBPAY_ENVIRONMENT`, `WEBPAY_COMMERCE_CODE` and `WEBPAY_API_KEY` in Infisical `dev:/convex` for the existing development deployment. Use Transbank's integration credentials there. The existing secret-sync job owns these keys; do not set browser-public copies. The callback is `<CONVEX_SITE_URL>/api/webpay/return` and accepts both GET and POST. Production merchant activation and live charges require separate authorization.
+## Local and development
 
-`DEVELOPMENT_EMAIL_RECIPIENTS` contains the comma-separated owner-approved test inboxes. It replaces the singular `DEVELOPMENT_EMAIL_RECIPIENT` setting. The allowlist applies to sign-in, voucher delivery, and exam-order email on the isolated development deployment. Missing or malformed configuration fails closed.
+Infisical `dev:/cloudflare` supplies local and development provider settings. `vp run dev` starts Alchemy's local Worker on port 8787 and Vite on port 5173. Both ports must be free. Vite proxies the API and voucher documents to the local Worker. Local D1 and R2 do not use development data. The pinned `workerd` override supports the Worker's compatibility date; Alchemy beta.79 otherwise installs an older runtime.
 
-## Authentication on a new origin
+```sh
+vp run infra:plan:dev
+vp run deploy:dev
+```
 
-1. Generate a deployment-specific RS256 signing key pair using the [Convex Auth setup procedure](https://labs.convex.dev/auth/setup/manual). Store `JWT_PRIVATE_KEY` and the public `JWKS` in the deployment's Infisical source folder, not directly in Convex. Use raw value files with `NAME=@<file>` for structured values.
-2. Set `SITE_URL` to the frontend origin. In the Google OAuth client's console, add `<CONVEX_SITE_URL>/api/auth/callback/google` to its authorized redirect URIs. Preserve existing callbacks until their deployments are retired.
-3. Verify the sender domain in Resend and set its API key and sender through Infisical. Coordinate any required DNS changes with the domain owner.
-4. After sync, verify sign-in and sign-out through both providers on the new origin. Check the same email reaches the same account before changing live traffic. Rotating signing keys can require customers to sign in again.
+These commands build assets first and load `dev:/cloudflare`. The development site is `https://dev.darspa.cl`. Its D1 database is `darspa-dev` (`f4a76bf2-54ec-41aa-b72b-64eb658813b1`). Development email is limited to `DEVELOPMENT_EMAIL_RECIPIENTS`, a comma-separated list of approved inboxes. Missing or malformed configuration fails closed.
+
+Drizzle's schema is in `server/db/schema.ts`. Generate migrations with `vp exec drizzle-kit generate --name <name>` and review the SQL before deployment. Alchemy applies the committed Drizzle v1 migration folders in `server/db/migrations`; do not rename or regenerate an applied migration. D1 does not support interactive SQLite transactions; use its atomic batch interface. Application deployment does not roll back schema changes.
+
+## Provider credentials
+
+Each stage's `/cloudflare` folder supplies:
+
+- `BETTER_AUTH_SECRET`: an independently generated authentication secret of at least 32 characters.
+- `AUTH_GOOGLE_ID` and `AUTH_GOOGLE_SECRET`: the Google OAuth client.
+- `RESEND_API_KEY` and `AUTH_EMAIL_FROM`: the verified sending domain and sender.
+- `WEBPAY_ENVIRONMENT`, `WEBPAY_COMMERCE_CODE` and `WEBPAY_API_KEY`: the payment provider configuration.
+- `DEVELOPMENT_EMAIL_RECIPIENTS`: the local/development recipient allowlist.
+
+The stack supplies `SITE_URL` and `APP_ENVIRONMENT`. Google callbacks are `<SITE_URL>/api/auth/callback/google`; development and `http://localhost:5173` are registered. Webpay returns to `<SITE_URL>/api/webpay/return` through GET or POST. A return is not proof of payment; the backend checks the provider and saved purchase terms before issuing vouchers.
+
+Rotate secrets in Infisical, then plan and redeploy the affected stage. There is no application-side secret-sync cron. Keep old credentials valid until the deployment and relevant provider workflow succeed. Changing `BETTER_AUTH_SECRET` can require users to sign in again. Never put provider secrets in browser-public variables or command output.
+
+Use integration Webpay credentials for development. Production checkout is enabled by owner authorization. Verification reached the production Webpay payment-method screen and cancelled the purchase without entering payment details or making a charge.
+
+## Administrator access
+
+The user must first sign in and have a verified email. The CLI checks the Darspa account, an explicit database UUID and the expected `darspa-dev` or `darspa-prod` database name. It atomically changes the role and records the previous role, new role, time, declared operator and reason. Repeating an already-applied change creates no additional audit event. The operator string is attribution supplied by the caller, not a Cloudflare-attested identity.
+
+```sh
+vp run admin:grant --database <uuid> --email <verified-email> --operator <operator-email> --reason '<reason>'
+vp run admin:revoke --database <uuid> --email <verified-email> --operator <operator-email> --reason '<reason>'
+```
+
+Both commands use the `darspa` OAuth profile. Backend authorization reflects a role change immediately; the browser refreshes the session on focus and every 30 seconds.
+
+## Production and domain ownership
+
+Cloudflare is authoritative at `brodie.ns.cloudflare.com` and `demi.ns.cloudflare.com`. The `prod` stack owns the Worker custom domains for `darspa.cl` and `www.darspa.cl`, including the canonical redirect. Production `workers.dev` and preview URLs are disabled. Do not recreate the old apex Vercel CNAME alongside the Worker domain. The retained Vercel wildcard continues serving `edami.darspa.cl`; mail records are unchanged.
+
+`vp run infra:plan:prod` and `vp run deploy:prod` load `prod:/cloudflare`. The production D1 database is `darspa-prod` (`3533812d-1663-4d57-b116-ee77fc354142`). It has fresh application data, separate from development and the legacy deployments. Production domain ownership is unconditional for the `prod` stage; no activation flag is required.
+
+Development browser verification covers Google and email-link login, logout, sandbox payment, vouchers, staff operations and exam PDF generation. Production verification covers Google and email-link authentication, exam PDF generation and a cancelled production Webpay checkout. Local Google login and logout also passed against Alchemy's emulated D1.
+
+Keep the old deployments, credentials and callbacks during the rollback window. Restoring Vercel requires detaching the Worker's apex domain before recreating its former CNAME, `d2273d29aa6eb7ea.vercel-dns-017.com`; it does not restore or migrate application data. Review a plan before any rollback so a later Alchemy deployment does not undo the intended routing.

@@ -1,14 +1,20 @@
 import { useState, type FormEvent } from "react";
-import { useAction, useConvex, useQuery } from "convex/react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Effect } from "effect";
-import { api } from "../../../convex/_generated/api";
+import { request } from "../../lib/api";
+import { useAccountId } from "../../lib/session";
 import { Button } from "../../components/ui/button";
 import { formatPrice } from "../../lib/metadata";
 
 export function ManualIssuance({ onIssued }: { onIssued: (code: string) => void }) {
-  const offerings = useQuery(api.catalog.list);
-  const issue = useAction(api.vouchers.issuance.issue);
-  const convex = useConvex();
+  const accountId = useAccountId();
+  const queryClient = useQueryClient();
+
+  const { data: offerings } = useQuery({
+    queryKey: ["catalog"],
+    queryFn: ({ signal }) => request((api) => api.public.catalog(), signal),
+  });
+
   const [offeringId, setOfferingId] = useState("");
 
   const [category, setCategory] = useState<"external_payment" | "complimentary">(
@@ -31,13 +37,18 @@ export function ManualIssuance({ onIssued }: { onIssued: (code: string) => void 
     Effect.runFork(
       Effect.gen(function* () {
         const voucherId = yield* Effect.tryPromise(() =>
-          issue({ offeringId, category, reason, requestId: id }),
+          request((api) =>
+            api.operations.issue({ payload: { offeringId, category, reason, requestId: id } }),
+          ),
         );
 
         const voucher = yield* Effect.tryPromise(() =>
-          convex.query(api.vouchers.vouchers.accessible, { voucherId }),
+          request((api) => api.vouchers.get({ params: { voucherId } })),
         );
 
+        yield* Effect.tryPromise(() =>
+          queryClient.invalidateQueries({ queryKey: ["account", accountId] }),
+        );
         onIssued(voucher.code);
       }).pipe(
         Effect.catch(() =>
