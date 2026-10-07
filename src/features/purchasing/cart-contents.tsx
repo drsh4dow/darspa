@@ -66,9 +66,7 @@ export function CartContents({ onNavigate }: { onNavigate: () => void }) {
   if (cart.items.length === 0)
     return (
       <div className="flex flex-1 flex-col items-center justify-center gap-5 px-8 pb-20 text-center">
-        <DrawerDescription className="text-xl font-bold text-heading">
-          Tu carro está vacío
-        </DrawerDescription>
+        <DrawerDescription>Tu carro está vacío</DrawerDescription>
         <DrawerClose className={buttonVariants({ variant: "outline" })}>
           Seguir explorando
         </DrawerClose>

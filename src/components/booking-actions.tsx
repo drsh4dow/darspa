@@ -13,7 +13,7 @@ export function BookingActions({ className }: { className?: string }) {
           <Button size="cta">Órdenes de examen</Button>
         </DialogTrigger>
         <DialogContent className="max-w-xl">
-          <DialogTitle className="text-2xl font-bold text-heading">Órdenes de examen</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">Órdenes de examen</DialogTitle>
           <DialogDescription className="mt-3 mb-5">
             Completa tus datos para descargar las órdenes que presentarás en tu primera consulta.
           </DialogDescription>

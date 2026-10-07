@@ -178,7 +178,6 @@ function Redemption({ voucher }: { voucher: OperationalVoucher }) {
         }}
       >
         <DialogContent
-          className="space-y-4"
           onCloseAutoFocus={(event) => {
             event.preventDefault();
 
@@ -188,53 +187,55 @@ function Redemption({ voucher }: { voucher: OperationalVoucher }) {
             } else heading.current?.focus();
           }}
         >
-          <DialogTitle className="pr-8 text-xl font-bold text-heading">
-            {confirmation?.kind === "reverse"
-              ? "Revertir canje accidental"
-              : "Confirmar inicio del tratamiento"}
-          </DialogTitle>
-          <DialogDescription>
-            {voucher.terms.name}. Vence el {formatDate(voucher.expiresAt)}. Esta acción quedará
-            registrada con tu cuenta.
-          </DialogDescription>
-          <form onSubmit={confirm} className="space-y-4">
-            {confirmation?.kind === "reverse" && (
-              <div className="space-y-2">
-                <label htmlFor="reversal-reason" className="block font-bold">
-                  Motivo de la corrección
-                </label>
-                <textarea
-                  id="reversal-reason"
-                  required
-                  maxLength={1000}
-                  value={reason}
-                  onChange={(event) => setReason(event.target.value)}
-                  className="min-h-24 w-full rounded-md border border-input bg-background p-3"
-                />
-                <p className="text-sm">
-                  No se borrará el canje anterior ni se extenderá la vigencia.
+          <div className="mb-4 space-y-4">
+            <DialogTitle className="text-xl font-bold">
+              {confirmation?.kind === "reverse"
+                ? "Revertir canje accidental"
+                : "Confirmar inicio del tratamiento"}
+            </DialogTitle>
+            <DialogDescription>
+              {voucher.terms.name}. Vence el {formatDate(voucher.expiresAt)}. Esta acción quedará
+              registrada con tu cuenta.
+            </DialogDescription>
+            <form onSubmit={confirm} className="space-y-4">
+              {confirmation?.kind === "reverse" && (
+                <div className="space-y-2">
+                  <label htmlFor="reversal-reason" className="block font-bold">
+                    Motivo de la corrección
+                  </label>
+                  <textarea
+                    id="reversal-reason"
+                    required
+                    maxLength={1000}
+                    value={reason}
+                    onChange={(event) => setReason(event.target.value)}
+                    className="min-h-24 w-full rounded-md border border-input bg-background p-3"
+                  />
+                  <p className="text-sm">
+                    No se borrará el canje anterior ni se extenderá la vigencia.
+                  </p>
+                </div>
+              )}
+              {error && (
+                <p role="alert" className="text-destructive">
+                  {error}
                 </p>
+              )}
+              <div className="flex flex-wrap gap-3">
+                <Button type="submit" disabled={busy}>
+                  {busy ? "Confirmando…" : "Confirmar"}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  disabled={busy}
+                  onClick={() => setConfirmation(null)}
+                >
+                  Cancelar
+                </Button>
               </div>
-            )}
-            {error && (
-              <p role="alert" className="text-destructive">
-                {error}
-              </p>
-            )}
-            <div className="flex flex-wrap gap-3">
-              <Button type="submit" disabled={busy}>
-                {busy ? "Confirmando…" : "Confirmar"}
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                disabled={busy}
-                onClick={() => setConfirmation(null)}
-              >
-                Cancelar
-              </Button>
-            </div>
-          </form>
+            </form>
+          </div>
         </DialogContent>
       </Dialog>
     </section>

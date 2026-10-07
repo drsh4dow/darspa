@@ -67,7 +67,7 @@ function VoucherCard({
           </Button>
         </DialogTrigger>
         <DialogContent
-          className="rounded-2xl px-6 pt-8 sm:px-8"
+          layout="voucher"
           aria-describedby={undefined}
           onOpenAutoFocus={(event) => {
             event.preventDefault();
@@ -77,11 +77,7 @@ function VoucherCard({
           <p className="mb-2 text-sm font-bold text-primary">
             Dar Spa · Voucher {String(index + 1).padStart(2, "0")}
           </p>
-          <DialogTitle
-            ref={title}
-            tabIndex={-1}
-            className="pr-7 text-2xl leading-tight font-extrabold text-heading outline-none"
-          >
+          <DialogTitle ref={title} tabIndex={-1} className="text-2xl leading-tight font-extrabold">
             {voucher.terms.name}
           </DialogTitle>
           <VoucherContent voucher={voucher} email={email} />
