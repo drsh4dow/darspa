@@ -52,6 +52,7 @@
     "@napi-rs/canvas": "1.0.9",
     "@oxlint/plugins": "1.85.0",
     "@rolldown/plugin-babel": "0.2.4",
+    "@shadcn/lint": "0.2.0",
     "@tailwindcss/vite": "4.3.3",
     "@types/markdown-it": "14.2.0",
     "@types/node": "26.6.3",
