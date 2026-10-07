@@ -30,7 +30,7 @@ export function ServiceRows({ items }: { items: typeof exams }) {
     <div className="mx-auto grid max-w-4xl gap-8">
       {items.map((item) => (
         <article
-          className="group relative flex flex-col-reverse items-center gap-4 rounded-3xl border-4 border-primary p-4 md:min-h-66 md:flex-row md:justify-between md:gap-6 md:rounded-l-[8.75rem] md:p-0 md:odd:rounded-l-3xl md:odd:rounded-r-[8.75rem]"
+          className="group relative flex flex-col-reverse items-center gap-4 rounded-3xl border-4 border-primary p-4 md:min-h-66 md:flex-row md:justify-between md:gap-6 md:rounded-l-service-row md:p-0 md:odd:rounded-l-3xl md:odd:rounded-r-service-row"
           key={item.nombre}
         >
           <div className="size-56 shrink-0 overflow-hidden rounded-full border-4 border-primary bg-primary sm:h-66 sm:w-65 md:absolute md:-left-1 md:group-odd:-right-1 md:group-odd:left-auto">

@@ -155,7 +155,7 @@ export function CartContents({ onNavigate }: { onNavigate: () => void }) {
           </ul>
         )}
       </div>
-      <footer className="shrink-0 space-y-4 border-t border-border bg-muted px-6 pt-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-8">
+      <footer className="shrink-0 space-y-4 border-t border-border bg-muted px-6 pt-5 pb-safe sm:px-8">
         {changed && (
           <div role="alert" className="space-y-2 text-sm">
             <p>Hay precios nuevos. Revísalos antes de pagar.</p>

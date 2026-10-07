@@ -57,7 +57,7 @@ function InstagramFallback({ desktop = false }: { desktop?: boolean }) {
 function HomePage() {
   return (
     <>
-      <section className="relative bg-[url('/images/woman-shape-small.png')] bg-size-[auto_100%] bg-top-right bg-no-repeat shadow-xs shadow-muted-foreground/40 sm:bg-[url('/images/woman-shape-mid.png')] lg:bg-[url('/images/banner.png')] lg:bg-cover lg:bg-center lg:shadow-none">
+      <section className="hero-background relative shadow-xs shadow-muted-foreground/40 lg:shadow-none">
         <div className="absolute inset-0 bg-muted/75 lg:hidden" aria-hidden="true" />
         <div className="relative mx-auto grid w-full max-w-384 grid-cols-1 gap-4 px-2 pt-20 pb-10 sm:gap-8 sm:px-4 sm:pt-32 lg:grid-cols-2 lg:pt-10 lg:pb-56">
           <div className="hidden pb-20 lg:block">
@@ -69,7 +69,7 @@ function HomePage() {
                 height="127"
                 fetchPriority="high"
               />
-              <span className="mt-2 border-t-2 border-primary pt-1 text-center font-[Arial,sans-serif] text-[8px] leading-2.25 font-bold text-accent">
+              <span className="mt-2 border-t-2 border-primary pt-1 text-center font-brand text-hero-tagline font-bold text-accent">
                 ANSIEDAD ALIMENTARIA, OBESIDAD
                 <br />Y MODELADO CORPORAL NO INVASIVO
               </span>
@@ -89,7 +89,7 @@ function HomePage() {
             <InstagramFallback desktop />
           </section>
           <div className="col-start-1 justify-self-start lg:self-center lg:rounded-lg lg:bg-secondary/40 lg:p-4">
-            <article className="max-w-sm rounded-tl-[2.5rem] rounded-tr-xs rounded-br-[2.5rem] rounded-bl-xs bg-card p-4 text-card-foreground shadow-xs shadow-muted-foreground/40 lg:p-6">
+            <article className="max-w-sm rounded-tl-hero-card rounded-tr-xs rounded-br-hero-card rounded-bl-xs bg-card p-4 text-card-foreground shadow-xs shadow-muted-foreground/40 lg:p-6">
               <p className="text-lg leading-snug">
                 Si esta es tu<span className="font-bold"> “primera consulta”</span> en nuestra
                 clínica te recomendamos que descargues las órdenes de examen previo a tu primera
@@ -113,7 +113,7 @@ function HomePage() {
           </svg>
         </div>
       </section>
-      <section className="rounded-bl-[5rem] pt-10 pb-16 shadow-md shadow-muted-foreground/40 lg:hidden">
+      <section className="rounded-bl-section pt-10 pb-16 shadow-md shadow-muted-foreground/40 lg:hidden">
         <div className="mx-auto w-full max-w-384 px-2 sm:px-4">
           <InstagramFallback />
         </div>

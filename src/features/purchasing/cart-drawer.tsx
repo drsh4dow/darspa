@@ -57,7 +57,7 @@ export function CartTrigger() {
       <SiteIcon name="cart" />
       {count > 0 && (
         <span
-          className="absolute -top-1 -right-1 grid min-w-4.5 place-items-center rounded-full bg-primary px-1 text-[11px] font-bold text-primary-foreground"
+          className="absolute -top-1 -right-1 grid min-w-4.5 place-items-center rounded-full bg-primary px-1 text-badge font-bold text-primary-foreground"
           aria-hidden="true"
         >
           {count}
