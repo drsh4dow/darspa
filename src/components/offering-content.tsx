@@ -11,8 +11,6 @@ export function OfferingContent({
   offering: (typeof catalog)[number];
   inDialog?: boolean;
 }) {
-  const Heading = inDialog ? DialogTitle : "h1";
-
   return (
     <div className="grid w-full items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
       <img
@@ -23,7 +21,13 @@ export function OfferingContent({
         height="320"
       />
       <div className="sm:col-span-8 lg:col-span-7">
-        <Heading className="text-2xl font-bold sm:pr-12">{offering.name}</Heading>
+        {inDialog ? (
+          <DialogTitle layout="offering" className="text-2xl font-bold">
+            {offering.name}
+          </DialogTitle>
+        ) : (
+          <h1 className="text-2xl font-bold sm:pr-12">{offering.name}</h1>
+        )}
         <p className="mt-2 text-2xl">{formatPrice(offering.priceClp)}</p>
         <MarkdownContent className="mt-10" html={offering.html} variant="offering" />
         {offering.available ? (

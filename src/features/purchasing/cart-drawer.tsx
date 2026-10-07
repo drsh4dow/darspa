@@ -31,7 +31,7 @@ export function CartDrawer({ children }: { children: ReactNode }) {
       {children}
       <DrawerContent>
         <header className="flex shrink-0 items-center justify-between border-b border-border px-6 py-5 sm:px-8">
-          <DrawerTitle className="text-2xl font-extrabold text-heading">Tu carro</DrawerTitle>
+          <DrawerTitle className="text-2xl font-extrabold">Tu carro</DrawerTitle>
           <DrawerClose
             aria-label="Cerrar carro"
             className="grid size-11 place-items-center rounded-full text-2xl text-primary hover:bg-secondary"

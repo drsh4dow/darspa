@@ -7,9 +7,24 @@ export const DrawerTrigger = DrawerPrimitive.Trigger;
 
 export const DrawerClose = DrawerPrimitive.Close;
 
-export const DrawerTitle = DrawerPrimitive.Title;
+export function DrawerTitle({
+  className,
+  ...props
+}: Omit<DrawerPrimitive.Title.Props, "className"> & { className?: string }) {
+  return <DrawerPrimitive.Title className={cn("text-heading", className)} {...props} />;
+}
 
-export const DrawerDescription = DrawerPrimitive.Description;
+export function DrawerDescription({
+  className,
+  ...props
+}: Omit<DrawerPrimitive.Description.Props, "className"> & { className?: string }) {
+  return (
+    <DrawerPrimitive.Description
+      className={cn("text-xl font-bold text-heading", className)}
+      {...props}
+    />
+  );
+}
 
 export function DrawerContent({ className, children, ...props }: DrawerPrimitive.Popup.Props) {
   return (

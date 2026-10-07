@@ -34,7 +34,7 @@ export function App({ children }: { children: ReactNode }) {
             </DialogTrigger>
             <DialogContent layout="drawer" aria-describedby={undefined}>
               <div>
-                <DialogTitle className="mb-6 text-3xl font-bold text-heading">Menú</DialogTitle>
+                <DialogTitle className="mb-6 text-3xl font-bold">Menú</DialogTitle>
                 <nav
                   aria-label="Navegación móvil"
                   className="grid gap-4 text-center text-2xl font-bold text-primary"
