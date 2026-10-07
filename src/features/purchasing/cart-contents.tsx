@@ -190,7 +190,7 @@ export function CartContents({ onNavigate }: { onNavigate: () => void }) {
           Vouchers transferibles · 60 días desde el pago
         </p>
         {customer === null ? (
-          <Button asChild className="w-full py-3">
+          <Button asChild size="lg" className="w-full">
             <Link to="/mi-cuenta" search={{ redirect: "/carro" }} onClick={onNavigate}>
               Ingresar para comprar
             </Link>
@@ -198,7 +198,8 @@ export function CartContents({ onNavigate }: { onNavigate: () => void }) {
         ) : (
           <Button
             type="submit"
-            className="w-full py-3"
+            size="lg"
+            className="w-full"
             disabled={
               busy ||
               customer === undefined ||
