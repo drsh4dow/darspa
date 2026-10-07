@@ -55,8 +55,8 @@ export function CartTrigger() {
   return (
     <DrawerTrigger
       aria-label={`Carro de compras${count > 0 ? `, ${count} productos` : ""}`}
-      render={(props) => <Button {...props} variant="icon" size="icon" />}
-      className="relative size-10 min-h-10"
+      render={(props) => <Button {...props} variant="icon" size="icon-sm" />}
+      className="relative"
     >
       <SiteIcon name="cart" />
       {count > 0 && (
