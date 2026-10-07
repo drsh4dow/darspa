@@ -1,4 +1,5 @@
 import { Drawer as DrawerPrimitive } from "@base-ui/react/drawer";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
 export const Drawer = DrawerPrimitive.Root;
@@ -14,13 +15,27 @@ export function DrawerTitle({
   return <DrawerPrimitive.Title className={cn("text-heading", className)} {...props} />;
 }
 
+const descriptionVariants = cva("", {
+  variants: {
+    variant: {
+      default: "",
+      // A description that stands in for the drawer's main content, such as an empty state.
+      heading: "text-xl font-bold text-heading",
+    },
+  },
+  defaultVariants: { variant: "default" },
+});
+
 export function DrawerDescription({
   className,
+  variant,
   ...props
-}: Omit<DrawerPrimitive.Description.Props, "className"> & { className?: string }) {
+}: Omit<DrawerPrimitive.Description.Props, "className"> & {
+  className?: string;
+} & VariantProps<typeof descriptionVariants>) {
   return (
     <DrawerPrimitive.Description
-      className={cn("text-xl font-bold text-heading", className)}
+      className={cn(descriptionVariants({ variant }), className)}
       {...props}
     />
   );

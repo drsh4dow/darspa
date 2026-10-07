@@ -27,6 +27,8 @@ export const buttonVariants = cva(
         "cta-sm": `rounded-lg px-3 py-2 ${ctaAppearance}`,
         "cta-wide": `rounded-xl px-10 py-3 ${ctaAppearance}`,
         icon: "size-11",
+        // min-h-10 replaces the base min-h-11, which would otherwise make the button 44px tall.
+        "icon-sm": "size-10 min-h-10",
       },
     },
     defaultVariants: { variant: "default", size: "default" },
