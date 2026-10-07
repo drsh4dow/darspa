@@ -45,8 +45,18 @@
 @theme {
   --font-sans: "Nunito Variable", system-ui, sans-serif;
   --font-display: "Montserrat Variable", sans-serif;
+  /* The logo artwork sets its tagline in Arial. */
+  --font-brand: Arial, sans-serif;
+  --text-hero-tagline: 8px;
+  --text-hero-tagline--line-height: 0.5625rem;
+  --text-footer-tagline: 3.5px;
+  --text-footer-tagline--line-height: 1.1;
+  --text-badge: 11px;
   --radius-md: 0.5rem;
   --radius-lg: 0.5rem;
+  --radius-hero-card: 2.5rem;
+  --radius-section: 5rem;
+  --radius-service-row: 8.75rem;
   --animate-reviews-scroll: reviews-scroll 60s linear infinite;
 
   @keyframes reviews-scroll {
@@ -54,6 +64,11 @@
       transform: translateY(-50%);
     }
   }
+}
+
+/* Keeps content above the home indicator on devices with a bottom safe area. */
+@utility pb-safe {
+  padding-bottom: max(--spacing(6), env(safe-area-inset-bottom));
 }
 
 @layer base {
@@ -92,6 +107,22 @@
       0 38%,
       14% 12%
     );
+  }
+
+  .hero-background {
+    background-image: url("/images/woman-shape-small.png");
+    background-position: top right;
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+
+    @variant sm {
+      background-image: url("/images/woman-shape-mid.png");
+    }
+    @variant lg {
+      background-image: url("/images/banner.png");
+      background-position: center;
+      background-size: cover;
+    }
   }
 
   .promotion-banner {

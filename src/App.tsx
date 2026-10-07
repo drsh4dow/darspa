@@ -144,7 +144,7 @@ export function App({ children }: { children: ReactNode }) {
                 alt="Dar Spa"
                 loading="lazy"
               />
-              <span className="mt-1 block border-t border-primary pt-0.5 text-center font-[Arial,sans-serif] text-[3.5px] leading-[1.1] font-bold text-accent">
+              <span className="mt-1 block border-t border-primary pt-0.5 text-center font-brand text-footer-tagline font-bold text-accent">
                 ANSIEDAD ALIMENTARIA, OBESIDAD
                 <br />Y MODELADO CORPORAL NO INVASIVO
               </span>

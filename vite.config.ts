@@ -131,10 +131,18 @@ export default defineConfig({
       "anti-slop-effect/no-manual-tagged-construction": "error",
       "anti-slop-effect/no-service-constructor-imports": "error",
       "anti-slop-effect/prefer-effect-match": "error",
+      "shadcn/no-arbitrary-values": ["error", { allow: ["layout"] }],
       "shadcn/no-inline-styles": "error",
       "shadcn/no-raw-colors": "error",
       "shadcn/no-unknown-classes": "error",
     },
+    overrides: [
+      {
+        // Design-system components own their appearance, including their arbitrary values.
+        files: ["src/components/ui/**"],
+        rules: { "shadcn/no-arbitrary-values": "off" },
+      },
+    ],
   },
   test: {
     include: [
