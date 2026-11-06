@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: [Quality]
+    types: [completed]
+    branches: [master]
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: voidzero-dev/setup-vp@cff3efc7cbe0c9627b82dc3e846c89fd772a39a6 # v1.21.1
+        with:
+          version: 0.3.1
+          node-version: 24.21.0
+          run-install: false
+          cache: true
+      - run: vp install --frozen-lockfile
+      - run: npm install --global --allow-scripts=@infisical/cli @infisical/cli@0.43.140
+      - name: Log in to Infisical
+        env:
+          IDENTITY_ID: ${{ vars.INFISICAL_IDENTITY_ID }}
+        run: |
+          jwt=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=infisical" | jq -r .value)
+          token=$(infisical login --method=oidc-auth --machine-identity-id="$IDENTITY_ID" --jwt="$jwt" --plain --silent)
+          echo "::add-mask::$token"
+          echo "INFISICAL_TOKEN=$token" >> "$GITHUB_ENV"
+          echo "INFISICAL_PROJECT_ID=$(jq -r .workspaceId .infisical.json)" >> "$GITHUB_ENV"
+      - run: infisical run --env prod --path /ci -- vp run deploy:dev --yes
+      - run: infisical run --env prod --path /ci -- vp run deploy:prod --yes

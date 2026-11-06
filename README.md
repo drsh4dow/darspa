@@ -17,7 +17,7 @@ The public site preserves the legacy home, team, services, exams, news, shop and
 
 `vp run build` validates content, prepares the PDF artwork and prerenders public pages. It needs no deployment credentials or backend connection. Cloudflare Workers Static Assets serves these pages, fonts and images.
 
-`vp run deploy:dev` deploys the isolated application at `https://dev.darspa.cl` through Alchemy. `vp run deploy:prod` deploys `https://darspa.cl`; `www` redirects to that origin. The Vercel wildcard still serves `edami.darspa.cl`. Old application deployments remain available during the migration's rollback window.
+Merging to `master` deploys the isolated application at `https://dev.darspa.cl` through Alchemy, then `https://darspa.cl`; `www` redirects to that origin. `vp run deploy:dev` and `vp run deploy:prod` run the same deploys by hand. The Vercel wildcard still serves `edami.darspa.cl`. Old application deployments remain available during the migration's rollback window.
 
 Google and email-link login, Webpay payments, transferable vouchers and anonymous exam-order generation are available. Development uses integration Webpay; production checkout is enabled with production credentials. Instagram integration remains pending fresh Meta authorization and backend implementation; the homepage links to Instagram without a placeholder feed.
 
