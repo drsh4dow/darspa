@@ -20,8 +20,8 @@ guide doesn't cover, search through the source code in `node_modules/effect/src`
 
 # Maintainer
 
-When `git config user.email` is `drmoretti@darspa.cl`, read
-`docs/agents/maintainer.md` before anything else.
+Dr. Moretti (GitHub `drmoretti-darspa`) maintains this site. When you work
+with him, read `docs/agents/maintainer.md` before anything else.
 
 # Agent skills
 

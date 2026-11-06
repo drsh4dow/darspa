@@ -4,7 +4,7 @@ Dr. Moretti (GitHub `drmoretti-darspa`) maintains this site. He is a doctor, com
 
 ## How to talk to him
 
-- Speak Spanish. Keep the repo's English words for tools and steps: branch, commit, pull request, CI, verify.
+- Speak Spanish with him. Keep the repo's English words for tools and steps: branch, commit, pull request, CI, verify. Commits, pull requests and code stay in English.
 - Before each command, say in one sentence what it does and why, then run it yourself. Hand him a command only when a login needs his browser.
 - When something fails, say what broke in plain words and what you will try next.
 - Name things with the terms in `GLOSSARY.md`.
