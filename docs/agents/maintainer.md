@@ -20,12 +20,12 @@ A merge to `master` deploys https://dev.darspa.cl and then https://darspa.cl. Me
 5. `vp run verify` exits 0.
 6. Commit, push, and `gh pr create --fill`. Give him the pull request URL.
 7. `gh pr checks --watch` until Quality is green.
-8. When the files below need Daniel, request his review with `gh pr edit --add-reviewer drsh4dow` and stop. Otherwise, with his OK, run `gh pr merge --squash --delete-branch`.
+8. When the pull request touches a path in `.github/CODEOWNERS`, GitHub has asked Daniel to review it and blocks the merge until he approves. Tell him that and stop. Otherwise, with his OK, run `gh pr merge --squash --delete-branch`.
 9. Watch the Deploy run with `gh run watch`, then open the page on https://darspa.cl with him.
 
 ## Daniel reviews these
 
-A pull request that touches any of these waits for Daniel's approval: `server/db/`, `infra/`, `alchemy.run.ts`, `.github/`, `package.json`, `bun.lock`, and `server/purchasing/`. Schema migrations and payment changes go live on merge and are hard to undo.
+`.github/CODEOWNERS` lists the paths that need Daniel's approval: the database schema and migrations, payments, infrastructure, CI, and dependencies. These go live on merge and are hard to undo.
 
 The deploy workflow is the only path to dev and prod. Manual deploy and plan commands stay with Daniel.
 
