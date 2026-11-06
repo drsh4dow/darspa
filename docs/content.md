@@ -45,7 +45,7 @@ Run `vp run content` after editing Markdown during a local frontend session. The
 - Checkout calls `requirePublishedOffering(id)` and snapshots the returned name, description, price and identity. It rejects a changed client price and rechecks availability, regardless of cached browser content.
 - Historical purchases and vouchers retain their original terms rather than consulting today's catalog.
 
-Alchemy uploads assets before publishing the Worker with its asset manifest. Retry an interrupted deployment with the same command and preserved `.alchemy/` state. D1 migrations run separately and are not rolled back with the Worker; review schema compatibility before deployment.
+Alchemy uploads assets before publishing the Worker with its asset manifest. Retry an interrupted deployment with the same command. D1 migrations run separately and are not rolled back with the Worker; review schema compatibility before deployment.
 
 ## Hosting and discovery
 

@@ -9,7 +9,12 @@ import { dnsRecords } from "./infra/dns";
 
 export default Alchemy.Stack(
   "darspa",
-  { providers: Layer.mergeAll(Cloudflare.providers(), Command.providers()), state: localState() },
+  {
+    providers: Layer.mergeAll(Cloudflare.providers(), Command.providers()),
+    state: Layer.unwrap(
+      Alchemy.Stage.useSync((stage) => (stage === "local" ? localState() : Cloudflare.state())),
+    ),
+  },
   Effect.gen(function* () {
     const stage = yield* Alchemy.Stage;
     const resolveCredentials = yield* Cloudflare.CloudflareEnvironment;

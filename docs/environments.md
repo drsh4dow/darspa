@@ -4,9 +4,9 @@
 
 `alchemy.run.ts` accepts only `local`, `dev` and `prod` in the Darspa Cloudflare account. Each stage has a separate Worker, D1 database and R2 bucket. Production also owns the retained DNS records in `infra/dns.ts`.
 
-Commands select the isolated `darspa` OAuth profile. Configure it with `vp exec alchemy profile edit --profile darspa --add Cloudflare` if needed. The grant needs D1, R2, Workers, DNS/zone and dynamic-redirect permissions, plus account and membership discovery. Do not substitute an unrelated profile or an API token. Credentials remain in Alchemy's user-level credential store, outside the repository.
+Commands select the isolated `darspa` OAuth profile. Configure it with `vp exec alchemy profile edit --profile darspa --add Cloudflare` if needed. The grant needs D1, R2, Workers, Secrets Store, DNS/zone and dynamic-redirect permissions, plus account and membership discovery. Do not substitute an unrelated profile or an API token. Credentials remain in Alchemy's user-level credential store, outside the repository.
 
-State is local in `.alchemy/`; preserve it and do not deploy simultaneously from separate checkouts. A fresh checkout must explicitly adopt existing resources rather than recreate them. Configure shared state before enabling CI deployment. D1, R2 and DNS resources are retained on stack destruction; destroying a stack does not erase their data.
+The `local` stage keeps its state in `.alchemy/` on each machine. `dev` and `prod` state lives in the account's Cloudflare state store, the `alchemy-state-store` Worker, so every checkout sees the same resources. Do not deploy the same stage from two places at once. D1, R2 and DNS resources are retained on stack destruction; destroying a stack does not erase their data.
 
 ## Local and development
 
