@@ -19,13 +19,12 @@ A merge to `master` deploys https://dev.darspa.cl and then https://darspa.cl. Me
 4. Let him see it. Run `vp run dev` and open http://localhost:5173 on the changed page.
 5. `vp run verify` exits 0.
 6. Commit, push, and `gh pr create --fill`. Give him the pull request URL.
-7. `gh pr checks --watch` until Quality is green. CodeRabbit also reviews the pull request. Fix or answer each of its comments with him, then resolve the thread. When it requests changes, GitHub blocks the merge until it approves, which it does about a minute after its last thread is resolved.
-8. When the pull request touches a path in `.github/CODEOWNERS`, GitHub has asked Daniel to review it and blocks the merge until he approves. Tell him that and stop. Otherwise, with his OK, run `gh pr merge --squash --delete-branch`.
-9. Watch the Deploy run with `gh run watch`, then open the page on https://darspa.cl with him.
+7. With his OK, run `gh pr merge --auto --squash`. GitHub merges it once Quality passes. Run `gh pr checks --watch`, and when Quality fails, fix the branch and push again. The merge waits for a green run.
+8. Watch the Deploy run with `gh run watch`, then open the page on https://darspa.cl with him. CodeRabbit may comment on the pull request without blocking it. Read its comments with him and fix any real problem in a new pull request.
 
-## Daniel reviews these
+## Risky changes
 
-`.github/CODEOWNERS` lists the paths that need Daniel's approval: the database schema and migrations, payments, infrastructure, CI, and dependencies. These go live on merge and are hard to undo.
+Nobody reviews his pull requests, so CI is the only check before a merge goes live. Changes to the database schema and migrations, payments, infrastructure, CI, or dependencies are hard to undo. Before he approves one, tell him in plain words what could break.
 
 The deploy workflow is the only path to dev and prod. Manual deploy and plan commands stay with Daniel.
 
