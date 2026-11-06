@@ -18,6 +18,11 @@ guide doesn't cover, search through the source code in `node_modules/effect/src`
 - Avoid suppressing or removing linting rules.
 - address warnings and errors before considering the work done.
 
+# Maintainer
+
+When `git config user.email` is `drmoretti@darspa.cl`, read
+`docs/agents/maintainer.md` before anything else.
+
 # Agent skills
 
 ## Issue tracker
