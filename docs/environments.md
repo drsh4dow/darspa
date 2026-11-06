@@ -4,9 +4,15 @@
 
 `alchemy.run.ts` accepts only `local`, `dev` and `prod` in the Darspa Cloudflare account. Each stage has a separate Worker, D1 database and R2 bucket. Production also owns the retained DNS records in `infra/dns.ts`.
 
-Commands select the isolated `darspa` OAuth profile. Configure it with `vp exec alchemy profile edit --profile darspa --add Cloudflare` if needed. The grant needs D1, R2, Workers, DNS/zone and dynamic-redirect permissions, plus account and membership discovery. Do not substitute an unrelated profile or an API token. Credentials remain in Alchemy's user-level credential store, outside the repository.
+Commands run by hand select the isolated `darspa` OAuth profile. Configure it with `vp exec alchemy profile edit --profile darspa --add Cloudflare` if needed. The grant needs D1, R2, Workers, Secrets Store, DNS/zone and dynamic-redirect permissions, plus account and membership discovery. Do not substitute an unrelated profile. Credentials remain in Alchemy's user-level credential store, outside the repository.
 
-State is local in `.alchemy/`; preserve it and do not deploy simultaneously from separate checkouts. A fresh checkout must explicitly adopt existing resources rather than recreate them. Configure shared state before enabling CI deployment. D1, R2 and DNS resources are retained on stack destruction; destroying a stack does not erase their data.
+The `local` stage keeps its state in `.alchemy/` on each machine. `dev` and `prod` state lives in the account's Cloudflare state store, the `alchemy-state-store` Worker, so every checkout and CI run sees the same resources. D1, R2 and DNS resources are retained on stack destruction; destroying a stack does not erase their data.
+
+## Deployment
+
+Merging to `master` deploys. Once the Quality workflow passes on `master`, `.github/workflows/deploy.yml` runs `vp run deploy:dev`, then `vp run deploy:prod` if dev succeeded. A push that only changes `docs/`, root Markdown files, `.claude/` or `.agents/` skips Quality and does not deploy. Deploys run one at a time; do not deploy by hand while one is running.
+
+CI signs in to Infisical through GitHub OIDC as a machine identity whose ID is the repository variable `INFISICAL_IDENTITY_ID`, so GitHub stores no secrets. It reads `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` from `prod:/ci`, then each stage's settings from its `/cloudflare` folder.
 
 ## Local and development
 
