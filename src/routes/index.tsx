@@ -120,7 +120,7 @@ function HomePage() {
       </section>
       <section className="mx-auto w-full max-w-384 px-2 py-20 sm:px-4">
         <h2 className="mb-6 text-3xl font-black text-heading lg:mb-12 lg:text-5xl">
-          ¿A Que Nos Dedicamos?
+          ¿A Qué Nos Dedicamos?
         </h2>
         <div className="mb-10 grid gap-10 sm:grid-cols-2 lg:mb-40 lg:gap-24">
           <div>
@@ -128,7 +128,7 @@ function HomePage() {
             <p className="leading-snug">{site.mission}</p>
           </div>
           <div>
-            <h3 className="mb-1 text-2xl font-bold text-primary">¿Quienes Somos?</h3>
+            <h3 className="mb-1 text-2xl font-bold text-primary">¿Quiénes Somos?</h3>
             <p className="leading-snug">{site.about}</p>
           </div>
         </div>
@@ -155,7 +155,7 @@ function HomePage() {
         <div className="mx-auto mt-8 flex max-w-4xl justify-end">
           <Link className="flex items-center gap-1 text-lg font-black text-primary" to="/servicios">
             <SiteIcon name="arrow" className="size-8" />
-            Ver Mas Servicios
+            Ver Más Servicios
           </Link>
         </div>
       </section>
@@ -167,7 +167,7 @@ function HomePage() {
           <p className="mb-8 text-sm font-bold text-muted-foreground">
             Si tiene alguna pregunta que no se responda aqui,{" "}
             <a className="text-accent underline" href={`mailto:${site.email}`}>
-              contactenos
+              contáctenos
             </a>
             .
           </p>

@@ -1,7 +1,7 @@
 ---
 slug: congestion-por-ptu
 legacyId: X_Mb0RAAAIBCqtqu
-title: Congestion por PTU
+title: Congestión por PTU
 publishedAt: 2021-01-04T13:44:54+00:00
 image: /images/content/ef6eb2dbd880d6cb.jpg
 imageAlt: Congestion por PTU

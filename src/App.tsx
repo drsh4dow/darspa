@@ -157,7 +157,7 @@ export function App({ children }: { children: ReactNode }) {
                 </a>
               </div>
               <div>
-                <h2 className="text-base text-accent">Dias de Atención</h2>
+                <h2 className="text-base text-accent">Días de Atención</h2>
                 <p className="text-sm">{site.days}</p>
               </div>
               <div>
@@ -171,10 +171,10 @@ export function App({ children }: { children: ReactNode }) {
                 <p className="text-sm">8:00hrs - 20:00hrs</p>
               </div>
               <Link className="text-base text-accent hover:underline" to="/privacy-policy">
-                Politica de Privacidad
+                Política de Privacidad
               </Link>
               <Link className="text-base text-accent hover:underline" to="/terms-of-service">
-                Terminos &amp; Condiciones
+                Términos &amp; Condiciones
               </Link>
             </div>
             <div className="col-start-2 row-start-3 flex gap-2 text-primary sm:col-start-3 sm:row-start-1 sm:justify-end">
