@@ -6,15 +6,14 @@ import { Database, execute } from "./db/database";
 import { instagramConnection, instagramPosts } from "./db/schema";
 import { requireAdministrator } from "./lib/identity";
 
-const graph = "https://graph.instagram.com";
+// A system user token reads media through the Instagram Graph API on Facebook's host.
+const graph = "https://graph.facebook.com/v23.0";
 
 const postLimit = 9;
 
 const refreshEvery = 8 * 3_600_000;
 
 const retryAfterFailure = 600_000;
-
-const renewWithin = 20 * 86_400_000;
 
 const leaseFor = 120_000;
 
@@ -34,9 +33,17 @@ const media = Schema.Struct({
   ),
 });
 
-const renewal = Schema.Struct({ access_token: Schema.String, expires_in: Schema.Finite });
-
 const providerError = Schema.Struct({ error: Schema.Struct({ code: Schema.Finite }) });
+
+// Identifies the configured credential without keeping the token in D1.
+const fingerprint = (userId: string, token: string) =>
+  Effect.promise(() =>
+    crypto.subtle.digest("SHA-256", new TextEncoder().encode(`${userId}:${token}`)),
+  ).pipe(
+    Effect.map((digest) =>
+      Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join(""),
+    ),
+  );
 
 export class Instagram extends Context.Service<Instagram>()("darspa/Instagram", {
   make: Effect.gen(function* () {
@@ -77,29 +84,17 @@ export class Instagram extends Context.Service<Instagram>()("darspa/Instagram", 
       return connection ?? { status: "not_configured" as const, lastSuccessAt: null };
     });
 
-    // The provider token only travels in the query string of requests this
-    // service makes, and nothing from a provider response reaches a log or a client.
-    const fetchPosts = (token: string) =>
-      HttpClientRequest.get(`${graph}/me/media`).pipe(
+    // The token travels in a header, never in a URL that could reach a log.
+    const fetchPosts = (userId: string, token: string) =>
+      HttpClientRequest.get(`${graph}/${userId}/media`).pipe(
+        HttpClientRequest.setHeader("Authorization", `Bearer ${token}`),
         HttpClientRequest.setUrlParams({
           fields: "id,caption,media_type,media_url,thumbnail_url,permalink,timestamp",
           limit: String(postLimit),
-          access_token: token,
         }),
         http.execute,
         Effect.timeout("10 seconds"),
       );
-
-    const renew = Effect.fn("Instagram.renew")(function* (token: string) {
-      return yield* HttpClientRequest.get(`${graph}/refresh_access_token`).pipe(
-        HttpClientRequest.setUrlParams({ grant_type: "ig_refresh_token", access_token: token }),
-        http.execute,
-        Effect.flatMap(HttpClientResponse.filterStatusOk),
-        Effect.flatMap(HttpClientResponse.schemaBodyJson(renewal)),
-        Effect.timeout("10 seconds"),
-        Effect.option,
-      );
-    });
 
     const store = Effect.fn("Instagram.store")(function* (items: (typeof media.Type)["data"]) {
       const rows = items.flatMap((item) => {
@@ -158,30 +153,10 @@ export class Instagram extends Context.Service<Instagram>()("darspa/Instagram", 
       );
 
     const synchronize = Effect.fn("Instagram.synchronize")(function* (
-      connection: typeof instagramConnection.$inferSelect,
-      now: number,
+      userId: string,
+      token: string,
     ) {
-      let token = connection.token;
-      let expiresAt = connection.expiresAt;
-
-      if (expiresAt - now < renewWithin) {
-        const renewed = yield* renew(token);
-
-        // A failed renewal is not fatal: the current token may still work.
-        if (Option.isSome(renewed)) {
-          token = renewed.value.access_token;
-          expiresAt = now + renewed.value.expires_in * 1000;
-
-          yield* execute(() =>
-            db
-              .update(instagramConnection)
-              .set({ token, expiresAt })
-              .where(eq(instagramConnection.id, 1)),
-          );
-        }
-      }
-
-      const response = yield* fetchPosts(token).pipe(Effect.option);
+      const response = yield* fetchPosts(userId, token).pipe(Effect.option);
 
       if (Option.isNone(response)) return "unavailable";
 
@@ -209,29 +184,35 @@ export class Instagram extends Context.Service<Instagram>()("darspa/Instagram", 
     const refresh = Effect.fn("Instagram.refresh")(function* () {
       const now = yield* Clock.currentTimeMillis;
 
-      // The configured token only seeds D1 (first run, or after a reconnection).
-      const seed = Redacted.value(
+      // Infisical is the only store of the token. It reaches the Worker on deploy.
+      const token = Redacted.value(
         yield* Config.schema(Schema.Redacted(Schema.String), "INSTAGRAM_ACCESS_TOKEN").pipe(
           Config.withDefault(Redacted.make("")),
         ),
       );
 
+      const userId = yield* Config.String("INSTAGRAM_USER_ID").pipe(Config.withDefault(""));
+
+      if (token === "" || userId === "") return;
+      const credential = yield* fingerprint(userId, token);
+
       const [current] = yield* execute(() =>
         db.select().from(instagramConnection).where(eq(instagramConnection.id, 1)).limit(1),
       );
 
-      if (current === undefined && seed !== "") {
+      if (current === undefined) {
         yield* execute(() =>
           db
             .insert(instagramConnection)
-            .values({ id: 1, token: seed, seed, expiresAt: now, status: "ok" })
+            .values({ id: 1, credential, status: "ok" })
             .onConflictDoNothing(),
         );
-      } else if (current?.status === "reconnect_required" && seed !== "" && seed !== current.seed) {
+      } else if (current.credential !== credential) {
+        // A different token or account means the operator reconnected: try at once.
         yield* execute(() =>
           db
             .update(instagramConnection)
-            .set({ token: seed, seed, expiresAt: now, status: "ok", nextRefreshAt: 0, lease: 0 })
+            .set({ credential, status: "ok", nextRefreshAt: 0, lease: 0 })
             .where(eq(instagramConnection.id, 1)),
         );
       }
@@ -258,7 +239,7 @@ export class Instagram extends Context.Service<Instagram>()("darspa/Instagram", 
         return;
       }
 
-      const outcome = yield* synchronize(claimed, now).pipe(
+      const outcome = yield* synchronize(userId, token).pipe(
         Effect.catchCause(() => Effect.succeed("unavailable")),
       );
 

@@ -225,15 +225,11 @@ export const instagramPosts = sqliteTable(
   (table) => [index("instagram_post_recent").on(table.postedAt)],
 );
 
-// One row (id = 1). D1 owns the token after the first seed so a stale deploy
-// cannot overwrite a renewed one.
+// One row (id = 1). The token stays in Infisical; only a fingerprint of the
+// configured credential is kept, to notice when the operator reconnects.
 export const instagramConnection = sqliteTable("instagramConnection", {
   id: integer().primaryKey().notNull(),
-  token: text().notNull(),
-  // The configured token this one descends from. A different configured token
-  // means the operator reconnected; the same one must never undo a failure.
-  seed: text().notNull(),
-  expiresAt: integer().notNull(),
+  credential: text().notNull().default(""),
   status: text({ enum: ["ok", "reconnect_required"] }).notNull(),
   lastSuccessAt: integer(),
   nextRefreshAt: integer().notNull().default(0),

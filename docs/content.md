@@ -57,6 +57,6 @@ Private routes receive the client-only shell and remain `noindex`. Public canoni
 
 ## Instagram follow-up
 
-Instagram authorization and implementation are tracked in [issue #9](https://github.com/drsh4dow/darspa/issues/9), pending the clinic owner's Meta access and fresh authorization. The homepage currently has an honest Instagram-link fallback, not an automatic feed or a completed provider integration. Scheduled refresh, cache retention, token renewal with Infisical coordination, and the protected administrator status contract still need implementation and verification.
+Instagram is tracked in [issue #9](https://github.com/drsh4dow/darspa/issues/9). The Worker caches the latest posts in D1 every 8 hours and serves them at `GET /api/instagram`; the credential is described in `docs/environments.md`. The homepage still shows the Instagram-link fallback until the post grid and the administrator reconnection notice land.
 
 Checkout and anonymous exam-order generation use the same-origin Worker API. Exam-order email failure leaves the generated PDF available to download.

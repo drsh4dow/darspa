@@ -84,6 +84,9 @@ export const Application = Effect.gen(function* () {
       WEBPAY_ENVIRONMENT: Config.String("WEBPAY_ENVIRONMENT"),
       WEBPAY_COMMERCE_CODE: Config.Redacted("WEBPAY_COMMERCE_CODE"),
       WEBPAY_API_KEY: Config.Redacted("WEBPAY_API_KEY"),
+      INSTAGRAM_ACCESS_TOKEN: Config.Redacted("INSTAGRAM_ACCESS_TOKEN"),
+      // Public identifier of the @darspa.cl professional account, not a secret.
+      INSTAGRAM_USER_ID: "17841437580343955",
     },
     crons: ["* * * * *"],
     domain,

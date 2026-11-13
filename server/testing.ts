@@ -78,31 +78,17 @@ type GraphPost = {
   timestamp: string;
 };
 
-// A synthetic Instagram Graph API. It records the tokens it receives so tests can
-// prove which credential the service used, and never calls Meta.
+// A synthetic Instagram Graph API. It records the tokens and paths it receives so
+// tests can prove which credential and account the service used, and never calls Meta.
 function graph() {
   const tokens: string[] = [];
-  let renewals = 0;
+  const paths: string[] = [];
   let posts: GraphPost[] = [];
   let mode: "ok" | "oauth" | "down" = "ok";
-  let renewable = true;
 
   const client = HttpClient.make((request, url) => {
-    const token = url.searchParams.get("access_token") ?? "";
-    tokens.push(token);
-
-    if (url.pathname === "/refresh_access_token") {
-      renewals++;
-
-      return Effect.succeed(
-        HttpClientResponse.fromWeb(
-          request,
-          renewable
-            ? Response.json({ access_token: `${token}+`, expires_in: 5_184_000 })
-            : Response.json({ error: { code: 10 } }, { status: 400 }),
-        ),
-      );
-    }
+    tokens.push(request.headers["authorization"] ?? "");
+    paths.push(`${url.hostname}${url.pathname}`);
 
     const response = Match.value(mode).pipe(
       Match.when("oauth", () =>
@@ -119,17 +105,12 @@ function graph() {
   return {
     client,
     tokens,
-    get renewals() {
-      return renewals;
-    },
+    paths,
     publish: (next: GraphPost[]) => {
       posts = next;
     },
     mode: (next: typeof mode) => {
       mode = next;
-    },
-    renewable: (next: boolean) => {
-      renewable = next;
     },
   };
 }
@@ -224,7 +205,8 @@ export const fixture = Effect.fnUntraced(function* () {
     RESEND_API_KEY: "test-resend-key",
     AUTH_EMAIL_FROM: "Dar Spa <acceso@example.com>",
     WEBPAY_ENVIRONMENT: "integration",
-    INSTAGRAM_ACCESS_TOKEN: "seed-token",
+    INSTAGRAM_ACCESS_TOKEN: "system-token",
+    INSTAGRAM_USER_ID: "17841400000000001",
   };
 
   const platform = Layer.mergeAll(
@@ -234,7 +216,7 @@ export const fixture = Effect.fnUntraced(function* () {
     Layer.succeed(
       HttpClient.HttpClient,
       HttpClient.make((request, url) =>
-        (url.hostname === "graph.instagram.com" ? instagram.client : email.client).execute(request),
+        (url.hostname === "graph.facebook.com" ? instagram.client : email.client).execute(request),
       ),
     ),
     Layer.succeed(
