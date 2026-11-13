@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "../../components/ui/button";
+import { InstagramStatusNotice } from "../instagram/status-notice";
 import { ManualIssuance } from "./manual-issuance";
 import { QrReader } from "./qr-reader";
 import {
@@ -153,6 +154,7 @@ export function OperationsWorkspace() {
           <VoucherList scope={{ kind: "customer", customerId: view.id }} onVoucher={openVoucher} />
         </section>
       )}
+      <InstagramStatusNotice />
     </div>
   );
 }

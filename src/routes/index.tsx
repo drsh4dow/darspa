@@ -5,9 +5,9 @@ import faq from "../content/faq.json";
 import { BookingActions } from "../components/booking-actions";
 import { ServiceRows } from "../components/public-content";
 import { Testimonials } from "../components/testimonials";
-import { SiteIcon, SocialIcon } from "../components/site-icon";
+import { InstagramFeed } from "../features/instagram/feed";
+import { SiteIcon } from "../components/site-icon";
 import { publicMetadata } from "../lib/metadata";
-import { cn } from "../lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -18,41 +18,6 @@ export const Route = createFileRoute("/")({
     ),
   component: HomePage,
 });
-
-function InstagramFallback({ desktop = false }: { desktop?: boolean }) {
-  return (
-    <>
-      <h2
-        className={cn("text-3xl font-black text-heading", desktop && "mb-8 text-2xl text-primary")}
-      >
-        Novedades Instagram
-      </h2>
-      <div
-        className={cn(
-          "grid min-h-60 place-items-center text-primary",
-          desktop && "mb-8 aspect-square min-h-0 w-full flex-1",
-        )}
-      >
-        <a className="underline" href={site.instagram}>
-          Ver publicaciones en Instagram
-        </a>
-      </div>
-      <a
-        className={cn(
-          "inline-flex items-center gap-1 text-xl font-black text-primary",
-          desktop && "self-end text-lg",
-        )}
-        href={site.instagram}
-        target="_blank"
-        rel="noreferrer"
-      >
-        <SiteIcon name="arrow" />
-        <SocialIcon name="instagram" />
-        darspa.cl
-      </a>
-    </>
-  );
-}
 
 function HomePage() {
   return (
@@ -86,7 +51,7 @@ function HomePage() {
             </h2>
           </div>
           <section className="hidden lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:flex lg:flex-col lg:items-center lg:rounded-lg lg:bg-card/80 lg:px-16 lg:py-8">
-            <InstagramFallback desktop />
+            <InstagramFeed desktop />
           </section>
           <div className="col-start-1 justify-self-start lg:self-center lg:rounded-lg lg:bg-secondary/40 lg:p-4">
             <article className="max-w-sm rounded-tl-hero-card rounded-tr-xs rounded-br-hero-card rounded-bl-xs bg-card p-4 text-card-foreground shadow-xs shadow-muted-foreground/40 lg:p-6">
@@ -115,7 +80,7 @@ function HomePage() {
       </section>
       <section className="rounded-bl-section pt-10 pb-16 shadow-md shadow-muted-foreground/40 lg:hidden">
         <div className="mx-auto w-full max-w-384 px-2 sm:px-4">
-          <InstagramFallback />
+          <InstagramFeed />
         </div>
       </section>
       <section className="mx-auto w-full max-w-384 px-2 py-20 sm:px-4">
