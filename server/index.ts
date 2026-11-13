@@ -199,7 +199,14 @@ export default {
         ),
         Effect.map((response) => {
           const headers = new Headers(response.headers);
-          headers.set("Cache-Control", "private, no-store");
+
+          // The public feed holds no private data and absorbs homepage traffic.
+          const sharedFeed =
+            response.ok &&
+            request.method === "GET" &&
+            new URL(request.url).pathname === "/api/instagram";
+
+          headers.set("Cache-Control", sharedFeed ? "public, max-age=300" : "private, no-store");
           headers.set("X-Content-Type-Options", "nosniff");
           headers.set("Referrer-Policy", "no-referrer");
 

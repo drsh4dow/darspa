@@ -1,7 +1,7 @@
 import { NodeCrypto, NodeFileSystem } from "@effect/platform-node";
 import { migrate } from "drizzle-orm/d1/migrator";
 import { eq } from "drizzle-orm";
-import { ConfigProvider, Context, Effect, FileSystem, Layer, Schema } from "effect";
+import { ConfigProvider, Context, Effect, FileSystem, Layer, Match, Schema } from "effect";
 import { TestClock } from "effect/testing";
 import {
   HttpClient,
@@ -21,6 +21,7 @@ import { ApiHandlers } from "./http";
 import { BackgroundJobs, recoverJobs, runJob, type Job } from "./jobs";
 import { Webpay, WebpayError } from "./purchasing/webpay";
 import { receiveWebpayReturn, type webpayReturn } from "./purchasing/returns";
+import { Instagram } from "./instagram";
 import { ApplicationLive } from "./runtime";
 import { DocumentBucket } from "./vouchers/documents";
 
@@ -63,6 +64,72 @@ function mailbox() {
     messages,
     rejectNext: () => {
       rejectNext = true;
+    },
+  };
+}
+
+type GraphPost = {
+  id: string;
+  caption?: string;
+  media_type: "IMAGE" | "VIDEO" | "CAROUSEL_ALBUM";
+  media_url?: string;
+  thumbnail_url?: string;
+  permalink: string;
+  timestamp: string;
+};
+
+// A synthetic Instagram Graph API. It records the tokens it receives so tests can
+// prove which credential the service used, and never calls Meta.
+function graph() {
+  const tokens: string[] = [];
+  let renewals = 0;
+  let posts: GraphPost[] = [];
+  let mode: "ok" | "oauth" | "down" = "ok";
+  let renewable = true;
+
+  const client = HttpClient.make((request, url) => {
+    const token = url.searchParams.get("access_token") ?? "";
+    tokens.push(token);
+
+    if (url.pathname === "/refresh_access_token") {
+      renewals++;
+
+      return Effect.succeed(
+        HttpClientResponse.fromWeb(
+          request,
+          renewable
+            ? Response.json({ access_token: `${token}+`, expires_in: 5_184_000 })
+            : Response.json({ error: { code: 10 } }, { status: 400 }),
+        ),
+      );
+    }
+
+    const response = Match.value(mode).pipe(
+      Match.when("oauth", () =>
+        Response.json({ error: { code: 190, message: "secret-detail" } }, { status: 400 }),
+      ),
+      Match.when("down", () => new Response("unavailable", { status: 503 })),
+      Match.when("ok", () => Response.json({ data: posts })),
+      Match.exhaustive,
+    );
+
+    return Effect.succeed(HttpClientResponse.fromWeb(request, response));
+  });
+
+  return {
+    client,
+    tokens,
+    get renewals() {
+      return renewals;
+    },
+    publish: (next: GraphPost[]) => {
+      posts = next;
+    },
+    mode: (next: typeof mode) => {
+      mode = next;
+    },
+    renewable: (next: boolean) => {
+      renewable = next;
     },
   };
 }
@@ -143,14 +210,33 @@ export const fixture = Effect.fnUntraced(function* () {
   const db = connect(binding);
   yield* Effect.promise(() => migrate(db, { migrationsFolder: "server/db/migrations" }));
   const email = mailbox();
+  const instagram = graph();
   const webpay = gateway();
   const jobs: Job[] = [];
+
+  // Mutable so a test can change deployment settings, such as a reconnected token.
+  const settings = {
+    SITE_URL: "https://darspa.test",
+    APP_ENVIRONMENT: "production",
+    BETTER_AUTH_SECRET: "test-only-secret-not-used-outside-tests",
+    AUTH_GOOGLE_ID: "test-google-client",
+    AUTH_GOOGLE_SECRET: "test-google-secret",
+    RESEND_API_KEY: "test-resend-key",
+    AUTH_EMAIL_FROM: "Dar Spa <acceso@example.com>",
+    WEBPAY_ENVIRONMENT: "integration",
+    INSTAGRAM_ACCESS_TOKEN: "seed-token",
+  };
 
   const platform = Layer.mergeAll(
     Layer.succeed(Database, db),
     Layer.succeed(DocumentBucket, bucket),
     Layer.succeed(Webpay, webpay.provider),
-    Layer.succeed(HttpClient.HttpClient, email.client),
+    Layer.succeed(
+      HttpClient.HttpClient,
+      HttpClient.make((request, url) =>
+        (url.hostname === "graph.instagram.com" ? instagram.client : email.client).execute(request),
+      ),
+    ),
     Layer.succeed(
       BackgroundJobs,
       BackgroundJobs.of({
@@ -179,18 +265,7 @@ export const fixture = Effect.fnUntraced(function* () {
     ).pipe(Layer.provide(NodeFileSystem.layer)),
     NodeCrypto.layer,
     HttpServer.layerServices,
-    ConfigProvider.layer(
-      ConfigProvider.fromUnknown({
-        SITE_URL: "https://darspa.test",
-        APP_ENVIRONMENT: "production",
-        BETTER_AUTH_SECRET: "test-only-secret-not-used-outside-tests",
-        AUTH_GOOGLE_ID: "test-google-client",
-        AUTH_GOOGLE_SECRET: "test-google-secret",
-        RESEND_API_KEY: "test-resend-key",
-        AUTH_EMAIL_FROM: "Dar Spa <acceso@example.com>",
-        WEBPAY_ENVIRONMENT: "integration",
-      }),
-    ),
+    ConfigProvider.layer(ConfigProvider.fromUnknown(settings)),
   );
 
   const services = ApplicationLive.pipe(Layer.provideMerge(platform));
@@ -273,6 +348,11 @@ export const fixture = Effect.fnUntraced(function* () {
     db,
     auth,
     email,
+    instagram,
+    settings,
+    refreshInstagram: Instagram.use((service) => service.refresh()).pipe(
+      Effect.provideContext(context),
+    ),
     webpay,
     bucket,
     jobs,

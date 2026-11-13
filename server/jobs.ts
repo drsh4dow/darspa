@@ -1,4 +1,5 @@
 import { Context, Effect, Match } from "effect";
+import { Instagram } from "./instagram";
 import { PaymentProcessing } from "./purchasing/processing";
 import { VoucherDeliveries } from "./vouchers/deliveries";
 
@@ -24,6 +25,7 @@ export const runJob = Effect.fn("runJob")((job: Job) =>
 export const recoverJobs = Effect.gen(function* () {
   const payments = yield* PaymentProcessing;
   const deliveries = yield* VoucherDeliveries;
+  const instagram = yield* Instagram;
   const jobs: Job[] = [];
 
   for (const payment of yield* payments.due()) jobs.push({ kind: "payment", id: payment.id });
@@ -39,4 +41,13 @@ export const recoverJobs = Effect.gen(function* () {
       ),
     { concurrency: 2, discard: true },
   );
+
+  // The feed is cached in D1 and throttled there; it never blocks the jobs above.
+  yield* instagram
+    .refresh()
+    .pipe(
+      Effect.catchCause(() =>
+        Effect.logError("Instagram refresh failed; the cached feed stays available."),
+      ),
+    );
 });

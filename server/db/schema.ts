@@ -211,3 +211,31 @@ export const roleChanges = sqliteTable("roleChanges", {
   reason: text().notNull(),
   at: integer().notNull(),
 });
+
+export const instagramPosts = sqliteTable(
+  "instagramPosts",
+  {
+    id: text().primaryKey().notNull(),
+    caption: text().notNull(),
+    mediaType: text({ enum: ["IMAGE", "VIDEO", "CAROUSEL_ALBUM"] }).notNull(),
+    thumbnailUrl: text().notNull(),
+    permalink: text().notNull(),
+    postedAt: integer().notNull(),
+  },
+  (table) => [index("instagram_post_recent").on(table.postedAt)],
+);
+
+// One row (id = 1). D1 owns the token after the first seed so a stale deploy
+// cannot overwrite a renewed one.
+export const instagramConnection = sqliteTable("instagramConnection", {
+  id: integer().primaryKey().notNull(),
+  token: text().notNull(),
+  // The configured token this one descends from. A different configured token
+  // means the operator reconnected; the same one must never undo a failure.
+  seed: text().notNull(),
+  expiresAt: integer().notNull(),
+  status: text({ enum: ["ok", "reconnect_required"] }).notNull(),
+  lastSuccessAt: integer(),
+  nextRefreshAt: integer().notNull().default(0),
+  lease: integer().notNull().default(0),
+});
