@@ -14,8 +14,10 @@ const post = (n: number, media_type: "IMAGE" | "VIDEO" = "IMAGE") => ({
   timestamp: `2026-11-0${n}T12:00:00+0000`,
 });
 
+const eightHours = 28_800_001;
+
 test(
-  "the feed is cached from the provider and survives transient failures",
+  "the feed is read from the configured account and survives transient failures",
   () =>
     Effect.runPromise(
       Effect.scoped(
@@ -27,6 +29,12 @@ test(
 
           backend.instagram.publish([post(1), post(2, "VIDEO")]);
           yield* backend.refreshInstagram;
+
+          // Facebook's Graph host, the configured account, and the token in a header.
+          expect(backend.instagram.paths).toEqual([
+            "graph.facebook.com/v23.0/17841400000000001/media",
+          ]);
+          expect(backend.instagram.tokens).toEqual(["Bearer system-token"]);
 
           const feed = yield* guest.public.instagram();
           expect(feed.map((entry) => entry.id)).toEqual(["post-2", "post-1"]);
@@ -42,7 +50,7 @@ test(
           ]);
 
           backend.instagram.mode("down");
-          yield* backend.advance(28_800_001);
+          yield* backend.advance(eightHours);
           yield* backend.refreshInstagram;
           expect(yield* guest.public.instagram()).toHaveLength(2);
 
@@ -58,7 +66,7 @@ test(
 );
 
 test(
-  "refreshes are throttled and the renewed token replaces the seed in D1",
+  "refreshes run once per eight hours",
   () =>
     Effect.runPromise(
       Effect.scoped(
@@ -68,14 +76,15 @@ test(
 
           yield* backend.refreshInstagram;
           yield* backend.refreshInstagram;
-          expect(backend.instagram.tokens).toEqual(["seed-token", "seed-token+"]);
-          expect(backend.instagram.renewals).toBe(1);
+          expect(backend.instagram.tokens).toHaveLength(1);
 
-          yield* backend.advance(28_800_001);
+          yield* backend.advance(28_000_000);
           yield* backend.refreshInstagram;
-          // The renewed token is now authoritative; the 60-day expiry is far away.
-          expect(backend.instagram.tokens.at(-1)).toBe("seed-token+");
-          expect(backend.instagram.renewals).toBe(1);
+          expect(backend.instagram.tokens).toHaveLength(1);
+
+          yield* backend.advance(1_000_000);
+          yield* backend.refreshInstagram;
+          expect(backend.instagram.tokens).toHaveLength(2);
         }),
       ),
     ),
@@ -83,18 +92,22 @@ test(
 );
 
 test(
-  "a failed renewal does not block the feed",
+  "nothing is requested until a token and an account are configured",
   () =>
     Effect.runPromise(
       Effect.scoped(
         Effect.gen(function* () {
           const backend = yield* fixture();
-          const guest = yield* backend.client();
-          backend.instagram.renewable(false);
-          backend.instagram.publish([post(1)]);
+          const admin = yield* backend.signIn("admin@example.com", "administrator");
 
+          backend.settings.INSTAGRAM_ACCESS_TOKEN = "";
           yield* backend.refreshInstagram;
-          expect(yield* guest.public.instagram()).toHaveLength(1);
+
+          expect(backend.instagram.tokens).toHaveLength(0);
+          expect(yield* admin.api.operations.instagramStatus()).toEqual({
+            status: "not_configured",
+            lastSuccessAt: null,
+          });
         }),
       ),
     ),
@@ -112,24 +125,19 @@ test(
           const admin = yield* backend.signIn("admin@example.com", "administrator");
           const customer = yield* backend.signIn("customer@example.com");
 
-          expect(yield* admin.api.operations.instagramStatus()).toEqual({
-            status: "not_configured",
-            lastSuccessAt: null,
-          });
-
           backend.instagram.publish([post(1)]);
           yield* backend.refreshInstagram;
           expect((yield* admin.api.operations.instagramStatus()).status).toBe("ok");
 
           backend.instagram.mode("oauth");
-          yield* backend.advance(28_800_001);
+          yield* backend.advance(eightHours);
           yield* backend.refreshInstagram;
 
           expect((yield* admin.api.operations.instagramStatus()).status).toBe("reconnect_required");
           expect(yield* guest.public.instagram()).toHaveLength(1);
 
           const calls = backend.instagram.tokens.length;
-          yield* backend.advance(28_800_001);
+          yield* backend.advance(eightHours);
           yield* backend.refreshInstagram;
           expect(backend.instagram.tokens).toHaveLength(calls);
 
@@ -146,7 +154,7 @@ test(
 );
 
 test(
-  "reconnecting with a new token resumes the feed",
+  "deploying a new token resumes the feed at once",
   () =>
     Effect.runPromise(
       Effect.scoped(
@@ -159,11 +167,11 @@ test(
           yield* backend.refreshInstagram;
 
           backend.instagram.mode("oauth");
-          yield* backend.advance(28_800_001);
+          yield* backend.advance(eightHours);
           yield* backend.refreshInstagram;
           expect((yield* admin.api.operations.instagramStatus()).status).toBe("reconnect_required");
 
-          // The unchanged configured token must not undo the failure.
+          // The same configured token must not undo the failure.
           backend.instagram.mode("ok");
           yield* backend.refreshInstagram;
           expect((yield* admin.api.operations.instagramStatus()).status).toBe("reconnect_required");
@@ -173,7 +181,7 @@ test(
           yield* backend.refreshInstagram;
 
           expect((yield* admin.api.operations.instagramStatus()).status).toBe("ok");
-          expect(backend.instagram.tokens).toContain("reconnected-token");
+          expect(backend.instagram.tokens.at(-1)).toBe("Bearer reconnected-token");
           expect((yield* guest.public.instagram()).map((entry) => entry.id)).toEqual(["post-4"]);
         }),
       ),

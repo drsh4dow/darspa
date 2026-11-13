@@ -36,6 +36,7 @@ Each stage's `/cloudflare` folder supplies:
 - `RESEND_API_KEY` and `AUTH_EMAIL_FROM`: the verified sending domain and sender.
 - `WEBPAY_ENVIRONMENT`, `WEBPAY_COMMERCE_CODE` and `WEBPAY_API_KEY`: the payment provider configuration.
 - `DEVELOPMENT_EMAIL_RECIPIENTS`: the local/development recipient allowlist.
+- `INSTAGRAM_ACCESS_TOKEN`: a Meta system user access token that never expires, with `instagram_basic`, `pages_read_engagement` and `pages_show_list`. The Worker reads the latest posts from `graph.facebook.com`. The token is the only credential and Infisical is its only store; nothing renews it. When Meta invalidates it, administrators see "reconnection required"; generate a new token for the system user, update it in Infisical and redeploy the stage. The Worker notices the change and retries at once.
 
 The stack supplies `SITE_URL` and `APP_ENVIRONMENT`. Google callbacks are `<SITE_URL>/api/auth/callback/google`; development and `http://localhost:5173` are registered. Webpay returns to `<SITE_URL>/api/webpay/return` through GET or POST. A return is not proof of payment; the backend checks the provider and saved purchase terms before issuing vouchers.
 
