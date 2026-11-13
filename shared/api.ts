@@ -37,6 +37,20 @@ const catalogOffering = Schema.Struct({
   html: Schema.String,
 });
 
+export const instagramPost = Schema.Struct({
+  id: Schema.String,
+  caption: Schema.String,
+  mediaType: Schema.Literals(["IMAGE", "VIDEO", "CAROUSEL_ALBUM"]),
+  thumbnailUrl: Schema.String,
+  permalink: Schema.String,
+  postedAt: Schema.Int,
+});
+
+const instagramStatus = Schema.Struct({
+  status: Schema.Literals(["not_configured", "ok", "reconnect_required"]),
+  lastSuccessAt: Schema.NullOr(Schema.Int),
+});
+
 const errors = {
   error: [
     Contract.BusinessError,
@@ -49,6 +63,7 @@ const errors = {
 
 const publicApi = HttpApiGroup.make("public").add(
   HttpApiEndpoint.get("catalog", "/catalog", { success: Schema.Array(catalogOffering) }),
+  HttpApiEndpoint.get("instagram", "/instagram", { success: Schema.Array(instagramPost) }),
   HttpApiEndpoint.post("examOrder", "/exam-orders", {
     payload: examOrder,
     success: Schema.Struct({ pdf: Schema.Uint8ArrayFromBase64, email: emailOutcome }),
@@ -118,6 +133,10 @@ const vouchersApi = HttpApiGroup.make("vouchers")
 
 const operationsApi = HttpApiGroup.make("operations")
   .add(
+    HttpApiEndpoint.get("instagramStatus", "/operations/instagram", {
+      ...errors,
+      success: instagramStatus,
+    }),
     HttpApiEndpoint.post("customers", "/operations/customers", {
       ...errors,
       payload: Schema.Struct({

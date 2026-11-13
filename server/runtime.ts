@@ -7,6 +7,7 @@ import { Database } from "./db/database";
 import { DocumentAssets } from "./documents/assets";
 import { ExamLimitsLive } from "./examOrders/limits";
 import { ExamOrders } from "./examOrders/workflow";
+import { Instagram } from "./instagram";
 import { Operations } from "./operations";
 import { PaymentProcessing } from "./purchasing/processing";
 import { Purchases } from "./purchasing/purchases";
@@ -30,6 +31,7 @@ const documents = Layer.mergeAll(VoucherDocuments.layer, ExamOrders.layer).pipe(
 export const ApplicationLive = Layer.mergeAll(
   PaymentProcessing.layer,
   VoucherDeliveries.layer,
+  Instagram.layer,
 ).pipe(Layer.provideMerge(documents));
 
 export function applicationLayer(env: ApplicationEnv) {

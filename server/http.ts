@@ -15,6 +15,7 @@ import { offerings } from "./catalog";
 import { Database, execute } from "./db/database";
 import { purchases as purchaseTable } from "./db/schema";
 import { ExamOrders } from "./examOrders/workflow";
+import { Instagram } from "./instagram";
 import { BackgroundJobs } from "./jobs";
 import { Operations } from "./operations";
 import { Purchases } from "./purchasing/purchases";
@@ -36,9 +37,11 @@ const PublicHandlers = HttpApiBuilder.group(
   "public",
   Effect.fnUntraced(function* (handlers) {
     const exams = yield* ExamOrders;
+    const instagram = yield* Instagram;
 
     return handlers.handleAll({
       catalog: () => Effect.succeed(offerings),
+      instagram: () => instagram.posts(),
       examOrder: ({ payload }) =>
         exams.generate(payload).pipe(
           Effect.catchTags({
@@ -165,8 +168,12 @@ const OperationHandlers = HttpApiBuilder.group(
   Effect.fnUntraced(function* (handlers) {
     const operations = yield* Operations;
     const vouchers = yield* Vouchers;
+    const instagram = yield* Instagram;
 
     return handlers.handleAll({
+      instagramStatus: Effect.fnUntraced(function* () {
+        return yield* instagram.status(yield* CurrentUser);
+      }),
       customers: Effect.fnUntraced(function* ({ payload }) {
         return yield* operations.customers(payload.email, payload.cursor, yield* CurrentUser);
       }),
