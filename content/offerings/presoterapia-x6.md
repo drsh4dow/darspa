@@ -3,7 +3,7 @@ id: presoterapia-x6
 legacyId: Y5OGVBAAAKkY5lLY
 name: Presoterapia x6
 priceClp: 66000
-available: true
+available: false
 image: /images/content/228e182452de4839.png
 imageAlt: Presoterapia x6
 ---

@@ -3,7 +3,7 @@ id: vacuum-x-12
 legacyId: Y5OYShAAAB0A5qKH
 name: Vacuum x 12
 priceClp: 126000
-available: true
+available: false
 image: /images/content/47ef252f99082a41.png
 imageAlt: Vacuum x 12
 ---

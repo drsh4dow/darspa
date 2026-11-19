@@ -3,7 +3,7 @@ id: microneedling-facial
 legacyId: Y5OcAhAAACEA5rMK
 name: Microneedling facial
 priceClp: 46200
-available: true
+available: false
 image: /images/content/b7d6e7de2a8e952e.png
 imageAlt: Microneedling facial
 ---

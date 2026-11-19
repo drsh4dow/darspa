@@ -3,7 +3,7 @@ id: vacuum-x-8
 legacyId: Y5OX4xAAAKkY5qC6
 name: Vacuum x 8
 priceClp: 88000
-available: true
+available: false
 image: /images/content/47ef252f99082a41.png
 imageAlt: Vacuum x 8
 ---

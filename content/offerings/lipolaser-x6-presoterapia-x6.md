@@ -4,7 +4,7 @@ legacyId: Y5OTwxAAAB0A5o5z
 name: Lipolaser x6 + Presoterapia x6
 priceClp: 126000
 displayOrder: 4
-available: true
+available: false
 image: /images/content/5b0daed3ff27c19b.png
 imageAlt: Lipolaser x6 + Presoterapia x6
 ---

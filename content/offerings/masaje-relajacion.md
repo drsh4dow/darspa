@@ -2,7 +2,7 @@
 id: masaje-relajacion
 legacyId: Y5OdPBAAAB0A5rkI
 name: Masaje relajación
-priceClp: 25000
+priceClp: 40000
 available: true
 image: /images/content/5187e6387ae4b851.png
 imageAlt: Masaje relajación

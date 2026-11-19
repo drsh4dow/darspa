@@ -4,7 +4,7 @@ legacyId: Y5OXiRAAAKkY5p8r
 name: Ondas de choque x 8
 priceClp: 88000
 displayOrder: 1
-available: true
+available: false
 image: /images/content/5afd1317931d82a7.png
 imageAlt: Ondas de choque x 8
 ---

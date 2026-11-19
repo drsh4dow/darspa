@@ -4,7 +4,7 @@ legacyId: Y5OUtRAAAB0A5pKo
 name: Hifem x 12
 priceClp: 126000
 displayOrder: 2
-available: true
+available: false
 image: /images/content/8f8e825193db60e2.png
 imageAlt: Hifem x 12
 ---
