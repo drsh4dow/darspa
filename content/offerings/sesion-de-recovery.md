@@ -3,7 +3,7 @@ id: sesion-de-recovery
 legacyId: Y5On0RAAACIA5ufj
 name: Sesión de Recovery
 priceClp: 20000
-available: true
+available: false
 image: /images/content/2cd631638caa2cbf.png
 imageAlt: Sesión de Recovery
 ---

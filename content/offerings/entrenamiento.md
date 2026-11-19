@@ -8,4 +8,4 @@ image: /images/content/f1b023058148d8be.png
 imageAlt: Entrenamiento personalizado
 ---
 
-Entrenamiento personalizado para 1 persona - 2 sesiones por semana (plan mensual)
+Entrenamiento personalizado para 1 persona - 2 sesiones por semana (plan mensual). Plan desde $60.000.

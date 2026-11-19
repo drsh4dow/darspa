@@ -2,7 +2,7 @@
 id: masaje-descontracturante
 legacyId: Y5OdDxAAACEA5rg_
 name: Masaje descontracturante
-priceClp: 30000
+priceClp: 40000
 available: true
 image: /images/content/cdbda34ee9666d79.png
 imageAlt: Masaje descontracturante

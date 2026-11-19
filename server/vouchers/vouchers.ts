@@ -8,7 +8,7 @@ import {
   type redemption,
   type reversal,
 } from "../../shared/contracts";
-import { requirePublishedOffering } from "../catalog";
+import { requirePublishedOffering, termsOf } from "../catalog";
 import { Database, execute } from "../db/database";
 import { purchases, voucherEvents, vouchers } from "../db/schema";
 import { requireAdministrator } from "../lib/identity";
@@ -117,13 +117,7 @@ export class Vouchers extends Context.Service<Vouchers>()("darspa/Vouchers", {
               requestId: input.requestId,
               issuedAt: DateTime.toEpochMillis(now),
               expiresAt: expirationFrom(now),
-              terms: {
-                offeringId: offering.id,
-                legacyId: offering.legacyId,
-                name: offering.name,
-                description: offering.description,
-                priceClp: offering.priceClp,
-              },
+              terms: termsOf(offering),
             })
             .onConflictDoNothing({ target: [vouchers.issuedBy, vouchers.requestId] }),
         );

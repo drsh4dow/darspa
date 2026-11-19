@@ -4,6 +4,7 @@ import { HttpRouter, HttpServer, HttpServerResponse } from "effect/unstable/http
 import type { ApplicationEnv } from "../infra/application";
 import publicPaths from "../content/generated/paths.json";
 import { Auth } from "./auth";
+import { offerings } from "./catalog";
 import { ApiRoutes } from "./http";
 import { BackgroundJobs, recoverJobs, runJob, type Job } from "./jobs";
 import { receiveWebpayReturn, webpayReturn } from "./purchasing/returns";
@@ -61,7 +62,11 @@ const handleRequest = Effect.fn("handleRequest")(function* (
   }
 
   if (isReadRequest && url.pathname === "/sitemap.xml") {
+    // Withdrawn offerings keep their prerendered page but leave the sitemap.
+    const onSale = new Set(offerings.map((offering) => `/tienda/${offering.id}`));
+
     const entries = publicPaths
+      .filter((path) => !path.startsWith("/tienda/") || onSale.has(path))
       .map((path) => `<url><loc>https://darspa.cl${path === "/" ? "" : path}</loc></url>`)
       .join("");
 

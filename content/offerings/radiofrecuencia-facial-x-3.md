@@ -3,7 +3,7 @@ id: radiofrecuencia-facial-x-3
 legacyId: Y5OcahAAAB0A5rTZ
 name: Radiofrecuencia facial x 3
 priceClp: 34200
-available: true
+available: false
 image: /images/content/56e2e8d96d5824dd.png
 imageAlt: Radiofrecuencia facial x 3
 ---

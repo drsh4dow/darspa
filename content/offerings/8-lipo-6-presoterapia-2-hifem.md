@@ -3,7 +3,7 @@ id: 8-lipo-6-presoterapia-2-hifem
 legacyId: ZFJ7aRAAACIAOiTG
 name: 8 lipo + 6 presoterapia  + 2 hifem
 priceClp: 168000
-available: true
+available: false
 image: /images/content/d113267df92f213d.png
 imageAlt: 8 lipo + 6 presoterapia  + 2 hifem
 ---

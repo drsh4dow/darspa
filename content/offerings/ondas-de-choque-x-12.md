@@ -4,7 +4,7 @@ legacyId: Y5OYERAAAKkY5qGJ
 name: Ondas de choque x 12
 priceClp: 126000
 displayOrder: 3
-available: true
+available: false
 image: /images/content/5afd1317931d82a7.png
 imageAlt: Ondas de choque x 12
 ---

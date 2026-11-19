@@ -3,7 +3,7 @@ id: dermoabrasion
 legacyId: Y5OcphAAACEA5rXv
 name: Dermoabrasión
 priceClp: 25000
-available: true
+available: false
 image: /images/content/8ad96295e805defd.png
 imageAlt: Dermoabrasión
 ---

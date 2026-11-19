@@ -10,7 +10,7 @@ import {
 } from "../../shared/contracts";
 import { Database, execute } from "../db/database";
 import { purchases } from "../db/schema";
-import { requirePublishedOffering } from "../catalog";
+import { requirePublishedOffering, termsOf } from "../catalog";
 import { beforeCursor, pageOf, pageSize } from "../lib/pagination";
 import { webpayEnvironment } from "./webpay";
 
@@ -93,13 +93,7 @@ export class Purchases extends Context.Service<Purchases>()("darspa/Purchases", 
         }
 
         lines.push({
-          terms: {
-            offeringId: offering.id,
-            legacyId: offering.legacyId,
-            name: offering.name,
-            description: offering.description,
-            priceClp: offering.priceClp,
-          },
+          terms: termsOf(offering),
           quantity: item.quantity,
         });
         totalClp += offering.priceClp * item.quantity;
