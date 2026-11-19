@@ -162,6 +162,6 @@ Te recomendamos revisar esta página periódicamente. Los cambios entran en vigo
 
 Si tienes preguntas sobre esta Política de privacidad, puedes contactarnos:
 
-- Por correo electrónico: [contacto@darspa.cl](mailto:contacto@darspa.cl).
+- Por correo electrónico: [drmoretti@darspa.cl](mailto:drmoretti@darspa.cl) o [consultadrmoretti@gmail.com](mailto:consultadrmoretti@gmail.com).
 - Visitando nuestro sitio web: https://darspa.cl.
-- Por teléfono: [+56 9 7227 5330](tel:+56972275330).
+- Por WhatsApp, por mensaje: recepción al [+56 9 7227 5490](https://wa.me/56972275490); consultas clínicas y generales al [+56 9 7227 5330](https://wa.me/56972275330).

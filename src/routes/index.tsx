@@ -12,8 +12,8 @@ import { publicMetadata } from "../lib/metadata";
 export const Route = createFileRoute("/")({
   head: () =>
     publicMetadata(
-      "Centro Nutricional Avanzado",
-      "Dar Spa en Castro, Chiloé: nutrición avanzada, modelado corporal, servicios y exámenes. Conoce a nuestro equipo y agenda en Doctoralia.",
+      "Clínica DarSpa - Centro Nutricional Avanzado",
+      "Clínica DarSpa en Castro, Chiloé: nutrición avanzada, modelado corporal, servicios y exámenes. Conoce a nuestro equipo y agenda tu consulta médica en Doctoralia o el resto de los servicios por WhatsApp.",
       "/",
     ),
   component: HomePage,
@@ -130,10 +130,10 @@ function HomePage() {
             Preguntas Frecuentes
           </h2>
           <p className="mb-8 text-sm font-bold text-muted-foreground">
-            Si tiene alguna pregunta que no se responda aqui,{" "}
-            <a className="text-accent underline" href={`mailto:${site.email}`}>
-              contáctenos
-            </a>
+            Si tienes alguna pregunta que no se responda aquí,{" "}
+            <Link className="text-accent underline" to="/contacto">
+              contáctanos
+            </Link>
             .
           </p>
           <div className="grid max-w-2xl gap-8 lg:max-w-none lg:grid-cols-3">

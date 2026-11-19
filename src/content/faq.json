@@ -1,15 +1,15 @@
 [
   {
     "question": "¿Cómo puedo saber los precios de las diferentes terapias?",
-    "answer": "Los precios se determinan directamente en nuestra clínica después de una evaluación que determina la mejor terapia y el número de sesiones requeridos para cada situación en particular. Esta evaluación tiene un valor de $5000 CLP."
+    "answer": "Los precios de los tratamientos se informan después de una evaluación que define la técnica más adecuada y el número de sesiones. La evaluación es gratuita solo para modelado corporal. Si tu consulta tiene que ver con obesidad o sobrepeso, corresponde una consulta médica de $25.000, de pago particular. La atención médica no tiene cobertura del Fondo Nacional de Salud (Fonasa); el único convenio de bonos para atención médica es con la Institución de Salud Previsional (Isapre) Colmena."
   },
   {
     "question": "¿Cómo se saca hora?",
-    "answer": "La toma de hora se puede realizar por vía presencial, directamente en calle Sotomayor 576, con la secretaria en horario hábil; vía WhatsApp al número +56 9 7227 5330, también en horario hábil y solo vía mensaje; directamente en nuestra página web www.darspa.cl lo cual puede ser en cualquier momento o día."
+    "answer": "Para la consulta médica con el Dr. Daniel Moretti Castillo puedes usar Doctoralia, desde el botón \"Agendar Hora\", o escribir por WhatsApp a recepción al +56 9 7227 5490, de lunes a viernes de 9:00 a 18:00, solo por mensaje. Los demás servicios (kinesiología, nutrición, exámenes y tratamientos) se agendan con recepción, por el mismo WhatsApp o en persona en E. Sotomayor 576, Castro. El WhatsApp +56 9 7227 5330 es del doctor y está reservado a consultas clínicas y generales, no a precios ni a agenda."
   },
   {
     "question": "¿Qué medios de pago se aceptan?",
-    "answer": "Se aceptan efectivo, débito, transferencia, cheques, y tarjetas de crédito, ya sea en pago único o en cuotas."
+    "answer": "Aceptamos efectivo, débito y transferencia."
   },
   {
     "question": "¿Se utilizan medicamentos para el control del peso?",
@@ -25,7 +25,7 @@
   },
   {
     "question": "¿Atienden con fonasa o isapres?",
-    "answer": "Algunas de nuestras prestaciones como kinesiología y nutrición permiten el uso de fonasa e isapre colmena. Adicionalmente, otras de las prestaciones como la consulta médica son solamente particular, bonos de isapre colmena, o reembolso para otras isapres. Las terapias de modelado corporal y otras por considerarse \"cosméticas\" solo se pueden cancelar de forma particular por los medios de pago descritos anteriormente."
+    "answer": "La kinesiología de rehabilitación acepta pago particular, bono del Fondo Nacional de Salud (Fonasa) y bono de la Institución de Salud Previsional (Isapre) Colmena. La nutrición es solo particular. La atención médica es solo particular, con convenio de bonos únicamente con Isapre Colmena; otras Isapres pueden evaluar reembolso según tu plan, pero eso no es un convenio de la clínica. Las terapias de modelado corporal se pagan de forma particular, con efectivo, débito o transferencia."
   },
   {
     "question": "¿Hay algún límite de edad?",
@@ -33,6 +33,6 @@
   },
   {
     "question": "¿Cuáles son las vías de contacto?",
-    "answer": "Puedes contactar vía correo electrónico, vía WhatsApp, o consultando directamente en nuestras instalaciones."
+    "answer": "Lo más rápido es WhatsApp, por mensaje: recepción, agenda y precios al +56 9 7227 5490 (lunes a viernes de 9:00 a 18:00); consultas clínicas y generales al +56 9 7227 5330 (Dr. Moretti, sin horario fijo). Los correos formales son drmoretti@darspa.cl y consultadrmoretti@gmail.com. También puedes visitarnos en E. Sotomayor 576, Castro."
   }
 ]

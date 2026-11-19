@@ -8,7 +8,7 @@ export const Route = createFileRoute("/contacto")({
   head: () =>
     publicMetadata(
       "Contacto",
-      "Visítanos en E. Sotomayor 576, Castro. Contacta a Dar Spa por WhatsApp o correo y agenda tu hora en Doctoralia.",
+      "Visítanos en E. Sotomayor 576, Castro. Contacta a Clínica DarSpa por WhatsApp o correo y agenda tu consulta médica en Doctoralia.",
       "/contacto",
     ),
   component: ContactPage,
@@ -25,8 +25,7 @@ function ContactPage() {
             <p className="leading-snug">{site.address}</p>
             <p className="leading-snug">Castro, Chiloé, Chile</p>
           </address>
-          <p className="mt-5 leading-snug font-bold">{site.days}</p>
-          <p className="leading-snug">{site.hours}</p>
+          <p className="mt-5 leading-snug">{site.schedule}</p>
           <a
             className="mt-5 inline-block font-extrabold text-primary underline"
             href="https://www.google.com/maps/search/?api=1&query=Sotomayor+576+Castro+Chile"
@@ -38,22 +37,34 @@ function ContactPage() {
           <h2 className="mb-1 text-2xl font-bold text-primary">Contacto directo</h2>
           <p className="leading-snug">
             <a className="font-extrabold text-primary underline" href={site.whatsapp}>
-              WhatsApp {site.phone} ↗
+              WhatsApp de recepción {site.phone} ↗
             </a>
+            <span className="block text-sm">
+              Agenda y precios, por mensaje, de {site.receptionHours}.
+            </span>
           </p>
           <p className="mt-3 leading-snug">
-            <a className="font-extrabold text-primary underline" href={`mailto:${site.email}`}>
-              {site.email}
+            <a className="font-extrabold text-primary underline" href={site.doctorWhatsapp}>
+              WhatsApp del Dr. Moretti {site.doctorPhone} ↗
             </a>
+            <span className="block text-sm">
+              Consultas clínicas y generales, por mensaje. No se usa para precios ni para agendar.
+            </span>
           </p>
-          <p className="mt-3 leading-snug">
-            <a href={site.telephone} className="font-extrabold text-primary underline">
-              Llamar al {site.phone}
-            </a>
-          </p>
+          {site.emails.map((email) => (
+            <p className="mt-3 leading-snug" key={email}>
+              <a className="font-extrabold text-primary underline" href={`mailto:${email}`}>
+                {email}
+              </a>
+            </p>
+          ))}
           <Button asChild className="mt-7">
             <a href={site.booking}>Agendar hora en Doctoralia ↗</a>
           </Button>
+          <p className="mt-2 text-sm">
+            Doctoralia es para la consulta médica del Dr. Moretti. Los demás servicios se agendan
+            por el WhatsApp de recepción.
+          </p>
         </section>
       </div>
       <section className="mt-14 border-t border-border pt-8">

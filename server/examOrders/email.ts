@@ -1,3 +1,4 @@
+import { contact } from "../../shared/contact";
 import { escapeHtml } from "../lib/html";
 
 export const examOrderFilename = "orden-examen.pdf";
@@ -14,7 +15,7 @@ Encontrarás la orden de estudio metabólico y la orden de laboratorio en el arc
 
 Imprime ambas páginas en tamaño carta. Las indicaciones de preparación están en cada orden.
 
-¿Necesitas ayuda? Escríbenos a contacto@darspa.cl.
+¿Necesitas ayuda? Escríbenos a ${contact.doctorEmail}.
 
 Dar Spa
 E. Sotomayor 576 · Castro, Chiloé`,
@@ -64,7 +65,7 @@ E. Sotomayor 576 · Castro, Chiloé`,
 </td></tr>
 <tr><td class="content" style="padding:22px 40px;background:#f5f9f8">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-  <tr><td style="font-size:12px;line-height:21px;color:#526563"><strong style="color:#134e4a">Dar Spa</strong><br>E. Sotomayor 576 · Castro, Chiloé</td><td align="right" valign="top" style="padding-left:12px;font-size:12px;line-height:21px"><a href="mailto:contacto@darspa.cl" style="color:#006f68;text-decoration:underline">¿Necesitas ayuda?</a></td></tr>
+  <tr><td style="font-size:12px;line-height:21px;color:#526563"><strong style="color:#134e4a">Dar Spa</strong><br>E. Sotomayor 576 · Castro, Chiloé</td><td align="right" valign="top" style="padding-left:12px;font-size:12px;line-height:21px"><a href="mailto:${contact.doctorEmail}" style="color:#006f68;text-decoration:underline">¿Necesitas ayuda?</a></td></tr>
   </table>
 </td></tr>
 </table>

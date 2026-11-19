@@ -25,6 +25,14 @@ export function BookingActions({ className }: { className?: string }) {
           Agendar Hora <SiteIcon name="link" className="size-4 stroke-3" />
         </a>
       </Button>
+      <Button asChild size="cta" variant="outline-primary">
+        <a href={site.whatsapp} target="_blank" rel="noreferrer">
+          Otros servicios: agenda por WhatsApp
+        </a>
+      </Button>
+      <p className="basis-full text-sm font-bold">
+        «Agendar Hora» es para la consulta médica con el Dr. Moretti, por Doctoralia.
+      </p>
     </div>
   );
 }
