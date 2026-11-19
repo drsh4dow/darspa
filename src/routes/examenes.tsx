@@ -8,7 +8,7 @@ export const Route = createFileRoute("/examenes")({
   head: () =>
     publicMetadata(
       "Exámenes y procedimientos",
-      "Conoce los exámenes de Dar Spa: electrocardiograma, bioimpedanciometría, holter de presión, calorimetría y evaluaciones.",
+      "Conoce los exámenes de Clínica DarSpa: electrocardiograma, bioimpedanciometría, calorimetría, test cardiovascular al esfuerzo y análisis facial.",
       "/examenes",
     ),
   component: ExamsPage,
