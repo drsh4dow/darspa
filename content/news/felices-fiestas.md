@@ -7,4 +7,6 @@ image: /images/content/ca51042b863f05de.jpg
 imageAlt: santa se ve diferente desde que aprendio a comer sano!!
 ---
 
+**Noticia histórica de 2020. Esta información ya no está vigente.**
+
 Ven a conocer nuestros descuentos navideños, tenemos hasta un 30% de descuento en planes de terapias y sesiones de modelado corporal, masajes para ti o tarjetas de regalo para tus seres queridos, consultas via WhatsApp.
