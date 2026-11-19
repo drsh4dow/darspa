@@ -1,3 +1,4 @@
+import { contact } from "../../shared/contact";
 import { escapeHtml } from "../lib/html";
 import { emailButton, emailLayout } from "../lib/emailLayout";
 
@@ -22,7 +23,7 @@ export function voucherEmail({
 
   return {
     subject: `Tu voucher Dar Spa · ${name}`,
-    text: `${name}\n\nVence el ${expires} (Chile).\nCódigo: ${code}\n\nDescargar voucher con QR: ${pdf.href}\n\nTransferible. Quien reciba el código podrá canjearlo.\nReserva tu hora: +56 9 7227 5330\n\nDar Spa · Castro, Chiloé`,
+    text: `${name}\n\nVence el ${expires} (Chile).\nCódigo: ${code}\n\nDescargar voucher con QR: ${pdf.href}\n\nTransferible. Quien reciba el código podrá canjearlo.\nReserva tu hora por WhatsApp, por mensaje: ${contact.receptionPhone} (${contact.receptionHours})\n\nDar Spa · Castro, Chiloé`,
     html: emailLayout({
       title: "Tu voucher",
       preview: `${name} · Vence el ${expires}`,
@@ -35,7 +36,7 @@ ${emailButton("Descargar voucher con QR", pdf)}
 <p style="margin:0 0 6px;font-size:12px">Tu código</p>
 <p style="margin:0 0 24px;font-family:monospace;font-size:13px;overflow-wrap:anywhere;word-break:break-all;color:#134e4a">${escapeHtml(code)}</p>
 <p style="margin:0 0 8px;font-size:13px">Transferible. Quien reciba el código podrá canjearlo.</p>
-<p style="margin:0;font-size:13px"><a href="https://wa.me/56972275330" style="color:#007f7b;text-decoration:underline">Reservar mi hora</a></p>`,
+<p style="margin:0;font-size:13px"><a href="${contact.receptionWhatsapp}" style="color:#007f7b;text-decoration:underline">Reservar mi hora</a></p>`,
     }),
   };
 }

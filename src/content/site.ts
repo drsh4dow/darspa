@@ -1,14 +1,16 @@
+import { contact, schedule } from "../../shared/contact";
+
 export const site = {
-  name: "Dar Spa",
+  name: "Clínica DarSpa",
   origin: "https://darspa.cl",
-  phone: "+56 9 7227 5330",
-  telephone: "tel:+56972275330",
-  whatsapp:
-    "https://wa.me/56972275330?text=Hola%2C%20vengo%20desde%20darspa.cl%20y%20quisiera%20consultar.",
-  email: "contacto@darspa.cl",
+  phone: contact.receptionPhone,
+  whatsapp: contact.receptionWhatsapp,
+  doctorPhone: contact.doctorPhone,
+  doctorWhatsapp: contact.doctorWhatsapp,
+  receptionHours: contact.receptionHours,
+  emails: [contact.doctorEmail, contact.clinicEmail],
   address: "E. Sotomayor 576, Castro",
-  days: "Lunes a sábado",
-  hours: "8:00 a 20:00 hrs",
+  schedule,
   instagram: "https://www.instagram.com/darspa.cl/",
   facebook: "https://www.facebook.com/darspa.cl",
   booking:

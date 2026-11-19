@@ -8,7 +8,7 @@ export function publicMetadata(
   image = "/images/group-logo.png",
 ) {
   const url = `${site.origin}${path === "/" ? "" : path}`;
-  const fullTitle = `${title} | Dar Spa`;
+  const fullTitle = path === "/" ? title : `${title} | ${site.name}`;
 
   return {
     meta: [
@@ -17,7 +17,7 @@ export function publicMetadata(
       { name: "robots", content: "index, follow" },
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "es_CL" },
-      { property: "og:site_name", content: "Dar Spa" },
+      { property: "og:site_name", content: site.name },
       { property: "og:title", content: fullTitle },
       { property: "og:description", content: description },
       { property: "og:url", content: url },
