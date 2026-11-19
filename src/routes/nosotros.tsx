@@ -62,6 +62,10 @@ function AboutPage() {
                 <p className="font-display text-base font-bold text-muted-foreground">
                   {member.title}
                 </p>
+                {member.schedule ? (
+                  <p className="mt-2 text-sm font-bold">{member.schedule}</p>
+                ) : null}
+                {member.note ? <p className="mt-1 text-sm">{member.note}</p> : null}
               </article>
             ))}
           </div>
