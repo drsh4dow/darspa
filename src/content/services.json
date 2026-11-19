@@ -48,9 +48,9 @@
     "precio": "$15.000 por sesión"
   },
   {
-    "nombre": "HIFEM (estimulación electromagnética muscular de alta intensidad)",
-    "descripcion": "HIFEM es una tecnología electromagnética focalizada de alta intensidad que induce contracciones musculares y es el tratamiento estético más potente de aumento de masa muscular y reducción de porcentaje de grasa. El pulso de energía del tratamiento por 30 minutos puede estimular 30.000 fuertes contracciones musculares, que ayudan a las células grasas a metabolizarse y descomponerse vigorosamente.",
-    "src": "/images/terapias/hifem.png",
+    "nombre": "Electroestimulación muscular de alta intensidad",
+    "descripcion": "La electroestimulación muscular de alta intensidad es una tecnología electromagnética focalizada que induce contracciones musculares y es el tratamiento estético más potente de aumento de masa muscular y reducción de porcentaje de grasa. El pulso de energía del tratamiento por 30 minutos puede estimular 30.000 fuertes contracciones musculares, que ayudan a las células grasas a metabolizarse y descomponerse vigorosamente.",
+    "src": "/images/group-logo.png",
     "alt": "Desarrolla musculatura mediante estimulacion electrica localizada",
     "tipo": "modeladoCorporal",
     "precio": "$15.000 por sesión"

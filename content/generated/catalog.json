@@ -215,15 +215,15 @@
     "html": "<p>6 sesiones Lipolisis Laser; reducción de grasa localizada, mejora tu cintura, apoya la reducción de peso</p>\n"
   },
   {
-    "id": "hifem-x-6",
-    "name": "HIFEM x 6",
+    "id": "electroestimulacion-muscular-x-6",
+    "name": "Electroestimulación muscular x 6",
     "priceClp": 81000,
     "available": true,
     "displayOrder": 2,
-    "image": "/images/content/8f8e825193db60e2.png",
-    "imageAlt": "HIFEM x 6",
-    "description": "6 sesiones de estimulación muscular, mediante Hifem para tonificar, marcar y potenciar la musculatura y el metabolismo.",
-    "html": "<p>6 sesiones de estimulación muscular, mediante Hifem para tonificar, marcar y potenciar la musculatura y el metabolismo.</p>\n"
+    "image": "/images/group-logo.png",
+    "imageAlt": "Electroestimulación muscular x 6",
+    "description": "6 sesiones de electroestimulación muscular de alta intensidad para tonificar, marcar y potenciar la musculatura y el metabolismo.",
+    "html": "<p>6 sesiones de electroestimulación muscular de alta intensidad para tonificar, marcar y potenciar la musculatura y el metabolismo.</p>\n"
   },
   {
     "id": "vacuum-x-8",
@@ -250,15 +250,15 @@
     "html": "<p>8 sesiones de ondas de choque; técnica que mejora la apariencia de cicatrices, flacidez o zonas caídas.</p>\n"
   },
   {
-    "id": "lipolaser-x-4-presoterapia-x-2-hifem-x-2",
-    "name": "Lipólisis láser x 4 + Presoterapia x 2 + HIFEM x 2",
+    "id": "lipolaser-x-4-presoterapia-x-2-electroestimulacion-muscular-x-2",
+    "name": "Lipólisis láser x 4 + Presoterapia x 2 + Electroestimulación muscular x 2",
     "priceClp": 108000,
     "available": true,
     "displayOrder": 0,
     "image": "/images/content/d113267df92f213d.png",
-    "imageAlt": "Lipólisis láser x 4 + Presoterapia x 2 + HIFEM x 2",
-    "description": "4 sesiones de Lipolisis Laser, 2 sesiones de presoterapia y 2 sesiones de estimulación muscular mediante Hifem.",
-    "html": "<p>4 sesiones de Lipolisis Laser, 2 sesiones de presoterapia y 2 sesiones de estimulación muscular mediante Hifem.</p>\n"
+    "imageAlt": "Lipólisis láser x 4 + Presoterapia x 2 + Electroestimulación muscular x 2",
+    "description": "4 sesiones de Lipolisis Laser, 2 sesiones de presoterapia y 2 sesiones de electroestimulación muscular de alta intensidad.",
+    "html": "<p>4 sesiones de Lipolisis Laser, 2 sesiones de presoterapia y 2 sesiones de electroestimulación muscular de alta intensidad.</p>\n"
   },
   {
     "id": "hifu-multiplano-x3",
@@ -297,18 +297,6 @@
     "html": "<p>12 sesiones Lipolisis Laser; reducción de grasa localizada, mejora tu cintura, apoya la reducción de peso</p>\n"
   },
   {
-    "id": "hifem-x-12",
-    "legacyId": "Y5OUtRAAAB0A5pKo",
-    "name": "Hifem x 12",
-    "priceClp": 126000,
-    "available": false,
-    "displayOrder": 2,
-    "image": "/images/content/8f8e825193db60e2.png",
-    "imageAlt": "Hifem x 12",
-    "description": "12 sesiones de estimulación muscular, mediante Hifem para tonificar, marcar y potenciar la musculatura y el metabolismo.",
-    "html": "<p>12 sesiones de estimulación muscular, mediante Hifem para tonificar, marcar y potenciar la musculatura y el metabolismo.</p>\n"
-  },
-  {
     "id": "ondas-de-choque-x-12",
     "legacyId": "Y5OYERAAAKkY5qGJ",
     "name": "Ondas de choque x 12",
@@ -333,26 +321,14 @@
     "html": "<p>6 sesiones Lipolaser, 6 sesiones Presoterapia. Reduce cintura, marca tu abdomen, elimina grasa localizada.</p>\n"
   },
   {
-    "id": "lipolaser-x-6-hifem-x-6",
-    "name": "Lipólisis láser x 6 + HIFEM x 6",
+    "id": "lipolaser-x-6-electroestimulacion-muscular-x-6",
+    "name": "Lipólisis láser x 6 + Electroestimulación muscular x 6",
     "priceClp": 162000,
     "available": true,
     "displayOrder": 0,
-    "image": "/images/content/5b0daed3ff27c19b.png",
-    "imageAlt": "Lipólisis láser x 6 + HIFEM x 6",
-    "description": "6 sesiones de Lipolisis Laser para la reducción de grasa localizada y 6 sesiones de estimulación muscular mediante Hifem para tonificar, marcar y potenciar la musculatura y el metabolismo.",
-    "html": "<p>6 sesiones de Lipolisis Laser para la reducción de grasa localizada y 6 sesiones de estimulación muscular mediante Hifem para tonificar, marcar y potenciar la musculatura y el metabolismo.</p>\n"
-  },
-  {
-    "id": "8-lipo-6-presoterapia-2-hifem",
-    "legacyId": "ZFJ7aRAAACIAOiTG",
-    "name": "8 lipo + 6 presoterapia  + 2 hifem",
-    "priceClp": 168000,
-    "available": false,
-    "displayOrder": 0,
     "image": "/images/content/d113267df92f213d.png",
-    "imageAlt": "8 lipo + 6 presoterapia  + 2 hifem",
-    "description": "pack de modelado corporal orientado a mejorar el aspecto del abdomen , incluye 8 sesiones de Lipólisis Laser no invasiva, 6 de presoterapia y 2 de Hifem",
-    "html": "<p>pack de modelado corporal orientado a mejorar el aspecto del abdomen , incluye 8 sesiones de Lipólisis Laser no invasiva, 6 de presoterapia y 2 de Hifem</p>\n"
+    "imageAlt": "Lipólisis láser x 6 + Electroestimulación muscular x 6",
+    "description": "6 sesiones de Lipolisis Laser para la reducción de grasa localizada y 6 sesiones de electroestimulación muscular de alta intensidad para tonificar, marcar y potenciar la musculatura y el metabolismo.",
+    "html": "<p>6 sesiones de Lipolisis Laser para la reducción de grasa localizada y 6 sesiones de electroestimulación muscular de alta intensidad para tonificar, marcar y potenciar la musculatura y el metabolismo.</p>\n"
   }
 ]
