@@ -43,8 +43,19 @@ export const specialties = [
 export const serviceCategories = [
   { id: "modeladoCorporal", name: "Modelado Corporal" },
   { id: "tratamientoFacial", name: "Tratamientos Faciales" },
-  { id: "facialAvanzado", name: "Tratamientos Faciales Avanzados" },
   { id: "masaje", name: "Masajes" },
-  { id: "cejas", name: "Uñas, Pestañas & Cejas" },
   { id: "otros", name: "Otros Servicios" },
+];
+
+export const consultations = [
+  {
+    name: "Consulta de kinesiología",
+    price: "$20.000 por sesión, de pago particular",
+    note: "La kinesiología de rehabilitación también acepta bono Fonasa y bono Isapre Colmena.",
+  },
+  {
+    name: "Consulta de nutrición",
+    price: "$25.000 por sesión, solo de pago particular",
+    note: null,
+  },
 ];

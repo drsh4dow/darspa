@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import services from "../content/services.json";
-import { serviceCategories } from "../content/site";
+import { consultations, serviceCategories } from "../content/site";
 import { PageHeading, ServiceRows } from "../components/public-content";
 import { publicMetadata } from "../lib/metadata";
 
@@ -8,7 +8,7 @@ export const Route = createFileRoute("/servicios")({
   head: () =>
     publicMetadata(
       "Servicios y técnicas",
-      "Servicios, terapias y prestaciones de Dar Spa: modelado corporal, tratamientos faciales, masajes, entrenamiento y más.",
+      "Servicios, terapias y prestaciones de Clínica DarSpa: modelado corporal, HIFU facial, masajes, entrenamiento y consultas de kinesiología y nutrición.",
       "/servicios",
     ),
   component: ServicesPage,
@@ -23,6 +23,20 @@ function ServicesPage() {
         <br />
         Ven, te contamos un poco sobre ellas.
       </PageHeading>
+      <section id="consultas" className="mx-auto mb-18 max-w-4xl lg:mb-28">
+        <h2 className="mb-6 text-2xl font-black text-primary lg:text-4xl">Consultas</h2>
+        <ul className="grid gap-4 sm:grid-cols-2">
+          {consultations.map((consultation) => (
+            <li className="rounded-3xl border-4 border-primary p-4" key={consultation.name}>
+              <h3 className="font-display text-2xl font-bold text-heading">{consultation.name}</h3>
+              <p className="mt-2 text-lg font-black text-primary">{consultation.price}</p>
+              {consultation.note ? (
+                <p className="mt-2 text-base font-bold">{consultation.note}</p>
+              ) : null}
+            </li>
+          ))}
+        </ul>
+      </section>
       {serviceCategories.map((category) => (
         <section
           key={category.id}

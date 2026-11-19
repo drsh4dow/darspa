@@ -4,7 +4,7 @@ legacyId: Y5OkzBAAACIA5tqF
 name: Consejería en actividad física
 priceClp: 20000
 displayOrder: 1
-available: true
+available: false
 image: /images/content/f1b023058148d8be.png
 imageAlt: Consejería en actividad física
 ---

@@ -1,6 +1,13 @@
 import type { ReactNode } from "react";
-import type exams from "../content/exams.json";
 import { cn } from "../lib/utils";
+
+type ServiceRowItem = {
+  nombre: string;
+  descripcion: string;
+  src: string;
+  alt: string;
+  precio?: string;
+};
 
 export function PageHeading({
   title,
@@ -25,7 +32,7 @@ export function PageHeading({
   );
 }
 
-export function ServiceRows({ items }: { items: typeof exams }) {
+export function ServiceRows({ items }: { items: ServiceRowItem[] }) {
   return (
     <div className="mx-auto grid max-w-4xl gap-8">
       {items.map((item) => (
@@ -46,6 +53,9 @@ export function ServiceRows({ items }: { items: typeof exams }) {
           <div className="min-w-0 max-w-full wrap-anywhere md:p-4 md:pl-74 md:group-odd:pr-74 md:group-odd:pl-4">
             <h3 className="mb-4 font-display text-2xl font-bold text-heading">{item.nombre}</h3>
             <p className="text-base font-bold">{item.descripcion}</p>
+            {item.precio ? (
+              <p className="mt-3 text-lg font-black text-primary">{item.precio}</p>
+            ) : null}
           </div>
         </article>
       ))}
