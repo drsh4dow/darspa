@@ -7,6 +7,6 @@ export const Route = createFileRoute("/pagos/confirmacion")({
   validateSearch: Schema.toStandardSchemaV1(
     Schema.Struct({ compra: Schema.optional(Schema.String) }),
   ),
-  head: () => ({ meta: [{ title: "Resultado del pago · Dar Spa" }] }),
+  head: () => ({ meta: [{ title: "Resultado del pago · Clínica DarSpa" }] }),
   component: PaymentPage,
 });

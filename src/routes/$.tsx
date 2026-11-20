@@ -5,5 +5,5 @@ import { PageNotFound } from "../components/route-feedback";
 export const Route = createFileRoute("/$")({
   ssr: false,
   component: PageNotFound,
-  head: () => ({ meta: [{ title: "Página no encontrada · Dar Spa" }] }),
+  head: () => ({ meta: [{ title: "Página no encontrada · Clínica DarSpa" }] }),
 });

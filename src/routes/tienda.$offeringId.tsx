@@ -15,7 +15,7 @@ export const Route = createFileRoute("/tienda/$offeringId")({
     loaderData
       ? publicMetadata(
           loaderData.name,
-          `${loaderData.name} en Dar Spa. Conoce el servicio, su precio y las condiciones de la GiftCard.`,
+          `${loaderData.name} en Clínica DarSpa. Conoce el servicio, su precio y las condiciones de la GiftCard.`,
           `/tienda/${loaderData.id}`,
           loaderData.image,
         )

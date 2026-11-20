@@ -5,7 +5,7 @@ import { OperationsWorkspace } from "../features/operations/workspace";
 
 export const Route = createFileRoute("/admin")({
   ssr: false,
-  head: () => ({ meta: [{ title: "Administración · Dar Spa" }] }),
+  head: () => ({ meta: [{ title: "Administración · Clínica DarSpa" }] }),
   component: AdminPage,
 });
 

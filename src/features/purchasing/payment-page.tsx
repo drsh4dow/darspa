@@ -179,7 +179,7 @@ function PaymentDetails({ purchaseId, email }: { purchaseId: string; email: stri
             No se emitieron vouchers.{" "}
             {purchase.status === "error"
               ? "Puedes volver a intentarlo."
-              : "Si ves un cargo, contacta a Dar Spa antes de pagar de nuevo."}
+              : "Si ves un cargo, contacta a Clínica DarSpa antes de pagar de nuevo."}
           </p>
           <Link to="/carro" onClick={() => cart.newAttempt()} className="text-primary underline">
             Volver al carro

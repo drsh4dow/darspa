@@ -75,7 +75,7 @@ function VoucherCard({
           }}
         >
           <p className="mb-2 text-sm font-bold text-primary">
-            Dar Spa · Voucher {String(index + 1).padStart(2, "0")}
+            Clínica DarSpa · Voucher {String(index + 1).padStart(2, "0")}
           </p>
           <DialogTitle ref={title} tabIndex={-1} className="text-2xl leading-tight font-extrabold">
             {voucher.terms.name}

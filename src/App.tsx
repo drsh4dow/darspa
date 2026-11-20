@@ -93,11 +93,11 @@ export function App({ children }: { children: ReactNode }) {
             >
               <SiteIcon name="account" />
             </Link>
-            <Link to="/" aria-label="Dar Spa, inicio" className="shrink-0">
+            <Link to="/" aria-label="Clínica DarSpa, inicio" className="shrink-0">
               <img
                 className="h-10 w-13.5"
                 src="/images/darspa-logo.svg"
-                alt="Dar Spa"
+                alt="Clínica DarSpa"
                 width="54"
                 height="40"
               />
@@ -134,14 +134,14 @@ export function App({ children }: { children: ReactNode }) {
           <div className="grid grid-cols-2 items-center gap-4 sm:grid-cols-3">
             <Link
               to="/"
-              aria-label="Dar Spa, inicio"
+              aria-label="Clínica DarSpa, inicio"
               className="col-start-1 row-start-3 mx-4 w-24 justify-self-end sm:row-span-2 sm:row-start-1 sm:justify-self-start"
             >
               <img
                 src="/images/darspa-logo.svg"
                 width="96"
                 height="72"
-                alt="Dar Spa"
+                alt="Clínica DarSpa"
                 loading="lazy"
               />
               <span className="mt-1 block border-t border-primary pt-0.5 text-center font-brand text-footer-tagline font-bold text-accent">

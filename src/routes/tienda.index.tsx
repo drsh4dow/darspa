@@ -6,7 +6,7 @@ export const Route = createFileRoute("/tienda/")({
   head: () =>
     publicMetadata(
       "Tienda y GiftCards",
-      "Conoce los servicios y paquetes de Dar Spa, con precios en pesos chilenos y GiftCards para regalar o utilizar más adelante.",
+      "Conoce los servicios y paquetes de Clínica DarSpa, con precios en pesos chilenos y GiftCards para regalar o utilizar más adelante.",
       "/tienda",
     ),
   component: CatalogPage,
