@@ -17,6 +17,7 @@ const clinicStructuredData = {
   url: site.origin,
   image: `${site.origin}/images/group-logo.png`,
   telephone: contact.receptionPhone,
+  priceRange: "$10.000-$200.000",
   email: contact.clinicEmail,
   address: {
     "@type": "PostalAddress",
