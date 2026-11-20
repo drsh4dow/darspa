@@ -8,14 +8,48 @@ import { Testimonials } from "../components/testimonials";
 import { InstagramFeed } from "../features/instagram/feed";
 import { SiteIcon } from "../components/site-icon";
 import { publicMetadata } from "../lib/metadata";
+import { contact } from "../../shared/contact";
+
+const clinicStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  name: site.name,
+  url: site.origin,
+  image: `${site.origin}/images/group-logo.png`,
+  telephone: contact.receptionPhone,
+  email: contact.clinicEmail,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "E. Sotomayor 576",
+    addressLocality: "Castro",
+    addressCountry: "CL",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "08:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:00",
+      closes: "14:00",
+    },
+  ],
+  sameAs: [site.instagram, site.facebook],
+};
 
 export const Route = createFileRoute("/")({
-  head: () =>
-    publicMetadata(
+  head: () => ({
+    ...publicMetadata(
       "Clínica DarSpa - Centro Nutricional Avanzado",
       "Clínica DarSpa en Castro, Chiloé: nutrición avanzada, modelado corporal, servicios y exámenes. Conoce a nuestro equipo y agenda tu consulta médica en Doctoralia o el resto de los servicios por WhatsApp.",
       "/",
     ),
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(clinicStructuredData) }],
+  }),
   component: HomePage,
 });
 
