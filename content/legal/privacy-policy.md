@@ -17,7 +17,7 @@ Las palabras cuya inicial aparece en mayúscula tienen el significado que se def
 Para los fines de esta Política de privacidad:
 
 - **Cuenta:** una cuenta única creada para que accedas al Servicio o a partes de él.
-- **Empresa:** también denominada «nosotros» o «nuestro» en este documento, se refiere a Dar Spa, Sotomayor 576, Castro.
+- **Empresa:** también denominada «nosotros» o «nuestro» en este documento, se refiere a Sociedad de Prestaciones Médicas Dar SPA (nombre de fantasía «Darspa»), Sotomayor 576, Castro.
 - **Cookies:** archivos pequeños que un sitio web coloca en tu computador, dispositivo móvil u otro dispositivo y que contienen, entre otros datos, información sobre tu historial de navegación.
 - **País:** Chile.
 - **Dispositivo:** cualquier dispositivo que pueda acceder al Servicio, como un computador, teléfono celular o tableta digital.
@@ -25,7 +25,7 @@ Para los fines de esta Política de privacidad:
 - **Servicio:** el sitio web.
 - **Proveedor de servicios:** cualquier persona natural o jurídica que procese datos en nombre de la Empresa. Incluye empresas o personas contratadas para facilitar el Servicio, prestarlo en nuestro nombre, realizar tareas relacionadas con él o ayudarnos a analizar su uso.
 - **Datos de uso:** datos recopilados automáticamente, generados por el uso del Servicio o por su infraestructura; por ejemplo, la duración de una visita a una página.
-- **Sitio web:** Dar Spa, disponible en https://darspa.cl.
+- **Sitio web:** Clínica DarSpa, disponible en https://darspa.cl.
 - **Tú:** la persona que accede al Servicio o lo utiliza, o la empresa u otra entidad jurídica en cuyo nombre actúa esa persona, según corresponda.
 
 ## Recopilación y uso de tus datos personales

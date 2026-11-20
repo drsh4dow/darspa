@@ -4,8 +4,8 @@ export const signInLinkLifetimeMinutes = 15;
 
 export function signInEmail(link: URL, assetOrigin: URL) {
   return {
-    subject: "Tu enlace para ingresar a Dar Spa",
-    text: `Tu enlace de ingreso\n\n${link.href}\n\nVálido por ${signInLinkLifetimeMinutes} minutos. Un solo uso.\n\nSi no solicitaste ingresar, ignora este correo.\n\nDar Spa · Castro, Chiloé`,
+    subject: "Tu enlace para ingresar a Clínica DarSpa",
+    text: `Tu enlace de ingreso\n\n${link.href}\n\nVálido por ${signInLinkLifetimeMinutes} minutos. Un solo uso.\n\nSi no solicitaste ingresar, ignora este correo.\n\nClínica DarSpa · Castro, Chiloé`,
     html: emailLayout({
       title: "Tu enlace de ingreso",
       preview: `Válido por ${signInLinkLifetimeMinutes} minutos. Un solo uso.`,

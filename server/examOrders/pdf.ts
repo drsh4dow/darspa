@@ -88,7 +88,7 @@ export const renderExamOrder = Effect.fn("renderExamOrder")(
     const pdf = yield* Effect.tryPromise(() => PDFDocument.create());
     const font = yield* Effect.tryPromise(() => pdf.embedFont(StandardFonts.Helvetica));
     pdf.setTitle("Órdenes de examen");
-    pdf.setAuthor("Dar Spa");
+    pdf.setAuthor("Clínica DarSpa");
     // Deterministic metadata makes retries of the same order on the same local day
     // produce the same attachment and Resend idempotency key.
     const issuedAt = DateTime.toDateUtc(DateTime.startOf(local, "day"));

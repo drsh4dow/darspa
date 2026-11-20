@@ -8,7 +8,7 @@ export function examOrderEmail(assetOrigin: URL) {
   const logo = escapeHtml(new URL("/images/darspa-logo.png", assetOrigin).href);
 
   return {
-    subject: "Tus órdenes de examen — Dar Spa",
+    subject: "Tus órdenes de examen — Clínica DarSpa",
     text: `Tus órdenes de examen están listas para descargar e imprimir.
 
 Encontrarás la orden de estudio metabólico y la orden de laboratorio en el archivo adjunto: ${examOrderFilename}.
@@ -17,14 +17,14 @@ Imprime ambas páginas en tamaño carta. Las indicaciones de preparación están
 
 ¿Necesitas ayuda? Escríbenos a ${contact.doctorEmail}.
 
-Dar Spa
+Clínica DarSpa
 E. Sotomayor 576 · Castro, Chiloé`,
     html: `<!doctype html>
 <html lang="es-CL">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tus órdenes de examen — Dar Spa</title>
+<title>Tus órdenes de examen — Clínica DarSpa</title>
 <style>
 @media(max-width:480px){.content{padding-left:24px!important;padding-right:24px!important}.outer{padding:16px 8px!important}h1{font-size:30px!important}}
 </style>
@@ -36,7 +36,7 @@ E. Sotomayor 576 · Castro, Chiloé`,
 <!--[if mso]><table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0"><tr><td><![endif]-->
 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;background:#ffffff;border-top:4px solid #007f7b">
 <tr><td class="content" style="padding:28px 40px 20px">
-  <img src="${logo}" width="92" height="92" alt="Dar Spa" style="display:block;border:0">
+  <img src="${logo}" width="92" height="92" alt="Clínica DarSpa" style="display:block;border:0">
 </td></tr>
 <tr><td class="content" style="padding:0 40px 28px">
   <p style="margin:0 0 12px;font-size:11px;line-height:18px;font-weight:700;letter-spacing:2px;color:#00716d">ÓRDENES DE EXAMEN</p>
@@ -65,7 +65,7 @@ E. Sotomayor 576 · Castro, Chiloé`,
 </td></tr>
 <tr><td class="content" style="padding:22px 40px;background:#f5f9f8">
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
-  <tr><td style="font-size:12px;line-height:21px;color:#526563"><strong style="color:#134e4a">Dar Spa</strong><br>E. Sotomayor 576 · Castro, Chiloé</td><td align="right" valign="top" style="padding-left:12px;font-size:12px;line-height:21px"><a href="mailto:${contact.doctorEmail}" style="color:#006f68;text-decoration:underline">¿Necesitas ayuda?</a></td></tr>
+  <tr><td style="font-size:12px;line-height:21px;color:#526563"><strong style="color:#134e4a">Clínica DarSpa</strong><br>E. Sotomayor 576 · Castro, Chiloé</td><td align="right" valign="top" style="padding-left:12px;font-size:12px;line-height:21px"><a href="mailto:${contact.doctorEmail}" style="color:#006f68;text-decoration:underline">¿Necesitas ayuda?</a></td></tr>
   </table>
 </td></tr>
 </table>

@@ -30,7 +30,7 @@ export class Auth extends Context.Service<Auth>()("darspa/Auth", {
     const run = Effect.runPromiseWith(context);
 
     return betterAuth({
-      appName: "Dar Spa",
+      appName: "Clínica DarSpa",
       baseURL: config.origin.href,
       secret: Redacted.value(config.secret),
       trustedOrigins: [config.origin.origin],

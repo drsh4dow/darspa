@@ -22,8 +22,8 @@ export function voucherEmail({
   }).format(expiresAt);
 
   return {
-    subject: `Tu voucher Dar Spa · ${name}`,
-    text: `${name}\n\nVence el ${expires} (Chile).\nCódigo: ${code}\n\nDescargar voucher con QR: ${pdf.href}\n\nTransferible. Quien reciba el código podrá canjearlo.\nReserva tu hora por WhatsApp, por mensaje: ${contact.receptionPhone} (${contact.receptionHours})\n\nDar Spa · Castro, Chiloé`,
+    subject: `Tu voucher Clínica DarSpa · ${name}`,
+    text: `${name}\n\nVence el ${expires} (Chile).\nCódigo: ${code}\n\nDescargar voucher con QR: ${pdf.href}\n\nTransferible. Quien reciba el código podrá canjearlo.\nReserva tu hora por WhatsApp, por mensaje: ${contact.receptionPhone} (${contact.receptionHours})\n\nClínica DarSpa · Castro, Chiloé`,
     html: emailLayout({
       title: "Tu voucher",
       preview: `${name} · Vence el ${expires}`,
