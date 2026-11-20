@@ -7,4 +7,6 @@ image: /images/content/95b222a0547456ad.jpg
 imageAlt: imagen de correo electronico
 ---
 
-Desde hoy cualquier duda o preocupacion sobre su tratamiento puede ser respondida mediante el nuevo correo electronico del centro: "contacto@darspa.cl". Estaremos esperando sus mensajes, y trataremos de responder a la brevedad
+**Noticia histórica de 2020. Esta información ya no está vigente.**
+
+Desde hoy cualquier duda o preocupacion sobre su tratamiento puede ser respondida mediante el nuevo correo electronico del centro: "[correo ya no vigente]". Estaremos esperando sus mensajes, y trataremos de responder a la brevedad

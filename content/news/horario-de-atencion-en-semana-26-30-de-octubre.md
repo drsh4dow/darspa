@@ -7,4 +7,6 @@ image: /images/content/064a716de8abd0d8.jpg
 imageAlt: Horario de atención en semana 26-30 de octubre
 ---
 
+**Noticia histórica de 2020. Esta información ya no está vigente.**
+
 Estimados usuarios, por periodo de vacaciones de algunos de nuestros integrantes, del 26 al 30 de octubre atenderemos solamente durante la jornada de la mañana, es decir hasta las 14:00. Ya la semana siguiente desde el 2 de noviembre retomaremos nuestros horarios de atención normales. Consultas como siempre al +56972275330 y al +56972275490.

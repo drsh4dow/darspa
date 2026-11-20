@@ -7,4 +7,6 @@ image: /images/content/e13b627680b793d3.png
 imageAlt: gift card navideñas
 ---
 
+**Noticia histórica de 2022. Esta información ya no está vigente.**
+
 Aprovecha estas nuevas ofertas para todos los bolsillos en esta navidad, con descuentos increibles!, no puedes perderte en esta navidad un regalo de primer nivel, revisa nuestras ofertas y tarjetas de regalo.
