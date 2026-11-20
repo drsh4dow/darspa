@@ -48,7 +48,7 @@ export const renderVoucher = Effect.fn("renderVoucher")(
     page.drawText(expiry, { x: 425, y: 24, font: regular, size: 10, color: rgb(0, 0, 0) });
 
     const terms = doc.addPage([595, 842]);
-    terms.drawText("Tu voucher Dar Spa", { x: 45, y: 790, font: bold, size: 22 });
+    terms.drawText("Tu voucher Clínica DarSpa", { x: 45, y: 790, font: bold, size: 22 });
 
     const price = new Intl.NumberFormat("es-CL", {
       style: "currency",
@@ -59,7 +59,7 @@ export const renderVoucher = Effect.fn("renderVoucher")(
     const priceLabel =
       voucher.source === "webpay" ? "Valor comprado" : "Valor de referencia del servicio";
 
-    const text = `${voucher.terms.name}\n\nCódigo: ${voucher.code}\n${priceLabel}: ${price} CLP\nVence: ${expiry} (hora de Chile continental).\n\nVálido durante 60 días desde su emisión.\nTransferible: quien presenta este código puede usarlo.\nUn paquete se canjea una sola vez al iniciar el tratamiento.\nReserva tu hora con Dar Spa. No requiere cuenta para canjearlo.\n\nDescripción del servicio:\n${voucher.terms.description}\n\nEste voucher no es un documento tributario.`;
+    const text = `${voucher.terms.name}\n\nCódigo: ${voucher.code}\n${priceLabel}: ${price} CLP\nVence: ${expiry} (hora de Chile continental).\n\nVálido durante 60 días desde su emisión.\nTransferible: quien presenta este código puede usarlo.\nUn paquete se canjea una sola vez al iniciar el tratamiento.\nReserva tu hora con Clínica DarSpa. No requiere cuenta para canjearlo.\n\nDescripción del servicio:\n${voucher.terms.description}\n\nEste voucher no es un documento tributario.`;
     // Wrap explicitly and paginate long purchased descriptions rather than clipping them.
     let current = terms;
     let y = 750;
@@ -93,7 +93,7 @@ export const renderVoucher = Effect.fn("renderVoucher")(
     }
 
     doc.setTitle(`Voucher ${voucher.terms.name}`);
-    doc.setAuthor("Dar Spa");
+    doc.setAuthor("Clínica DarSpa");
     const issuedAt = DateTime.toDateUtc(DateTime.makeUnsafe(voucher.issuedAt));
     doc.setCreationDate(issuedAt);
     doc.setModificationDate(issuedAt);

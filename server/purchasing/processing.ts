@@ -63,7 +63,7 @@ export class PaymentProcessing extends Context.Service<PaymentProcessing>()(
         ) {
           yield* uncertain(
             job,
-            "La respuesta de Webpay no coincide con esta compra. Contacta a Dar Spa.",
+            "La respuesta de Webpay no coincide con esta compra. Contacta a Clínica DarSpa.",
           );
 
           return yield* Effect.void;
@@ -175,7 +175,7 @@ export class PaymentProcessing extends Context.Service<PaymentProcessing>()(
         yield* Effect.gen(function* () {
           if (job.environment !== provider.environment) {
             return yield* new WebpayError({
-              message: "La configuración de Webpay cambió. Contacta a Dar Spa.",
+              message: "La configuración de Webpay cambió. Contacta a Clínica DarSpa.",
             });
           }
 
