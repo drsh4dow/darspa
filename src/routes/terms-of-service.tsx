@@ -7,7 +7,7 @@ export const Route = createFileRoute("/terms-of-service")({
   head: () =>
     publicMetadata(
       "Términos y condiciones",
-      "Términos y condiciones de uso del sitio web de Dar Spa.",
+      "Términos y condiciones de uso del sitio web de Clínica DarSpa.",
       "/terms-of-service",
     ),
   component: TermsPage,

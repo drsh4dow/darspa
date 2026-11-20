@@ -15,7 +15,7 @@ export const Route = createFileRoute("/noticias/$slug")({
     loaderData
       ? publicMetadata(
           loaderData.title,
-          `${loaderData.title}. Noticias y novedades de Dar Spa, Castro, Chiloé.`,
+          `${loaderData.title}. Noticias y novedades de Clínica DarSpa, Castro, Chiloé.`,
           `/noticias/${loaderData.slug}`,
           loaderData.image ?? undefined,
         )

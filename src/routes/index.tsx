@@ -63,7 +63,7 @@ function HomePage() {
             <div className="hero-badge flex size-63.25 flex-col items-center bg-card pt-12.5">
               <img
                 src="/images/darspa-logo.svg"
-                alt="Dar Spa"
+                alt="Clínica DarSpa"
                 width="170"
                 height="127"
                 fetchPriority="high"

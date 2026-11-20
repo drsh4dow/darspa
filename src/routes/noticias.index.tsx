@@ -7,7 +7,7 @@ export const Route = createFileRoute("/noticias/")({
   head: () =>
     publicMetadata(
       "Noticias y novedades",
-      "Archivo de noticias, notificaciones, ofertas y actualizaciones de Dar Spa, ordenadas cronológicamente.",
+      "Archivo de noticias, notificaciones, ofertas y actualizaciones de Clínica DarSpa, ordenadas cronológicamente.",
       "/noticias",
     ),
   component: NewsPage,

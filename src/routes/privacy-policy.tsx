@@ -7,7 +7,7 @@ export const Route = createFileRoute("/privacy-policy")({
   head: () =>
     publicMetadata(
       "Política de privacidad",
-      "Política de privacidad de Dar Spa: recopilación, uso y protección de datos personales y vías de contacto.",
+      "Política de privacidad de Clínica DarSpa: recopilación, uso y protección de datos personales y vías de contacto.",
       "/privacy-policy",
     ),
   component: PrivacyPage,

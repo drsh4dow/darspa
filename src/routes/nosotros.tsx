@@ -8,7 +8,7 @@ export const Route = createFileRoute("/nosotros")({
   head: () =>
     publicMetadata(
       "Nuestro equipo",
-      "Conoce a los profesionales, técnicos y administrativos de Dar Spa. Atención integral y cercana en Castro, Chiloé.",
+      "Conoce a los profesionales, técnicos y administrativos de Clínica DarSpa. Atención integral y cercana en Castro, Chiloé.",
       "/nosotros",
     ),
   component: AboutPage,

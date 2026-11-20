@@ -8,7 +8,7 @@ import { PurchaseHistory } from "../features/purchasing/purchase-history";
 export const Route = createFileRoute("/mi-cuenta")({
   ssr: false,
   validateSearch: accountSearch,
-  head: () => ({ meta: [{ title: "Mi cuenta · Dar Spa" }] }),
+  head: () => ({ meta: [{ title: "Mi cuenta · Clínica DarSpa" }] }),
   component: AccountPage,
 });
 
